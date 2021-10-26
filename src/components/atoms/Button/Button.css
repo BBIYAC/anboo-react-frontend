@@ -9,7 +9,7 @@
 }
 
 /* RoundRectangle */
-.btn-signup{
+.btn-roundrectangle{
     background-color: var(--color-rg);
     border: var(--border-rg);
     color: white;

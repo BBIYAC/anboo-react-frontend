@@ -31,7 +31,7 @@ const SignUp = () => {
                 <PhoneNumber />
                 <Email />
                 <EmailCheck />
-                <RoundRectangle />
+                <RoundRectangle btnText="회원가입" />
             </form>
         </React.Fragment>
     );

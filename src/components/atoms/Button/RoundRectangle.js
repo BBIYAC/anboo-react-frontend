@@ -1,9 +1,9 @@
 import React from 'react';
 
-const RoundRectangle = () =>{
+const RoundRectangle = ({btnText}) =>{
     return(
         <React.Fragment>
-            <button className="btn-signup">회원가입</button>
+            <button className="btn-roundrectangle">{btnText}</button>
         </React.Fragment>
     );
 };
