@@ -1,0 +1,18 @@
+/* Select */
+.tit-userchoice{
+    text-align: left;
+    font-size: var(--font-size-small);
+}
+.sel-userchoice{
+    border: 0;
+    border-radius: 0;
+    border-bottom: var(--border-bottom);
+    outline: none;
+    width: var(--width);
+    margin-bottom: var(--margin-bottom);
+    height: var(--height);
+}
+
+.arrow-down{
+    transform: translate(115px, -55px);
+}

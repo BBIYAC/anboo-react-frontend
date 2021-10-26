@@ -1,0 +1,23 @@
+/* Certification */
+.btn-certification{
+    border: var(--border-rg);
+    background-color: white;
+    color: var(--color-rg);
+    width: 80px;
+    margin-left: 10px;
+    margin-bottom: var(--margin-bottom);
+}
+
+/* RoundRectangle */
+.btn-signup{
+    background-color: var(--color-rg);
+    border: var(--border-rg);
+    color: white;
+    width: var(--width);
+    padding: var(--btn-padding);
+}
+
+button{
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-middle);
+}
