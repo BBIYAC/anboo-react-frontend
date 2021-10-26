@@ -11,8 +11,9 @@
     width: var(--width);
     margin-bottom: var(--margin-bottom);
     height: var(--height);
+    background: white;
 }
 
 .arrow-down{
-    transform: translate(115px, -55px);
+    transform: translate(130px, -55px);
 }
