@@ -33,3 +33,13 @@ input{
     border-radius: var(--border-radius);
     padding: 10px;
 }
+
+/* Add Large */
+.addLarge{
+    position: absolute;
+    right: 105px;
+    top: 205px;
+    width: 30px;
+    height: 30px ;
+    color: var(--color-rg);
+}

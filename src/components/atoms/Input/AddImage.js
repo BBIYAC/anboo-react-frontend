@@ -1,6 +1,6 @@
 import React, {  useRef } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
-// import ImageLarge from './ImageLarge';
+import ImageLarge from './ImageLarge';
 
 
 const AddImage = ({file, setFile}) => {
@@ -14,8 +14,8 @@ const AddImage = ({file, setFile}) => {
     
     return(
         <>
-            {/* <ImageLarge /> */}
-            <BsPlusLg style={{position: 'absolute', right: '105px', top: '205px', width: '30px', height: '30px', color: 'var(--color-rg)' }} onClick={() => fileInput.current.click()}/>
+            <ImageLarge url=""/>
+            <BsPlusLg className="addLarge" onClick={() => fileInput.current.click()}/>
             <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
         </>
     );
