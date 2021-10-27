@@ -21,7 +21,7 @@ const SignUp = () => {
 
     return (
         <React.Fragment>
-            <div className="title">회원가입</div>
+            <div className="header">회원가입</div>
             <form onSubmit={signupSubmit}>
                 <UserChoice />
                 <NameLong />

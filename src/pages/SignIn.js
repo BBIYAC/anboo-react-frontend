@@ -15,7 +15,7 @@ const SignIn = () => {
 
   return (
     <React.Fragment>
-      <div className="title">로그인</div>
+      <div className="header">로그인</div>
       <form onSubmit={signinSubmit}>
         <UserChoice />
         <Id />

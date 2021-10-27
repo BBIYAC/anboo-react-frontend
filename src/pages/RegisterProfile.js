@@ -5,6 +5,8 @@ import Caution from '../components/atoms/Input/Caution';
 import StarBlock from '../components/molecules/Block/StarBlock';
 import InputSelectBlock from '../components/molecules/Block/InputSelectBlock';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
+import { IoIosArrowBack } from 'react-icons/io';
+import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
@@ -13,7 +15,11 @@ import '../components/atoms/Button/Button.css';
 const  RegisterProfile= () => {
     return (
         <React.Fragment>
-            <div className="title">요양자 프로필</div>
+            <div className="header">
+              <IoIosArrowBack size="25"/>
+              요양원 프로필
+              <BiLogOut size="25"/>
+            </div>
             <AddImage />
             <InputSelectBlock />
             <Birth />
