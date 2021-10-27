@@ -8,19 +8,59 @@
     font-size: var(--font-size-small);
 }
 
-input{
+.input-email,
+.input-emailcheck,
+.input-id,
+.input-name,
+.input-password,
+.input-passwordcheck{
     border: 0;
     border-radius: 0;
     border-bottom: var(--border-bottom);
+    margin-bottom: var(--margin-bottom);
     outline: none;
     width: var(--width);
-    margin-bottom: var(--margin-bottom);
     height: var(--height);
 }
-
-
 
 /* EmailCheck */
 .div-emailcheck{
     display: flex;
+}
+
+/* Image Large */
+.imgLarge{
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 10px;
+}
+
+/* Add Large */
+.addLarge{
+  position: absolute;
+  right: 105px;
+  top: 205px;
+  width: 30px;
+  height: 30px ;
+  color: var(--color-rg);
+}
+
+/* Search */
+.searchBox {
+    padding-left: 2.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--color-gray);
+    width: 100%;
+    height: var(--height);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    margin-top: 0.75rem;
+    margin-left: 0.75rem;
 }

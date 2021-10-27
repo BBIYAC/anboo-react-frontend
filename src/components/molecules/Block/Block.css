@@ -1,0 +1,34 @@
+.block-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 5rem;
+}
+
+.block-keyword {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.block-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.div-map {
+  width: var(--width);
+  height: 300px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-gray);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.arrow-double {
+  position: absolute;
+  transform: translateY(21.5rem);
+  margin-left: 75%;
+  color:var(--color-white);
+}

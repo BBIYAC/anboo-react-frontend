@@ -1,24 +1,38 @@
 /* Certification */
 .btn-certification{
-    border: var(--border-rg);
-    background-color: white;
-    color: var(--color-rg);
-    width: 80px;
-    margin-left: 10px;
-    margin-bottom: var(--margin-bottom);
+  border: var(--border-bottom);
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  width: 80px;
+  margin-left: 10px;
+  margin-bottom: var(--margin-bottom);
 }
 
 /* RoundRectangle */
 .btn-roundrectangle{
-    background-color: var(--color-rg);
-    border: var(--border-rg);
-    color: white;
-    width: var(--width);
-    padding: var(--btn-padding);
-    margin-bottom: 15px;
+  background-color: var(--color-blue);
+  border: var(--border-rg);
+  color: var(--color-white);
+  width: var(--width);
+  padding: var(--btn-padding);
+  margin-bottom: 15px;
+  outline: none;
 }
 
 button{
-    border-radius: var(--border-radius);
-    font-size: var(--font-size-middle);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-middle);
+}
+
+.btn-favorites {
+  width: 5rem;
+  height: 2rem;
+  background-color: var(--color-white);
+  border: solid 1px;
+  font-size: var(--font-size-small);
+  color: var(--color-blue);
+}
+
+.btn-back {
+  color: var(--color-blue);
 }

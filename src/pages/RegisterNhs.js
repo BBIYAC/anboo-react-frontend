@@ -1,11 +1,13 @@
 import React from 'react';
+import '../components/atoms/Button/Button.css';
+import '../components/molecules/Block/Block.css';
 
 const  RegisterNhs= () => {
-    return (
-        <React.Fragment>
-            보호자 - 요양원 리스트 페이지
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <div className="title">요양원 위치</div>
+    </React.Fragment>
+  );
 };
 
 export default RegisterNhs;
