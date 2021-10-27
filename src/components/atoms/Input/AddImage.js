@@ -13,11 +13,11 @@ const AddImage = ({file, setFile}) => {
 
     
     return(
-        <>
-            <ImageLarge url=""/>
-            <BsPlusLg className="addLarge" onClick={() => fileInput.current.click()}/>
-            <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
-        </>
+      <>
+        <ImageLarge url=""/>
+        <BsPlusLg className="addLarge" onClick={() => fileInput.current.click()}/>
+        <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
+      </>
     );
 };
 

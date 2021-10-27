@@ -11,10 +11,38 @@
     width: var(--width);
     margin-bottom: var(--margin-bottom);
     height: var(--height);
-    background-color: white;
+    background-color: var(--color-white);
+}
+
+.sel-ratingchoice,
+.sel-religionchoice{
+    width: 5rem;
+    height: 2rem;
+    padding-left: 0.3rem;
+    border: solid 1px;
+    border-radius: var(--border-radius);
+    outline: none;
+    font-size: var(--font-size-small);
+    background-color: var(--color-white);
+    margin-left: 0.5rem;
+    color: var(--color-blue);
 }
 
 .arrow-down{
     transform: translateY(-3.5rem);
     margin-left: 85%;
+}
+
+.arrow-down-rating {
+  position: absolute;
+  margin-top: 0.5rem;
+  margin-left: 9.3rem;
+  color: var(--color-blue);
+}
+
+.arrow-down-religion {
+  position: absolute;
+  margin-top: 0.5rem;
+  margin-left: 14.8rem;
+  color: var(--color-blue);
 }
