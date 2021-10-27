@@ -24,3 +24,12 @@ input{
 .div-emailcheck{
     display: flex;
 }
+
+/* Image Large */
+.imgLarge{
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 10px;
+}
