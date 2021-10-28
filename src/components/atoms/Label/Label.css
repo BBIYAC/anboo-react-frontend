@@ -1,6 +1,13 @@
+
 .div-nursinghomeinfo {
   display: flex;
   flex-direction: column;
   text-align: left;
-  font-size: var(--font-size-small);
+}
+
+.nursinghome-info,
+.nursinghome-address,
+.nursinghome-operatingtime,
+.nursinghome-religion {
+  font-size: 0.85rem;
 }

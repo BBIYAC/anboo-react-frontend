@@ -41,6 +41,10 @@
   .imgMiddle {
     width: 80px;
     height: 80px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 6px;
+    margin-right: 0.5rem;
   }
 
   /* Add Large */

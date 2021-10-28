@@ -12,7 +12,7 @@ const NursingHomeInfoBlock = () => {
           <ImageMiddle />
           <NursingHomeInfo />
         </div>
-        <AiFillStar size="30"/>
+        <AiFillStar className="aifillstar"/>
       </div>
     </React.Fragment>
   );

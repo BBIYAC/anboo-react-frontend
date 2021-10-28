@@ -1,3 +1,4 @@
+/* Search */
 .block-search {
     display: flex;
     flex-direction: column;
@@ -5,18 +6,19 @@
     height: 5rem;
 }
 
+/* Keyword */
 .block-keyword {
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
 }
 
+/* Map */
 .block-map {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
 .div-map {
   width: var(--width);
   height: 300px;
@@ -26,6 +28,7 @@
   margin-bottom: 1rem;
 }
 
+/* Find Button  */
 .arrow-double {
   position: absolute;
   transform: translateY(21.5rem);
@@ -33,13 +36,19 @@
   color:var(--color-white);
 }
 
-.block-NursingHomeInfoBlock {
+/* Nursinghome Information */
+.block-NursingHomeInfo {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.5rem;
 }
-
 .NursingHomeInfo {
   display: flex;
   flex-direction: row;
-  text-align: left;
+  align-items: center;
+}
+.aifillstar {
+  font-size: 1.6rem;
 }
