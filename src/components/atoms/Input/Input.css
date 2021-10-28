@@ -14,47 +14,46 @@
 .input-name,
 .input-password,
 .input-passwordcheck{
-    border: 0;
-    border-radius: 0;
-    border-bottom: var(--border-bottom);
-    margin-bottom: var(--margin-bottom);
-    outline: none;
-    width: var(--width);
-    height: var(--height);
-  }
-  
-  /* EmailCheck */
-  .div-emailcheck{
-    display: flex;
-  }
-  
-  /* Image Large */
-  .imgLarge{
-    width: 90px;
-    height: 90px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    padding: 20px;
-  }
-  
-  /* Image Middle */
-  .imgMiddle {
-    width: 80px;
-    height: 80px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    padding: 6px;
-    margin-right: 0.5rem;
-  }
+  border: 0;
+  border-radius: 0;
+  border-bottom: var(--border-bottom);
+  margin-bottom: var(--margin-bottom);
+  outline: none;
+  width: var(--width);
+  height: var(--height);
+}
 
-  /* Add Large */
-  .addLarge{
-    position: relative;
-    right: 20px;
-    top: 5px;
-    width: 30px;
-    height: 30px ;
-    color: var(--color-blue);
+/* EmailCheck */
+.div-emailcheck{
+  display: flex;
+}
+
+/* Image Large */
+.imgLarge{
+  width: 90px;
+  height: 90px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+/* Image Middle */
+.imgMiddle {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 6px;
+  margin-right: 0.5rem;
+}
+
+/* Add Large */
+.addLarge{
+  position: absolute;
+  right: 115px;
+  top: 195px;
+  font-size: 30px;
+  color: var(--color-blue);
 }
 
 /* Search */

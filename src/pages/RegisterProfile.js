@@ -11,8 +11,6 @@ import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
 import RegisterFooter from '../components/organisms/Footer/RegisterFooter';
-// import LoginCheckModal from '../components/organisms/Modal/LoginCheckModal';
-import CallModal from '../components/organisms/Modal/CallModal';
 
 
 const  RegisterProfile= () => {
