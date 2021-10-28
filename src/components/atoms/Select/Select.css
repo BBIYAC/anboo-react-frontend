@@ -28,9 +28,16 @@
     color: var(--color-blue);
 }
 
-.arrow-down{
-    transform: translateY(-3.5rem);
-    margin-left: 85%;
+.arrow-down-gender{
+  position: relative;
+  bottom: 3.5rem;
+  left: 1rem;
+}
+
+.arrow-down-user{
+  position: relative;
+  bottom: 3.5rem;
+  left: 8rem;
 }
 
 .arrow-down-rating {

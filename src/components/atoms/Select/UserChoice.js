@@ -19,7 +19,7 @@ const UserChoice = () =>{
                     </option>
                 ))}
             </select>
-            <IoIosArrowDown className='arrow-down'/>
+            <IoIosArrowDown className='arrow-down-user'/>
         </React.Fragment>
     );
 };

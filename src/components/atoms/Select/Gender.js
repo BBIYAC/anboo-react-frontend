@@ -10,7 +10,8 @@ const Gender = () => {
     };
     const handleStyle = {
         width: '70px', 
-        paddingLeft: '10px' 
+        paddingLeft: '10px', 
+        height: '55px'
     };
 
     return(
@@ -23,7 +24,7 @@ const Gender = () => {
                     </option>
                 ))}
             </select>
-            <IoIosArrowDown className='arrow-down'/>
+            <IoIosArrowDown className='arrow-down-gender'/>
         </div>
     );
 };
