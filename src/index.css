@@ -16,6 +16,7 @@
   --font-size-big: 2rem;
   --font-size-middle: 1rem;
   --font-size-small: 0.8rem;
+  --font-size-micro: 0.4rem;
 }
 
 
@@ -40,6 +41,10 @@ code {
   justify-content: space-between;
   font-size: 1.5rem;
   margin-bottom: var(--margin-bottom);
+}
+
+.header-contain {
+  position: sticky;
 }
 
 /* Web View */

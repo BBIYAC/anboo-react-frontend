@@ -5,16 +5,19 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
 import '../components/molecules/Block/Block.css';
+import '../components/atoms/Label/Label.css';
 
 const  RegisterNhs= () => {
   return (
     <React.Fragment>
-      <div className="header">
-        <IoIosArrowBack size="25"/>
-        요양원 리스트
-        <BiLogOut size="25"/>
+      <div className="header-contain">
+        <div className="header">
+          <IoIosArrowBack size="25"/>
+          요양원 리스트
+          <BiLogOut size="25"/>
+        </div>
+        <SearchBlock />
       </div>
-      <SearchBlock />
       <NursingHomeInfoList />
     </React.Fragment>
   );

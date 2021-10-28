@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NursingHomeInfoBlock from '../Block/NursingHomeInfoBlock';
 
-const NursingHomeInfoList = () => {
+const NursingHomeInfoList = ({ opacity }) => {
   return(
     <React.Fragment>
-      <NursingHomeInfoBlock />
-      <NursingHomeInfoBlock />
-      <NursingHomeInfoBlock />
-      <NursingHomeInfoBlock />
-      <NursingHomeInfoBlock />
+      <ul>
+        <li><NursingHomeInfoBlock /></li>
+        <li><NursingHomeInfoBlock /></li>
+        <li><NursingHomeInfoBlock /></li>
+        <li><NursingHomeInfoBlock /></li>
+      </ul>
     </React.Fragment>
   );
 };

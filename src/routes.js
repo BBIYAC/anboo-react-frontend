@@ -18,7 +18,7 @@ import ManagerPostActs from "./pages/ManagerPostActs";
 
 const routes =  [
     {
-        path: '/signin',
+        path: '/',
         component: SignIn
     },
     {
