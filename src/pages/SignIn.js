@@ -3,6 +3,8 @@ import UserChoice from '../components/atoms/Select/UserChoice';
 import Id from '../components/atoms/Input/Id';
 import Password from '../components/atoms/Input/Password';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
+import { IoIosArrowBack } from 'react-icons/io';
+import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
@@ -15,7 +17,11 @@ const SignIn = () => {
 
   return (
     <React.Fragment>
-      <div className="header">로그인</div>
+      <div className="header">
+        <IoIosArrowBack  opacity="0" size="25"/>
+        로그인
+        <BiLogOut opacity="0" size="25"/>
+      </div>
       <form onSubmit={signinSubmit}>
         <UserChoice />
         <Id />

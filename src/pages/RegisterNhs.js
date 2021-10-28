@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBlock from '../components/molecules/Block/SearchBlock';
+import NursingHomeInfoList from '../components/molecules/List/NursingHomeInfoList';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
@@ -14,7 +15,7 @@ const  RegisterNhs= () => {
         <BiLogOut size="25"/>
       </div>
       <SearchBlock />
-      <hr></hr>
+      <NursingHomeInfoList />
     </React.Fragment>
   );
 };

@@ -1,0 +1,6 @@
+.div-nursinghomeinfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: var(--font-size-small);
+}

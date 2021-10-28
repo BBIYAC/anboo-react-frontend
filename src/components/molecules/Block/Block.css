@@ -32,3 +32,14 @@
   margin-left: 75%;
   color:var(--color-white);
 }
+
+.block-NursingHomeInfoBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.NursingHomeInfo {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}

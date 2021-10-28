@@ -21,27 +21,33 @@
     outline: none;
     width: var(--width);
     height: var(--height);
-}
-
-/* EmailCheck */
-.div-emailcheck{
+  }
+  
+  /* EmailCheck */
+  .div-emailcheck{
     display: flex;
-}
+  }
+  
+  /* Image Large */
+  .imgLarge{
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    padding: 10px;
+  }
+  
+  /* Image Middle */
+  .imgMiddle {
+    width: 80px;
+    height: 80px;
+  }
 
-/* Image Large */
-.imgLarge{
-  width: 120px;
-  height: 120px;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  padding: 10px;
-}
-
-/* Add Large */
-.addLarge{
-  position: absolute;
-  right: 105px;
-  top: 205px;
+  /* Add Large */
+  .addLarge{
+    position: absolute;
+    right: 105px;
+    top: 205px;
   width: 30px;
   height: 30px ;
   color: var(--color-blue);

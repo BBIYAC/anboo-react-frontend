@@ -8,6 +8,8 @@ import PhoneNumber from '../components/atoms/Input/PhoneNumber';
 import Email from '../components/atoms/Input/Email';
 import EmailCheck from '../components/atoms/Input/EmailCheck';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
+import { IoIosArrowBack } from 'react-icons/io';
+import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
@@ -21,7 +23,11 @@ const SignUp = () => {
 
     return (
         <React.Fragment>
-            <div className="header">회원가입</div>
+            <div className="header">
+              <IoIosArrowBack  opacity="0" size="25"/>
+              회원가입
+              <BiLogOut opacity="0" size="25"/>
+            </div>
             <form onSubmit={signupSubmit}>
                 <UserChoice />
                 <NameLong />
