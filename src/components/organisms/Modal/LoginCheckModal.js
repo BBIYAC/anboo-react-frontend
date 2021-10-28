@@ -1,8 +1,7 @@
 import React from 'react';
-import { BsJournalMedical } from 'react-icons/bs';
 
 const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
-    const handleModalStyle = isClicked?{
+    const handleModalStyle = !isClicked?{
         position: 'absolute',
         top: '0',
         left: '0', 
