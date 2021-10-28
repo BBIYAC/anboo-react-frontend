@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
+import ImageMiddle from './ImageMiddle';
 import { BsPlusLg } from 'react-icons/bs';
-import ImageLarge from './ImageLarge';
 
-
-const AddImage = ({file, setFile}) => {
+const AddNursingHomeImage = ({file, setFile}) => {
     const fileInput = useRef(null)
     const onChange = async e => {
         if(e.target.files && e.target.files.length > 0){
@@ -13,11 +12,11 @@ const AddImage = ({file, setFile}) => {
 
     return(
       <>
-        <ImageLarge url=""/>
-        <BsPlusLg className="addLarge" onClick={() => fileInput.current.click()}/>
+        <ImageMiddle url=""/>
+        <BsPlusLg className="addMiddle" onClick={() => fileInput.current.click()}/>
         <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
       </>
     );
 };
 
-export default AddImage;
+export default AddNursingHomeImage;

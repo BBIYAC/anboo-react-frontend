@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  padding-left: 1rem;
+}
+.div-nursinghomenoticeinfo {
+  color:var(--color-blue);
 }
 
 .nursinghome-info,
@@ -10,4 +14,5 @@
 .nursinghome-operatingtime,
 .nursinghome-religion {
   font-size: 0.85rem;
+  margin-bottom: 0.1rem;
 }

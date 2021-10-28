@@ -23,35 +23,38 @@
   height: var(--height);
 }
 
-/* EmailCheck */
+/* Email */
 .div-emailcheck{
   display: flex;
 }
 
-/* Image Large */
+/* Image */
 .imgLarge{
-  width: 90px;
-  height: 90px;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  padding: 20px;
+  width: 100px;
+  height: 100px;
 }
-
-/* Image Middle */
 .imgMiddle {
   width: 80px;
   height: 80px;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  padding: 6px;
-  margin-right: 0.5rem;
+}
+.imgSmall {
+  width: 60px;
+  height: 60px;
 }
 
-/* Add Large */
+
+/* Add */
 .addLarge{
   position: absolute;
   right: 115px;
-  top: 195px;
+  top: 170px;
+  font-size: 30px;
+  color: var(--color-blue);
+}
+.addMiddle {
+  position: absolute;
+  right: 164px;
+  bottom: 105px;
   font-size: 30px;
   color: var(--color-blue);
 }

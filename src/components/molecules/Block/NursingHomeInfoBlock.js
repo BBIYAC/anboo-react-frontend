@@ -1,7 +1,6 @@
 import React from 'react';
 import ImageMiddle from '../../atoms/Input/ImageMiddle';
 import NursingHomeInfo from '../../atoms/Label/NursingHomeInfo';
-import { AiFillStar } from 'react-icons/ai';
 
 const NursingHomeInfoBlock = () => {
   return(
@@ -12,7 +11,6 @@ const NursingHomeInfoBlock = () => {
           <ImageMiddle />
           <NursingHomeInfo />
         </div>
-        <AiFillStar className="aifillstar"/>
       </div>
     </React.Fragment>
   );

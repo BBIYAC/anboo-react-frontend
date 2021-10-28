@@ -3,7 +3,7 @@ import React from 'react';
 const ImageLarge = ({ url }) => {
   // Default Image
   const handleImgError = (e) => {
-      e.target.src = 'https://jc.edu.pk/wp-content/uploads/2019/11/user.jpg';
+      e.target.src = '';
   }
   return(
     <>

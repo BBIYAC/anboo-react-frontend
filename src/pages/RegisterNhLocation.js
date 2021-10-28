@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBlock from '../components/molecules/Block/SearchBlock';
 import MapBlock from '../components/molecules/Block/MapBlock';
+import Floating from '../components/atoms/Button/Floating';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
@@ -16,6 +17,7 @@ const RegisterNhLocation= () => {
       </div>
       <SearchBlock />
       <MapBlock />
+      <Floating />
     </React.Fragment>
   );
 };

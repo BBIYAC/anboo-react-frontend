@@ -49,6 +49,39 @@
   flex-direction: row;
   align-items: center;
 }
+.block-NursingHomeDetailInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/* Nursinghome Manager Information */
+.block-NursingHomeManagerInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+.NursingHomeManagerInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Nursinghome Image */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid-item {
+  border-color: var(--color-gray);
+  border-radius: var(--border-radius);
+  margin: 0.5rem;
+}
+
+/* Icon */
 .aifillstar {
   font-size: 1.6rem;
+  color: var(--color-yellow);
 }
