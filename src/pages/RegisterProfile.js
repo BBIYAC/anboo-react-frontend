@@ -28,7 +28,7 @@ const  RegisterProfile= () => {
             <div className="tit-name">이용하고 계신 요양원이 마음에 드시나요?</div>
             <StarBlock />
             <RoundRectangle btnText='요양자 프로필 수정하기'/>
-            <RegisterFooter />
+            <RegisterFooter isProfile/>
         </React.Fragment>
     );
 };
