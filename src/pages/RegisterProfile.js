@@ -18,7 +18,7 @@ const  RegisterProfile= () => {
         <React.Fragment>
             <div className="header">
               <IoIosArrowBack size="25"/>
-              요양원 프로필
+              요양자 프로필
               <BiLogOut size="25"/>
             </div>
             <AddImage />
