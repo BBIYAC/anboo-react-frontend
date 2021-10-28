@@ -40,3 +40,13 @@ code {
   font-size: 1.5rem;
   margin-bottom: var(--margin-bottom);
 }
+
+/* Web View */
+@media screen and (min-width: 600px) {
+  body{
+    max-width: 300px;
+    border: var(--border-bottom);
+    border-radius: var(--border-radius);
+    margin: 2rem auto;
+  }
+}
