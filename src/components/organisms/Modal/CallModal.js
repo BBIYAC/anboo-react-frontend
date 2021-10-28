@@ -1,7 +1,7 @@
 import React from 'react';
 
-const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
-    const handleModalStyle = !isClicked?{
+const CallModal = ({isClicked, modalTitle, modalText, btn1Text, btn2Text}) =>{
+    const handleModalStyle = isClicked?{
         position: 'absolute',
         top: '0',
         left: '0', 
@@ -17,8 +17,8 @@ const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
         top: '50%',
         left: '50%',
         width: '300px',
-        height: '150px',
-        textAlign: 'center',
+        height: '170px',
+        textAlign: 'left',
         backgroundColor: 'rgb(255, 255, 255)',
         borderRadius: '10px',
         boxShadow: '0 2px 3px 0 rgba(34, 36, 38, 0.15)',
@@ -26,10 +26,15 @@ const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
 
     };
 
-    const handleModalTextStyle = {
-        // color: 'var(--color-blue)',
+    const handleModalTitleStyle = {
+        color: 'var(--color-blue)',
         fontSize: '1rem',
-        margin: '40px 20px',
+        margin: '35px 20px 15px 35px',
+    };
+
+    const handleModalTextStyle = {
+        fontSize: '1rem',
+        margin: '15px 20px 35px 35px',
     };
 
     const handleModalButtonStyle = {
@@ -57,6 +62,7 @@ const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
         <React.Fragment>
             <div style={handleModalStyle}>
                 <div style={handleModalBodyStyle}>
+                    <div style={handleModalTitleStyle}>{modalTitle}</div>
                     <div style={handleModalTextStyle}>{modalText}</div>
                     <div style={handleModalButtonStyle}>
                         <button style={handleButtonStyle}>{btn1Text}</button>
@@ -68,4 +74,4 @@ const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
     );
 };
 
-export default LoginCheckModal;
+export default CallModal;

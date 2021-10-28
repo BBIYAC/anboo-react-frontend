@@ -11,7 +11,8 @@ import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
 import RegisterFooter from '../components/organisms/Footer/RegisterFooter';
-import LoginCheckModal from '../components/organisms/Modal/LoginCheckModal';
+// import LoginCheckModal from '../components/organisms/Modal/LoginCheckModal';
+import CallModal from '../components/organisms/Modal/CallModal';
 
 
 const  RegisterProfile= () => {
@@ -30,7 +31,6 @@ const  RegisterProfile= () => {
             <StarBlock />
             <RoundRectangle btnText='요양자 프로필 수정하기'/>
             <RegisterFooter />
-            <LoginCheckModal isClicked modalText="로그인 후에 이용해주세요!" btn1Text="닫기" btn2Text="로그인 하기"/>
         </React.Fragment>
     );
 };
