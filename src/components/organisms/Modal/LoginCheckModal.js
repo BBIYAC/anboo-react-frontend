@@ -18,7 +18,7 @@ const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
         top: '50%',
         left: '50%',
         width: '300px',
-        height: '200px',
+        height: '150px',
         textAlign: 'center',
         backgroundColor: 'rgb(255, 255, 255)',
         borderRadius: '10px',
@@ -28,24 +28,22 @@ const LoginCheckModal = ({isClicked, modalText, btn1Text, btn2Text}) =>{
     };
 
     const handleModalTextStyle = {
-        color: 'var(--color-blue-)',
+        // color: 'var(--color-blue)',
         fontSize: '1rem',
-        margin: '20px',
+        margin: '40px 20px',
     };
 
     const handleModalButtonStyle = {
         borderTop: 'var(--border-bottom)',
         position: 'relative',
-        top: '80px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '20px 40px'
     };
 
     const handleButtonStyle = {
         backgroundColor: 'white',
         color: 'var(--color-blue)',
         border: '0',
+        width: '150px',
+        height: '50px',
     };
     return(
         <React.Fragment>

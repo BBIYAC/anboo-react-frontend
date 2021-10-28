@@ -30,7 +30,7 @@ const  RegisterProfile= () => {
             <StarBlock />
             <RoundRectangle btnText='요양자 프로필 수정하기'/>
             <RegisterFooter />
-            <LoginCheckModal isClicked modalText="로그인 후에 이용해주세요!" btn1Text="로그인 하기" btn2Text="닫기"/>
+            <LoginCheckModal isClicked modalText="로그인 후에 이용해주세요!" btn1Text="닫기" btn2Text="로그인 하기"/>
         </React.Fragment>
     );
 };
