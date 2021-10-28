@@ -20,7 +20,8 @@ const  RegisterPostRequest= () => {
         marginTop: '20px',
         outline: 'none',
         padding: '20px',
-        fontFamily: 'default',
+        fontFamily: 'sans-serif',
+        fontSize: '1rem',
     };
     const handleDataStyle = {
         position: 'relative',
