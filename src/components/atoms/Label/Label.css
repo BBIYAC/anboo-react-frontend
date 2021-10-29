@@ -20,3 +20,10 @@
   font-size: 0.85rem;
   margin-bottom: 0.2rem;
 }
+
+.handleDataStyle {
+  position: relative;
+  margin: 10px 10px 60px auto;
+  text-Align: right;
+  font-Size: 0.8rem;
+}

@@ -81,3 +81,16 @@
     margin-top: 0.75rem;
     margin-left: 0.75rem;
 }
+
+.handleResponseStyle {
+  width: calc(var(--width) - 40px);
+  min-Height: 300px;
+  resize: none;
+  border: var(--border-bottom);
+  border-Radius: var(--border-radius);
+  margin-Top: 20px;
+  outline: none;
+  padding: 20px;
+  font-Family: sans-serif;
+  font-Size: 1rem;
+}

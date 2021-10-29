@@ -6,15 +6,9 @@ import RequestBlock from '../components/molecules/Block/RequestBlock';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 
 const  RegisterRequests = () => {
-    const handleHeaderStyle = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        fontSize: '1.5rem',
-        marginBottom: 'var(--margin-bottom)',
-    };
     return (
         <React.Fragment>
-            <div style={handleHeaderStyle}>
+            <div className="header">
                 <IoIosArrowBack opacity="0" size="20"/>
                 요청사항 목록
                 <BiLogOut size="20"/>
