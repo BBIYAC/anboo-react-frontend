@@ -4,6 +4,7 @@ import NursingHomeChiefInfoBlock from '../components/molecules/Block/NursingHome
 import NursingHomeManagerInfoBlock from '../components/molecules/Block/NusingHomeManagerInfoBlock';
 import NursingHomeImageBlock from '../components/molecules/Block/NursingHomeImageBlock';
 import Floating from '../components/atoms/Button/Floating';
+import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
@@ -21,6 +22,7 @@ const ManagerNhInfo= () => {
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
       <Floating background="var(--color-green)"/>
+      <BelowBarBlock name="MGhandleStyle" isHome/>
     </React.Fragment>
   );
 };
