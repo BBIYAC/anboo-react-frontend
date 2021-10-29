@@ -11,9 +11,9 @@ const RegisterNhLocation= () => {
   return (
     <React.Fragment>
       <div className="header">
-        <IoIosArrowBack opacity="0" size="25"/>
+        <IoIosArrowBack opacity="0" size="20"/>
         요양원 위치
-        <BiLogOut size="25"/>
+        <BiLogOut size="20"/>
       </div>
       <SearchBlock />
       <MapBlock />

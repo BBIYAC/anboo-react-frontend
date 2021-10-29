@@ -24,9 +24,9 @@ const SignUp = () => {
     return (
         <React.Fragment>
             <div className="header">
-              <IoIosArrowBack  opacity="0" size="25"/>
+              <IoIosArrowBack  opacity="0" size="20"/>
               회원가입
-              <BiLogOut opacity="0" size="25"/>
+              <BiLogOut opacity="0" size="20"/>
             </div>
             <form onSubmit={signupSubmit}>
                 <UserChoice />

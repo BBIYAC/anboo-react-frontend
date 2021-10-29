@@ -2,7 +2,7 @@ import React from 'react';
 import { BiLogOut } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
-import RegisterFooter from '../components/organisms/Footer/RegisterFooter';
+import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 
 const  RegisterPostRequest= () => {
     const handleHeaderStyle = {
@@ -32,14 +32,14 @@ const  RegisterPostRequest= () => {
     return (
         <React.Fragment>
             <div style={handleHeaderStyle}>
-                <IoIosArrowBack size="25"/>
+                <IoIosArrowBack size="20"/>
                 요청사항 작성
-                <BiLogOut size="25"/>
+                <BiLogOut size="20"/>
             </div>
             <textarea placeholder='요청사항을 작성해주세요.' style={handleResponseStyle}></textarea>
             <div style={handleDataStyle}>2021년 10월 28일 21시 15분</div>
             <RoundRectangle btnText="요청사항 보내기" />
-            <RegisterFooter isRequest />
+            <BelowBarBlock isRequest />
         </React.Fragment>
     );
 };

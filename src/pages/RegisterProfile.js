@@ -18,9 +18,9 @@ const  RegisterProfile= () => {
     return (
         <React.Fragment>
             <div className="header">
-              <IoIosArrowBack size="25"/>
+              <IoIosArrowBack size="20"/>
               요양자 프로필
-              <BiLogOut size="25"/>
+              <BiLogOut size="20"/>
             </div>
             <AddImage />
             <InputSelectBlock />

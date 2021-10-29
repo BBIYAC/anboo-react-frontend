@@ -1,7 +1,7 @@
 import React from 'react';
 import NursingHomeDetailInfoBlock from '../components/molecules/Block/NursingHomeDetailInfoBlock';
 import NursingHomeChiefInfoBlock from '../components/molecules/Block/NursingHomeChiefInfoBlock';
-import NursingHomeCaregiverInfoBlock from '../components/molecules/Block/NusingHomeCaregiverInfoBlock';
+import NursingHomeManagerInfoBlock from '../components/molecules/Block/NusingHomeManagerInfoBlock';
 import NursingHomeImageBlock from '../components/molecules/Block/NursingHomeImageBlock';
 import BelowRectangleBlock from '../components/molecules/Block/BelowRectangleBlock';
 import Floating from '../components/atoms/Button/Floating';
@@ -12,13 +12,13 @@ const  RegisterNhInfo= () => {
     return (
         <React.Fragment>
             <div className="header">
-              <IoIosArrowBack size="25"/>
+              <IoIosArrowBack size="20"/>
               요양원 정보
-              <BiLogOut size="25"/>
+              <BiLogOut size="20"/>
             </div>
             <NursingHomeDetailInfoBlock />
             <NursingHomeChiefInfoBlock />
-            <NursingHomeCaregiverInfoBlock />
+            <NursingHomeManagerInfoBlock />
             <NursingHomeImageBlock />
             <BelowRectangleBlock />
             <Floating />

@@ -41,6 +41,11 @@
   width: 60px;
   height: 60px;
 }
+.img-actImage {
+  width: var(--width);
+  height: 10rem;
+  margin-bottom: 1rem;
+}
 
 
 /* Add */

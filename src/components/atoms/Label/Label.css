@@ -1,9 +1,11 @@
 
-.div-nursinghomeinfo {
+.div-nursinghomeinfo,
+.div-nursinghomeactstext {
   display: flex;
   flex-direction: column;
   text-align: left;
   padding-left: 1rem;
+  padding-right: 1rem;
 }
 .div-nursinghomenoticeinfo {
   color:var(--color-blue);
@@ -12,7 +14,9 @@
 .nursinghome-info,
 .nursinghome-address,
 .nursinghome-operatingtime,
-.nursinghome-religion {
+.nursinghome-religion,
+.nursinghome-acttext,
+.nursinghome-actdate {
   font-size: 0.85rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.2rem;
 }

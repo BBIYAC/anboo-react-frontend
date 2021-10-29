@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NursingHomeCaregiverInfo = () => {
+const NursingHomeManagerInfo = () => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
@@ -11,4 +11,4 @@ const NursingHomeCaregiverInfo = () => {
   );
 };
 
-export default NursingHomeCaregiverInfo;
+export default NursingHomeManagerInfo;
