@@ -57,6 +57,14 @@ code {
   position: sticky;
 }
 
+.manager{
+  color: var(--color-green);
+}
+
+.register{
+  color: var(--color-blue);
+}
+
 /* Web View */
 @media screen and (min-width: 600px) {
   body{
