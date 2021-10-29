@@ -14,7 +14,6 @@ import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
 
-
 const SignUp = () => {
     const signupSubmit = (event) => {
         event.preventDefault();

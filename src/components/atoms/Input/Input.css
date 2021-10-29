@@ -82,10 +82,24 @@
     margin-left: 0.75rem;
 }
 
+
 /* Input Certification File */
 .input-certificationfile{
   padding: 100px 0;
   border: 1px solid var(--color-green);
   border-radius: var(--border-radius);
   margin: 10px 0 20px 0;
+}
+
+.handleResponseStyle {
+  width: calc(var(--width) - 40px);
+  min-Height: 300px;
+  resize: none;
+  border: var(--border-bottom);
+  border-Radius: var(--border-radius);
+  margin-Top: 20px;
+  outline: none;
+  padding: 20px;
+  font-Family: sans-serif;
+  font-Size: 1rem;
 }

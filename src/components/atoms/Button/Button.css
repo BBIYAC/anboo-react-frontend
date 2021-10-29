@@ -26,6 +26,7 @@ button {
   outline: none;
 }
 
+/* Rectangle Large */
 .btn-rectangleLarge {
   background-Color: var(--color-blue);
   color: var(--color-white);
@@ -35,6 +36,7 @@ button {
   height: 50px;
 }
 
+/* Favorites Button */
 .btn-favorites {
   width: 5rem;
   height: 2rem;
@@ -46,6 +48,26 @@ button {
   
 }
 
+/* Back button */
 .btn-back {
   color: var(--color-blue);
+}
+
+/* handleBgFloatingStyle */
+.handleBgFloatingStyle {
+  background-Color: var(--color-blue);
+  border-Radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-Shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  position: fixed;
+  bottom: 80px;
+  right: 1.5rem
+}
+
+/* handleFloatingStyle */
+.handleFloatingStyle {
+  color: white;
+  font-Size: 25px;
+  margin: 12px;
 }
