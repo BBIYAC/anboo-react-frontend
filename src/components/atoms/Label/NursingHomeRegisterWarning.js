@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NursingHomeRegisterWaitng = () => {
+const NursingHomeRegisterWarning = () => {
   return(
     <React.Fragment>
       <p>요양원 등록 승인 대기중 입니다.</p>
@@ -8,4 +8,4 @@ const NursingHomeRegisterWaitng = () => {
   );
 };
 
-export default NursingHomeRegisterWaitng;
+export default NursingHomeRegisterWarning;
