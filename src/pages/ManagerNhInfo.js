@@ -4,7 +4,8 @@ import NursingHomeChiefInfoBlock from '../components/molecules/Block/NursingHome
 import NursingHomeManagerInfoBlock from '../components/molecules/Block/NusingHomeManagerInfoBlock';
 import NursingHomeImageBlock from '../components/molecules/Block/NursingHomeImageBlock';
 import Floating from '../components/atoms/Button/Floating';
-import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
+import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
+import OvalLarge from '../components/atoms/Button/OvalLarge';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
@@ -22,7 +23,9 @@ const ManagerNhInfo= () => {
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
       <Floating background="var(--color-green)"/>
-      <BelowBarBlock name="MGhandleStyle" isHome/>
+      <ManagerBelowBarBlock isHome/>
+      <hr/>
+      <OvalLarge btnText="수정하기"/>
     </React.Fragment>
   );
 };

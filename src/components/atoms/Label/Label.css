@@ -21,6 +21,10 @@
   margin-bottom: 0.2rem;
 }
 
+.noticetext{
+  margin-left: 10px;
+}
+
 .handleDataStyle {
   position: relative;
   margin: 10px 10px 60px auto;

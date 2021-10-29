@@ -36,6 +36,18 @@ button {
   height: 50px;
 }
 
+/* Oval Large */
+.btn-ovalLarge {
+  width: 5rem;
+  height: 2.5rem;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border-radius: var(--border-radius-oval);
+  border: none;
+  outline: none;
+}
+
+
 /* Favorites Button */
 .btn-favorites {
   width: 5rem;

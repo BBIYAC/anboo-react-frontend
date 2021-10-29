@@ -93,3 +93,28 @@
   color: var(--color-yellow);
 }
 
+/* NursingHome Check */
+.NusingHomeCheck {
+  font-size: 30px;
+  color: var(--color-green);
+}
+
+/* Notice Block */
+.noticeblock{
+  display: flex;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.belowbar{
+  display: flex;
+  justify-content: space-between;
+  border-top: var(--border-bottom);
+  padding: 10px 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+}

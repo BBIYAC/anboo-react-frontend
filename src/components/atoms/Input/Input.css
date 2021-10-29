@@ -82,6 +82,15 @@
     margin-left: 0.75rem;
 }
 
+
+/* Input Certification File */
+.input-certificationfile{
+  padding: 100px 0;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin: 10px 0 20px 0;
+}
+
 .handleResponseStyle {
   width: calc(var(--width) - 40px);
   min-Height: 300px;
