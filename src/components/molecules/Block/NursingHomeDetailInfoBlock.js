@@ -3,7 +3,7 @@ import NursingHomeInfo from '../../atoms/Label/NursingHomeInfo';
 import ImageLarge from '../../atoms/Input/ImageLarge';
 import { AiFillStar } from 'react-icons/ai';
 
-const NursingHomeDetailInfoBlock = () => {
+const NursingHomeDetailInfoBlock = ({ opacity }) => {
   return(
     <React.Fragment>
       <hr/>
@@ -12,9 +12,10 @@ const NursingHomeDetailInfoBlock = () => {
           <ImageLarge />
           <NursingHomeInfo />
         </div>
-        <AiFillStar className="aifillstar"/>
-      </div>
-       
+        <AiFillStar 
+        className="aifillstar"
+        style={{opacity}}/>
+      </div> 
     </React.Fragment>
   );
 };

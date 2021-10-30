@@ -1,11 +1,7 @@
 import React from 'react';
-import NursingHomeDetailInfoBlock from '../components/molecules/Block/NursingHomeDetailInfoBlock';
-import NursingHomeChiefInfoBlock from '../components/molecules/Block/NursingHomeChiefInfoBlock';
-import NursingHomeManagerInfoBlock from '../components/molecules/Block/NusingHomeManagerInfoBlock';
-import NursingHomeImageBlock from '../components/molecules/Block/NursingHomeImageBlock';
+import ManagerNHInfo from '../components/organisms/Profile/ManagerNHInfo';
 import Floating from '../components/atoms/Button/Floating';
 import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
-import OvalLarge from '../components/atoms/Button/OvalLarge';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
@@ -18,14 +14,9 @@ const ManagerNhInfo= () => {
         요양원 정보
         <BiLogOut size="20"/>
       </div>
-      <NursingHomeDetailInfoBlock />
-      <NursingHomeChiefInfoBlock />
-      <NursingHomeManagerInfoBlock />
-      <NursingHomeImageBlock />
+      <ManagerNHInfo />
       <Floating background="var(--color-green)"/>
       <ManagerBelowBarBlock isRequest/>
-      <hr/>
-      <OvalLarge btnText="수정하기"/>
     </React.Fragment>
   );
 };
