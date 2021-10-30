@@ -5,7 +5,7 @@ import NursingHomeManagerInfoBlock from "../../molecules/Block/NusingHomeManager
 import NursingHomeImageBlock from "../../molecules/Block/NursingHomeImageBlock";
 import OvalLarge from "../../atoms/Button/OvalLarge";
 
-const ManagerNHInfo = () => {
+const MgNHInfo = () => {
   return(
     <>
       <NursingHomeDetailInfoBlock opacity="0"/>
@@ -18,4 +18,4 @@ const ManagerNHInfo = () => {
   );
 };
 
-export default ManagerNHInfo;
+export default MgNHInfo;
