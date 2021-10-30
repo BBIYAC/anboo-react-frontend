@@ -13,7 +13,7 @@ const NursingHomeInfoCheckBlock = ({isSelected}) => {
           <ImageMiddle />
           <NursingHomeInfo />
         </div>
-        {isSelected?<AiFillCheckCircle className='NusingHomeCheck'/>:<AiOutlineCheckCircle className='NusingHomeCheck' />}
+        {isSelected?<AiFillCheckCircle className='NursingHomeCheck'/>:<AiOutlineCheckCircle className='NursingHomeCheck' />}
       </div>
     </React.Fragment>
   );

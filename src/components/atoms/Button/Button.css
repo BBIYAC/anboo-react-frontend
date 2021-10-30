@@ -94,4 +94,5 @@ button {
   font-size: var(--font-size-big);
   color: var(--color-green);
   background-color: var(--color-white);
+  outline: none;
 }
