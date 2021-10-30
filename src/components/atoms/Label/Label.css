@@ -38,3 +38,21 @@
   text-align: left;
   line-height: 1rem;
 }
+
+/* Member Management Information*/
+.membersInfo {
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-small);
+}
+.div-membersInfo{
+  text-align: left;
+  padding-left: 1rem;
+}
+.approvalsInfo {
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-small);
+}
+.div-approvalsInfo{
+  text-align: left;
+  padding-left: 1rem;
+}

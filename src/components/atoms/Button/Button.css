@@ -47,6 +47,17 @@ button {
   border-radius: var(--border-radius-oval);
   border: none;
   outline: none;
+  font-size: var(--font-size-small);
+}
+.btn-ovalSmall {
+  width: 4.5rem;
+  height: 2rem;
+  background-color: var(--color-white);
+  color: var(--color-green);
+  border-radius: var(--border-radius-oval);
+  border: 1px solid;
+  outline: none;
+  font-size: var(--font-size-small);
 }
 
 

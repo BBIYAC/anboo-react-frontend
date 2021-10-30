@@ -166,3 +166,50 @@
   width: 40px;
   line-height: 1.5rem;
 }
+
+.member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.membersListTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+.div-memberInfo{
+  display: flex;
+  align-items: center;
+}
+.approval {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.approvalsListTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+.div-approvalInfo {
+  display: flex;
+  align-items: center;
+}
+.div-allSelect {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.span-allSelect {
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+.btn-allSelect {
+  font-size: 1.25rem;
+}
