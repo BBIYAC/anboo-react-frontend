@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImageMiddle = ({url}) => {
+const ImageMiddle = ({url, icon}) => {
   // Default Image
   const handleImgError = (e) => {
     e.target.src = 'https://jc.edu.pk/wp-content/uploads/2019/11/user.jpg';

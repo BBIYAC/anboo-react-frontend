@@ -21,8 +21,10 @@ button {
   border-radius: var(--border-radius);
   color: var(--color-white);
   width: var(--width);
+  height: var(--height);
   padding: var(--btn-padding);
   margin-bottom: 15px;
+  font-size: var(--font-size-middle);
   outline: none;
 }
 
@@ -82,4 +84,14 @@ button {
   color: white;
   font-Size: 25px;
   margin: 12px;
+}
+
+.addNhImage {
+  width: 90px;
+  height: 90px;
+  border: 1px solid;
+  border-color: var(--color-green);
+  font-size: var(--font-size-big);
+  color: var(--color-green);
+  background-color: var(--color-white);
 }

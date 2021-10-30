@@ -1,18 +1,18 @@
 import React from 'react';
 import ImageSmall from '../../atoms/Input/ImageSmall';
-import NursingHomeChiefInfo from '../../atoms/Label/NursingHomeChiefInfo';
+import NursingHomeChiefInfoInput from '../../atoms/Input/NursingHomeChiefInfoInput';
 
-const NursingHomeChiefInfoBlock = () => {
+const NursingHomeChiefInfoEditBlock = () => {
   return(
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
           <ImageSmall />
-          <NursingHomeChiefInfo />
+          <NursingHomeChiefInfoInput />
         </div>
       </div>
     </React.Fragment>
   );
 };
 
-export default NursingHomeChiefInfoBlock;
+export default NursingHomeChiefInfoEditBlock;

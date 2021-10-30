@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
-import ImageMiddle from './ImageMiddle';
-import { BsPlusLg } from 'react-icons/bs';
+import AddNHImage from '../Button/AddNHImage';
 
 const AddNursingHomeImage = ({file, setFile}) => {
     const fileInput = useRef(null)
@@ -12,8 +11,8 @@ const AddNursingHomeImage = ({file, setFile}) => {
 
     return(
       <>
-        <ImageMiddle url=""/>
-        <BsPlusLg className="addMiddle" onClick={() => fileInput.current.click()}/>
+        <AddNHImage onClick={() => fileInput.current.click()}/>
+        {/* <BsPlusLg className="addMiddle-mg" onClick={() => fileInput.current.click()}/> */}
         <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
       </>
     );

@@ -5,7 +5,6 @@ import NursingHomeManagerInfo from '../../atoms/Label/NursingHomeManagerInfo';
 const NursingHomeManagerInfoBlock = () => {
   return(
     <React.Fragment>
-      <hr></hr>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
           <ImageSmall />

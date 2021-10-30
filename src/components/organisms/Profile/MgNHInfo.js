@@ -8,10 +8,16 @@ import OvalLarge from "../../atoms/Button/OvalLarge";
 const MgNHInfo = () => {
   return(
     <>
-      <NursingHomeDetailInfoBlock opacity="0"/>
+      <NursingHomeDetailInfoBlock width="0" height="0"/>
+      <hr/>
       <NursingHomeChiefInfoBlock />
-      <NursingHomeManagerInfoBlock />
-      <NursingHomeImageBlock />
+      <hr/>
+      <ul>
+        <NursingHomeManagerInfoBlock />
+        <NursingHomeManagerInfoBlock />
+        <NursingHomeManagerInfoBlock />
+      </ul>
+        <NursingHomeImageBlock />
       <hr/>
       <OvalLarge btnText="수정하기"/>
     </>

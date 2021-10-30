@@ -4,7 +4,7 @@ const NursingHomeInfo = () => {
   return(
     <React.Fragment>
       <div className="div-nursinghomenoticeinfo">
-        <p className="nursinghome-info">요양원 정보</p>
+        <p className="nursinghome-info">요양원 이름</p>
       </div>
     </React.Fragment>
   );
