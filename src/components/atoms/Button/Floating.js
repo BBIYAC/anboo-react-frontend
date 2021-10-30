@@ -1,11 +1,16 @@
 import React from 'react';
 import {HiHome} from 'react-icons/hi';
+import {AiOutlineMail} from 'react-icons/ai';
 
 const Floating = ({background}) => {
   return(
     <>
       <div className="handleBgFloatingStyle" style={{background}}>
-        <HiHome className="handleFloatingStyle"/>
+        {
+         (background === 'var(--color-green)')
+          ? <AiOutlineMail className='handleFloatingStyle' />
+          : <HiHome className="handleFloatingStyle"/>
+        }
       </div>
     </>
   );

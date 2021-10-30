@@ -107,6 +107,14 @@
   margin-bottom: 20px;
 }
 
+/* Notice Waiting Block */
+.noticewaitingblock{
+  margin: 30vh auto;
+  line-height: 30px;
+}
+
+
+/* belowbar */
 .belowbar{
   display: flex;
   justify-content: space-between;
@@ -117,4 +125,24 @@
   right: 0;
   bottom: 0;
   background-color: white;
+}
+
+/* Count Request Block */
+.countrequestblock{
+  padding: 25px;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+}
+
+.request{
+  text-align: left;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.count{
+  text-align: right;
+  font-size: 2rem;
+  font-weight: bold;
 }
