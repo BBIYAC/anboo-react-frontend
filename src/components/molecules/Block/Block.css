@@ -146,3 +146,22 @@
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* Manager Response to Request */
+.input-response{
+  outline: none;
+  width: 80%;
+  font-size: 1rem;
+  font-family: sans-serif;
+  height: 1.5rem;
+}
+
+.icon-send{
+  color: var(--color-green);
+  font-size: 25px;
+}
+
+.response-title{
+  width: 40px;
+  line-height: 1.5rem;
+}

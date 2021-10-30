@@ -1,6 +1,7 @@
 import React from "react";
-
-const RequestBlock = ({requestTitle, requestContent, requestDate, response}) => {
+import {IoIosSend} from 'react-icons/io'
+;
+const RequestBlock = ({requestTitle, requestContent, requestDate, response, isManager}) => {
     const handleRequestBlockStyle = {
         border: 'var(--border-bottom)',
         borderRadius: 'var(--border-radius)',
@@ -18,16 +19,29 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response}) => 
 
     const handleResponseStyle = {
         borderTop : 'var(--border-bottom)',
-        padding: '10px 10px 0 10px',
+        paddingTop: '10px',
+        lineHeight: '1.5rem',
         marginTop: '10px',
-        // color: 'var(--color-blue)',
+        display: 'flex',
     };
+
     return(
         <div style={handleRequestBlockStyle}>
             <div>{requestTitle}</div>
             <div>{requestContent}</div>
             <div style={handleRequestDateStyle}>{requestDate}</div>
-            {response?<div style={handleResponseStyle}>답글 : {response}</div>:<></> }
+            {response
+            ?<div style={handleResponseStyle}>
+                <p className='response-title'>답글:</p> 
+                <p>{response}</p>
+            </div>
+            : isManager
+            ? <div style={handleResponseStyle}>
+                <p className='response-title'>답글:</p> 
+                <input className='input-response' type='text'></input>
+                <IoIosSend className='icon-send'/>
+            </div>
+            : <></> }
             
         </div>
     );
