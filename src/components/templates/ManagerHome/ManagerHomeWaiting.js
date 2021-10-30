@@ -4,7 +4,7 @@ import NoticeWaitingBlock from '../../molecules/Block/NoticeWaitingBlock';
 const ManagerHomeWaiting = () => {
     return(
         <>
-            <NoticeWaitingBlock />
+            <NoticeWaitingBlock isManager />
         </>
     );
 };

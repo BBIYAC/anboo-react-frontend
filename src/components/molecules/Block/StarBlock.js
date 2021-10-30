@@ -5,7 +5,7 @@ const Satisfaction = () => {
     const handleStyle = {
         display: 'flex',
         padding: '0 30px',
-        justifyContent: 'middle',
+        justifyContent: 'space-between',
         border: '1px solid #ddd',
         borderRadius: 'var(--border-radius)',
         margin: '20px 0 40px 0' 
