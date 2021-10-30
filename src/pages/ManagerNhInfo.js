@@ -23,7 +23,7 @@ const ManagerNhInfo= () => {
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
       <Floating background="var(--color-green)"/>
-      <ManagerBelowBarBlock isHome/>
+      <ManagerBelowBarBlock isRequest/>
       <hr/>
       <OvalLarge btnText="수정하기"/>
     </React.Fragment>
