@@ -11,7 +11,7 @@ const ManagerBelowBarBlock = ({isMember, isHome, isRequest}) => {
             <FooterIconBlock icon={<FiUsers />} name="회원관리" />  }
             {isHome ? <FooterIconBlock icon={<AiOutlineHome />} name="홈" isSelected isManager />: 
             <FooterIconBlock icon={<AiOutlineHome />} name="홈" />  }
-            {isRequest ? <FooterIconBlock icon={<BiBuildings />} name="요청사항" isSelected isManager />:
+            {isRequest ? <FooterIconBlock icon={<BiBuildings />} name="시설정보" isSelected isManager />:
             <FooterIconBlock icon={<BiBuildings />} name="시설정보" />  }
         </div>
     );
