@@ -2,7 +2,9 @@ import React from "react";
 
 const SeeMore = ({className}) => {
     return(
-        <div className={className}>+더보기</div>
+        <div className={className}>
+          <span>더 보기</span>
+        </div>
     );
 };
 

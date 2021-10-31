@@ -16,7 +16,7 @@ const  RegisterProfileBefore= () => {
             요양자 프로필
             <BiLogOut size="20"/>
         </div>
-        <AddImage />
+        <AddImage url=""/>
         <InputSelectBlock />
         <Birth />
         <Caution />

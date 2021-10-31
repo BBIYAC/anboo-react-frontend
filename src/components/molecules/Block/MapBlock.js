@@ -9,8 +9,7 @@ const MapBlock = () => {
         	<div className="div-map">
             지도
           </div>
-          <RoundRectangle textAlign="left" btnText="11개의 시설을 찾았습니다."/>
-          <FiChevronsRight className="arrow-double"/>
+          <RoundRectangle textAlign="center" btnText="11개의 시설 보러가기"/>
 				</div>
 			</React.Fragment>
     );

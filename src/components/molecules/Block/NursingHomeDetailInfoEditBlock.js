@@ -1,6 +1,6 @@
 import React from 'react';
 import NursingHomeInfoInput from '../../atoms/Input/NursingHomeInfoInput';
-import ImageLarge from '../../atoms/Input/ImageLarge';
+import AddImage from '../../atoms/Input/AddImage';
 
 const NursingHomeDetailInfoEditBlock = () => {
   return(
@@ -8,7 +8,7 @@ const NursingHomeDetailInfoEditBlock = () => {
       <hr/>
       <div className="block-NursingHomeDetailInfo">
         <div className="NursingHomeInfo">
-          <ImageLarge />
+          <AddImage url=""/>
           <NursingHomeInfoInput />
         </div>
       </div> 

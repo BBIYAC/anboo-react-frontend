@@ -5,7 +5,7 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response, isMa
     const handleRequestBlockStyle = {
         border: 'var(--border-bottom)',
         borderRadius: 'var(--border-radius)',
-        padding: '20px',
+        padding: '10px 20px 10px 20px',
         marginTop: '20px',
         textAlign: 'left',
         lineHeight: '25px',

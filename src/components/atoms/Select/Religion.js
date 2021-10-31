@@ -18,7 +18,6 @@ const Religion = () => {
           </option>
         ))}
       </select>
-      <IoIosArrowDown className="arrow-down-religion"/>
     </React.Fragment>
   );
 };

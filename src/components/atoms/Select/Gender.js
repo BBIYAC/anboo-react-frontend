@@ -24,7 +24,6 @@ const Gender = () => {
                     </option>
                 ))}
             </select>
-            <IoIosArrowDown className='arrow-down-gender'/>
         </div>
     );
 };

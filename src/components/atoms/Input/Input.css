@@ -32,6 +32,9 @@
 .imgLarge{
   width: 120px;
   height: 120px;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-Color: var(--color-gray);
 }
 .imgMiddle {
   width: 90px;
@@ -45,6 +48,13 @@
   width: var(--width);
   height: 10rem;
   margin-bottom: 1rem;
+}
+.img-rgProfile {
+  width: 120px;
+  height: 120px;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-Color: var(--color-gray);
 }
 
 
@@ -81,9 +91,9 @@
 /* Search */
 .searchBox {
     padding-left: 2.5rem;
-    border: none;
+    border: 1px solid;
+    border-color: var(--color-dark-gray);
     border-radius: var(--border-radius);
-    background-color: var(--color-gray);
     width: 100%;
     height: var(--height);
     box-sizing: border-box;
@@ -92,8 +102,9 @@
 
 .search-icon {
     position: absolute;
-    margin-top: 0.75rem;
-    margin-left: 0.75rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: var(--color-dark-gray);
 }
 
 

@@ -1,4 +1,4 @@
 .div-managementScroll{
-  height: 300px;
-  overflow-y: auto;
+  height: 100vh;
+  overflow-y: scroll;
 }

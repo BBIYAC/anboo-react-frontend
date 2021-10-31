@@ -9,8 +9,6 @@ const ApprovalsList = () => {
           <li><ApprovalInfoBlock/></li>
           <li><ApprovalInfoBlock/></li>
           <li><ApprovalInfoBlock/></li>
-          <li><ApprovalInfoBlock/></li>
-          <li><ApprovalInfoBlock/></li>
         </ul>
       </div>
     </React.Fragment>

@@ -5,27 +5,31 @@
 }
 .sel-userchoice{
     border: 0;
-    border-radius: 0;
     border-bottom: var(--border-bottom);
     outline: none;
     width: var(--width);
-    margin-bottom: var(--margin-bottom);
     height: var(--height);
+    margin-bottom: var(--margin-bottom);
     background-color: var(--color-white);
+    background-image: url(arrow.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 5px) center;
 }
 
 .sel-ratingchoice,
 .sel-religionchoice{
     width: 5rem;
     height: 2rem;
-    padding-left: 0.3rem;
+    padding: 0.3rem;
     border: solid 1px;
     border-radius: var(--border-radius);
     outline: none;
     font-size: var(--font-size-small);
     background-color: var(--color-white);
     margin-left: 0.5rem;
-    color: var(--color-blue);
+    background-image: url(arrow.svg);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 7px) center;
 }
 
 .arrow-down-gender{

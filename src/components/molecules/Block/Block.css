@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 5rem;
+    height: 6rem;
 }
 
 /* Keyword */
@@ -26,14 +26,6 @@
   background-color: var(--color-gray);
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-
-/* Find Button  */
-.arrow-double {
-  position: absolute;
-  transform: translateY(21.5rem);
-  margin-left: 75%;
-  color:var(--color-white);
 }
 
 /* Nursinghome Information */
@@ -127,6 +119,14 @@
   bottom: 0;
   background-color: white;
 }
+.block-rectanglebelowbar{
+  display: flex;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 
 /* Count Request Block */
 .countrequestblock{
@@ -164,7 +164,9 @@
 
 .response-title{
   width: 40px;
+  padding-right: 0.5rem;
   line-height: 1.5rem;
+  white-space: nowrap;
 }
 
 .member {
@@ -217,4 +219,6 @@
 /* Text Align */
 .txt-horizontal{
   display: flex;
+  margin-bottom: 3rem;
+  align-items: center;
 }

@@ -8,8 +8,6 @@ const MembersList = () => {
         <MemberInfoBlock/>
         <MemberInfoBlock/>
         <MemberInfoBlock/>
-        <MemberInfoBlock/>
-        <MemberInfoBlock/>  
       </div>
     </React.Fragment>
   );

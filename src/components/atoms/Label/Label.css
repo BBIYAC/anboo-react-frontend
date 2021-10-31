@@ -6,6 +6,7 @@
   text-align: left;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 0.5rem;
 }
 .div-nursinghomenoticeinfo {
   color:var(--color-blue);
@@ -14,11 +15,14 @@
 .nursinghome-info,
 .nursinghome-address,
 .nursinghome-operatingtime,
-.nursinghome-religion,
+.nursinghome-religion {
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
 .nursinghome-acttext,
 .nursinghome-actdate {
   font-size: 0.85rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 1rem;
 }
 
 .noticetext{
@@ -37,6 +41,8 @@
   font-size: 1.2rem;
   text-align: left;
   line-height: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 2rem;
 }
 .txt-leftsmall{
   text-align: left;
@@ -63,5 +69,9 @@
 
 /* See More */
 .seemore{
-  margin: 0 0 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1rem;
+  color: var(--color-green);
 }

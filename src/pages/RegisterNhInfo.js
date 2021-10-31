@@ -17,11 +17,13 @@ const  RegisterNhInfo= () => {
         <BiLogOut size="20"/>
       </div>
       <NursingHomeDetailInfoBlock />
+      <hr/>
       <NursingHomeChiefInfoBlock />
+      <hr/>
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
       <BelowRectangleBlock />
-      <Floating />
+      <Floating background="var(--color-blue)"/>
     </React.Fragment>
   );
 };

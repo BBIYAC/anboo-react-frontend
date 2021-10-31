@@ -20,7 +20,7 @@ const  RegisterNhs= () => {
         <SearchBlock />
       </div>
       <NursingHomeInfoList />
-      <Floating />
+      <Floating background="var(--color-blue)"/>
     </React.Fragment>
   );
 };

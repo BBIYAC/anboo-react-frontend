@@ -17,7 +17,7 @@ const RegisterNhLocation= () => {
       </div>
       <SearchBlock />
       <MapBlock />
-      <Floating />
+      <Floating background="var(--color-blue)"/>
     </React.Fragment>
   );
 };

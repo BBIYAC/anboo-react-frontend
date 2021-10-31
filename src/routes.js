@@ -13,7 +13,6 @@ import ManagerNhInfo from "./pages/ManagerNhInfo";
 import ManagerRgs from "./pages/ManagerRgs";
 import ManagerRequests from "./pages/ManagerRequests";
 import ManagerActs from "./pages/ManagerActs";
-import ManagerPostActs from "./pages/ManagerPostActs";
 
 
 const routes =  [
@@ -76,10 +75,6 @@ const routes =  [
     {
         path: '/mg/acts',
         component: ManagerActs
-    },
-    {
-        path: '/mg/post-acts',
-        component: ManagerPostActs
     },
 ];
 

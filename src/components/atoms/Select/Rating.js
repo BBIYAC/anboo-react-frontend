@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 
 const Rating = () => {
 	const ratingList = 
@@ -20,7 +19,6 @@ const Rating = () => {
           </option>
         ))}
       </select>
-      <IoIosArrowDown className="arrow-down-rating"/>
     </React.Fragment>
   );
 };
