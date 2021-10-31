@@ -213,3 +213,8 @@
 .btn-allSelect {
   font-size: 1.25rem;
 }
+
+/* Text Align */
+.txt-horizontal{
+  display: flex;
+}

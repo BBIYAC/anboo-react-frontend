@@ -70,6 +70,13 @@
   font-size: 30px;
   color: var(--color-green);
 }
+.addImg-mg{
+  width: var(--width);
+  height: 10rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  border: var(--border-bottom);
+}
 
 /* Search */
 .searchBox {
@@ -98,6 +105,17 @@
   margin: 10px 0 20px 0;
 }
 
+
+.input-mgNhInfoEditInput {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid;
+  border-color: var(--color-gray);
+  font-size: var(--font-size-small);
+  outline: none;
+}
+
+/* TextArea */
 .handleResponseStyle {
   width: calc(var(--width) - 40px);
   min-Height: 300px;
@@ -111,11 +129,15 @@
   font-Size: 1rem;
 }
 
-.input-mgNhInfoEditInput {
-  height: 1rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid;
-  border-color: var(--color-gray);
-  font-size: var(--font-size-small);
+.textarea-acts{
+  width: calc(var(--width) - 40px);
+  min-Height: 100px;
+  resize: none;
+  border: var(--border-bottom);
+  border-Radius: var(--border-radius);
+  margin-Top: 20px;
   outline: none;
+  padding: 20px;
+  font-Family: sans-serif;
+  font-Size: 1rem;
 }

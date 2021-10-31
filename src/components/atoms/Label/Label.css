@@ -32,9 +32,13 @@
   font-Size: 0.8rem;
 }
 
-/* Left Large Text */
+/* Left Text */
 .txt-leftlarge{
   font-size: 1.2rem;
+  text-align: left;
+  line-height: 1rem;
+}
+.txt-leftsmall{
   text-align: left;
   line-height: 1rem;
 }
@@ -55,4 +59,9 @@
 .div-approvalsInfo{
   text-align: left;
   padding-left: 1rem;
+}
+
+/* See More */
+.seemore{
+  margin: 0 0 50px 20px;
 }

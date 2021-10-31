@@ -1,9 +1,16 @@
 import React from 'react';
+import ManagerActsList from '../components/templates/ManagerActs/ManagerActsList';
+import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
+import Floating from '../components/atoms/Button/Floating'
+import ManagerActsPost from '../components/templates/ManagerActs/ManagerActsPost';
 
 const ManagerActs = () => {
     return (
         <React.Fragment>
-            관리자 활동 목록 페이지
+            {/* <ManagerActsList /> */}
+            <ManagerActsPost />
+            <Floating background='var(--color-green)' />
+            <ManagerBelowBarBlock isMember/>
         </React.Fragment>
     );
 };
