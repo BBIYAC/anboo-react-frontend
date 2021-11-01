@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginCheckModal = ({isClicked}) =>{
+const DeleteModal = ({isClicked}) =>{
     const handleModalStyle = !isClicked?{
         position: 'absolute',
         top: '0',
@@ -27,7 +27,6 @@ const LoginCheckModal = ({isClicked}) =>{
     };
 
     const handleModalTextStyle = {
-        // color: 'var(--color-blue)',
         fontSize: '1rem',
         margin: '40px 20px',
     };
@@ -48,7 +47,7 @@ const LoginCheckModal = ({isClicked}) =>{
 
     const handleMainButtonStyle = {
         backgroundColor: 'white',
-        color: 'var(--color-blue)',
+        color: 'var(--color-red)',
         border: '0',
         width: '150px',
         height: '50px',
@@ -59,10 +58,10 @@ const LoginCheckModal = ({isClicked}) =>{
         <React.Fragment>
             <div style={handleModalStyle}>
                 <div style={handleModalBodyStyle}>
-                    <div style={handleModalTextStyle}>로그인 후 이용이 가능합니다 :)</div>
+                    <div style={handleModalTextStyle}>정말로 삭제하시겠습니까?</div>
                     <div style={handleModalButtonStyle}>
                         <button style={handleButtonStyle}>취소</button>
-                        <button style={handleMainButtonStyle}>로그인 하기</button>
+                        <button style={handleMainButtonStyle}>삭제</button>
                     </div>
                 </div>
             </div>
@@ -70,4 +69,4 @@ const LoginCheckModal = ({isClicked}) =>{
     );
 };
 
-export default LoginCheckModal;
+export default DeleteModal;
