@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageSmall from '../../atoms/Input/ImageSmall';
+import ManagerImage from '../../atoms/Input/ManagerImage';
 import NursingHomeManagerInfoInput from '../../atoms/Input/NursingHomeManagerInfoInput';
 import {IoPersonRemove} from 'react-icons/io5';
 import {IoPersonAdd} from 'react-icons/io5';
@@ -9,7 +9,7 @@ const NursingHomeManagerInfoEditBlock = ({isAdd}) => {
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ImageSmall />
+          <ManagerImage url=""/>
           <NursingHomeManagerInfoInput />
         </div>
         {isAdd?<IoPersonAdd size="25" color="var(--color-green)"/>

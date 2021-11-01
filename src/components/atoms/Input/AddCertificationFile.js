@@ -11,7 +11,6 @@ const AddCertificationFile = () => {
         (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
     };
 
-
     return(
         <>
             <hr></hr>

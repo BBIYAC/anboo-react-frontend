@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageSmall from '../../atoms/Input/ImageSmall';
+import ManagerImage from '../../atoms/Input/ManagerImage';
 import NursingHomeChiefInfoInput from '../../atoms/Input/NursingHomeChiefInfoInput';
 
 const NursingHomeChiefInfoEditBlock = () => {
@@ -7,7 +7,7 @@ const NursingHomeChiefInfoEditBlock = () => {
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ImageSmall />
+          <ManagerImage url=""/>
           <NursingHomeChiefInfoInput />
         </div>
       </div>

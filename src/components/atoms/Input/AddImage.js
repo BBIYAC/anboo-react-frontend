@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, {useState, useRef } from 'react';
 import ImageLarge from './ImageLarge';
+=======
+import React, { useRef } from 'react';
+>>>>>>> ac64b7f681c46e975219de6ec3f890fd630b3c81
 
 
 const AddImage = ({ url, border, borderColor}) => {
@@ -11,7 +15,7 @@ const AddImage = ({ url, border, borderColor}) => {
   };
   // Default Image
   const handleImgError = (e) => {
-    e.target.src = 'https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/user2-add-icon.png';
+    e.target.src = require("./picture.png").default;
   }
 
   return(
