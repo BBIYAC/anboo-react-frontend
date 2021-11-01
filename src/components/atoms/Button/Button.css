@@ -19,7 +19,7 @@ button {
 /* RoundRectangle */
 .btn-roundrectangle{
   background-color: var(--color-blue);
-  border: var(--border-rg);
+  border: 0;
   border-radius: var(--border-radius);
   color: var(--color-white);
   width: var(--width);
@@ -116,4 +116,15 @@ button {
   background-color: var(--color-white);
   outline: none;
   padding: 1.75rem;
+}
+
+/* file upload */
+.btn-fileUpload{
+  width: 110px;
+  height: 40px;
+  background-color: var(--color-green);
+  color: white;
+  border: 0;
+  border-radius: 50px;
+  margin-top: 20px;
 }

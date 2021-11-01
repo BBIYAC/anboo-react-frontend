@@ -4,6 +4,7 @@ import { BsPlusLg } from 'react-icons/bs';
 const AddPost = ({className}) => {
     const handleAddStyle = {
         fontSize: '30px',
+        border: '1px solid',
         borderRadius: 'var(--border-radius)',
         padding: '10px 0',
         width: '100%',

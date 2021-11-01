@@ -1,14 +1,14 @@
-import React, { useRef } from 'react';
+import React, {useState, useRef } from 'react';
 import ImageLarge from './ImageLarge';
 
 
-const AddImage = ({file, setFile, url, border, borderColor}) => {
-  const fileInput = useRef(null)
-  const onChange = async e => {
-      if(e.target.files && e.target.files.length > 0){
-          setFile(e.targe.files[0])
-      }
-  }
+const AddImage = ({ url, border, borderColor}) => {
+  const fileInput = useRef();
+  const [files, setFiles] = useState();
+  const onChange = (e) => {
+      console.log(e.target.files[0].name, e.target.files[0].size); // 파일 이름, 바이트        
+      setFiles(e.target.files[0]);
+  };
   // Default Image
   const handleImgError = (e) => {
     e.target.src = 'https://icons.iconarchive.com/icons/custom-icon-design/silky-line-user/512/user2-add-icon.png';
