@@ -61,11 +61,6 @@ code {
   font-size: 1.5rem;
   margin-bottom: var(--margin-bottom);
 }
-
-.header-contain {
-  position: sticky;
-}
-
 .manager{
   color: var(--color-green);
   border-color: var(--color-green);

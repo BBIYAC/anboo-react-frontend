@@ -31,29 +31,3 @@
     background-repeat: no-repeat;
     background-position: calc(100% - 7px) center;
 }
-
-.arrow-down-gender{
-  position: relative;
-  bottom: 3.5rem;
-  left: 1rem;
-}
-
-.arrow-down-user{
-  position: relative;
-  bottom: 3.5rem;
-  left: 8rem;
-}
-
-.arrow-down-rating {
-  position: absolute;
-  margin-top: 0.5rem;
-  margin-left: 9.3rem;
-  color: var(--color-blue);
-}
-
-.arrow-down-religion {
-  position: absolute;
-  margin-top: 0.5rem;
-  margin-left: 14.8rem;
-  color: var(--color-blue);
-}
