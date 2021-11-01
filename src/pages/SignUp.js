@@ -1,43 +1,15 @@
 import React from 'react';
-import UserChoice from '../components/atoms/Select/UserChoice';
-import NameLong from '../components/atoms/Input/NameLong';
-import Id from '../components/atoms/Input/Id';
-import Password from '../components/atoms/Input/Password';
-import PasswordCheck from '../components/atoms/Input/PasswordCheck';
-import PhoneNumber from '../components/atoms/Input/PhoneNumber';
-import Email from '../components/atoms/Input/Email';
-import EmailCheck from '../components/atoms/Input/EmailCheck';
-import RoundRectangle from '../components/atoms/Button/RoundRectangle';
-import { IoIosArrowBack } from 'react-icons/io';
-import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
+import SignUpBefore from '../components/templates/SignUp/SignUpBefore';
+// import SignUpAfter from '../components/templates/SignUp/SignUpAfter';
 
 const SignUp = () => {
-    const signupSubmit = (event) => {
-        event.preventDefault();
-        alert('회원가입 완료');
-    };
-
     return (
         <React.Fragment>
-            <div className="header">
-              <IoIosArrowBack  opacity="0" size="20"/>
-              회원가입
-              <BiLogOut opacity="0" size="20"/>
-            </div>
-            <form onSubmit={signupSubmit}>
-                <UserChoice />
-                <NameLong />
-                <Id />
-                <Password />
-                <PasswordCheck />
-                <PhoneNumber />
-                <Email />
-                <EmailCheck />
-                <RoundRectangle btnText="회원가입" />
-            </form>
+            <SignUpBefore />
+            {/* <SignUpAfter /> */}
         </React.Fragment>
     );
 };

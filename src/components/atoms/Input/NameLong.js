@@ -8,7 +8,7 @@ const NameLong = () =>{
     return(
         <React.Fragment>
             <div className="tit-name">이름</div>
-            <input className="input-name" onChange={onChange} value={titName}></input>
+            <input name='username' className="input-name" onChange={onChange} value={titName} placeholder='이름을 입력해주세요.' required></input>
         </React.Fragment>
     );
 };

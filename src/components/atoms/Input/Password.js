@@ -8,7 +8,7 @@ const Password = () =>{
     return(
         <React.Fragment>
             <div className="tit-password">비밀번호</div>
-            <input type="password" className="input-password" onChange={onChange} value={titPassword}></input>
+            <input name='userpassword' required type="password" className="input-password" onChange={onChange} value={titPassword} placeholder='비밀번호를 입력해주세요.'></input>
         </React.Fragment>
     );
 };

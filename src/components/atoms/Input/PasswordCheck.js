@@ -8,7 +8,7 @@ const PasswordCheck = () =>{
     return(
         <React.Fragment>
             <div className="tit-passwordcheck">비밀번호 확인</div>
-            <input type="password" className="input-passwordcheck" onChange={onChange} value={titPasswordCheck}></input>
+            <input required type="password" className="input-passwordcheck" onChange={onChange} value={titPasswordCheck} placeholder='비밀번호를 다시 입력해주세요.'></input>
         </React.Fragment>
     );
 };

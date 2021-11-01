@@ -1,6 +1,5 @@
 import React from 'react';
-import '../components/atoms/Button/Button.css';
-import RoundRectangle from '../components/atoms/Button/RoundRectangle';
+import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import {FaBirthdayCake} from 'react-icons/fa';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';

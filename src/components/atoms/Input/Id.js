@@ -8,7 +8,7 @@ const Id = () =>{
     return(
         <React.Fragment>
             <div className="tit-id">아이디</div>
-            <input className="input-id" onChange={onChange} value={titId}></input>
+            <input name='userid' required className="input-id" onChange={onChange} value={titId} placeholder='아이디를 입력해주세요.'></input>
         </React.Fragment>
     );
 };

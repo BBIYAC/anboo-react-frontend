@@ -5,7 +5,8 @@ const RoundRectangle = ({btnText, color, background, textAlign}) =>{
         <React.Fragment>
             <button 
             className="btn-roundrectangle"
-            style={{ color, background, textAlign }}>
+            style={{ color, background, textAlign }}
+            type='submit'>
               {btnText}
             </button>
         </React.Fragment>
