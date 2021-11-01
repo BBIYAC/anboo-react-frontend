@@ -1,0 +1,224 @@
+/* Search */
+.block-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+}
+
+/* Keyword */
+.block-keyword {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+/* Map */
+.block-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.div-map {
+  width: var(--width);
+  height: 300px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-gray);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Nursinghome Information */
+.block-NursingHomeInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.5rem;
+}
+.NursingHomeInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.block-NursingHomeDetailInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+/* Nursinghome Manager Information */
+.block-NursingHomeManagerInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+.NursingHomeManagerInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Nursinghome Image */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.grid-item {
+  border-color: var(--color-gray);
+  margin: 0.25rem;
+}
+
+/* NursingHome ActBlock */
+.block-NursingHomeAct {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/* Icon */
+.aifillstar {
+  font-size: 1.6rem;
+  color: var(--color-yellow);
+}
+
+/* NursingHome Check */
+.NursingHomeCheck {
+  font-size: 30px;
+  color: var(--color-green);
+}
+
+/* Notice Block */
+.noticeblock{
+  display: flex;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Notice Waiting Block */
+.noticewaitingblock{
+  margin: 30vh auto;
+  line-height: 30px;
+}
+
+
+/* belowbar */
+.belowbar{
+  display: flex;
+  justify-content: space-between;
+  border-top: var(--border-bottom);
+  padding: 10px 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+}
+.block-rectanglebelowbar{
+  display: flex;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+/* Count Request Block */
+.countrequestblock{
+  padding: 25px;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+}
+
+.request{
+  text-align: left;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.count{
+  text-align: right;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Manager Response to Request */
+.input-response{
+  outline: none;
+  width: 80%;
+  font-size: 1rem;
+  font-family: sans-serif;
+  height: 1.5rem;
+}
+
+.icon-send{
+  color: var(--color-green);
+  font-size: 25px;
+}
+
+.response-title{
+  width: 40px;
+  padding-right: 0.5rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+}
+
+.member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.membersListTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+.div-memberInfo{
+  display: flex;
+  align-items: center;
+}
+.approval {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.approvalsListTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+.div-approvalInfo {
+  display: flex;
+  align-items: center;
+}
+.div-allSelect {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.span-allSelect {
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+.btn-allSelect {
+  font-size: 1.25rem;
+}
+
+/* Text Align */
+.txt-horizontal{
+  display: flex;
+  margin-bottom: 3rem;
+  align-items: center;
+}

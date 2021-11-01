@@ -1,0 +1,162 @@
+.tit-name,
+.tit-id,
+.tit-password,
+.tit-passwordcheck,
+.tit-email,
+.tit-emailcheck{
+    text-align: left;
+    font-size: var(--font-size-small);
+    margin-top: var(--margin-bottom);
+}
+
+.input-email,
+.input-emailcheck,
+.input-id,
+.input-name,
+.input-password,
+.input-passwordcheck{
+  border: 0;
+  border-radius: 0;
+  border-bottom: var(--border-bottom);
+  outline: none;
+  width: var(--width);
+  height: var(--height);
+}
+
+/* Email */
+.div-emailcheck{
+  display: flex;
+}
+
+/* Image */
+.imgLarge{
+  width: 120px;
+  height: 120px;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-Color: var(--color-gray);
+}
+.imgMiddle {
+  width: 90px;
+  height: 90px;
+}
+.imgSmall {
+  width: 60px;
+  height: 60px;
+}
+.img-actImage {
+  width: var(--width);
+  height: 10rem;
+  margin-bottom: 1rem;
+}
+.img-rgProfile {
+  width: 120px;
+  height: 120px;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-Color: var(--color-gray);
+}
+
+
+/* Add */
+.addLarge{
+  position: absolute;
+  right: 115px;
+  top: 170px;
+  font-size: 30px;
+  color: var(--color-blue);
+}
+.addMiddle {
+  position: absolute;
+  right: 164px;
+  bottom: 105px;
+  font-size: 30px;
+  color: var(--color-blue);
+}
+.addMiddle-mg {
+  position: absolute;
+  right: 164px;
+  bottom: 105px;
+  font-size: 30px;
+  color: var(--color-green);
+}
+.addImg-mg{
+  width: var(--width);
+  height: 10rem;
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius);
+  border: var(--border-bottom);
+}
+
+/* Search */
+.searchBox {
+    padding-left: 2.5rem;
+    border: 1px solid;
+    border-color: var(--color-dark-gray);
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: var(--height);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: var(--color-dark-gray);
+}
+
+
+/* Input Certification File */
+.input-certificationfile{
+  padding: 100px 0;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin: 10px 0 20px 0;
+}
+
+
+.input-mgNhInfoEditInput {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid;
+  border-color: var(--color-gray);
+  font-size: var(--font-size-small);
+  outline: none;
+}
+
+/* TextArea */
+.handleResponseStyle {
+  width: calc(var(--width) - 40px);
+  min-Height: 300px;
+  resize: none;
+  border: var(--border-bottom);
+  border-Radius: var(--border-radius);
+  margin-Top: 20px;
+  outline: none;
+  padding: 20px;
+  font-Family: sans-serif;
+  font-Size: 1rem;
+}
+
+.textarea-acts{
+  width: calc(var(--width) - 40px);
+  min-Height: 100px;
+  resize: none;
+  border: var(--border-bottom);
+  border-Radius: var(--border-radius);
+  margin-Top: 20px;
+  outline: none;
+  padding: 20px;
+  font-Family: sans-serif;
+  font-Size: 1rem;
+}
+
+/* SignUp - Notice Message */
+.notice-massage{
+  margin-top: 10px;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--color-red);
+}

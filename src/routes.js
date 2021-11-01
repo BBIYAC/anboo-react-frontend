@@ -1,5 +1,5 @@
 import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
+import SignIn from "./pages/SignIn";
 import RegisterNhLocation from "./pages/RegisterNhLocation";
 import RegisterNhs from "./pages/RegisterNhs";
 import RegisterNhInfo from "./pages/RegisterNhInfo";
@@ -12,17 +12,16 @@ import ManagerNhInfo from "./pages/ManagerNhInfo";
 import ManagerRgs from "./pages/ManagerRgs";
 import ManagerRequests from "./pages/ManagerRequests";
 import ManagerActs from "./pages/ManagerActs";
-import ManagerPostActs from "./pages/ManagerPostActs";
 
 
 const routes =  [
     {
-        path: '/signup',
-        component: SignUp
+        path: '/',
+        component: SignIn
     },
     {
-        path: '/login',
-        component: Login
+        path: '/signup',
+        component: SignUp
     },
     {
         path: '/rg/nh-location',
@@ -71,10 +70,6 @@ const routes =  [
     {
         path: '/mg/acts',
         component: ManagerActs
-    },
-    {
-        path: '/mg/post-acts',
-        component: ManagerPostActs
     },
 ];
 
