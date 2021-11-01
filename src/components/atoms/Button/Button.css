@@ -9,6 +9,7 @@ button {
   background-color: var(--color-white);
   color: var(--color-blue);
   width: 80px;
+  height: 45px;
   margin-left: 10px;
   margin-bottom: var(--margin-bottom);
   border-radius: var(--border-radius);

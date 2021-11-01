@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import UserChoice from '../../atoms/Select/UserChoice';
 import NameLong from '../../atoms/Input/NameLong';
 import Id from '../../atoms/Input/Id';
@@ -6,7 +6,6 @@ import Password from '../../atoms/Input/Password';
 import PasswordCheck from '../../atoms/Input/PasswordCheck';
 import PhoneNumber from '../../atoms/Input/PhoneNumber';
 import Email from '../../atoms/Input/Email';
-import EmailCheck from '../../atoms/Input/EmailCheck';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
@@ -16,6 +15,7 @@ const SignUpBefore = () => {
         event.preventDefault();
         alert('회원가입 완료');
     };
+    const [pwd, setPwd] = useState('');
 
     return (
         <React.Fragment>
@@ -28,8 +28,8 @@ const SignUpBefore = () => {
                 <UserChoice />
                 <NameLong />
                 <Id />
-                <Password />
-                <PasswordCheck />
+                <Password setPwd={setPwd}/>
+                <PasswordCheck pwdCheck={pwd}/>
                 <PhoneNumber />
                 <Email />
                 <RoundRectangle btnText="회원가입" />
