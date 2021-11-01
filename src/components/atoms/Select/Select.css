@@ -2,6 +2,7 @@
 .tit-userchoice{
     text-align: left;
     font-size: var(--font-size-small);
+    margin-top: var(--margin-bottom);
 }
 .sel-userchoice{
     border: 0;
@@ -9,7 +10,6 @@
     outline: none;
     width: var(--width);
     height: var(--height);
-    margin-bottom: var(--margin-bottom);
     background-color: var(--color-white);
     background-image: url(arrow.svg);
     background-repeat: no-repeat;

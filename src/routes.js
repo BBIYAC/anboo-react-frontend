@@ -1,5 +1,4 @@
 import SignUp from "./pages/SignUp";
-import SignUpAfter from "./pages/SignUpAfter";
 import SignIn from "./pages/SignIn";
 import RegisterNhLocation from "./pages/RegisterNhLocation";
 import RegisterNhs from "./pages/RegisterNhs";
@@ -23,10 +22,6 @@ const routes =  [
     {
         path: '/signup',
         component: SignUp
-    },
-    {
-        path: '/signupafter',
-        component: SignUpAfter
     },
     {
         path: '/rg/nh-location',

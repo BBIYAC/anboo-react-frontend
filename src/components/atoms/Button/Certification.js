@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Certification = () =>{
+const Certification = ({text, onClick, color}) =>{
     return(
         <React.Fragment>
-            <button className="btn-certification">인증</button>
+            <button type='button' className="btn-certification" onClick={onClick} style={color}>{text}</button>
         </React.Fragment>
     );
 };

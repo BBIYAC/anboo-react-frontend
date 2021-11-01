@@ -5,13 +5,15 @@ import {AiOutlineMail} from 'react-icons/ai';
 const Floating = ({background}) => {
   return(
     <React.Fragment>
-      <div className="handleBgFloatingStyle" style={{background}}>
-        {
-          (background === 'var(--color-green)')
-          ? <AiOutlineMail className='handleFloatingStyle' />
-          : <HiHome className="handleFloatingStyle"/>
-        }
-      </div>
+      {
+        (background === 'var(--color-green)')?
+        <div className="handleBgFloatingStyle mg-floatingShadow" style={{background}}>
+          <AiOutlineMail className='handleFloatingStyle' />
+        </div>:
+        <div className="handleBgFloatingStyle rg-floatingShadow" style={{background}}>
+          <HiHome className="handleFloatingStyle"/>
+        </div>
+      }
     </React.Fragment>
   );
 };
