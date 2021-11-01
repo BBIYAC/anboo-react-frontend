@@ -30,8 +30,8 @@
 
 /* Image */
 .imgLarge{
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   padding: 0.5rem;
   border: 1px solid;
   border-Color: var(--color-gray);
@@ -41,8 +41,8 @@
   height: 90px;
 }
 .imgSmall {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 .img-actImage {
   width: var(--width);
@@ -50,13 +50,21 @@
   margin-bottom: 1rem;
 }
 .img-rgProfile {
-  width: 120px;
-  height: 120px;
-  padding: 0.5rem;
+  width: 110px;
+  height: 110px;
   border: 1px solid;
+  border-radius: 5px;
   border-Color: var(--color-gray);
+  opacity: 50%;
 }
-
+.img-managerProfile {
+  width: 70px;
+  height: 70px;
+  border: 1px solid;
+  border-radius: var(--border-radius);
+  border-Color: var(--color-gray);
+  opacity: 50%;
+}
 
 /* Add */
 .addLarge{

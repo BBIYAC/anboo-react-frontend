@@ -11,6 +11,15 @@ const NursingHomeImageEditBlock = () => {
         <div className="grid-item"><ImageMiddle /></div>
         <div className="grid-item"><ImageMiddle /></div>
         <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
         <div className="grid-item"><AddNursingHomeImage /></div>
       </div>
     </React.Fragment>

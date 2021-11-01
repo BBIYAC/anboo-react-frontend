@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 
 
-const AddImage = ({file, setFile, url, border, borderColor}) => {
+const ManagerImage = ({file, setFile, url, border, borderColor}) => {
   const fileInput = useRef(null)
   const onChange = async e => {
       if(e.target.files && e.target.files.length > 0){
@@ -16,7 +16,7 @@ const AddImage = ({file, setFile, url, border, borderColor}) => {
   return(
     <>
       <img
-      className="img-rgProfile" 
+      className="img-managerProfile" 
       url=""
       src={url}
       onClick={() => fileInput.current.click()}
@@ -27,4 +27,4 @@ const AddImage = ({file, setFile, url, border, borderColor}) => {
   );
 };
 
-export default AddImage;
+export default ManagerImage;

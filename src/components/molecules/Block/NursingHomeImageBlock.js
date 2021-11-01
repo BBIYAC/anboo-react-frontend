@@ -10,6 +10,10 @@ const NursingHomeImageBlock = () => {
         <div className="grid-item"><ImageMiddle /></div>
         <div className="grid-item"><ImageMiddle /></div>
         <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
       </div>
     </React.Fragment>
   );
