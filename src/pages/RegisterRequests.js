@@ -4,6 +4,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import AddPost from '../components/atoms/Button/AddPost';
 import RequestBlock from '../components/molecules/Block/RequestBlock';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
+import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 
 const  RegisterRequests = () => {
     return (

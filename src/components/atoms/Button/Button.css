@@ -24,7 +24,7 @@ button {
   width: var(--width);
   height: var(--height);
   padding: var(--btn-padding);
-  margin-bottom: 15px;
+  margin-top: 15px;
   font-size: var(--font-size-middle);
   outline: none;
 }

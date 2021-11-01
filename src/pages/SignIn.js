@@ -29,7 +29,7 @@ const SignIn = () => {
         <RoundRectangle btnText="로그인" />
       </form>
       <RoundRectangle btnText="회원가입" />
-      <RoundRectangle color="var(--color-blue)" background="white" btnText="비회원으로 시작" />
+      <RoundRectangle color="var(--color-blue)" background="white" btnText="비회원으로 시작하기" />
     </React.Fragment>
   );
 };

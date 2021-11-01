@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RoundRectangle = ({btnText, color, background, textAlign}) =>{
+const RoundRectangle = ({color, background, btnText, textAlign}) =>{
     return(
         <React.Fragment>
             <button 
