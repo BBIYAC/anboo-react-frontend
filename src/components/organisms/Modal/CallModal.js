@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CallModal = ({isClicked, modalTitle, modalText, btn1Text, btn2Text}) =>{
-    const handleModalStyle = isClicked?{
+const CallModal = ({isClicked, modalText}) =>{
+    const handleModalStyle = !isClicked?{
         position: 'absolute',
         top: '0',
         left: '0', 
@@ -44,10 +44,11 @@ const CallModal = ({isClicked, modalTitle, modalText, btn1Text, btn2Text}) =>{
 
     const handleButtonStyle = {
         backgroundColor: 'white',
-        color: 'var(--color-blue)',
+        color: 'var(--color-dark-gray)',
         border: '0',
         width: '150px',
         height: '50px',
+        borderRadius: '0 0 0 10px',
     };
 
     const handleMainButtonStyle = {
@@ -56,17 +57,19 @@ const CallModal = ({isClicked, modalTitle, modalText, btn1Text, btn2Text}) =>{
         border: '0',
         width: '150px',
         height: '50px',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        borderRadius: '0 0 10px 0',
     };
     return(
         <React.Fragment>
             <div style={handleModalStyle}>
                 <div style={handleModalBodyStyle}>
-                    <div style={handleModalTitleStyle}>{modalTitle}</div>
-                    <div style={handleModalTextStyle}>{modalText}</div>
+                    <div style={handleModalTitleStyle}>요양원 전화번호</div>
+                    {/* <div style={handleModalTextStyle}>{modalText}</div> */}
+                    <div style={handleModalTextStyle}>010-1234-5678</div>
                     <div style={handleModalButtonStyle}>
-                        <button style={handleButtonStyle}>{btn1Text}</button>
-                        <button style={handleMainButtonStyle}>{btn2Text}</button>
+                        <button style={handleButtonStyle}>취소</button>
+                        <button style={handleMainButtonStyle}>전화걸기</button>
                     </div>
                 </div>
             </div>

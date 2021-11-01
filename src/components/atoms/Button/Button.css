@@ -86,10 +86,17 @@ button {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  box-shadow: 0px 0px 7px dodgerblue;
   position: fixed;
   bottom: 70px;
   right: 1.5rem
+}
+
+.rg-floatingShadow{
+  box-shadow: 0px 0px 7px dodgerblue;
+}
+
+.mg-floatingShadow{
+  box-shadow: 0px 0px 7px var(--color-green);
 }
 
 /* handleFloatingStyle */
