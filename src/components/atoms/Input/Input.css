@@ -185,3 +185,22 @@
   font-size: 0.8rem;
   color: var(--color-red);
 }
+
+/* Act Image Upload */
+.input-actImage-before{
+  padding: 70px 0;
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+  margin: 20px 0 20px 0;
+}
+
+.input-actImage-after{
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+}
+
+.input-actImage{
+  width: var(--width);
+  /* height: auto; */
+}

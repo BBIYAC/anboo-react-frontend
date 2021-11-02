@@ -31,7 +31,7 @@
 
 .handleDataStyle {
   position: relative;
-  margin: 10px 10px 60px auto;
+  margin: 10px 10px 50px auto;
   text-Align: right;
   font-Size: 0.8rem;
 }
@@ -67,11 +67,3 @@
   padding-left: 1rem;
 }
 
-/* See More */
-.seemore{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 1rem;
-  color: var(--color-green);
-}

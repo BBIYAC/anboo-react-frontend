@@ -1,9 +1,10 @@
 import React from "react";
 
-const SeeMore = ({className}) => {
+const SeeMore = ({className, onClick, text, icon}) => {
     return(
-        <div className={className}>
-          <span>더 보기</span>
+        <div className={className}  onClick={onClick}>
+          <span>{text}</span>
+          {icon}
         </div>
     );
 };
