@@ -7,7 +7,7 @@ import RequestDate from '../../atoms/Label/RequestDate';
 import OvalLarge from '../../atoms/Button/OvalLarge';
 import UsersBlock from '../../molecules/Block/UsersBlock';
 
-const ManagerActsList = () => {
+const ManagerActsPost = () => {
   const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수'];
   // const users = ['이말순'];
   return (
@@ -26,4 +26,4 @@ const ManagerActsList = () => {
   );
 };
 
-export default ManagerActsList;
+export default ManagerActsPost;

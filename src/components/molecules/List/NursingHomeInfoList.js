@@ -11,7 +11,6 @@ const NursingHomeInfoList = () => {
         <li><NursingHomeInfoBlock /></li>
         <li><NursingHomeInfoBlock /></li>
         <li><NursingHomeInfoBlock /></li>
-        <li><NursingHomeInfoBlock /></li> 
       </ul>
     </React.Fragment>
   );

@@ -112,8 +112,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem;
-  color: var(--color-green);
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
 }
 .btn-textIcon {
   width: 5.8rem;
@@ -127,7 +126,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 0.5rem 0 0.7rem;
+  padding: 1rem 0.5rem 1rem 0.7rem;
+  margin-bottom: 1rem;
 }
 
 /* file & Act Image Upload */
