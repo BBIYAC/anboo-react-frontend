@@ -51,17 +51,6 @@ button {
   outline: none;
   font-size: var(--font-size-small);
 }
-.btn-ovalSmall {
-  width: 4.5rem;
-  height: 2rem;
-  background-color: var(--color-white);
-  color: var(--color-green);
-  border-radius: var(--border-radius-oval);
-  border: 1px solid;
-  outline: none;
-  font-size: var(--font-size-small);
-}
-
 
 /* Favorites Button */
 .btn-favorites {
@@ -116,4 +105,32 @@ button {
   background-color: var(--color-white);
   outline: none;
   padding: 1.75rem;
+}
+
+/* See More, TextIcon Button */
+.seemore{
+  width: 3.6rem;
+  height: 2rem;
+  background: none;
+  color: var(--color-green);
+  border: none;
+  outline: none;
+  font-size: var(--font-size-small);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-textIcon {
+  width: 5.8rem;
+  height: 1.7rem;
+  background: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50px;
+  outline: none;
+  font-size: var(--font-size-small);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.5rem 0 0.7rem;
 }

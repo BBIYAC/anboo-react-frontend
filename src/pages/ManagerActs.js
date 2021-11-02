@@ -7,8 +7,8 @@ import ManagerActsPost from '../components/templates/ManagerActs/ManagerActsPost
 const ManagerActs = () => {
     return (
         <React.Fragment>
-            <ManagerActsList />
-            {/* <ManagerActsPost /> */}
+            {/* <ManagerActsList /> */}
+            <ManagerActsPost />
             <Floating background='var(--color-green)' />
             <ManagerBelowBarBlock isMember/>
         </React.Fragment>

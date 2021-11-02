@@ -1,6 +1,6 @@
 import React from "react";
 import LeftSmallText from '../../atoms/Label/LeftSmallText';
-import SeeMore from '../../atoms/Label/SeeMore';
+import SeeMore from '../../atoms/Button/SeeMore';
 
 const TextHorizontalBlock = () => {
     return(

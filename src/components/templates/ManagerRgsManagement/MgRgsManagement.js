@@ -3,7 +3,6 @@ import Floating from '../../atoms/Button/Floating';
 import ManagerBelowBarBlock from '../../molecules/Block/ManagerBelowBarBlock';
 import MembersListBlock from '../../molecules/Block/MembersListBlock';
 import ApprovalsListBlock from '../../molecules/Block/ApprovalsListBlock';
-import SeeMore from '../../atoms/Label/SeeMore';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 
@@ -16,9 +15,7 @@ const MgRgsManagement = () => {
         <BiLogOut size="20"/>
       </div>
       <MembersListBlock/>
-      <SeeMore className="members seemore"/>
       <ApprovalsListBlock/>
-      <SeeMore className="members seemore"/>
       <Floating background='var(--color-green)'/>
       <ManagerBelowBarBlock isMember/>
     </React.Fragment>

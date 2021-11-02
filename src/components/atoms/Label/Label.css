@@ -47,6 +47,7 @@
 .txt-leftsmall{
   text-align: left;
   line-height: 1rem;
+  padding-right: 1rem;
 }
 
 /* Member Management Information*/
@@ -67,11 +68,3 @@
   padding-left: 1rem;
 }
 
-/* See More */
-.seemore{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-left: 1rem;
-  color: var(--color-green);
-}

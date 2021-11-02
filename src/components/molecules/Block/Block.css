@@ -177,7 +177,7 @@
 }
 .membersListTitle {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-left: 0.15rem;
   padding-right: 0.15rem;
@@ -194,7 +194,7 @@
 }
 .approvalsListTitle {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-left: 0.15rem;
   padding-right: 0.15rem;
@@ -203,17 +203,10 @@
   display: flex;
   align-items: center;
 }
-.div-allSelect {
+.managementOption {
   display: flex;
-  align-items: center;
-  font-size: 1rem;
-}
-.span-allSelect {
-  font-size: 0.75rem;
-  margin-right: 0.25rem;
-}
-.btn-allSelect {
-  font-size: 1.25rem;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 /* Text Align */

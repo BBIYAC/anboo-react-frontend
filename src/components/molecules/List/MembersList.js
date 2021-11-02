@@ -1,13 +1,14 @@
 import React from "react";
 import MemberInfoBlock from "../Block/MemberInfoBlock";
 
-const MembersList = () => {
+const MembersList = ({onClick}) => {
+  
   return (
     <React.Fragment>
       <div className="div-managementScroll">
-        <MemberInfoBlock/>
-        <MemberInfoBlock/>
-        <MemberInfoBlock/>
+        <MemberInfoBlock onClick={onClick}/>
+        <MemberInfoBlock onClick={onClick}/>
+        <MemberInfoBlock onClick={onClick}/>
       </div>
     </React.Fragment>
   );
