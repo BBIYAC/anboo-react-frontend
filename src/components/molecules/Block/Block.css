@@ -209,9 +209,32 @@
   margin-bottom: 0.5rem;
 }
 
-/* Text Align */
-.txt-horizontal{
+/* Post Acts */
+.txt-users{
   display: flex;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+
+.txt-user{
+  margin: auto;
+  padding: 10px;
+  width: 25%;
+}
+
+.one-user{
+  margin: 2rem 0.5rem;
+  text-align: left;
+}
+
+/* See More */
+.seemore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: var(--color-green);
 }

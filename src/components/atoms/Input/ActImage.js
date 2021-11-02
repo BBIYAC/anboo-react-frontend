@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
-const ActImage = () => {
+const ActImage = ({url}) => {
   return(
     <React.Fragment>
-    <img src="" className="img-actImage" /> 
+    <img 
+    src={url} 
+    className="img-actImage"
+     /> 
     </React.Fragment>
   );
 };

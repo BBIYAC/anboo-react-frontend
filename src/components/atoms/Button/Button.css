@@ -19,7 +19,7 @@ button {
 /* RoundRectangle */
 .btn-roundrectangle{
   background-color: var(--color-blue);
-  border: var(--border-rg);
+  border: 0;
   border-radius: var(--border-radius);
   color: var(--color-white);
   width: var(--width);
@@ -133,4 +133,16 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 0.5rem 0 0.7rem;
+}
+
+/* file & Act Image Upload */
+.btn-fileUpload,
+.btn-actImageUpload{
+  padding: 10px 15px;
+  color: var(--color-green);
+  background-color: white;
+  border: 1px solid var(--color-green);
+  border-radius: 50px;
+  margin-top: 20px;
+  box-shadow: 0 0 3px;
 }

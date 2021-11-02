@@ -64,12 +64,8 @@ code {
 }
 .manager{
   color: var(--color-green);
-  border-color: var(--color-green);
-  border: 1px solid;
 }
 
 .register{
   color: var(--color-blue);
-  border-color: var(--color-blue);
-  border: 1px solid;
 }
