@@ -1,33 +1,30 @@
-<<<<<<< HEAD
 import React, {useState, useRef } from 'react';
-import ImageLarge from './ImageLarge';
-=======
-import React, { useRef } from 'react';
->>>>>>> ac64b7f681c46e975219de6ec3f890fd630b3c81
 
 
-const AddImage = ({ url, border, borderColor}) => {
+const AddImage = ({border, borderColor}) => {
   const fileInput = useRef();
-  const [files, setFiles] = useState();
+  const [fileURL, setFileURL] = useState(""); 
   const onChange = (e) => {
-      console.log(e.target.files[0].name, e.target.files[0].size); // 파일 이름, 바이트        
-      setFiles(e.target.files[0]);
+      const imageFile = e.target.files[0];
+      const imageUrl = URL.createObjectURL(imageFile);  
+      setFileURL(imageUrl);
   };
+  
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
-  }
 
+  }
   return(
     <>
       <img
       className="img-rgProfile" 
       url=""
-      src={url}
+      src={fileURL}
       onClick={() => fileInput.current.click()}
       onError={handleImgError} 
       style={{border, borderColor}}></img>
-      <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
+      <input type="file" accept='image/*' ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
     </>
   );
 };
