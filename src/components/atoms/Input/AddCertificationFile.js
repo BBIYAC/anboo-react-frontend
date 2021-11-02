@@ -6,6 +6,14 @@ const AddCertificationFile = () => {
     const fileInput = useRef();
     const [files, setFiles] = useState([]);
     const [isUpload, setIsUpload] = useState(false);
+    const fileSize = (size) => {
+        if(size > 1000){
+            return (size/1000).toFixed(2)+'KB';
+        }
+        else if(size > 1000000){
+            return (size/1000000).toFixed(2)+'MB';
+        }
+    };
     const onChange = (e) => {
         setFiles([...e.target.files]);
         (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
@@ -20,7 +28,7 @@ const AddCertificationFile = () => {
                 {files.map((file, idx)=> 
                     <div className='file-upload' key={idx}>
                         <div><AiOutlinePaperClip size='20' /> {file.name}</div> 
-                        <div>{(file.size/1000).toFixed(2)+'KB'} <IoIosClose size="30" onClick={()=>{setIsUpload(false);setFiles([]);}} /></div>
+                        <div>{fileSize(file.size)} <IoIosClose size="30" onClick={()=>{setIsUpload(false);setFiles([]);}} /></div>
                     </div>
                 )}</div>
                 :<div className='input-certificationfile'> 
