@@ -1,11 +1,9 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
 
 const Search = () => {
 	return (
 		<React.Fragment>
-			<FaSearch className="search-icon" />
-			<input className="searchBox" type="text" placeholder="검색어를 입력하세요..."></input>
+			<input className="searchBox" type="text" placeholder="요양원 이름, 주소, 지역 검색"></input>
 		</React.Fragment>
 	);
 };

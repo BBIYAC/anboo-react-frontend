@@ -2,6 +2,16 @@ button {
   padding: 0;
 }
 
+/* Search */
+.search-icon {
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  outline: none;
+  padding-top: 0.3rem;
+}
+
 /* Certification */
 .btn-certification{
   border: var(--border-bottom);

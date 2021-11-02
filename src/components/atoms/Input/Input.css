@@ -96,21 +96,13 @@
 
 /* Search */
 .searchBox {
-    padding-left: 2.5rem;
-    border: 1px solid;
+    border: none;
     border-color: var(--color-dark-gray);
     border-radius: var(--border-radius);
     width: 100%;
     height: var(--height);
     box-sizing: border-box;
     outline: none;
-}
-
-.search-icon {
-    position: absolute;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    color: var(--color-dark-gray);
 }
 
 

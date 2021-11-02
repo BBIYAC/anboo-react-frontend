@@ -25,7 +25,7 @@ const MembersListBlock = () => {
         color="var(--color-green)"/>
       </div>
       <MembersList/>
-      <SeeMore className="members seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/>
+      <SeeMore className="manager seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/>
     </React.Fragment>
   );
 };
