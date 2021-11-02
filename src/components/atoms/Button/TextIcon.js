@@ -1,9 +1,10 @@
 import React from 'react';
-const handleClick = () => {
-  console.log("this");
-}
 
 const TextIcon = ({btnText, icon, backgroundColor, border, color}) =>{
+  const handleClick = () => {
+    console.log("this");
+  }
+  
   return(
     <React.Fragment>
       <button 

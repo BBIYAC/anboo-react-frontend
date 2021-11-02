@@ -109,16 +109,11 @@ button {
 
 /* See More, TextIcon Button */
 .seemore{
-  width: 3.6rem;
-  height: 2rem;
-  background: none;
-  color: var(--color-green);
-  border: none;
-  outline: none;
-  font-size: var(--font-size-small);
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  padding: 1.5rem;
+  color: var(--color-green);
 }
 .btn-textIcon {
   width: 5.8rem;

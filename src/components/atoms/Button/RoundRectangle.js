@@ -1,11 +1,11 @@
 import React from 'react';
 
-const RoundRectangle = ({color, background, btnText, textAlign}) =>{
+const RoundRectangle = ({color, background, border, btnText, textAlign}) =>{
     return(
         <React.Fragment>
             <button 
             className="btn-roundrectangle"
-            style={{ color, background, textAlign }}
+            style={{ color, background, border, textAlign }}
             type='submit'>
               {btnText}
             </button>

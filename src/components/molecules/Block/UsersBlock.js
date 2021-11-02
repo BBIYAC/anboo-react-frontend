@@ -1,9 +1,9 @@
 import React,{useState} from "react";
-import SeeMore from '../../atoms/Label/SeeMore';
+import SeeMore from '../../atoms/Button/SeeMore';
 import {MdKeyboardArrowUp} from 'react-icons/md';
 import {MdKeyboardArrowDown} from 'react-icons/md';
 import {FaUser} from 'react-icons/fa';
-import { IoScaleOutline } from "react-icons/io5";
+// import { IoScaleOutline } from "react-icons/io5";
 
 const UsersBlock = ({users}) => {
     const userList = [...users];

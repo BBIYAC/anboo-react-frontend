@@ -1,5 +1,5 @@
 import React from 'react';
-import NursingHomeInfo from '../components/templates/ManagerNHInfo/NursingHomeInfo';
+// import NursingHomeInfo from '../components/templates/ManagerNHInfo/NursingHomeInfo';
 import NursingHomeInfoEdit from '../components/templates/ManagerNHInfo/NursingHomeInfoEdit';
 import '../components/atoms/Button/Button.css';
 

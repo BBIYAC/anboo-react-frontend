@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ImageSmall = () => {
+const ImageSmall = ({url}) => {
   return(
     <React.Fragment>
-      <img className="imgSmall"></img>
+      <img className="imgSmall" src={url}></img>
     </React.Fragment>
   );
 };

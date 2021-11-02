@@ -25,7 +25,7 @@ const ApprovalsListBlock = () => {
         color="var(--color-green)"/>
       </div>
       <ApprovalsList/>
-      <SeeMore className="members seemore" icon={<AiOutlinePlus size="15"/>}/>
+      <SeeMore className="members seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/>
     </React.Fragment>
   );
 };

@@ -228,13 +228,3 @@
   margin: 2rem 0.5rem;
   text-align: left;
 }
-
-/* See More */
-.seemore{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  color: var(--color-green);
-}

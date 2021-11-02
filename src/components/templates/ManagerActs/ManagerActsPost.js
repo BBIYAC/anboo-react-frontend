@@ -8,8 +8,8 @@ import OvalLarge from '../../atoms/Button/OvalLarge';
 import UsersBlock from '../../molecules/Block/UsersBlock';
 
 const ManagerActsList = () => {
-  // const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수'];
-  const users = ['이말순'];
+  const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수'];
+  // const users = ['이말순'];
   return (
     <React.Fragment>
       <div className="header">

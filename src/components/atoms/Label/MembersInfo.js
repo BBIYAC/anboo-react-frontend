@@ -4,8 +4,8 @@ const MembersInfo = () => {
   return (
     <React.Fragment>
       <div className="div-membersInfo">
-        <p className="membersInfo">ooo님</p>
-        <p className="membersInfo">생년월일</p>
+        <p className="membersInfo">김순덕 님</p>
+        <p className="membersInfo">0000.00.00</p>
       </div>
     </React.Fragment>
   );
