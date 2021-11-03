@@ -1,5 +1,5 @@
 import React from "react";
-import Search from '../../atoms/Input/Search';
+import SearchBoxBlock from "../../molecules/Block/SearchBoxBlock";
 import NursingHomeInfoCheckBlock from '../../molecules/Block/NursingHomeInfoCheckBlock';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
@@ -9,7 +9,7 @@ const ManagerHomeBefore = () => {
     return(
         <>
             <NoticeBlock />
-            <Search />
+            <SearchBoxBlock />
             <NursingHomeInfoCheckBlock isSelected />
             <NursingHomeInfoCheckBlock />
             <AddCertificationFile />
