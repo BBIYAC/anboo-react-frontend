@@ -20,7 +20,7 @@ const AddActImage = () => {
           </div>
           :<div className='input-actImage-before'> 
             <div>활동 사진을 추가해주세요.</div>
-            <button type='button' className='btn-actImageUpload' onClick={() => fileInput.current.click()} >파일 올리기</button>
+            <button type='button' className='btn-actImageUpload' onClick={() => fileInput.current.click()} >사진 올리기</button>
           </div>
       }
     <input type='file'  ref={fileInput} onChange={onChange} hidden></input>  
