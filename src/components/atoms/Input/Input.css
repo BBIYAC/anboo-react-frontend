@@ -109,21 +109,21 @@
 /* Input Certification File */
 .input-certificationfile{
   padding: 70px 0;
-  border: 1px solid var(--color-green);
+  border: 1px solid var(--color-gray);
   border-radius: var(--border-radius);
-  margin: 20px 0 20px 0;
+  margin-top: 20px;
 }
 
 .input-certificationfile-upload{
   border: 1px solid var(--color-green);
   border-radius: var(--border-radius);
-  margin: 20px 0;
+  margin-top: 20px;
 }
 
 .file-upload{
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 10px;
   border-bottom: var(--border-bottom);
 }
 

@@ -32,11 +32,10 @@ const AddCertificationFile = () => {
                     </div>
                 )}</div>
                 :<div className='input-certificationfile'> 
-                <div>증빙서류를 제출해주세요.</div>
-                <button type='button' className='btn-fileUpload' onClick={() => fileInput.current.click()} >파일 올리기</button>
+                    <div>증빙서류를 제출해주세요.</div>
                 </div>
             }
-           
+            <button type='button' className='btn-fileUpload' onClick={() => fileInput.current.click()} >파일 올리기</button>
             <input type='file' name='files[]' ref={fileInput} onChange={onChange} hidden multiple></input>
 
         </>
