@@ -16,7 +16,7 @@
 .nursinghome-address,
 .nursinghome-operatingtime,
 .nursinghome-religion {
-  font-size: 0.85rem;
+  font-size: var(--font-size-small);
   margin-bottom: 0.2rem;
 }
 .nursinghome-acttext,
@@ -68,3 +68,11 @@
   padding-left: 1rem;
 }
 
+
+.div-starLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  font-size: var(--font-size-small);
+}
