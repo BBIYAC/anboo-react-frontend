@@ -1,11 +1,11 @@
 import React from "react";
 import TextIcon from "../../atoms/Button/TextIcon";
 import ApprovalsList from "../List/ApprovalsList";
-import SeeMore from "../../atoms/Button/SeeMore";
 import {AiOutlineCheck} from 'react-icons/ai';
 import {AiFillCheckCircle} from 'react-icons/ai';
 import {AiOutlinePlus} from 'react-icons/ai';
 import {AiOutlineDoubleRight} from 'react-icons/ai';
+import '../../../components/molecules/Block/Block.css';
 
 const ApprovalsListBlock = () => {
   return (
@@ -22,10 +22,10 @@ const ApprovalsListBlock = () => {
         icon={<AiOutlineCheck size="13"/>}
         backgroundColor="var(--color-white)"
         border="1px solid"
-        color="var(--color-green)"/>
+        color="var(--color-dark)"/>
       </div>
       <ApprovalsList/>
-      <SeeMore className="manager seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/>
+      {/* <SeeMore className="manager seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/> */}
     </React.Fragment>
   );
 };

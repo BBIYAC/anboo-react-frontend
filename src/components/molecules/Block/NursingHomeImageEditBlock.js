@@ -7,20 +7,20 @@ const NursingHomeImageEditBlock = () => {
     <React.Fragment>
       <hr></hr>
       <div className="grid-container">
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
-        <div className="grid-item"><ImageMiddle /></div>
         <div className="grid-item"><AddNursingHomeImage /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
+        <div className="grid-item"><ImageMiddle /></div>
       </div>
     </React.Fragment>
   );

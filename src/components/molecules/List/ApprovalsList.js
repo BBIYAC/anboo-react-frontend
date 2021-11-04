@@ -5,11 +5,11 @@ const ApprovalsList = () => {
   return (
     <React.Fragment>
       <div className="div-managementScroll">
-        <ul>
-          <li><ApprovalInfoBlock/></li>
-          <li><ApprovalInfoBlock/></li>
-          <li><ApprovalInfoBlock/></li>
-        </ul>
+        <ApprovalInfoBlock/>
+        <ApprovalInfoBlock/>
+        <ApprovalInfoBlock/>
+        <ApprovalInfoBlock/>
+        <ApprovalInfoBlock/>
       </div>
     </React.Fragment>
   );

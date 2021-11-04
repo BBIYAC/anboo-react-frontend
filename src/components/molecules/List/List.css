@@ -1,4 +1,5 @@
-.div-managementScroll{
-  height: 100vh;
+.div-managementScroll {
+  width: 100%;
+  height: 300px;
   overflow-y: scroll;
 }

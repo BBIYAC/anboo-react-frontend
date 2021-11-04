@@ -75,6 +75,8 @@
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
+  height: 300px;
+  overflow-y: scroll;
 }
 .grid-item {
   border-color: var(--color-gray);
@@ -182,6 +184,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  padding-right: 0.5rem;
 }
 .membersListTitle {
   display: flex;
@@ -199,6 +202,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  padding-right: 0.5rem;
 }
 .approvalsListTitle {
   display: flex;
@@ -235,3 +239,4 @@
   margin: 2rem 0.5rem;
   text-align: left;
 }
+

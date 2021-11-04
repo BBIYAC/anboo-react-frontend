@@ -1,7 +1,6 @@
 import React from "react";
 import TextIcon from "../../atoms/Button/TextIcon";
 import MembersList from "../List/MembersList";
-import SeeMore from "../../atoms/Button/SeeMore";
 import {AiOutlineCheck} from 'react-icons/ai';
 // import {AiFillCheckCircle} from 'react-icons/ai';
 import {AiOutlinePlus} from 'react-icons/ai';
@@ -22,10 +21,11 @@ const MembersListBlock = () => {
         icon={<AiOutlineCheck size="13" />}
         backgroundColor="var(--color-white)"
         border="1px solid"
-        color="var(--color-green)"/>
+        color="var(--color-dark)"/>
       </div>
+      <hr />
       <MembersList/>
-      <SeeMore className="manager seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/>
+      {/* <SeeMore className="manager seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/> */}
     </React.Fragment>
   );
 };

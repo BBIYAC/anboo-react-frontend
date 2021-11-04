@@ -5,9 +5,13 @@ const MembersList = () => {
   
   return (
     <React.Fragment>
-      <MemberInfoBlock />
-      <MemberInfoBlock />
-      <MemberInfoBlock />
+      <div className="div-managementScroll">
+        <MemberInfoBlock />
+        <MemberInfoBlock />
+        <MemberInfoBlock />
+        <MemberInfoBlock />
+        <MemberInfoBlock />
+      </div>
     </React.Fragment>
   );
 };

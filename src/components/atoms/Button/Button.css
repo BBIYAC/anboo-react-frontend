@@ -136,8 +136,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0.5rem 1rem 0.7rem;
-  margin-bottom: 1rem;
+  padding: 0 0.7rem 0 0.7rem;
 }
 
 /* file & Act Image Upload */
