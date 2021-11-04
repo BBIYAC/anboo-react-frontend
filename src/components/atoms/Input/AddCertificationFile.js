@@ -1,6 +1,5 @@
 import React, {useState, useRef} from "react";
 import {AiOutlinePaperClip} from 'react-icons/ai';
-import {IoIosClose} from 'react-icons/io';
 
 const AddCertificationFile = () => {
     const fileInput = useRef();
@@ -27,17 +26,19 @@ const AddCertificationFile = () => {
                 ?<div className='input-certificationfile-upload'>
                 {files.map((file, idx)=> 
                     <div className='file-upload' key={idx}>
-                        <p className='txt_filename'><AiOutlinePaperClip size='20' /> {file.name}</p> 
-                        <div>{fileSize(file.size)}</div>
+                        <p className='txt-fileName'><AiOutlinePaperClip size='20' /> {file.name}</p> 
+                        <div className='txt-fileSize'>{fileSize(file.size)}</div>
                     </div>
                 )}</div>
                 :<div className='input-certificationfile'> 
                     <div>증빙서류를 제출해주세요.</div>
                 </div>
             }
-            <button type='button' className='btn-fileUpload' onClick={(e)=>{setIsUpload(false);setFiles([]);}} >전체 삭제</button>
-            <button type='button' className='btn-fileUpload' onClick={() => fileInput.current.click()} >파일 올리기</button>
-            <input type='file' name='files[]' ref={fileInput} onChange={onChange} hidden multiple></input>
+            <div className='div-fileButton'>
+                <button type='button' className='btn-fileDelete' onClick={(e)=>{setIsUpload(false);setFiles([]);}} >삭제</button>
+                <button type='button' className='btn-fileUpload' onClick={() => fileInput.current.click()} >추가</button>
+                <input type='file' name='files[]' ref={fileInput} onChange={onChange} hidden multiple></input>
+            </div>
 
         </>
     );

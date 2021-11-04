@@ -141,22 +141,36 @@ button {
 }
 
 /* file & Act Image Upload */
+.div-fileButton{
+  display: flex;
+  margin-top: 10px;
+}
 .btn-fileUpload{
-  padding: 10px 15px;
+  padding: 5px 10px;
   color: var(--color-green);
   background-color: white;
   border: 1px solid var(--color-green);
   border-radius: var(--border-radius);
-  margin: 10px 0 0 calc(100% - 105px);
-  box-shadow: 0 0 3px;
+  margin-left: 10px;
 }
 
+.btn-fileDelete{
+  padding: 5px 10px;
+  color: white;
+  background-color: var(--color-red);
+  border: 1px solid var(--color-red);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 3px;
+  margin-left: auto;
+  align-items: center;
+}
+
+
 .btn-actImageUpload{
-  padding: 10px 15px;
+  padding: 5px 10px;
   color: var(--color-green);
   background-color: white;
   border: 1px solid var(--color-green);
-  border-radius: 50px;
-  margin-top: 20px;
-  box-shadow: 0 0 3px;
+  border-radius: var(--border-radius);
+  margin-left: auto;
 }

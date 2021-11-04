@@ -132,12 +132,17 @@
   align-items: center;
 }
 
-.txt_filename{
+.txt-fileName{
   width: 50vw;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: left;
+}
+
+.txt-fileSize{
+  color: var(--color-dark-gray);
+  font-size: 0.8rem;
 }
   
 
