@@ -43,6 +43,8 @@
 .imgSmall {
   width: 70px;
   height: 70px;
+  border: 1px solid;
+  border-Color: var(--color-gray);
 }
 .img-actImage {
   width: var(--width);

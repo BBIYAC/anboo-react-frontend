@@ -3,7 +3,7 @@ import React from 'react';
 const ImageLarge = ({ url, border, borderColor }) => {
   // Default Image
   const handleImgError = (e) => {
-      e.target.src = '..//images.png';
+      e.target.src = require("./picture.png").default;
   }
   return(
     <>

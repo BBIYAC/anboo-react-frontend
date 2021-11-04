@@ -13,8 +13,8 @@ const AddImage = ({border, borderColor}) => {
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
-
   }
+  
   return(
     <>
       <img

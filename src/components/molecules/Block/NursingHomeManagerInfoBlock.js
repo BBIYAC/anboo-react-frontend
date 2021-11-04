@@ -7,7 +7,7 @@ const NursingHomeManagerInfoBlock = () => {
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ImageSmall />
+          <ImageSmall url=""/>
           <NursingHomeManagerInfo />
         </div>
       </div>
