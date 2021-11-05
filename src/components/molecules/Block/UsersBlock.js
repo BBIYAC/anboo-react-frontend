@@ -32,7 +32,7 @@ const UsersBlock = ({users}) => {
       :<div className='txt-users'>
       {
         userList.map((name, idx)=>
-            <div className='txt-user' key={idx}><FaUser className='manager' size='13'/> {name}님</div>
+          <div className='txt-user' key={idx}><FaUser className='manager' size='13'/> {name}님</div>
         )
       }
       </div>

@@ -1,16 +1,12 @@
 import React from 'react';
 
-const TextIcon = ({btnText, icon, backgroundColor, border, color}) =>{
-  const handleClick = () => {
-    console.log("this");
-  }
-  
+const TextIcon = ({btnText, icon, backgroundColor, border, color, onClick}) =>{
   return(
     <React.Fragment>
       <button 
       className="btn-textIcon" 
-      onClick={handleClick}
-      style={{backgroundColor, border, color}}>
+      style={{backgroundColor, border, color}}
+      onClick={onClick}>
         {btnText}
         {icon}
       </button>

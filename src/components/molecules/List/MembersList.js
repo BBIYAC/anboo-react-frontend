@@ -1,16 +1,16 @@
 import React from "react";
 import MemberInfoBlock from "../Block/MemberInfoBlock";
 
-const MembersList = () => {
+const MembersList = ({isAllSelect}) => {
   
   return (
     <React.Fragment>
       <div className="div-managementScroll">
-        <MemberInfoBlock />
-        <MemberInfoBlock />
-        <MemberInfoBlock />
-        <MemberInfoBlock />
-        <MemberInfoBlock />
+        <MemberInfoBlock isAllSelect={isAllSelect}/>
+        <MemberInfoBlock isAllSelect={isAllSelect}/>
+        <MemberInfoBlock isAllSelect={isAllSelect}/>
+        <MemberInfoBlock isAllSelect={isAllSelect}/>
+        <MemberInfoBlock isAllSelect={isAllSelect}/>
       </div>
     </React.Fragment>
   );
