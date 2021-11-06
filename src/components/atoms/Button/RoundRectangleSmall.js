@@ -1,14 +1,14 @@
 import React from 'react';
 
-const OvalSmall = ({btnText}) =>{
+const RoundRectangleSmall = ({btnText}) =>{
   return(
     <React.Fragment>
       <button 
-      className="btn-ovalSmall">
+      className="btn-roundrectanglesmall">
         {btnText}
       </button>
     </React.Fragment>
   );
 };
 
-export default OvalSmall;
+export default RoundRectangleSmall;

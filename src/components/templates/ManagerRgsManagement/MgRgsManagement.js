@@ -5,7 +5,6 @@ import MembersListBlock from '../../molecules/Block/MembersListBlock';
 import ApprovalsListBlock from '../../molecules/Block/ApprovalsListBlock';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
-import '../../../components/molecules/List/List.css';
 
 const MgRgsManagement = () => {
   return (

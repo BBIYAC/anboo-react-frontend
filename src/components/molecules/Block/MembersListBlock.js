@@ -1,60 +1,86 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextIcon from "../../atoms/Button/TextIcon";
-import MembersList from "../List/MembersList";
-import {AiOutlineCheck} from 'react-icons/ai';
-// import {AiFillCheckCircle} from 'react-icons/ai';
-import {AiOutlinePlus} from 'react-icons/ai';
+import ImageSmall from "../../atoms/Input/ImageSmall";
 import {AiOutlineDoubleRight} from 'react-icons/ai';
+import RoundRectangleSmall from "../../atoms/Button/RoundRectangleSmall";
+
 
 const MembersListBlock = () => {
-  const [isSummary, setSummary] = useState(true);
-  const [isBtnColor, setBtnColor] = useState("var(--color-dark)");
-  // 전체 선택과 전체 선택 해제
-  const onClick = () => {
-    if(isSummary){
-      setSummary(false);
-      setBtnColor("var(--color-green)");
-    }
-    else {
-      setSummary(true);
-      setBtnColor("var(--color-datk)")
-    }
-  }
-  
-  // 개별 선택으로 다 선택되었을 때 전체 선택 체크
+  const memberInfo = [
+    { image: <ImageSmall/>, name: "김순덕", year: "2001.01.01" },
+    { image: <ImageSmall/>, name: "이순덕", year: "2002.01.01" },
+    { image: <ImageSmall/>, name: "박순덕", year: "2003.01.01" },
+    { image: <ImageSmall/>, name: "최순덕", year: "2004.01.01" },
+    { image: <ImageSmall/>, name: "권순덕", year: "2005.01.01" },
+  ];
 
-  // 전체 선택 후 개별 선택 해제 시 전체 선택 체크 해제
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    setMembers(memberInfo);
+  }, []);
+
+  const handleChange = (e) => {
+    const {name, checked} = e.target;
+    if(name === "allSelect") {
+      let tempMember = members.map(member => { 
+        return {...member, isChecked : checked};
+      });
+      setMembers(tempMember);
+    } else {
+      let tempMember = members.map(member => 
+        member.name === name ? {...member, isChecked : checked} : member
+      );
+      setMembers(tempMember);
+    }
+  };
+
   return (
     <React.Fragment>
       <hr/>
+
       <div className="membersListTitle">
         <span>총 회원 목록</span>
       </div> 
+
       <hr/>
+
       <div className="managementOption">
         <TextIcon 
         btnText="활동 등록" 
         icon={<AiOutlineDoubleRight size="13"/>}/>
-        {isSummary
-        ?<TextIcon 
-          btnText="모두 선택"
-          icon={<AiOutlineCheck size="13" />}
-          backgroundColor="var(--color-white)"
-          border="1px solid"
-          color={isBtnColor}
-          onClick={onClick}/>
-        :<TextIcon 
-          btnText="모두 해제"
-          icon={<AiOutlineCheck size="13" />}
-          backgroundColor="var(--color-white)"
-          border="1px solid"
-          color={isBtnColor}
-          onClick={onClick}/>
-        }
+        <div className="btn-option">
+          <label className="lbl-allSelect">모두 선택</label>
+          <input 
+            name="allSelect"
+            type="checkbox"
+            checked = {members.filter(member => member?.isChecked !== true).length < 1}
+            onChange={handleChange}/>
+        </div>
       </div>
-      <hr />
-      <MembersList />
-      {/* <SeeMore className="manager seemore" text="더 보기" icon={<AiOutlinePlus size="15"/>}/> */}
+
+      <hr/>
+
+      <div className="div-managementScroll">
+        {members.map(member => (
+        <div className="member">
+          {member.image}
+          <div className="div-info">
+            <div className="memberInfo-name">{member.name} 님</div>
+            <div className="memberInfo-year">생년월일: {member.year}</div>
+          </div>
+          
+          <div className="div-checkBoxAndDelete">
+            <RoundRectangleSmall btnText="삭제"/>
+            <input type="checkbox" 
+            className="form-check-input" 
+            name={member.name}
+            checked={member?.isChecked || false}
+            onChange={handleChange}/>
+          </div>
+        </div>
+      ))}
+      </div>
     </React.Fragment>
   );
 };

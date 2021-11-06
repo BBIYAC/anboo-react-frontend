@@ -17,3 +17,4 @@ const NursingHomeInfoList = () => {
 };
 
 export default NursingHomeInfoList;
+

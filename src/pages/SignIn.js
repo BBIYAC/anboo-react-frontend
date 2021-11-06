@@ -39,3 +39,61 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+// import React, { useEffect, useState } from "react";
+
+// const userName = [
+//   {name:"딸기"},
+//   {name:"바나나"}, 
+//   {name:"오렌지"},
+//   {name:"사과"},
+//   {name:"포도"},
+// ]
+
+// const SignIn = () => {
+//   const [users, setUsers] = useState([]);
+
+//   useEffect(() => {
+//     setUsers(userName);
+//   }, []);
+
+//   const handleChange = (e) => {
+//     const {name, checked} = e.target;
+//     if(name === "allSelect") {
+//       let tempUser = users.map(user => { 
+//         return {...user, isChecked : checked};
+//       });
+//       setUsers(tempUser);
+//     } else {
+//       let tempUser = users.map(user => 
+//         user.name === name ? {...user, isChecked : checked} : user
+//       );
+//       setUsers(tempUser);
+//     }
+//   };
+//   return (
+//     <form className="form">
+//       <div className="form-check">
+//         <label className="form-check-label">모두 선택</label>
+//         <input 
+//         type="checkbox"
+//         className="form-check-input"
+//         name="allSelect"
+//         checked={users.filter(user => user?.isChecked !== true).length < 1}
+//         onChange={handleChange}/>
+//       </div>
+//       {users.map(user => (
+//         <div className="form-check">
+//           <label className="form-check-label">{user.name}</label>
+//           <input type="checkbox" 
+//           className="form-check-input" 
+//           name={user.name}
+//           checked={user?.isChecked || false}
+//           onChange={handleChange}/>
+//         </div>
+//       ))}
+//     </form>
+//   );
+// };
+
+// export default SignIn;
