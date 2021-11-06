@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NursingHomeInfo from '../../atoms/Label/NursingHomeInfo';
-import ImageLarge from '../../atoms/Input/ImageLarge';
+import ImageMiddle from '../../atoms/Input/ImageMiddle';
 import { AiFillStar } from 'react-icons/ai';
 
 const NursingHomeDetailInfoBlock = ({width, height }) => {
@@ -21,7 +21,7 @@ const NursingHomeDetailInfoBlock = ({width, height }) => {
       <hr/>
       <div className="block-NursingHomeDetailInfo">
         <div className="NursingHomeInfo">
-          <ImageLarge url=""/>
+          <ImageMiddle url=""/>
           <NursingHomeInfo />
         </div>
         {isSummary
