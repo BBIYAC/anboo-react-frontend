@@ -4,6 +4,7 @@ import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import { BiLogOut } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';
 import '../components/atoms/Label/Label.css';
+import { Link } from 'react-router-dom';
 
 const  RegisterActs= () => {
   return (
@@ -11,7 +12,9 @@ const  RegisterActs= () => {
       <div className="header">
         <IoIosArrowBack opacity="0" size="20"/>
         요양원 활동 목록
-        <BiLogOut size="20"/>
+        <Link to="/">
+          <BiLogOut size="20"/>
+        </Link>
       </div>
       <ul>
         <li><NursingHomeActBlock /></li>

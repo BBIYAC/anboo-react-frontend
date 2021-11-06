@@ -3,13 +3,16 @@ import React from 'react';
 import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
 import Floating from '../components/atoms/Button/Floating'
 import ManagerActsPost from '../components/templates/ManagerActs/ManagerActsPost';
+import { Link } from "react-router-dom";
 
 const ManagerActs = () => {
   return (
     <React.Fragment>
       {/* <ManagerActsList /> */}
       <ManagerActsPost />
-      <Floating background='var(--color-green)' />
+      <Link to="/mg/requests">
+        <Floating background='var(--color-green)' />
+      </Link>
       <ManagerBelowBarBlock isMember/>
     </React.Fragment>
   );

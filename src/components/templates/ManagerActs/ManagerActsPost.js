@@ -6,6 +6,7 @@ import PostActTextArea from '../../atoms/Input/PostActTextArea';
 import RequestDate from '../../atoms/Label/RequestDate';
 import OvalLarge from '../../atoms/Button/OvalLarge';
 import UsersBlock from '../../molecules/Block/UsersBlock';
+import { Link } from "react-router-dom";
 
 const ManagerActsPost = () => {
   const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수'];
@@ -13,9 +14,13 @@ const ManagerActsPost = () => {
   return (
     <React.Fragment>
       <div className="header">
-        <IoIosArrowBack size="20"/>
+        <Link to="/mg/rgs">
+          <IoIosArrowBack size="20"/>
+        </Link>
           활동 등록
-        <BiLogOut size="20"/>
+        <Link to="/">
+          <BiLogOut size="20"/>
+        </Link>
       </div>
       <AddActImage />
       <PostActTextArea />

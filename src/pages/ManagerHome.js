@@ -7,6 +7,7 @@ import '../components/molecules/Block/Block.css';
 import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBefore';
 // import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
 // import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
+import { Link } from 'react-router-dom';
 
 const ManagerHome = () => {
     return (
@@ -14,7 +15,9 @@ const ManagerHome = () => {
             <div className="header">
               <IoIosArrowBack opacity='0' size="20"/>
               관리자 홈
-              <BiLogOut size="20"/>
+              <Link to="/">
+                <BiLogOut size="20"/>
+              </Link>
             </div>
             <ManagerHomeBefore />
             {/* <ManagerHomeWaiting /> */}

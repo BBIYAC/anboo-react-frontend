@@ -9,7 +9,7 @@ import './ManagerHome.css';
 
 const ManagerHomeBefore = () => {
     return(
-        <>
+        <React.Fragment>
             <NoticeBlock />
             <SearchBoxBlock />
             <div className="div-NursingHomeInfoCheckBlockList">
@@ -21,7 +21,7 @@ const ManagerHomeBefore = () => {
             </div>
             <AddCertificationFile />
             <RoundRectangle btnText='요양원 등록 요청하기' background='var(--color-green)' />
-        </>
+        </React.Fragment>
     );
 };
 

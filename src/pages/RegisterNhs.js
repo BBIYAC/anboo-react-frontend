@@ -7,20 +7,29 @@ import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Button/Button.css';
 import '../components/molecules/Block/Block.css';
 import '../components/atoms/Label/Label.css';
+import { Link } from 'react-router-dom';
 
 const  RegisterNhs= () => {
   return (
     <React.Fragment>
       <div className="header-contain">
         <div className="header">
-          <IoIosArrowBack size="20"/>
+          <Link to="/rg/nh-location">
+            <IoIosArrowBack size="20"/>
+          </Link>
           요양원 리스트
-          <BiLogOut size="20"/>
+          <Link to="/">
+            <BiLogOut size="20"/>
+          </Link>
         </div>
         <SearchBlock />
       </div>
-      <NursingHomeInfoList />
-      <Floating background="var(--color-blue)"/>
+      <Link to="/rg/nh-info">
+        <NursingHomeInfoList />
+      </Link>
+      <Link to="/rg/nh-location">
+        <Floating background="var(--color-blue)"/>
+      </Link>
     </React.Fragment>
   );
 };

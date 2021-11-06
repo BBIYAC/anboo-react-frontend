@@ -7,7 +7,6 @@ import {AiFillCheckCircle} from 'react-icons/ai';
 const NursingHomeInfoCheckBlock = ({isSelected}) => {
   return(
     <React.Fragment>
-      <hr></hr>
       <div className="block-NursingHomeInfo">
         <div className="NursingHomeInfo">
           <ImageMiddle />

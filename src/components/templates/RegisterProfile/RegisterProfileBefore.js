@@ -7,6 +7,7 @@ import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import Floating from '../../atoms/Button/Floating';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const  RegisterProfileBefore= () => {
   return (
@@ -21,7 +22,9 @@ const  RegisterProfileBefore= () => {
         <Birth />
         <Caution />
         <RoundRectangle btnText='요양자 등록 요청하기'/>
-        <Floating background='var(--color-blue)' />
+        <Link to="/">
+          <Floating background='var(--color-blue)' />
+        </Link>
     </React.Fragment>
   );
 };

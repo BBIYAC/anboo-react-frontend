@@ -7,14 +7,19 @@ import BelowRectangleBlock from '../components/molecules/Block/BelowRectangleBlo
 import Floating from '../components/atoms/Button/Floating';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const  RegisterNhInfo= () => {
   return (
     <React.Fragment>
       <div className="header">
-        <IoIosArrowBack size="20"/>
+        <Link to="/rg/nhs">
+          <IoIosArrowBack size="20"/>
+        </Link>
         요양원 정보
-        <BiLogOut size="20"/>
+        <Link to="/">
+          <BiLogOut size="20"/>
+        </Link>
       </div>
       <NursingHomeDetailInfoBlock />
       <hr/>
@@ -23,7 +28,9 @@ const  RegisterNhInfo= () => {
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
       <BelowRectangleBlock />
-      <Floating background="var(--color-blue)"/>
+      <Link to="/rg/nh-location">
+        <Floating background="var(--color-blue)"/>
+      </Link>
     </React.Fragment>
   );
 };

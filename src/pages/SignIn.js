@@ -8,6 +8,7 @@ import { BiLogOut } from 'react-icons/bi';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   const signinSubmit = (event) => {
@@ -26,14 +27,23 @@ const SignIn = () => {
         <UserChoice />
         <Id />
         <Password />
-        <RoundRectangle btnText="로그인" />
+        <Link to="/mg/home">
+          <RoundRectangle btnText="로그인" />
+        </Link>
+        {/* <Link to="/rg/acts">
+          <RoundRectangle btnText="로그인" />
+        </Link> */}
       </form>
-      <RoundRectangle btnText="회원가입" />
-      <RoundRectangle 
-      color="var(--color-blue)" 
-      background="white" 
-      btnText="비회원으로 시작하기" 
-      border="1px solid"/>
+      <Link to="/signup/before">
+        <RoundRectangle btnText="회원가입" />
+      </Link>
+      <Link to="rg/nh-location">
+        <RoundRectangle 
+        color="var(--color-blue)" 
+        background="white" 
+        btnText="비회원으로 시작하기" 
+        border="1px solid"/>
+      </Link>
     </React.Fragment>
   );
 };

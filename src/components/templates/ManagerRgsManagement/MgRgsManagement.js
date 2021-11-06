@@ -5,6 +5,7 @@ import MembersListBlock from '../../molecules/Block/MembersListBlock';
 import ApprovalsListBlock from '../../molecules/Block/ApprovalsListBlock';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
+import { Link } from "react-router-dom";
 
 const MgRgsManagement = () => {
   return (
@@ -12,11 +13,15 @@ const MgRgsManagement = () => {
       <div className="header">
         <IoIosArrowBack opacity='0' size="20"/>
         회원 관리
-        <BiLogOut size="20"/>
+        <Link to="/">
+          <BiLogOut size="20"/>
+        </Link>
       </div>
       <MembersListBlock/>
       <ApprovalsListBlock/>
-      <Floating background='var(--color-green)'/>
+      <Link to="/mg/requests">
+        <Floating background='var(--color-green)'/>
+      </Link>
       <ManagerBelowBarBlock isMember/>
     </React.Fragment>
   );

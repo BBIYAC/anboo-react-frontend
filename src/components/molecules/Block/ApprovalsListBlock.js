@@ -47,7 +47,7 @@ const ApprovalsListBlock = () => {
 
       <div className="managementOption">
         <TextIcon 
-        btnText="활동 등록" 
+        btnText="등록 승인" 
         icon={<AiOutlineDoubleRight size="13"/>}/>
         <div className="btn-option">
           <label className="lbl-allSelect" style={{paddingRight:"0.5rem", fontSize: "0.8rem"}}>모두 선택</label>

@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
-import UserChoice from '../../atoms/Select/UserChoice';
-import NameLong from '../../atoms/Input/NameLong';
-import Id from '../../atoms/Input/Id';
-import Password from '../../atoms/Input/Password';
-import PasswordCheck from '../../atoms/Input/PasswordCheck';
-import PhoneNumber from '../../atoms/Input/PhoneNumber';
-import Email from '../../atoms/Input/Email';
-import RoundRectangle from '../../atoms/Button/RoundRectangle';
+import UserChoice from '../components/atoms/Select/UserChoice';
+import NameLong from '../components/atoms/Input/NameLong';
+import Id from '../components/atoms/Input/Id';
+import Password from '../components/atoms/Input/Password';
+import PasswordCheck from '../components/atoms/Input/PasswordCheck';
+import PhoneNumber from '../components/atoms/Input/PhoneNumber';
+import Email from '../components/atoms/Input/Email';
+import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const SignUpBefore = () => {
     const signupSubmit = (event) => {
@@ -32,7 +33,9 @@ const SignUpBefore = () => {
                 <PasswordCheck pwdCheck={pwd}/>
                 <PhoneNumber />
                 <Email />
-                <RoundRectangle btnText="회원가입" />
+                <Link to="/signup/after">
+                  <RoundRectangle btnText="회원가입" />
+                </Link>
             </form>
         </React.Fragment>
     );

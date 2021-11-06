@@ -1,6 +1,6 @@
 import React from 'react';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
-import { FiChevronsRight } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 const MapBlock = () => {
     return (
@@ -9,7 +9,9 @@ const MapBlock = () => {
         	<div className="div-map">
             지도
           </div>
-          <RoundRectangle textAlign="center" btnText="11개의 시설 보러가기"/>
+          <Link to="/rg/nhs">
+            <RoundRectangle textAlign="center" btnText="11개의 시설 보러가기"/>
+          </Link>
 				</div>
 			</React.Fragment>
     );

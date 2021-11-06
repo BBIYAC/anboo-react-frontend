@@ -3,7 +3,7 @@ import TextIcon from "../../atoms/Button/TextIcon";
 import ImageSmall from "../../atoms/Input/ImageSmall";
 import {AiOutlineDoubleRight} from 'react-icons/ai';
 import RoundRectangleSmall from "../../atoms/Button/RoundRectangleSmall";
-
+import { Link } from "react-router-dom";
 
 const MembersListBlock = () => {
   const memberInfo = [
@@ -46,9 +46,11 @@ const MembersListBlock = () => {
       <hr/>
 
       <div className="managementOption">
-        <TextIcon 
-        btnText="활동 등록" 
-        icon={<AiOutlineDoubleRight size="13"/>}/>
+        <Link to="/mg/acts">
+          <TextIcon
+          btnText="활동 등록" 
+          icon={<AiOutlineDoubleRight size="13"/>}/>
+        </Link>
         <div className="btn-option">
           <label className="lbl-allSelect">모두 선택</label>
           <input 
