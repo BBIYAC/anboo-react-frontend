@@ -14,6 +14,7 @@ const AddCertificationFile = () => {
         }
     };
     const onChange = (e) => {
+        console.log(e.target.value);
         setFiles([...files, ...e.target.files]);
         (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
     };
@@ -30,15 +31,15 @@ const AddCertificationFile = () => {
                         <div className='txt-fileSize'>{fileSize(file.size)}</div>
                     </div>
                 )}</div>
-                :<div className='input-certificationfile'> 
+                :<div className='input-certificationfile' onClick={() => fileInput.current.click()}> 
                     <div>증빙서류를 제출해주세요.</div>
                 </div>
             }
             <div className='div-fileButton'>
-                <button type='button' className='btn-fileDelete' onClick={(e)=>{setIsUpload(false);setFiles([]);}} >삭제</button>
+                <button type='button' className='btn-fileDelete' onClick={()=>{setFiles([]);setIsUpload(false); fileInput.current.value=null;}} >삭제</button>
                 <button type='button' className='btn-fileUpload' onClick={() => fileInput.current.click()} >추가</button>
                 <input type='file' name='files[]' ref={fileInput} onChange={onChange} hidden multiple></input>
-            </div>
+            </div> 
 
         </>
     );
