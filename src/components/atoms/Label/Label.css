@@ -76,3 +76,11 @@
   width: 2.5rem;
   font-size: var(--font-size-small);
 }
+
+/* email check timer */
+.emailcheck_timer{
+  position: absolute;
+  bottom: 80px;
+  right: 110px;
+  /* color: var(--color-dark-gray); */
+}

@@ -21,7 +21,7 @@ button {
   width: 80px;
   height: 45px;
   margin-left: 10px;
-  margin-bottom: var(--margin-bottom);
+  /* margin-bottom: var(--margin-bottom); */
   border-radius: var(--border-radius);
   font-size: var(--font-size-middle);
 }
