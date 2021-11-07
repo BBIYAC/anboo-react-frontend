@@ -10,16 +10,16 @@ const NursingHomeInfo = () => {
   return(
     <>
       <div className="header">
-        <Link to="/mg/home">
+        <Link className="linkComponent" to="/mg/home">
          <IoIosArrowBack size="20"/>
         </Link>
         요양원 정보
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>
       <MgNHInfo />
-      <Link to="/mg/requests">
+      <Link className="linkComponent" to="/mg/requests">
         <Floating background="var(--color-green)"/>
       </Link>
       <ManagerBelowBarBlock isRequest/>

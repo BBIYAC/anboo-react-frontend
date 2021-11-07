@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom';
 const ManagerBelowBarBlock = ({isMember, isHome, isRequest}) => {
   return(
     <div className='belowbar'>
-      <Link to="/mg/rgs">
+      <Link className="linkComponent" to="/mg/rgs">
         {isMember? <FooterIconBlock icon={<FiUsers />} name="회원관리" isSelected isManager />:
         <FooterIconBlock icon={<FiUsers />} name="회원관리" />  }
       </Link>
-      <Link to="/mg/home">
+      <Link className="linkComponent" to="/mg/home">
         {isHome ? <FooterIconBlock icon={<AiOutlineHome />} name="홈" isSelected isManager />: 
         <FooterIconBlock icon={<AiOutlineHome />} name="홈" />  }
       </Link>
-      <Link to="/mg/nh-info">
+      <Link className="linkComponent" to="/mg/nh-info">
         {isRequest ? <FooterIconBlock icon={<BiBuildings />} name="시설정보" isSelected isManager />:
         <FooterIconBlock icon={<BiBuildings />} name="시설정보" />  }
       </Link>

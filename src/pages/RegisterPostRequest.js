@@ -11,11 +11,11 @@ const  RegisterPostRequest= () => {
   return (
     <React.Fragment>
       <div className="header">
-        <Link to="/rg/requests">
+        <Link className="linkComponent" to="/rg/requests">
           <IoIosArrowBack size="20"/>
         </Link>
         요청사항 작성
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>

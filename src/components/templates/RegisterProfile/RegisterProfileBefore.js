@@ -22,7 +22,7 @@ const  RegisterProfileBefore= () => {
         <Birth />
         <Caution />
         <RoundRectangle btnText='요양자 등록 요청하기'/>
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <Floating background='var(--color-blue)' />
         </Link>
     </React.Fragment>

@@ -33,7 +33,7 @@ const SignUpBefore = () => {
                 <PasswordCheck pwdCheck={pwd}/>
                 <PhoneNumber />
                 <Email />
-                <Link to="/signup/after">
+                <Link className="linkComponent" to="/signup/after">
                   <RoundRectangle btnText="회원가입" />
                 </Link>
             </form>

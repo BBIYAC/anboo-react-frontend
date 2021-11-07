@@ -15,7 +15,7 @@ const ManagerHome = () => {
             <div className="header">
               <IoIosArrowBack opacity='0' size="20"/>
               관리자 홈
-              <Link to="/">
+              <Link className="linkComponent" to="/">
                 <BiLogOut size="20"/>
               </Link>
             </div>

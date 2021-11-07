@@ -46,7 +46,7 @@ const MembersListBlock = () => {
       <hr/>
 
       <div className="managementOption">
-        <Link to="/mg/acts">
+        <Link className="linkComponent" to="/mg/acts">
           <TextIcon
           btnText="활동 등록" 
           icon={<AiOutlineDoubleRight size="13"/>}/>

@@ -10,7 +10,7 @@ const ManagerActs = () => {
     <React.Fragment>
       {/* <ManagerActsList /> */}
       <ManagerActsPost />
-      <Link to="/mg/requests">
+      <Link className="linkComponent" to="/mg/requests">
         <Floating background='var(--color-green)' />
       </Link>
       <ManagerBelowBarBlock isMember/>

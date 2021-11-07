@@ -13,11 +13,11 @@ const  RegisterNhInfo= () => {
   return (
     <React.Fragment>
       <div className="header">
-        <Link to="/rg/nhs">
+        <Link className="linkComponent" to="/rg/nhs">
           <IoIosArrowBack size="20"/>
         </Link>
         요양원 정보
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>
@@ -28,7 +28,7 @@ const  RegisterNhInfo= () => {
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
       <BelowRectangleBlock />
-      <Link to="/rg/nh-location">
+      <Link className="linkComponent" to="/rg/nh-location">
         <Floating background="var(--color-blue)"/>
       </Link>
     </React.Fragment>

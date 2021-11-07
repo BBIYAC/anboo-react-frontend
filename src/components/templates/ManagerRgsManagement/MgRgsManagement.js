@@ -13,13 +13,13 @@ const MgRgsManagement = () => {
       <div className="header">
         <IoIosArrowBack opacity='0' size="20"/>
         회원 관리
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>
       <MembersListBlock/>
       <ApprovalsListBlock/>
-      <Link to="/mg/requests">
+      <Link className="linkComponent" to="/mg/requests">
         <Floating background='var(--color-green)'/>
       </Link>
       <ManagerBelowBarBlock isMember/>

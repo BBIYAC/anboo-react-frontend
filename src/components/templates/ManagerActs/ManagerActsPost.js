@@ -14,11 +14,11 @@ const ManagerActsPost = () => {
   return (
     <React.Fragment>
       <div className="header">
-        <Link to="/mg/rgs">
+        <Link className="linkComponent" to="/mg/rgs">
           <IoIosArrowBack size="20"/>
         </Link>
           활동 등록
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>

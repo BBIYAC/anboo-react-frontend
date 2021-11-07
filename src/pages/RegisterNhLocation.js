@@ -13,7 +13,7 @@ const RegisterNhLocation= () => {
       <div className="header">
         <IoIosArrowBack opacity="0" size="20"/>
         요양원 위치
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>

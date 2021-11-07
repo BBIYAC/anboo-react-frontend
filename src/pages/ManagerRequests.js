@@ -12,7 +12,7 @@ const  ManagerRequests= () => {
       <div className="header">
         <IoIosArrowBack opacity='0' size="20"/>
         요청사항
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>

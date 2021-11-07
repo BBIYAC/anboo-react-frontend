@@ -12,11 +12,11 @@ const  RegisterRequests = () => {
             <div className="header">
                 <IoIosArrowBack opacity="0" size="20"/>
                 요청사항 목록
-                <Link to="/">
+                <Link className="linkComponent" to="/">
                   <BiLogOut size="20"/>
                 </Link>
             </div>
-            <Link to="/rg/post-request">
+            <Link className="linkComponent" to="/rg/post-request">
               <AddPost className='register' />
             </Link>
             <RequestBlock requestTitle="# 박혁거세(박순자님 아들)" requestContent="박순자님 견과류 알레르기가 있으니 음식에 견과류 넣지 말아주세요!" requestDate="2021년 10월 28일 20시 34분" response="" />

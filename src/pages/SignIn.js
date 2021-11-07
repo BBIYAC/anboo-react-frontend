@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UserChoice from '../components/atoms/Select/UserChoice';
 import Id from '../components/atoms/Input/Id';
 import Password from '../components/atoms/Input/Password';
@@ -15,6 +15,7 @@ const SignIn = () => {
     event.preventDefault();
     alert('로그인 완료');
   };
+  const [pwd, setPwd] = useState('');
 
   return (
     <React.Fragment>
@@ -26,18 +27,18 @@ const SignIn = () => {
       <form onSubmit={signinSubmit}>
         <UserChoice />
         <Id />
-        <Password />
-        <Link to="/mg/home">
+        <Password setPwd={setPwd}/>
+        <Link className="linkComponent" to="/mg/home">
           <RoundRectangle btnText="로그인" />
         </Link>
         {/* <Link to="/rg/acts">
           <RoundRectangle btnText="로그인" />
         </Link> */}
       </form>
-      <Link to="/signup/before">
+      <Link className="linkComponent" to="/signup/before">
         <RoundRectangle btnText="회원가입" />
       </Link>
-      <Link to="rg/nh-location">
+      <Link className="linkComponent" to="rg/nh-location">
         <RoundRectangle 
         color="var(--color-blue)" 
         background="white" 
@@ -49,61 +50,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-// import React, { useEffect, useState } from "react";
-
-// const userName = [
-//   {name:"딸기"},
-//   {name:"바나나"}, 
-//   {name:"오렌지"},
-//   {name:"사과"},
-//   {name:"포도"},
-// ]
-
-// const SignIn = () => {
-//   const [users, setUsers] = useState([]);
-
-//   useEffect(() => {
-//     setUsers(userName);
-//   }, []);
-
-//   const handleChange = (e) => {
-//     const {name, checked} = e.target;
-//     if(name === "allSelect") {
-//       let tempUser = users.map(user => { 
-//         return {...user, isChecked : checked};
-//       });
-//       setUsers(tempUser);
-//     } else {
-//       let tempUser = users.map(user => 
-//         user.name === name ? {...user, isChecked : checked} : user
-//       );
-//       setUsers(tempUser);
-//     }
-//   };
-//   return (
-//     <form className="form">
-//       <div className="form-check">
-//         <label className="form-check-label">모두 선택</label>
-//         <input 
-//         type="checkbox"
-//         className="form-check-input"
-//         name="allSelect"
-//         checked={users.filter(user => user?.isChecked !== true).length < 1}
-//         onChange={handleChange}/>
-//       </div>
-//       {users.map(user => (
-//         <div className="form-check">
-//           <label className="form-check-label">{user.name}</label>
-//           <input type="checkbox" 
-//           className="form-check-input" 
-//           name={user.name}
-//           checked={user?.isChecked || false}
-//           onChange={handleChange}/>
-//         </div>
-//       ))}
-//     </form>
-//   );
-// };
-
-// export default SignIn;

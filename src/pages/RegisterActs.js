@@ -12,7 +12,7 @@ const  RegisterActs= () => {
       <div className="header">
         <IoIosArrowBack opacity="0" size="20"/>
         요양원 활동 목록
-        <Link to="/">
+        <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>
       </div>

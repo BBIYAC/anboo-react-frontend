@@ -69,3 +69,8 @@ code {
 .register{
   color: var(--color-blue);
 }
+
+.linkComponent {
+  text-decoration: none;
+  color: var(--color-dark);
+}
