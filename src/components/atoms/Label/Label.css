@@ -80,7 +80,6 @@
 /* email check timer */
 .emailcheck_timer{
   position: absolute;
-  bottom: 80px;
-  right: 110px;
-  /* color: var(--color-dark-gray); */
+  top: 15px;
+  right: 90px;
 }
