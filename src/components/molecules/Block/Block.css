@@ -23,12 +23,11 @@
 }
 
 /* Map */
-.block-map {
+.div-map {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
 
 /* Nursinghome Information */
 .block-NursingHomeInfo {
