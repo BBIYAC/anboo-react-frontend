@@ -20,13 +20,14 @@ const Email = ({setIsEmail, fillMessage}) =>{
         else{
             setIsDisabled(true);
             setColor({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
-            setIsNull(true);
         };
     };
 
     useEffect(() => {
-        showCheck === false && setIsNull(fillMessage);
-    }, [fillMessage, isNull])
+        (txtEmail == '') 
+        ? setIsNull(fillMessage)
+        : (isDisabled)? setShowCheck(true): setShowCheck(false);
+    }, [fillMessage, isDisabled])
 
 
     const onCFClick = () => {

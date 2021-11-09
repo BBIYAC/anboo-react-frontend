@@ -6,22 +6,18 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
     const cfNumCheck = useRef();
     const [txtEmailCheck, setTxtEmailCheck] = useState('');
     const [isSuccess, setIsSuccess] = useState(true);
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
     const [isNull, setIsNull] = useState(false);
     const [min, setMin] = useState(3);
     const [sec, setSec] = useState(0);
-    const [color, setColor] = useState({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
+    const [color, setColor] = useState({color: 'var(--color-blue)', borderColor: 'var(--color-blue)'});
     const onChange = (e) => {
         setTxtEmailCheck(e.target.value);
         if(e.target.value.length != 0){
             setIsDisabled(false);
             setColor({color: 'var(--color-blue)', borderColor: 'var(--color-blue)'});
         }
-        else{
-            setIsDisabled(true);
-            setColor({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
-        };
     };
     
     const onClick = () => {
@@ -63,7 +59,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
 
     useEffect(()=>{
         txtEmailCheck == '' && setIsNull(fillMessage);
-    },[fillMessage, isNull])
+    },[fillMessage, isDisabled])
 
     return(
         <React.Fragment>

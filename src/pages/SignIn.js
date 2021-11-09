@@ -25,7 +25,6 @@ const SignIn = () => {
 
   const onClick = () => {
     setFillMessage(true); // 비어있는 input 경고
-    console.log(isUser, isId, isPassword);
   }
 
 

@@ -7,11 +7,15 @@ const PasswordCheck = ({pwdCheck, setIsPasswordCheck, fillMessage}) =>{
     const onChange = (e) => {
         setTitPasswordCheck(e.target.value);
         (pwdCheck == e.target.value)? setIsEqual(true) : setIsEqual(false);
-        e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
+        (e.target.value.length > 0) 
+        ? setIsNull(false) 
+        : (!isEqual)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        titPasswordCheck == '' ? setIsNull(fillMessage): setIsPasswordCheck(true);
-    }, [fillMessage, isNull])
+        (titPasswordCheck == '') 
+        ? setIsNull(fillMessage)
+        : (isEqual)? setIsPasswordCheck(true): setIsPasswordCheck(false);
+    }, [fillMessage, titPasswordCheck])
     return(
         <React.Fragment>
             <div className="tit-passwordcheck">비밀번호 확인</div>

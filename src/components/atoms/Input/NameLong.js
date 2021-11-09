@@ -11,11 +11,15 @@ const NameLong = ({setIsName, fillMessage}) =>{
         setTitName(e.target.value);
         ( exp.test(e.target.value) )? setIsExept(true) : setIsExept(false);
         ( numExp.test(e.target.value) )? setIsNumExept(true) : setIsNumExept(false);
-        e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
+        (e.target.value.length > 0) 
+        ? setIsNull(false) 
+        : (isExept || isNumExept)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        titName == '' ? setIsNull(fillMessage): setIsName(true);
-      }, [fillMessage, isNull])
+        (titName == '') 
+        ? setIsNull(fillMessage)
+        : (!isExept && !isNumExept)? setIsName(true): setIsName(false);
+      }, [fillMessage, titName])
     return(
         <React.Fragment>
             <div className="tit-name">이름</div>

@@ -9,11 +9,15 @@ const PhoneNumber = ({setIsPhone, fillMessage}) =>{
         setTitPhone(e.target.value);
         ( e.target.value.length > 11 )? setIsLong(true) : setIsLong(false);
         ( e.target.value == '' )? setIsNotNum(true) : setIsNotNum(false);
-        e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
+        (e.target.value.length > 0) 
+        ? setIsNull(false) 
+        : (isLong || isNotNum)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        titPhone == '' ? setIsNull(fillMessage): setIsPhone(true);
-    }, [fillMessage, isNull])
+        (titPhone == '') 
+        ? setIsNull(fillMessage)
+        : (!isLong && !isNotNum)? setIsPhone(true): setIsPhone(false);
+    }, [fillMessage, titPhone])
     return(
         <React.Fragment>
             <div className="tit-name">전화번호</div>

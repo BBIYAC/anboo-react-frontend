@@ -29,6 +29,7 @@ const SignUpBefore = () => {
 
     const onClick = () => {
         setFillMessage(true); // 비어있는 input 경고
+        console.log(isUser, isName, isId, isPassword, isPasswordCheck, isPhone, isEmail);
     }
 
 
@@ -50,9 +51,9 @@ const SignUpBefore = () => {
                 {
                     (isUser && isName && isId && isPassword && isPasswordCheck && isPhone && isEmail)
                     ?<Link className="linkComponent" to="/signup/after">
-                        <RoundRectangle type='submit' btnText="회원가입" />
+                        <RoundRectangle type='submit' btnText="회원가입 링크" />
                     </Link>
-                    :<RoundRectangle type='button' btnText="회원가입" onClick={onClick} />
+                    :<RoundRectangle type='button' btnText="회원가입 버튼" onClick={onClick} />
                 }
             </form>
         </React.Fragment>
