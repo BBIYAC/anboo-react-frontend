@@ -14,9 +14,23 @@ import { Link } from 'react-router-dom';
 const SignUpBefore = () => {
     const signupSubmit = (event) => {
         event.preventDefault();
-        alert('회원가입 완료');
     };
     const [pwd, setPwd] = useState('');
+    const [fillMessage, setFillMessage] = useState(false);
+
+    // 유효성 검사
+    const [isUser, setIsUser] = useState(false);
+    const [isName, setIsName] = useState(false);
+    const [isId, setIsId] = useState(false);
+    const [isPassword, setIsPassword] = useState(false);
+    const [isPasswordCheck, setIsPasswordCheck] = useState(false);
+    const [isPhone, setIsPhone] = useState(false);
+    const [isEmail, setIsEmail] = useState(false);
+
+    const onClick = () => {
+        setFillMessage(true); // 비어있는 input 경고
+    }
+
 
     return (
         <React.Fragment>
@@ -26,16 +40,20 @@ const SignUpBefore = () => {
               <BiLogOut opacity="0" size="20"/>
             </div>
             <form onSubmit={signupSubmit}>
-                <UserChoice />
-                <NameLong />
-                <Id />
-                <Password setPwd={setPwd}/>
-                <PasswordCheck pwdCheck={pwd}/>
-                <PhoneNumber />
-                <Email />
-                <Link className="linkComponent" to="/signup/after">
-                  <RoundRectangle btnText="회원가입" />
-                </Link>
+                <UserChoice setIsUser={setIsUser} fillMessage={fillMessage} />
+                <NameLong setIsName={setIsName} fillMessage={fillMessage} />
+                <Id setIsId={setIsId} fillMessage={fillMessage} />
+                <Password setIsPassword={setIsPassword} fillMessage={fillMessage} setPwd={setPwd}/>
+                <PasswordCheck setIsPasswordCheck={setIsPasswordCheck} fillMessage={fillMessage} pwdCheck={pwd}/>
+                <PhoneNumber setIsPhone={setIsPhone} fillMessage={fillMessage} />
+                <Email setIsEmail={setIsEmail} fillMessage={fillMessage} />
+                {
+                    (isUser && isName && isId && isPassword && isPasswordCheck && isPhone && isEmail)
+                    ?<Link className="linkComponent" to="/signup/after">
+                        <RoundRectangle type='submit' btnText="회원가입" />
+                    </Link>
+                    :<RoundRectangle type='button' btnText="회원가입" onClick={onClick} />
+                }
             </form>
         </React.Fragment>
     );

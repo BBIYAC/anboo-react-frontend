@@ -2,12 +2,13 @@ import React, {useState, useRef, useEffect} from 'react';
 import CertificationModal from '../../organisms/Modal/CertificationModal';
 import Certification from '../Button/Certification';
 
-const EmailCheck = ({checkNum, onCFClick}) =>{
+const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
     const cfNumCheck = useRef();
     const [txtEmailCheck, setTxtEmailCheck] = useState('');
     const [isSuccess, setIsSuccess] = useState(true);
     const [isDisabled, setIsDisabled] = useState(true);
     const [isClicked, setIsClicked] = useState(false);
+    const [isNull, setIsNull] = useState(false);
     const [min, setMin] = useState(3);
     const [sec, setSec] = useState(0);
     const [color, setColor] = useState({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
@@ -28,10 +29,13 @@ const EmailCheck = ({checkNum, onCFClick}) =>{
             setIsSuccess(true);
             setIsDisabled(true);
             setColor({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
+            setIsNull(false);
+            setIsEmail(true);
         }
         else{
             setIsSuccess(false);
             setIsDisabled(false);
+            setIsNull(false);
         }
     };
 
@@ -45,13 +49,21 @@ const EmailCheck = ({checkNum, onCFClick}) =>{
                     clearInterval(countdown);
                     setIsClicked(true);
                 } else {
-                setMin(min - 1);
-                setSec(59);
+                    setMin(min - 1);
+                    setSec(59);
                 }
+            }
+            if(isDisabled){
+                setMin(3);
+                setSec(0);
             }
         }, 1000);
         return () => clearInterval(countdown);
     }, [min, sec]);
+
+    useEffect(()=>{
+        txtEmailCheck == '' && setIsNull(fillMessage);
+    },[fillMessage, isNull])
 
     return(
         <React.Fragment>
@@ -70,6 +82,7 @@ const EmailCheck = ({checkNum, onCFClick}) =>{
                 <Certification type='button' text='확인' color={color} onClick={onClick} disabled={isDisabled}/>
             </div>
             {isSuccess? null: <div className='notice-massage'>※ 인증번호가 일치하지 않습니다.</div>}
+            {isNull && <div className='notice-massage'>※ 필수로 인증해주세요.</div>}
             <CertificationModal 
             isClicked={isClicked} 
             setIsClicked={setIsClicked} 

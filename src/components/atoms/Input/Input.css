@@ -26,6 +26,7 @@
 /* Email */
 .div-emailcheck{
   display: flex;
+  position: relative;
 }
 
 /* Image */
