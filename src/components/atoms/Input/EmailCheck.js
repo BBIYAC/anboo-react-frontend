@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import CertificationModal from '../../organisms/Modal/CertificationModal';
 import Certification from '../Button/Certification';
 
-const EmailCheck = ({checkNum, onCFClick, fillMessage, isNotNull, setIsNotNull}) =>{
+const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
     const cfNumCheck = useRef();
     const [txtEmailCheck, setTxtEmailCheck] = useState('');
     const [isSuccess, setIsSuccess] = useState(true);
@@ -30,7 +30,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, isNotNull, setIsNotNull})
             setIsDisabled(true);
             setColor({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
             setIsNull(false);
-            setIsNotNull(true);
+            setIsEmail(true);
         }
         else{
             setIsSuccess(false);
@@ -49,9 +49,13 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, isNotNull, setIsNotNull})
                     clearInterval(countdown);
                     setIsClicked(true);
                 } else {
-                setMin(min - 1);
-                setSec(59);
+                    setMin(min - 1);
+                    setSec(59);
                 }
+            }
+            if(isDisabled){
+                setMin(3);
+                setSec(0);
             }
         }, 1000);
         return () => clearInterval(countdown);
@@ -59,7 +63,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, isNotNull, setIsNotNull})
 
     useEffect(()=>{
         txtEmailCheck == '' && setIsNull(fillMessage);
-    },[fillMessage])
+    },[fillMessage, isNull])
 
     return(
         <React.Fragment>

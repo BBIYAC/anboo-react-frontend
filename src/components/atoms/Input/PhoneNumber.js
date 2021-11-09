@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const PhoneNumber = ({isNotNull, setIsNotNull, fillMessage}) =>{
+const PhoneNumber = ({setIsPhone, fillMessage}) =>{
     const [titPhone, setTitPhone] = useState('');
     const [isLong, setIsLong] = useState(false);
     const [isNotNum, setIsNotNum] = useState(false);
@@ -12,8 +12,8 @@ const PhoneNumber = ({isNotNull, setIsNotNull, fillMessage}) =>{
         e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
     };
     useEffect(() => {
-        titPhone == '' ? setIsNull(fillMessage): setIsNotNull(true);
-    }, [fillMessage])
+        titPhone == '' ? setIsNull(fillMessage): setIsPhone(true);
+    }, [fillMessage, isNull])
     return(
         <React.Fragment>
             <div className="tit-name">전화번호</div>

@@ -1,6 +1,6 @@
 import React, { useState,  useEffect } from 'react';
 
-const UserChoice = ({isNotNull, setIsNotNull, fillMessage}) =>{
+const UserChoice = ({setIsUser, fillMessage}) =>{
   const selectList = ['보호자', '관리자'];
   const [selected, setSelected] = useState('');
   const [color, setColor] = useState({color: 'gray'});
@@ -13,8 +13,8 @@ const UserChoice = ({isNotNull, setIsNotNull, fillMessage}) =>{
   };
 
   useEffect(() => {
-    selected == '' ? setIsNull(fillMessage): setIsNotNull(true);
-  }, [fillMessage])
+    selected == '' ? setIsNull(fillMessage): setIsUser(true);
+  }, [fillMessage, isNull])
 
   return(
     <React.Fragment>

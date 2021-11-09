@@ -4,7 +4,7 @@ import EmailCheck from './EmailCheck';
 import{ init, send } from 'emailjs-com';
 init("user_brnC0U62ecoZo1WSgZLyL");
 
-const Email = ({isNotNull, setIsNotNull, fillMessage}) =>{
+const Email = ({setIsEmail, fillMessage}) =>{
     const [txtEmail, setTxtEmail] = useState('');
     const [emailCheck, setEmailCheck] = useState('');
     const [showCheck, setShowCheck] = useState(false);
@@ -26,7 +26,7 @@ const Email = ({isNotNull, setIsNotNull, fillMessage}) =>{
 
     useEffect(() => {
         showCheck === false && setIsNull(fillMessage);
-    }, [fillMessage])
+    }, [fillMessage, isNull])
 
 
     const onCFClick = () => {
@@ -70,7 +70,7 @@ const Email = ({isNotNull, setIsNotNull, fillMessage}) =>{
                 <Certification type='button' text='인증' onClick={onCFClick} color={color} disabled={isDisabled}/>
             </div>
             {isNull && <div className='notice-massage'>※ 필수로 인증해주세요.</div>}
-            { showCheck && <EmailCheck checkNum={emailCheck} onCFClick={onCFClick} setIsNotNull={setIsNotNull} fillMessage={fillMessage} /> }
+            { showCheck && <EmailCheck checkNum={emailCheck} onCFClick={onCFClick} setIsEmail={setIsEmail} fillMessage={fillMessage} /> }
         </React.Fragment>
     );
 };

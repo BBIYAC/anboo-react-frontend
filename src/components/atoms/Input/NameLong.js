@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const NameLong = ({isNotNull, setIsNotNull, fillMessage}) =>{
+const NameLong = ({setIsName, fillMessage}) =>{
     const exp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; // 특수문자 정규식
     const numExp = /[0-9]/gi; // 한글 정규식
     const [titName, setTitName] = useState('');
@@ -14,8 +14,8 @@ const NameLong = ({isNotNull, setIsNotNull, fillMessage}) =>{
         e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
     };
     useEffect(() => {
-        titName == '' ? setIsNull(fillMessage): setIsNotNull(true);
-      }, [fillMessage])
+        titName == '' ? setIsNull(fillMessage): setIsName(true);
+      }, [fillMessage, isNull])
     return(
         <React.Fragment>
             <div className="tit-name">이름</div>

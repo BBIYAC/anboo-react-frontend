@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const Id = ({isNotNull, setIsNotNull, fillMessage}) =>{
+const Id = ({setIsId, fillMessage}) =>{
     const exp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
     const hangul = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
     const [titId, setTitId] = useState('');
@@ -16,8 +16,8 @@ const Id = ({isNotNull, setIsNotNull, fillMessage}) =>{
         e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
     };
     useEffect(() => {
-        titId == '' ? setIsNull(fillMessage): setIsNotNull(true);
-      }, [fillMessage])
+        titId == '' ? setIsNull(fillMessage): setIsId(true);
+      }, [fillMessage, isNull])
     return(
         <React.Fragment>
             <div className="tit-id">아이디</div>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const PasswordCheck = ({isNotNull, pwdCheck, setIsNotNull, fillMessage}) =>{
+const PasswordCheck = ({pwdCheck, setIsPasswordCheck, fillMessage}) =>{
     const [titPasswordCheck, setTitPasswordCheck] = useState('');
     const [isEqual, setIsEqual] = useState(true);
     const [isNull, setIsNull] = useState(false);
@@ -10,8 +10,8 @@ const PasswordCheck = ({isNotNull, pwdCheck, setIsNotNull, fillMessage}) =>{
         e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
     };
     useEffect(() => {
-        titPasswordCheck == '' ? setIsNull(fillMessage): setIsNotNull(true);
-    }, [fillMessage])
+        titPasswordCheck == '' ? setIsNull(fillMessage): setIsPasswordCheck(true);
+    }, [fillMessage, isNull])
     return(
         <React.Fragment>
             <div className="tit-passwordcheck">비밀번호 확인</div>
