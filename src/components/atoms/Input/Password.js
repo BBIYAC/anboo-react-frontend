@@ -6,18 +6,18 @@ const Password = ({setPwd, setIsPassword, fillMessage}) =>{
     const [isNull, setIsNull] = useState(false);
     const onChange = (e) => {
         setTitPassword(e.target.value);
-        if(e.target.value.length < 8 || e.target.value.length > 15){
-            setIsLong(true);
-        }
-        else{
-            setIsLong(false);
-        }
+        (e.target.value.length < 8 || e.target.value.length > 15)? setIsLong(true): setIsLong(false);
         setPwd(e.target.value);
-        e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
+        (e.target.value.length > 0) 
+        ? setIsNull(false)
+        : (isLong)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        titPassword == '' ? setIsNull(fillMessage): setIsPassword(true);
-      }, [fillMessage, isNull])
+        (titPassword == '') 
+        ? setIsNull(fillMessage)
+        : (!isLong)? setIsPassword(true): setIsPassword(false);
+      }, [fillMessage, titPassword])
+
     return(
         <React.Fragment>
             <div className="tit-password">비밀번호</div>

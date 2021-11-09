@@ -14,7 +14,7 @@ const UserChoice = ({setIsUser, fillMessage}) =>{
 
   useEffect(() => {
     selected == '' ? setIsNull(fillMessage): setIsUser(true);
-  }, [fillMessage, isNull])
+  }, [fillMessage, selected])
 
   return(
     <React.Fragment>

@@ -13,11 +13,15 @@ const Id = ({setIsId, fillMessage}) =>{
         ( e.target.value.length > 15 )? setIsLong(true) : setIsLong(false);
         ( exp.test(e.target.value) )? setIsExept(true) : setIsExept(false);
         ( hangul.test(e.target.value) )? setIsHangul(true) : setIsHangul(false);
-        e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
+        (e.target.value.length > 0) 
+        ? setIsNull(false)
+        : (isExept || isLong || isHangul)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        titId == '' ? setIsNull(fillMessage): setIsId(true);
-      }, [fillMessage, isNull])
+        (titId == '') 
+        ? setIsNull(fillMessage)
+        : (!isExept && !isLong && !isHangul)? setIsId(true): setIsId(false);
+      }, [fillMessage, titId])
     return(
         <React.Fragment>
             <div className="tit-id">아이디</div>

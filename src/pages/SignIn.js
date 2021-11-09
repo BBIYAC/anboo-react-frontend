@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserChoice from '../components/atoms/Select/UserChoice';
 import Id from '../components/atoms/Input/Id';
 import Password from '../components/atoms/Input/Password';
@@ -17,6 +17,18 @@ const SignIn = () => {
   };
   const [pwd, setPwd] = useState('');
 
+  // 유효성 검사
+  const [isUser, setIsUser] = useState(false);
+  const [isId, setIsId] = useState(false);
+  const [isPassword, setIsPassword] = useState(false);
+  const [fillMessage, setFillMessage] = useState(false);
+
+  const onClick = () => {
+    setFillMessage(true); // 비어있는 input 경고
+    console.log(isUser, isId, isPassword);
+  }
+
+
   return (
     <React.Fragment>
       <div className="header">
@@ -25,12 +37,16 @@ const SignIn = () => {
         <BiLogOut opacity="0" size="20"/>
       </div>
       <form onSubmit={signinSubmit}>
-        <UserChoice />
-        <Id />
-        <Password setPwd={setPwd}/>
-        <Link className="linkComponent" to="/mg/home">
-          <RoundRectangle btnText="로그인" />
-        </Link>
+        <UserChoice setIsUser={setIsUser} fillMessage={fillMessage} />
+        <Id setIsId={setIsId} fillMessage={fillMessage} />
+        <Password setPwd={setPwd} setIsPassword={setIsPassword} fillMessage={fillMessage} />
+        {
+            (isUser && isId && isPassword)
+            ?<Link className="linkComponent" to="/mg/home">
+                <RoundRectangle type='submit' btnText="로그인" />
+            </Link>
+            :<RoundRectangle type='button' btnText="로그인" onClick={onClick} />
+        }
         {/* <Link to="/rg/acts">
           <RoundRectangle btnText="로그인" />
         </Link> */}
