@@ -6,13 +6,17 @@ const Birth = ({setIsBirth, fillMessage}) => {
     const [isLong, setIsLong] = useState(false);
     const onChange = (e) => {
         setTitBirth(e.target.value);
-        e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
-        e.target.value.length != 6 ? setIsLong(true): setIsLong(false);
+        (e.target.value.length > 0) 
+        ? setIsNull(false) 
+        : (isLong)? setIsNull(false): setIsNull(true);
+        e.target.value.length !== 6 ? setIsLong(true): setIsLong(false);
     };
 
     useEffect(() => {
-        titBirth === '' ? setIsNull(fillMessage): setIsBirth(true);
-    }, [fillMessage, isNull])
+        (titBirth === '') 
+        ? setIsNull(fillMessage)
+        : (!isLong)? setIsBirth(true): setIsBirth(false);
+    }, [fillMessage, titBirth])
 
     return(
         <>

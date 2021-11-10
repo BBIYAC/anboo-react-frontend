@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import UserChoice from '../components/atoms/Select/UserChoice';
 import Id from '../components/atoms/Input/Id';
 import Password from '../components/atoms/Input/Password';

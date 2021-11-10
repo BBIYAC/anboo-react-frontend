@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const RequestDate = () => {
-  const [timer,setTimer] = useState('2021년 1월 1일 1시 1분');
+  const [timer,setTimer] = useState('');
   const currentTime = () => {
     const date = new Date();
     const year = String(date.getFullYear()).padStart(2,'0');
@@ -11,10 +11,11 @@ const RequestDate = () => {
     const minutes = String(date.getMinutes()).padStart(2,'0');
     setTimer(year+'년 '+month+'월 '+day+'일 '+hour+'시 '+minutes+'분');
   };
-  const startTimer = () => {
-    setInterval(currentTime, 1000);
-  }
-  startTimer();
+
+  useEffect(() => {
+    currentTime();
+  }, []);
+
   return(
     <React.Fragment>
       <div className="handleDataStyle">{timer}</div>

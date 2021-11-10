@@ -14,7 +14,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
     const [color, setColor] = useState({color: 'var(--color-blue)', borderColor: 'var(--color-blue)'});
     const onChange = (e) => {
         setTxtEmailCheck(e.target.value);
-        if(e.target.value.length != 0){
+        if(e.target.value.length !== 0){
             setIsDisabled(false);
             setColor({color: 'var(--color-blue)', borderColor: 'var(--color-blue)'});
         }
@@ -58,7 +58,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
     }, [min, sec]);
 
     useEffect(()=>{
-        txtEmailCheck == '' && setIsNull(fillMessage);
+        txtEmailCheck === '' && setIsNull(fillMessage);
     },[fillMessage, isDisabled])
 
     return(

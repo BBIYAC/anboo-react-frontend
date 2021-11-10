@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const Id = ({setIsId, fillMessage}) =>{
+    /* eslint-disable */
     const exp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
     const hangul = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
     const [titId, setTitId] = useState('');
@@ -18,7 +19,7 @@ const Id = ({setIsId, fillMessage}) =>{
         : (isExept || isLong || isHangul)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        (titId == '') 
+        (titId === '') 
         ? setIsNull(fillMessage)
         : (!isExept && !isLong && !isHangul)? setIsId(true): setIsId(false);
       }, [fillMessage, titId])

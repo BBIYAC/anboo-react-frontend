@@ -13,7 +13,7 @@ const Email = ({setIsEmail, fillMessage}) =>{
     const [color, setColor] = useState({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
     const onChange = (e) => {
         setTxtEmail(e.target.value);
-        if(e.target.value.length != 0){
+        if(e.target.value.length !== 0){
             setIsDisabled(false);
             setColor({color: 'var(--color-blue)', borderColor: 'var(--color-blue)'});
         }
@@ -24,7 +24,7 @@ const Email = ({setIsEmail, fillMessage}) =>{
     };
 
     useEffect(() => {
-        (txtEmail == '') 
+        (txtEmail === '') 
         ? setIsNull(fillMessage)
         : (isDisabled)? setShowCheck(true): setShowCheck(false);
     }, [fillMessage, isDisabled])

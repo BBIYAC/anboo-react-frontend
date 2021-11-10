@@ -9,7 +9,7 @@ const NameShort = ({setIsRegister, fillMessage}) => {
     };
 
     useEffect(() => {
-        txtName == '' ? setIsNull(fillMessage): setIsRegister(true);
+        txtName === '' ? setIsNull(fillMessage): setIsRegister(true);
       }, [fillMessage, isNull])
 
     const handleStyle = {

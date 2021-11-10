@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 
 const Religion = () => {
   const religionList = ['기독교', '불교', '천주교', '원불교'];

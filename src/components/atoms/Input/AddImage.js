@@ -23,7 +23,8 @@ const AddImage = ({border, borderColor}) => {
       src={fileURL}
       onClick={() => fileInput.current.click()}
       onError={handleImgError} 
-      style={{border, borderColor}}></img>
+      style={{border, borderColor}}
+      alt='프로필 이미지'></img>
       <input type="file" accept='image/*' ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
     </>
   );

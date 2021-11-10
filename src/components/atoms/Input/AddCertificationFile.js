@@ -14,7 +14,6 @@ const AddCertificationFile = () => {
         }
     };
     const onChange = (e) => {
-        console.log(e.target.value);
         setFiles([...files, ...e.target.files]);
         (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
     };

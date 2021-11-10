@@ -13,7 +13,7 @@ const Password = ({setPwd, setIsPassword, fillMessage}) =>{
         : (isLong)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        (titPassword == '') 
+        (titPassword === '') 
         ? setIsNull(fillMessage)
         : (!isLong)? setIsPassword(true): setIsPassword(false);
       }, [fillMessage, titPassword])

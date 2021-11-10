@@ -5,9 +5,8 @@ const ManagerImage = ({border, borderColor}) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
   const onChange = (e) => {
-      const imageFile = e.target.files[0];
-      const imageUrl = URL.createObjectURL(imageFile);  
-      setFileURL(imageUrl);
+    (e.target.files[0] !== 0)
+    && setFileURL(URL.createObjectURL(e.target.files[0]));
   };
   
   // Default Image

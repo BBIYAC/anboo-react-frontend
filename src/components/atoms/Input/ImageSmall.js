@@ -11,6 +11,7 @@ const ImageSmall = ({url}) => {
       className="imgSmall" 
       url="" 
       src={url}
+      alt='이미지'
       onError={handleImgError}>
       </img>
     </React.Fragment>

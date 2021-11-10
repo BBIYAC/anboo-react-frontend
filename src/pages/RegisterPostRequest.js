@@ -21,7 +21,9 @@ const  RegisterPostRequest= () => {
       </div>
       <PostRequestTextArea />
       <RequestDate />
-      <RoundRectangle btnText="요청사항 보내기" />
+      <Link className="linkComponent" to="/rg/requests">
+        <RoundRectangle type='submit' btnText="요청사항 보내기" />
+      </Link>
       <BelowBarBlock isRequest />
     </React.Fragment>
   );

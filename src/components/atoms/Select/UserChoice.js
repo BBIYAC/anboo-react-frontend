@@ -13,7 +13,7 @@ const UserChoice = ({setIsUser, fillMessage}) =>{
   };
 
   useEffect(() => {
-    selected == '' ? setIsNull(fillMessage): setIsUser(true);
+    selected === '' ? setIsNull(fillMessage): setIsUser(true);
   }, [fillMessage, selected])
 
   return(

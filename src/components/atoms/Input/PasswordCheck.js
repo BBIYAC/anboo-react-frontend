@@ -6,13 +6,13 @@ const PasswordCheck = ({pwdCheck, setIsPasswordCheck, fillMessage}) =>{
     const [isNull, setIsNull] = useState(false);
     const onChange = (e) => {
         setTitPasswordCheck(e.target.value);
-        (pwdCheck == e.target.value)? setIsEqual(true) : setIsEqual(false);
+        (pwdCheck === e.target.value)? setIsEqual(true) : setIsEqual(false);
         (e.target.value.length > 0) 
         ? setIsNull(false) 
         : (!isEqual)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        (titPasswordCheck == '') 
+        (titPasswordCheck === '') 
         ? setIsNull(fillMessage)
         : (isEqual)? setIsPasswordCheck(true): setIsPasswordCheck(false);
     }, [fillMessage, titPasswordCheck])

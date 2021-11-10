@@ -8,13 +8,13 @@ const PhoneNumber = ({setIsPhone, fillMessage}) =>{
     const onChange = (e) => {
         setTitPhone(e.target.value);
         ( e.target.value.length > 11 )? setIsLong(true) : setIsLong(false);
-        ( e.target.value == '' )? setIsNotNum(true) : setIsNotNum(false);
+        ( e.target.value === '' )? setIsNotNum(true) : setIsNotNum(false);
         (e.target.value.length > 0) 
         ? setIsNull(false) 
         : (isLong || isNotNum)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        (titPhone == '') 
+        (titPhone === '') 
         ? setIsNull(fillMessage)
         : (!isLong && !isNotNum)? setIsPhone(true): setIsPhone(false);
     }, [fillMessage, titPhone])

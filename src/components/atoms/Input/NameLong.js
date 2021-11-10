@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const NameLong = ({setIsName, fillMessage}) =>{
+    /* eslint-disable */
     const exp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; // 특수문자 정규식
     const numExp = /[0-9]/gi; // 한글 정규식
     const [titName, setTitName] = useState('');
@@ -16,7 +17,7 @@ const NameLong = ({setIsName, fillMessage}) =>{
         : (isExept || isNumExept)? setIsNull(false): setIsNull(true);
     };
     useEffect(() => {
-        (titName == '') 
+        (titName === '') 
         ? setIsNull(fillMessage)
         : (!isExept && !isNumExept)? setIsName(true): setIsName(false);
       }, [fillMessage, titName])

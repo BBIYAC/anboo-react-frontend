@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 const ActImage = ({url}) => {
   return(
@@ -6,6 +6,7 @@ const ActImage = ({url}) => {
     <img 
     src={url} 
     className="img-actImage"
+    alt='활동 이미지'
      /> 
     </React.Fragment>
   );
