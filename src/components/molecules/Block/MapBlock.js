@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import { Link } from 'react-router-dom';
-import { GoogleMap, LoadScript, MarkerClusterer ,Marker } from '@react-google-maps/api';
+import { 
+  GoogleMap, 
+  LoadScript, 
+  MarkerClusterer ,
+  Marker } from '@react-google-maps/api';
 
 const mapContainerStyle = {
   width: "var(--width)",
@@ -9,20 +13,6 @@ const mapContainerStyle = {
   marginTop: "1rem",
   marginBottom: "1rem",
 };
-
-
-const center = {lat: 36, lng: 127.85,};
-const zoom = 7;
-// const restriction = {
-//   restriction: {
-//     latLngBounds: {
-//       north: -10,
-//       south: -40,
-//       east: 160,
-//       west: 100,
-//     },
-//   },
-// }
 
 const locations = [
   { lat:36.334595 , lng:127.438787 },
@@ -72,20 +62,24 @@ const imageOptions = {
     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 }
 
+const center = {lat: 36.481275, lng: 128.098754}
+const zoom = 6
+const restriction = {
+  latLngBounds: {
+    north: 45,
+    south: 25,
+    east: 140,
+    west: 116,
+  },
+}
+
 const mapDefaultOptions = {
   disableDefaultUI: true,
   zoom,
   center,
-  minZoom: zoom - 3,
-  maxZoom: zoom + 3,
-  restriction: {
-    latLngBounds: {
-      north: 45,
-      south: 25,
-      east: 140,
-      west: 115,
-    },
-  },
+  minZoom: zoom - 2,
+  maxZoom: zoom + 14,
+  restriction,
 }
 
 const createKey = (location) => {
@@ -93,17 +87,33 @@ const createKey = (location) => {
 }
 
 const MapBlock = () => {
+  const [latitude, setLat] = useState(null);
+  const [longitude, setLng] = useState(null);
+
+  const center = {lat: latitude, lng: longitude};
+
+  const getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+        setLat(null);
+        setLng(null);
+      }, () => {});
+    } else {}
+  }
+
   return (
-  <LoadScript
-  googleMapsApiKey="AIzaSyC526zoNUjyiZlFOXmIy7_KGgaxcj7ecIo">
+  <LoadScript googleMapsApiKey="AIzaSyC526zoNUjyiZlFOXmIy7_KGgaxcj7ecIo">
       <GoogleMap 
-      id='marker-example' 
-      mapContainerStyle={mapContainerStyle} 
+      mapContainerStyle={mapContainerStyle}
       options={mapDefaultOptions}
-      >
+      center={center}
+      // 0: earth, 3: continent, 4: large islands, 6: large rivers
+      // 10: large roads, 15: buildings, ~20
+      zoom={6}>
         <MarkerClusterer 
-        options={imageOptions}
-        maxZoom="15">
+        options={imageOptions}>
           {(clusterer) =>
             locations.map((location) => (
               <Marker 
@@ -115,11 +125,13 @@ const MapBlock = () => {
           }
         </MarkerClusterer>
       </GoogleMap>
+      <button onClick={getLocation}>000</button>
       <Link className="linkComponent" to="/rg/nhs">
         <RoundRectangle textAlign="center" btnText="11개의 시설 보러가기"/>
       </Link>
   </LoadScript>
-  )
-}
+  );
+};
 
 export default MapBlock;
+

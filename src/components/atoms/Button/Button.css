@@ -183,3 +183,7 @@ button {
   border-radius: var(--border-radius);
   margin-left: auto;
 }
+
+.btn-currentLocation {
+  z-index: 999;
+}
