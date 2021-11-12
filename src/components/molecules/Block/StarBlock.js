@@ -1,8 +1,30 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Star from '../../atoms/Button/Star';
 
 const Satisfaction = () => {
-    const handleStyle = {
+    const [starOnOff, setStarOnOff] = useState([]);
+    const onClickStarRating = (idx) => {
+        let temp = [];
+        for(let i=0; i<5; i++){
+            if(i<=idx){
+                temp.push('var(--color-yellow)')
+            }
+            else{
+                temp.push('var(--color-dark-gray)')
+            }
+        }
+        setStarOnOff([...temp]);
+    }
+
+    useEffect(()=>{
+        let temp = [];
+        for(let i=0; i<5; i++){
+            temp.push('var(--color-dark-gray)')
+        }
+        setStarOnOff([...temp]);
+    }, []);
+
+      const handleStyle = {
         display: 'flex',
         padding: '0 30px',
         justifyContent: 'space-between',
@@ -12,11 +34,11 @@ const Satisfaction = () => {
     }
     return(
         <div className="satisfaction" style={handleStyle}>
-            <Star clicked/>
-            <Star />
-            <Star />
-            <Star />
-            <Star />
+            <Star color={starOnOff[0]} onClick={()=>onClickStarRating(0)} />
+            <Star color={starOnOff[1]} onClick={()=>onClickStarRating(1)} />
+            <Star color={starOnOff[2]} onClick={()=>onClickStarRating(2)} />
+            <Star color={starOnOff[3]} onClick={()=>onClickStarRating(3)} />
+            <Star color={starOnOff[4]} onClick={()=>onClickStarRating(4)} />
         </div>
     );
 };
