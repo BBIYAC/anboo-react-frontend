@@ -16,8 +16,6 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
         position: 'absolute',
         top: '50%',
         left: '50%',
-        width: '80vw',
-        height: '80vw',
         textAlign: 'left',
         backgroundColor: 'rgb(255, 255, 255)',
         borderRadius: '10px',
@@ -38,8 +36,8 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
 
     const imgModalZoomIn = {
         height: '85vw',
-        weight: '80vw',
-        margin: '0'
+        weight: '85vw',
+        margin: 'auto'
     }
 
     // Default Image
