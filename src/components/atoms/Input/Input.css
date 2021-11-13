@@ -154,7 +154,6 @@
 
 .input-mgNhInfoEditInput {
   height: 1rem;
-  margin-bottom: 0.5rem;
   border-bottom: 1px solid;
   border-color: var(--color-gray);
   font-size: var(--font-size-small);

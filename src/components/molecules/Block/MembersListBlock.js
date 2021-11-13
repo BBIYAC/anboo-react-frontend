@@ -65,11 +65,11 @@ const MembersListBlock = () => {
 
       <div className="div-managementScroll">
         {members.map(member => (
-        <div className="member">
+        <div className="div-list">
           {member.image}
           <div className="div-info">
-            <div className="memberInfo-name">{member.name} 님</div>
-            <div className="memberInfo-year">생년월일: {member.year}</div>
+            <div className="listInfo-name">{member.name} 님</div>
+            <div className="listInfo-year">생년월일: {member.year}</div>
           </div>
           
           <div className="div-checkBoxAndDelete">

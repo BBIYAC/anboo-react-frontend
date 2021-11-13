@@ -2,7 +2,7 @@ import React, {useState, useRef } from 'react';
 import { BsPlusLg } from 'react-icons/bs';
 
 
-const AddNHImage = ({ url, border, borderColor}) => {
+const AddNHImage = () => {
   const fileInput = useRef();
   const [files, setFiles] = useState();
   const onChange = (e) => {

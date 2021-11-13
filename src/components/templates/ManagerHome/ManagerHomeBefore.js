@@ -11,12 +11,9 @@ const ManagerHomeBefore = () => {
         <React.Fragment>
             <NoticeBlock />
             <SearchBoxBlock />
+            <hr/>
             <div className="div-NursingHomeInfoCheckBlockList">
               <NursingHomeInfoCheckBlock isSelected />
-              <NursingHomeInfoCheckBlock />
-              <NursingHomeInfoCheckBlock />
-              <NursingHomeInfoCheckBlock />
-              <NursingHomeInfoCheckBlock />
             </div>
             <AddCertificationFile />
             <RoundRectangle btnText='요양원 등록 요청하기' background='var(--color-green)' />

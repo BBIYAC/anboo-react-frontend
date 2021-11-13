@@ -73,10 +73,25 @@
 }
 
 /* Nursinghome Manager Information */
+.div-NursingHomeManagerInfo {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.block-NHAddManagerInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
 .block-NursingHomeManagerInfo {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding-right: 0.5rem;
   margin-bottom: 1rem;
@@ -90,14 +105,14 @@
 /* Nursinghome Image */
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto;
+  justify-content: center;
+  grid-template-columns: max-content max-content max-content;
+  grid-template-rows: max-content max-content max-content;
   height: 300px;
   overflow-y: scroll;
 }
 .grid-item {
   border-color: var(--color-gray);
-  margin: 0.25rem;
 }
 
 /* NursingHome ActBlock */
@@ -200,7 +215,7 @@
 }
 
 /* Manager Member Management */
-.member {
+.div-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -213,8 +228,8 @@
   justify-content: center;
   align-items: center;
 }
-.memberInfo-name,
-.memberInfo-year {
+.listInfo-name,
+.listInfo-year {
   margin-bottom: 0.5rem;
 }
 .div-info {
@@ -294,8 +309,6 @@ input[type="checkbox"]:after {
 input[type="checkbox"]:checked:after {
   display: block;
 }
-
-
 
 /* Post Acts */
 .txt-users{

@@ -1,15 +1,15 @@
 import React from 'react';
 
-const NursingHomeManagerInfoInput = () => {
+const NursingHomeManagerInfoInput = ({name, phone, onChange}) => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
         <input 
         className="input-mgNhInfoEditInput"
-        placeholder="요양사 성함"></input>
+        placeholder={name}></input>
         <input 
         className="input-mgNhInfoEditInput"
-        placeholder="요양사 전화번호"></input>
+        placeholder={phone}></input>
       </div>
     </React.Fragment>
   );
