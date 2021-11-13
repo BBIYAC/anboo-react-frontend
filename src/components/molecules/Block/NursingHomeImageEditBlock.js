@@ -13,7 +13,6 @@ const NursingHomeImageEditBlock = () => {
   const [images, setImages] = useState([
     {image: <ImageMiddle />},
     {image: <ImageMiddle />},
-    {image: <ImageMiddle />},
   ])
 
   const renderImages = images.map(image => {

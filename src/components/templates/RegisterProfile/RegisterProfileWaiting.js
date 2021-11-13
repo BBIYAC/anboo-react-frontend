@@ -1,6 +1,6 @@
 import React from "react";
 import NoticeWaitingBlock from '../../molecules/Block/NoticeWaitingBlock';
-import BelowBarBlock from '../../molecules/Block/BelowBarBlock';
+import RoundRectangle from "../../atoms/Button/RoundRectangle";
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,9 @@ const ManagerHomeWaiting = () => {
         </Link>
       </div>
       <NoticeWaitingBlock />
-      <BelowBarBlock isProfile/>
+      <Link className="linkComponent" to="/rg/nh-location">
+        <RoundRectangle btnText="홈으로 이동하기"/>
+      </Link>
     </>
   );
 };

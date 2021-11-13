@@ -1,16 +1,19 @@
 import React from "react";
-import SearchBoxBlock from "../../molecules/Block/SearchBoxBlock";
 import NursingHomeInfoCheckBlock from '../../molecules/Block/NursingHomeInfoCheckBlock';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
 import NoticeBlock from '../../molecules/Block/NoticeBlock';
+import { FaSearch } from 'react-icons/fa';
 import './ManagerHome.css';
 
 const ManagerHomeBefore = () => {
     return(
         <React.Fragment>
             <NoticeBlock />
-            <SearchBoxBlock />
+            <div className="box-search">
+              <input className="searchBox" type="text" placeholder="요양원 이름, 주소, 지역 검색"></input>
+              <button className="search-icon"><FaSearch size="20" color="var(--color-dark-gray)"/></button>
+            </div>
             <hr/>
             <div className="div-NursingHomeInfoCheckBlockList">
               <NursingHomeInfoCheckBlock isSelected />

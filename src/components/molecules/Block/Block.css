@@ -17,9 +17,25 @@
 
 /* Keyword */
 .block-keyword {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.btn-myLocation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  border: 1px solid;
+  border-radius: 5px;
+  background: none;
+  color: var(--color-blue);
+  width: 2rem;
+  height: 2rem;
+}
+.btn-myLocation:active{
+  background-color: var(--color-blue);
+  color: var(--color-white);
 }
 
 /* Map */

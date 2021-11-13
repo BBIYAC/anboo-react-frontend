@@ -81,7 +81,10 @@ button {
   border: solid 1px;
   font-size: var(--font-size-small);
   color: var(--color-blue);
-  
+}
+.btn-favorites:active {
+  background-color: var(--color-blue);
+  color: var(--color-white);
 }
 
 /* Back button */
