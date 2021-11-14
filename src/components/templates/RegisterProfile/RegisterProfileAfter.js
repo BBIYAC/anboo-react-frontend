@@ -9,16 +9,27 @@ import BelowBarBlock from '../../molecules/Block/BelowBarBlock';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import SaveModal from '../../organisms/Modal/SaveModal'
 
 const  RegisterProfileAfter= () => {
   const [fillMessage, setFillMessage] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [isGender, setIsGender] = useState(false);
   const [isBirth, setIsBirth] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-  const onClick = () => {
+  const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
+    setIsEdit(true);
+    setIsClicked(true);
   };
+
+  const onClickEdit = () => {
+    setFillMessage(true); // 비어있는 input 경고
+    setIsEdit(false);
+    setIsClicked(true);
+  }
 
   return (
     <React.Fragment>
@@ -34,12 +45,17 @@ const  RegisterProfileAfter= () => {
       <div className="tit-name">이용하고 계신 요양원이 마음에 드시나요?</div>
       <StarBlock />
       {
-          (isRegister && isGender && isBirth)
-          ?<Link className="linkComponent" to="/rg/profile">
-              <RoundRectangle btnText='요양자 프로필 수정하기'/>
-          </Link>
-          :<RoundRectangle type='button' btnText="요양자 프로필 저장하기" onClick={onClick} />
-        }
+        isEdit
+        ?(isRegister && isGender && isBirth)
+          ?<><SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text='저장되었습니다.' />
+             <RoundRectangle btnText='요양자 프로필 수정하기' onClick={onClickEdit}/></>
+          :<RoundRectangle btnText='요양자 프로필 수정하기' color='white' background='var(--color-dark-gray)' border='1px solid var(--color-dark-gray)'/>
+        
+        :(isRegister && isGender && isBirth)
+          ?<><SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text='수정되었습니다.' />
+             <RoundRectangle type='button' btnText="요양자 프로필 저장하기" onClick={onClickSave} /></>
+          :<RoundRectangle type='button' btnText="요양자 프로필 저장하기" color='white' background='var(--color-dark-gray)' border='1px solid var(--color-dark-gray)' />
+      }
       <BelowBarBlock isProfile/>
     </React.Fragment>
   );

@@ -14,7 +14,8 @@ const Gender = ({setIsGender, fillMessage}) => {
 
     useEffect(() => {
         selected === '' ? setIsNull(fillMessage): setIsGender(true);
-    }, [fillMessage, isNull])
+    }, [fillMessage, selected])
+    
 
     const handleStyle = {
         width: '70px', 
