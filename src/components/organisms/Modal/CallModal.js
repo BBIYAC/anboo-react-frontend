@@ -1,12 +1,12 @@
 import React from 'react';
 
-const CallModal = ({isClicked, modalText}) =>{
-    const handleModalStyle = !isClicked?{
+const CallModal = ({isClicked, setIsClicked, modalText}) =>{
+    const handleModalStyle = isClicked?{
         position: 'absolute',
-        top: '0',
+        bottom: '0',
         left: '0', 
-        width: '100%',
-        height: '100%', 
+        width: '100vw',
+        height: '100vh', 
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
     }:{
         display: 'none',
@@ -68,8 +68,8 @@ const CallModal = ({isClicked, modalText}) =>{
                     {/* <div style={handleModalTextStyle}>{modalText}</div> */}
                     <div style={handleModalTextStyle}>010-1234-5678</div>
                     <div style={handleModalButtonStyle}>
-                        <button style={handleButtonStyle}>취소</button>
-                        <button style={handleMainButtonStyle}>전화걸기</button>
+                        <button style={handleButtonStyle} onClick={()=>setIsClicked(false)}>취소</button>
+                        <button style={handleMainButtonStyle} onClick={()=>setIsClicked(false)}>전화걸기</button>
                     </div>
                 </div>
             </div>
