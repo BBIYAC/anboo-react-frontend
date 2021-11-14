@@ -12,7 +12,6 @@ const ImageMiddle = ({url}) => {
   
   // Image Zoom in
   const onClick = (e) => {
-    console.log(e.target.src);
     setIsClicked(true);
   }
 
