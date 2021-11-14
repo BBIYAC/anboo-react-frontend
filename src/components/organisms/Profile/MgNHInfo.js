@@ -5,7 +5,7 @@ import NursingHomeManagerInfoBlock from "../../molecules/Block/NursingHomeManage
 import NursingHomeImageBlock from "../../molecules/Block/NursingHomeImageBlock";
 import OvalLarge from "../../atoms/Button/OvalLarge";
 
-const MgNHInfo = () => {
+const MgNHInfo = ({onClick}) => {
   return(
     <>
       <NursingHomeDetailInfoBlock width="0" height="0"/>
@@ -19,7 +19,7 @@ const MgNHInfo = () => {
       </ul>
         <NursingHomeImageBlock />
       <hr/>
-      <OvalLarge btnText="수정하기"/>
+      <OvalLarge btnText="수정하기" onClick={onClick}/>
     </>
   );
 };
