@@ -18,17 +18,19 @@ const  RegisterProfileAfter= () => {
   const [isBirth, setIsBirth] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [modalText, setModalText] = useState('');
 
   const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
     setIsEdit(true);
     setIsClicked(true);
+    setModalText('저장되었습니다.');
   };
 
   const onClickEdit = () => {
     setFillMessage(true); // 비어있는 input 경고
-    setIsEdit(false);
     setIsClicked(true);
+    setModalText('수정되었습니다.');
   }
 
   return (
@@ -47,15 +49,14 @@ const  RegisterProfileAfter= () => {
       {
         isEdit
         ?(isRegister && isGender && isBirth)
-          ?<><SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text='저장되었습니다.' />
-             <RoundRectangle btnText='요양자 프로필 수정하기' onClick={onClickEdit}/></>
+          ?<RoundRectangle btnText='요양자 프로필 수정하기' onClick={onClickEdit}/>
           :<RoundRectangle btnText='요양자 프로필 수정하기' color='white' background='var(--color-dark-gray)' border='1px solid var(--color-dark-gray)'/>
         
         :(isRegister && isGender && isBirth)
-          ?<><SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text='수정되었습니다.' />
-             <RoundRectangle type='button' btnText="요양자 프로필 저장하기" onClick={onClickSave} /></>
+          ?<RoundRectangle type='button' btnText="요양자 프로필 저장하기" onClick={onClickSave} />
           :<RoundRectangle type='button' btnText="요양자 프로필 저장하기" color='white' background='var(--color-dark-gray)' border='1px solid var(--color-dark-gray)' />
       }
+      <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} />
       <BelowBarBlock isProfile/>
     </React.Fragment>
   );
