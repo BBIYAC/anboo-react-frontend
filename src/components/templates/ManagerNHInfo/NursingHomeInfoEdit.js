@@ -4,6 +4,7 @@ import ManagerBelowBarBlock from "../../molecules/Block/ManagerBelowBarBlock";
 import MgNHInfoEdit from "../../organisms/Profile/MgNHInfoEdit";
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
+import { Link } from "react-router-dom";
 
 const NursingHomeInfoEdit = () => {
   return(
@@ -14,7 +15,9 @@ const NursingHomeInfoEdit = () => {
         <BiLogOut size="20"/>
       </div>
       <MgNHInfoEdit />
-      <Floating background="var(--color-green)"/>
+      <Link className="linkComponent" to="/mg/home">
+        <Floating background="var(--color-green)"/>
+      </Link>
       <ManagerBelowBarBlock isRequest/>
     </>
   );

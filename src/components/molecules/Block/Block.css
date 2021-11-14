@@ -126,6 +126,7 @@
   grid-template-rows: max-content max-content max-content;
   height: 300px;
   overflow-y: scroll;
+  gap: 10px
 }
 .grid-item {
   border-color: var(--color-gray);

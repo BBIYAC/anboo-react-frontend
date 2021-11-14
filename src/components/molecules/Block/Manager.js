@@ -14,7 +14,7 @@ const Manager = ({caregiver, removeCaregiver}) => {
               className="input-mgNhInfoEditInput"
               placeholder={caregiver.name}></input>
               <input 
-              type = "number"
+              type = "tel"
               className="input-mgNhInfoEditInput"
               placeholder={caregiver.phone}></input>
             </div>

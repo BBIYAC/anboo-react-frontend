@@ -1,45 +1,59 @@
 import React, { useState, useRef } from 'react';
-import ImageMiddle from '../../atoms/Input/ImageMiddle';
+import NHActImage from '../../atoms/Input/NHActImage';
 import {BsPlusLg} from 'react-icons/bs';
 
 const NursingHomeImageEditBlock = () => {
-  const fileInput = useRef();
-  const [files, setFiles] = useState();
-  const onChange = (e) => {
-      console.log(e.target.files[0].name, e.target.files[0].size); // 파일 이름, 바이트        
-      setFiles(e.target.files[0]);
+  // const fileInput = useRef();
+  // const [files, setFiles] = useState();
+  // const onChange = (e) => {
+  //     setFiles(e.target.files[0]);
+  // }
+
+  const [images, setImages] = useState([]);
+
+  const removeImage = (id) => {
+    setImages(images.filter(image => {
+      return image.id !== id;
+    }))
   }
 
-  const [images, setImages] = useState([
-    {image: <ImageMiddle />},
-    {image: <ImageMiddle />},
-  ])
-
-  const renderImages = images.map(image => {
+  const renderImages = images.length ? images.map(image => {
     return (
-      <ImageMiddle/>
+      <NHActImage 
+      image={image}
+      key={image.id} 
+      removeImage={ removeImage }/>
     );
-  });
+  }):"";
 
   const addImage = (event) => {
-    images.push({
-      image: <ImageMiddle/>
-    })
-  }
+    event.preventDefault();
+    // fileInput.current.click()
+    
+    setImages([
+      {
+        id: Date.now(),         // DB id 대신 시간으로 사용함
+        image: <NHActImage/>
+      },
+      ...images,
+    ])
+  };
 
 
   return(
     <React.Fragment>
       <hr></hr>
-      <div className="grid-container">
-        <button 
-        className="addNhImage"
-        onClick={() => fileInput.current.click()}>
-          <BsPlusLg /> 
-        </button>
-        <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
-        {renderImages}
-      </div>
+      <form onSubmit={addImage}>
+        <div className="grid-container">
+          <button
+          type="submit"
+          className="addNhImage">
+            <BsPlusLg /> 
+          </button>
+          {/* <input type="file" ref={fileInput} accept="image/*" onChange={onChange} style={{display:'none'}}></input> */}
+          {renderImages}
+        </div>
+      </form>
     </React.Fragment>
   );
 };

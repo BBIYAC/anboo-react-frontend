@@ -12,7 +12,6 @@ const ManagerImage = ({border, borderColor}) => {
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
-
   }
 
   return(
@@ -23,7 +22,8 @@ const ManagerImage = ({border, borderColor}) => {
       src={fileURL}
       onClick={() => fileInput.current.click()}
       onError={handleImgError} 
-      style={{border, borderColor}}></img>
+      style={{border, borderColor}}>
+      </img>
       <input type="file" ref={fileInput} onChange={onChange} style={{display:'none'}}></input>
     </>
   );
