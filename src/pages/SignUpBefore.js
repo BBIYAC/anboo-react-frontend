@@ -51,9 +51,9 @@ const SignUpBefore = () => {
                 {
                     (isUser && isName && isId && isPassword && isPasswordCheck && isPhone && isEmail)
                     ?<Link className="linkComponent" to="/signup/after">
-                        <RoundRectangle type='submit' btnText="회원가입 링크" />
+                        <RoundRectangle type='submit' btnText="회원가입" />
                     </Link>
-                    :<RoundRectangle type='button' btnText="회원가입 버튼" onClick={onClick} />
+                    :<RoundRectangle type='button' btnText="회원가입" onClick={onClick} />
                 }
             </form>
         </React.Fragment>
