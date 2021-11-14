@@ -38,7 +38,7 @@ const  RegisterProfileAfter= () => {
           ?<Link className="linkComponent" to="/rg/profile">
               <RoundRectangle btnText='요양자 프로필 수정하기'/>
           </Link>
-          :<RoundRectangle type='button' btnText="요양자 프로필 수정하기" onClick={onClick} />
+          :<RoundRectangle type='button' btnText="요양자 프로필 저장하기" onClick={onClick} />
         }
       <BelowBarBlock isProfile/>
     </React.Fragment>
