@@ -51,6 +51,7 @@
   width: var(--width);
   height: 10rem;
   margin-bottom: 1rem;
+  border: 1px solid var(--color-gray);
 }
 .img-rgProfile {
   width: 110px;

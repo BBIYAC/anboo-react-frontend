@@ -23,7 +23,7 @@
 import React, { useState, useEffect } from 'react';
 import ImageSmall from '../../atoms/Input/ImageSmall';
 
-const NursingHomeInfoCheckBlock = ({isSelected}) => {
+const NursingHomeInfoCheckBlock = () => {
   const nursingHomeInfo = [
     { image: <ImageSmall/>, name: "행복 요양원", address: "대전 서구 관저동" },
     { image: <ImageSmall/>, name: "최고 요양원", address: "대전 서구 관저동" },
@@ -41,7 +41,7 @@ const NursingHomeInfoCheckBlock = ({isSelected}) => {
   const handleClick = (e) => {
     const {name, checked} = e.target;
     let tempNursingHome = nursingHomes.map(nursingHome => 
-      nursingHome.name === name ? {...nursingHome, isChecked : checked} : nursingHome
+      nursingHome.name === name ? {...nursingHome, isChecked : checked} : {...nursingHome, isChecked: false}
     );
     setNursingHomes(tempNursingHome);
   }
