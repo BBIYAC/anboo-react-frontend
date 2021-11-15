@@ -2,7 +2,7 @@ import React from 'react';
 
 const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
     const handleModalStyle = isClicked?{
-        position: 'absolute',
+        position: 'fixed',
         top: '0',
         left: '0', 
         width: '100%',

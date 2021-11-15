@@ -2,7 +2,7 @@ import React from 'react';
 
 const CallModal = ({isClicked, setIsClicked, modalText}) =>{
     const handleModalStyle = isClicked?{
-        position: 'absolute',
+        position: 'fixed',
         bottom: '0',
         left: '0', 
         width: '100vw',
