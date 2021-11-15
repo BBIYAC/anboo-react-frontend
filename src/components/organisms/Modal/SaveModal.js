@@ -1,12 +1,12 @@
 import React from 'react';
 
-const CallModal = ({isClicked, setIsClicked, modalText}) =>{
+const SaveModal = ({isClicked, setIsClicked, text}) =>{
     const handleModalStyle = isClicked?{
         position: 'absolute',
-        bottom: '0',
+        top: '0',
         left: '0', 
-        width: '100vw',
-        height: '100vh', 
+        width: '100%',
+        height: '100%', 
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
     }:{
         display: 'none',
@@ -17,8 +17,8 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
         top: '50%',
         left: '50%',
         width: '300px',
-        height: '170px',
-        textAlign: 'left',
+        height: '150px',
+        textAlign: 'center',
         backgroundColor: 'rgb(255, 255, 255)',
         borderRadius: '10px',
         boxShadow: '0 2px 3px 0 rgba(34, 36, 38, 0.15)',
@@ -26,15 +26,9 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
 
     };
 
-    const handleModalTitleStyle = {
-        color: 'var(--color-blue)',
-        fontSize: '1rem',
-        margin: '35px 20px 15px 35px',
-    };
-
     const handleModalTextStyle = {
         fontSize: '1rem',
-        margin: '15px 20px 35px 35px',
+        margin: '40px 20px',
     };
 
     const handleModalButtonStyle = {
@@ -42,14 +36,6 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
         position: 'relative',
     };
 
-    const handleButtonStyle = {
-        backgroundColor: 'white',
-        color: 'var(--color-dark-gray)',
-        border: '0',
-        width: '150px',
-        height: '50px',
-        borderRadius: '0 0 0 10px',
-    };
 
     const handleMainButtonStyle = {
         backgroundColor: 'white',
@@ -60,16 +46,18 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
         fontWeight: 'bold',
         borderRadius: '0 0 10px 0',
     };
+
+    const onClick = () => {
+        setIsClicked(false);
+    }
+
     return(
         <React.Fragment>
             <div style={handleModalStyle}>
                 <div style={handleModalBodyStyle}>
-                    <div style={handleModalTitleStyle}>요양원 전화번호</div>
-                    {/* <div style={handleModalTextStyle}>{modalText}</div> */}
-                    <div style={handleModalTextStyle}>010-1234-5678</div>
+                    <div style={handleModalTextStyle}>{text}</div>
                     <div style={handleModalButtonStyle}>
-                        <button style={handleButtonStyle} onClick={()=>setIsClicked(false)}>취소</button>
-                        <button style={handleMainButtonStyle} onClick={()=>setIsClicked(false)}>전화걸기</button>
+                        <button type='button' style={handleMainButtonStyle} onClick= {onClick}>확인</button>
                     </div>
                 </div>
             </div>
@@ -77,4 +65,4 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
     );
 };
 
-export default CallModal;
+export default SaveModal;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const OvalLarge = ({btnText}) =>{
+const OvalLarge = ({btnText, onClick}) =>{
   return(
     <React.Fragment>
       <button 
-      className="btn-ovalLarge">
+      className="btn-ovalLarge" onClick={onClick}>
         {btnText}
       </button>
     </React.Fragment>

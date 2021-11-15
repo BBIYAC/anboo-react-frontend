@@ -31,13 +31,10 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
         fontSize: '1.25rem',
         display: 'flex',
         margin: '10px 10px 10px auto',
-
     }
 
-    const imgModalZoomIn = {
-        height: '85vw',
-        weight: '85vw',
-        margin: 'auto'
+    const imageModalZoomin = {
+        width: '320px'
     }
 
     // Default Image
@@ -55,7 +52,7 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
             <div style={handleModalStyle}>
                 <div style={handleModalBodyStyle}>
                     <button style={btnModalCancel} type='button' onClick={onClick}>X</button>
-                    <img style={imgModalZoomIn} src={url} onError={handleImgError}></img>
+                    <img style={imageModalZoomin} src={url} onError={handleImgError}></img>
                 </div>
             </div>
         </React.Fragment>
