@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import NursingHomeActBlock from '../components/molecules/Block/NursingHomeActBlock';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import { BiLogOut } from 'react-icons/bi';
@@ -7,6 +7,19 @@ import '../components/atoms/Label/Label.css';
 import { Link } from 'react-router-dom';
 
 const  RegisterActs= () => {
+  const NursingHomeActs = [
+    {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
+    {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
+    {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
+  ]
+  /*
+  axios request GET
+  */
+  const [acts, setActs] = useState([]);
+  useEffect(()=>{
+    setActs(NursingHomeActs);
+  },[])
+
   return (
     <React.Fragment>
       <div className="header">
@@ -17,9 +30,11 @@ const  RegisterActs= () => {
         </Link>
       </div>
       <ul>
-        <li><NursingHomeActBlock /></li>
-        <li><NursingHomeActBlock /></li>
-        <li><NursingHomeActBlock /></li>
+        {
+          acts.map((contents, idx)=>(
+            <li><NursingHomeActBlock contents={contents} key={idx} /></li>
+          ))
+        }
       </ul>
       <BelowBarBlock isHome/>
     </React.Fragment>

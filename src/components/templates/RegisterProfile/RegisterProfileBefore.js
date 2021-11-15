@@ -8,15 +8,27 @@ import Floating from '../../atoms/Button/Floating';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import SaveModal from '../../organisms/Modal/SaveModal'
 
 const  RegisterProfileBefore= () => {
   const [fillMessage, setFillMessage] = useState(false);
-  const [isRegister, setIsRegister] = useState(false);
-  const [isGender, setIsGender] = useState(false);
-  const [isBirth, setIsBirth] = useState(false);
+  const [isRegister, setIsRegister] = useState('');
+  const [isGender, setIsGender] = useState('');
+  const [isBirth, setIsBirth] = useState('');
+  const [isCaution, setIsCaution] = useState('');
+  const [isClicked, setIsClicked] = useState(false);
+  const [modalText, setModalText] = useState('');
 
-  const onClick = () => {
+  const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
+    if(isRegister && isGender && isBirth){
+      setIsClicked(true);
+      setModalText('저장되었습니다.');
+      console.log({type:'POST', isRegister, isGender, isBirth, isCaution});
+      /*
+      axios register profile POST
+      */
+    }
   };
 
   return (
@@ -29,15 +41,15 @@ const  RegisterProfileBefore= () => {
         <AddImage url=""/>
         <InputSelectBlock setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
         <Birth setIsBirth={setIsBirth} fillMessage={fillMessage} />
-        <Caution />
+        <Caution setIsCaution={setIsCaution} />
         {
           (isRegister && isGender && isBirth)
-          ?<Link className="linkComponent" to="/rg/profile">
-              <RoundRectangle btnText='요양자 등록 요청하기 링크'/>
+          ?<><Link className="linkComponent" to="/rg/profile">
+              <RoundRectangle type='submit' btnText='요양자 등록 요청하기' onClick={onClickSave}/>
           </Link>
-          :<RoundRectangle type='button' btnText="요양자 등록 요청하기 버튼" onClick={onClick} />
+          <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} /></>
+          :<RoundRectangle type='button' btnText="요양자 등록 요청하기" onClick={onClickSave} />
         }
-        
         <Link className="linkComponent" to="/">
           <Floating background='var(--color-blue)' />
         </Link>

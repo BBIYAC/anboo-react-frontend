@@ -1,13 +1,15 @@
 import React, {useState, useRef} from 'react';
 
-const AddActImage = () => {
+const AddActImage = ({setUrl}) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
   const [isUpload, setIsUpload] = useState(false);
   const onChange = (e) => {
     (e.target.files[0] !== 0)
-    && setFileURL(URL.createObjectURL(e.target.files[0]));
+    ? setFileURL(URL.createObjectURL(e.target.files[0]))
+    : setFileURL('')
     (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
+    setUrl(URL.createObjectURL(e.target.files[0]));
   };
   
   return(

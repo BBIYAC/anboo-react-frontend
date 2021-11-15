@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import AddActImage from '../../atoms/Input/AddActImage';
@@ -9,8 +9,20 @@ import UsersBlock from '../../molecules/Block/UsersBlock';
 import { Link } from "react-router-dom";
 
 const ManagerActsPost = () => {
-  const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수'];
-  // const users = ['이말순'];
+  // 회원관리(/mg/rgs/) 페이지에서 선택한 사람들
+  const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수']; 
+  const [url, setUrl] = useState('');
+  const [content, setContent] = useState('');
+  const [clicked, setClicked] = useState(false);
+  const onClick = () => {
+    setClicked(true);
+    if(url && content){
+      console.log({url, content});
+      /*
+      axios acts post POST
+      */
+    }
+  }
   return (
     <React.Fragment>
       <div className="header">
@@ -22,11 +34,13 @@ const ManagerActsPost = () => {
           <BiLogOut size="20"/>
         </Link>
       </div>
-      <AddActImage />
-      <PostActTextArea />
+      {clicked && url === '' && <div className='notice-massage'>※ 필수로 추가해주세요.</div>}
+      <AddActImage setUrl={setUrl} />
+      {clicked && content === '' && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}
+      <PostActTextArea content={content} setContent={setContent} />
       <RequestDate />
       <UsersBlock users={users}/>
-      <OvalLarge btnText="등록하기"/>
+      <OvalLarge btnText="등록하기" onClick={onClick}/>
     </React.Fragment>
   );
 };

@@ -16,7 +16,7 @@ const NameShort = ({setIsRegister, fillMessage}) => {
     useEffect(() => {
         txtName === '' 
         ? setIsNull(fillMessage)
-        : (!isNumExept)? setIsRegister(true): setIsRegister(false);
+        : (!isNumExept)? setIsRegister(txtName): setIsRegister('');
       }, [fillMessage, txtName])
 
     const handleStyle = {

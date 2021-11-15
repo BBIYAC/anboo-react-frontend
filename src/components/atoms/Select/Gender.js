@@ -13,7 +13,7 @@ const Gender = ({setIsGender, fillMessage}) => {
     };
 
     useEffect(() => {
-        selected === '' ? setIsNull(fillMessage): setIsGender(true);
+        selected === '' ? setIsNull(fillMessage): setIsGender(selected);
     }, [fillMessage, selected])
     
 
