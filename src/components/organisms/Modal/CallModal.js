@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 const CallModal = ({isClicked, setIsClicked, modalText}) =>{
     const handleModalStyle = isClicked?{
@@ -49,6 +49,7 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
         width: '150px',
         height: '50px',
         borderRadius: '0 0 0 10px',
+        fontSize: '0.8rem',
     };
 
     const handleMainButtonStyle = {
@@ -59,17 +60,27 @@ const CallModal = ({isClicked, setIsClicked, modalText}) =>{
         height: '50px',
         fontWeight: 'bold',
         borderRadius: '0 0 10px 0',
+        fontSize: '0.8rem',
+        textDecoration: 'none',
+        display: 'inline-block',
+        textAlign: 'center',
+        lineHeight: '50px',
     };
+
+    const [tel, setTel] = useState('');
+    useEffect(()=>{
+        setTel('tel:'+modalText);
+    })
+    
     return(
         <React.Fragment>
             <div style={handleModalStyle}>
                 <div style={handleModalBodyStyle}>
                     <div style={handleModalTitleStyle}>요양원 전화번호</div>
-                    {/* <div style={handleModalTextStyle}>{modalText}</div> */}
-                    <div style={handleModalTextStyle}>010-1234-5678</div>
+                    <div style={handleModalTextStyle}>{modalText}</div>
                     <div style={handleModalButtonStyle}>
                         <button style={handleButtonStyle} onClick={()=>setIsClicked(false)}>취소</button>
-                        <button style={handleMainButtonStyle} onClick={()=>setIsClicked(false)}>전화걸기</button>
+                        <a href={tel} style={handleMainButtonStyle} onClick={()=>setIsClicked(false)}>전화걸기</a>
                     </div>
                 </div>
             </div>
