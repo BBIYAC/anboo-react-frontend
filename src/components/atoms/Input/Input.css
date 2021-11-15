@@ -106,13 +106,13 @@
 
 /* Search */
 .searchBox {
-    border: none;
-    border-color: var(--color-dark-gray);
-    border-radius: var(--border-radius);
-    width: 100%;
-    height: var(--height);
-    box-sizing: border-box;
-    outline: none;
+  border: none;
+  border-color: var(--color-dark-gray);
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: var(--height);
+  box-sizing: border-box;
+  outline: none;
 }
 
 

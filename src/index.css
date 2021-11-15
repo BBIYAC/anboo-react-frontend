@@ -74,3 +74,6 @@ code {
   text-decoration: none;
   color: var(--color-dark);
 }
+.search_linkComponent{
+  width: 100%;
+}

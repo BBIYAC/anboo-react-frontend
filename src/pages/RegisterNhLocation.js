@@ -1,9 +1,4 @@
 import React, {useState} from 'react';
-import RoundRectangle from '../components/atoms/Button/RoundRectangle';
-import Rating from '../components/atoms/Select/Rating';
-import Religion from '../components/atoms/Select/Religion';
-import Favorites from '../components/atoms/Button/Favorites';
-import { FaSearch } from 'react-icons/fa';
 import { AiOutlineAim } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
@@ -284,15 +279,11 @@ const RegisterNhLocation = () => {
           <BiLogOut size="20"/>
         </Link>
       </div>
-      <div className="block-search">
-        <div className="box-search">
-          <input className="searchBox" type="text" placeholder="요양원 이름, 주소, 지역 검색"></input>
-          <button className="search-icon"><FaSearch size="20" color="var(--color-dark-gray)"/></button>
-        </div>
-        <div className="block-keyword">
-          <Favorites />
-          <Rating />
-          <Religion />
+      <div className="block-location">
+        <div className="box-location">
+          <Link className="search_linkComponent" to="/rg/nhs">
+            <button className="btn_search">요양원 이름, 주소, 지역 검색하기</button>
+          </Link>
           <button className="btn-myLocation" onClick={getLocation}><AiOutlineAim size="25"/></button>
         </div>
       </div>
@@ -316,9 +307,6 @@ const RegisterNhLocation = () => {
           }
         </MarkerClusterer>
       </GoogleMap>
-      <Link className="linkComponent" to="/rg/nhs">
-        <RoundRectangle textAlign="center" btnText="11개의 시설 보러가기"/>
-      </Link>
   </LoadScript>
   );
 };

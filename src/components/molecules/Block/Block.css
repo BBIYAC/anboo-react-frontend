@@ -6,12 +6,22 @@
     height: 6rem;
     margin-bottom: 15px;
 }
+.block_location{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 3rem;
+  margin-bottom: 15px;
+}
 .box-search {
   display: flex;
-  border: 1px solid;
-  border-color: var(--color-dark-gray);
+  border: 1px solid var(--color-gray);
   border-radius: 5px;
   padding: 0 0.5rem 0 0.5rem;
+  align-items: center;
+}
+.box-location {
+  display: flex;
   align-items: center;
 }
 
