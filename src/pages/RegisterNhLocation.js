@@ -242,6 +242,7 @@ const restriction = {
 
 const mapDefaultOptions = {
   disableDefaultUI: true,
+  zoomControl: true,
   zoom,
   center,
   minZoom: zoom - 2,
