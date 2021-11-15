@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import CertificationModal from '../../organisms/Modal/CertificationModal';
 import Certification from '../Button/Certification';
 
-const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
+const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail, email}) =>{
     const cfNumCheck = useRef();
     const [txtEmailCheck, setTxtEmailCheck] = useState('');
     const [isSuccess, setIsSuccess] = useState(true);
@@ -26,7 +26,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail}) =>{
             setIsDisabled(true);
             setColor({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});
             setIsNull(false);
-            setIsEmail(true);
+            setIsEmail(email);
         }
         else{
             setIsSuccess(false);

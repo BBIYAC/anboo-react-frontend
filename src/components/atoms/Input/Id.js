@@ -21,7 +21,7 @@ const Id = ({setIsId, fillMessage}) =>{
     useEffect(() => {
         (titId === '') 
         ? setIsNull(fillMessage)
-        : (!isExept && !isLong && !isHangul)? setIsId(true): setIsId(false);
+        : (!isExept && !isLong && !isHangul)? setIsId(titId): setIsId('');
       }, [fillMessage, titId])
     return(
         <React.Fragment>

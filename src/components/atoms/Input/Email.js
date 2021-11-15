@@ -71,7 +71,7 @@ const Email = ({setIsEmail, fillMessage}) =>{
                 <Certification type='button' text='인증' onClick={onCFClick} color={color} disabled={isDisabled}/>
             </div>
             {isNull && <div className='notice-massage'>※ 필수로 인증해주세요.</div>}
-            { showCheck && <EmailCheck checkNum={emailCheck} onCFClick={onCFClick} setIsEmail={setIsEmail} fillMessage={fillMessage} /> }
+            { showCheck && <EmailCheck checkNum={emailCheck} onCFClick={onCFClick} setIsEmail={setIsEmail} fillMessage={fillMessage} email={txtEmail} /> }
         </React.Fragment>
     );
 };
