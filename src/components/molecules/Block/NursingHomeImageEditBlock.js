@@ -3,11 +3,11 @@ import NHActImage from '../../atoms/Input/NHActImage';
 import {BsPlusLg} from 'react-icons/bs';
 
 const NursingHomeImageEditBlock = () => {
-  // const fileInput = useRef();
-  // const [files, setFiles] = useState();
-  // const onChange = (e) => {
-  //     setFiles(e.target.files[0]);
-  // }
+  const fileInput = useRef();
+  const [files, setFiles] = useState();
+  const onChange = (e) => {
+      setFiles(e.target.files[0]);
+  }
 
   const [images, setImages] = useState([]);
 
@@ -28,7 +28,7 @@ const NursingHomeImageEditBlock = () => {
 
   const addImage = (event) => {
     event.preventDefault();
-    // fileInput.current.click()
+    fileInput.current.click()
     
     setImages([
       {
@@ -50,7 +50,7 @@ const NursingHomeImageEditBlock = () => {
           className="addNhImage">
             <BsPlusLg /> 
           </button>
-          {/* <input type="file" ref={fileInput} accept="image/*" onChange={onChange} style={{display:'none'}}></input> */}
+          <input type="file" ref={fileInput} accept="image/*" onChange={onChange} style={{display:'none'}}></input>
           {renderImages}
         </div>
       </form>

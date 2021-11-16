@@ -20,50 +20,32 @@ const mapContainerStyle = {
 
 const locations = [
   // 대전광역시
-  { lat:36.334595 , lng:127.438787 },
-  { lat:36.316669 , lng:127.440620 },
-  { lat:36.323326 , lng:127.438044 },
-  { lat:36.317351 , lng:127.457665 },
-  { lat:36.320442 , lng:127.457410 },
-  { lat:36.332797 , lng:127.461245 },
-  { lat:36.329219 , lng:127.445475 },
-  { lat:36.338072 , lng:127.449980 },
-  { lat:36.347018 , lng:127.441416 },
-  { lat:36.349064 , lng:127.447385 },
-  { lat:36.332381 , lng:127.416782 },
-  { lat:36.333578 , lng:127.409121 },
-  { lat:36.341977 , lng:127.408979 },
-  { lat:36.322732 , lng:127.424917 },
-  { lat:36.317935 , lng:127.435744 },
-  { lat:36.305898 , lng:127.438447 },
-  { lat:36.310560 , lng:127.422022 },
-  { lat:36.311480 , lng:127.431514 },
-  { lat:36.329899 , lng:127.406854 },
-  { lat:36.325204 , lng:127.405197 },
-  { lat:36.36596 ,  lng:127.412043  },
-  { lat:36.376916 , lng:127.420889  },
-  { lat:36.392524 , lng:127.425754  },
-  { lat:36.397361 , lng:127.419859  },
-  { lat:36.405908 , lng:127.425046  },
-  { lat:36.360116 , lng:127.441797  },
-  { lat:36.368124 , lng:127.43065  },  
-  { lat:36.361593 , lng:127.427191  },
-  { lat:36.356956 , lng:127.449963  },
-  { lat:36.448426 , lng:127.425622  },
-  { lat:36.299828 , lng:127.316406  },
-  { lat:36.353119 , lng:127.338904  },
-  { lat:36.365372 , lng:127.333373  },
-  { lat:36.368271 , lng:127.318449  },  
-  { lat:36.389472 , lng:127.320750  },
-  { lat:36.386202 , lng:127.297594  },
-  { lat:36.384093 , lng:127.350222  },
-  { lat:36.402787 , lng:127.398786  },
-  { lat:36.440463 , lng:127.383784  },
-  { lat:36.423694 , lng:127.389537  },
+  { lat:36.327099 , lng:127.475060 },     // 동구
+  { lat:36.283761 , lng:127.411601 },     // 중구
+  { lat:36.283472 , lng:127.344916 },     // 서구
+  { lat:36.380228 , lng:127.333443 },     // 유성구
+  { lat:36.414858 , lng:127.440642 },     // 대덕구
+  // 충청남도
+  { lat:36.299673 , lng:127.231917 },     // 계룡시
+  { lat:36.489584 , lng:127.072094 },     // 공주시
+  { lat:36.127741 , lng:127.474189 },     // 금산군
+  { lat:36.200449 , lng:127.155811 },     // 논산시
+  { lat:36.918734 , lng:126.650972 },     // 당진시
+  { lat:36.340553 , lng:126.610382 },     // 보령시
+  { lat:36.253657 , lng:126.857728 },     // 부여군
+  { lat:36.791866 , lng:126.446753 },     // 서산시
+  { lat:36.090850 , lng:126.691562 },     // 서천군
+  { lat:36.818272 , lng:126.976961 },     // 아산시
+  { lat:36.681065 , lng:126.782890 },     // 예산군
+  { lat:36.824652 , lng:127.201716 },     // 천안시
+  { lat:36.444492 , lng:126.846507 },     // 청양군
+  { lat:36.766131 , lng:126.299652 },     // 태안군
+  { lat:36.583657 , lng:126.614090 },     // 홍성군
 ]
+
 const imageOptions = {
   imagePath:
-    '../MarkerCluster',
+    'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 }
 
 const center = {lat: 36.481275, lng: 128.098754}
@@ -107,11 +89,10 @@ const RegisterNhLocation = () => {
     } else {}
   }
 
-  const countLabel = 123
-  const locationLabel = "\0 \0 \0 \0 \0 \0 \0 \0 \0 \0 \0 \0" + "00시" + "\0 \0 \0 \0 \0 \0"
   const markerLabel = {
-    text: countLabel + locationLabel,
+    text: "123",
     fontSize: "8px",
+    fontWeight: "bold"
   };
 
   return (
@@ -141,11 +122,11 @@ const RegisterNhLocation = () => {
       <MarkerClusterer 
       options={imageOptions}
       averageCenter={true}
-      gridSize={30}>
+      minimumClusterSize={5}
+      gridSize={50}>
         {(clusterer) =>
           locations.map((location) => (
             <Marker 
-            icon={require("./marker.png").default}
             key={createKey(location)} 
             position={location} 
             clusterer={clusterer}
