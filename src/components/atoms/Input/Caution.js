@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 
-const Caution = () => {
+const Caution = ({setIsCaution}) => {
     const [titName, setTitName] = useState('');
     const onChange = (e) => {
         setTitName(e.target.value);
+        setIsCaution(titName);
     };
     return(
         <>

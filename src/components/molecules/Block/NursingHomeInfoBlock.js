@@ -12,7 +12,9 @@ const NursingHomeInfoBlock = () => {
     { id:5, image: <ImageMiddle/>, name: "안산 요양원", address: "대전광역시 유성구", religion: "기독교" },
     { id:6, image: <ImageMiddle/>, name: "안중 요양원", address: "대전광역시 유성구", religion: "기독교" },
   ];
-
+  /*
+  axios nursinghome info GET
+  */
   const [nursingHomes, setNursingHomes] = useState([]);
 
   useEffect(() => {

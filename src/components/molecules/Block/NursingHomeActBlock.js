@@ -2,14 +2,14 @@ import React from 'react';
 import ActImage from '../../atoms/Input/ActImage';
 import NursingHomeActsText from '../../atoms/Label/NursingHomeActsText';
 
-const NursingHomeActBlock = () => {
+const NursingHomeActBlock = ({contents}) => {
   return(
     <React.Fragment>
-      <hr></hr>
       <div className="block-NursingHomeAct">
-        <ActImage />
-        <NursingHomeActsText />
+        <ActImage url={contents.url} />
+        <NursingHomeActsText contents={contents} />
       </div>
+      <hr></hr>
     </React.Fragment>
   );
 };

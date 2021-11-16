@@ -1,7 +1,7 @@
 import React from "react";
 import { BsPlusLg } from 'react-icons/bs';
 
-const AddPost = ({className}) => {
+const AddPost = ({className, onClick}) => {
     const handleAddStyle = {
         fontSize: '30px',
         border: '1px solid',
@@ -11,7 +11,7 @@ const AddPost = ({className}) => {
     };
     return(
         <>
-            <BsPlusLg className={className} style={handleAddStyle}/>
+            <BsPlusLg className={className} style={handleAddStyle} onClick={onClick}/>
         </>
     );
 };

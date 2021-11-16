@@ -14,7 +14,7 @@ const PasswordCheck = ({pwdCheck, setIsPasswordCheck, fillMessage}) =>{
     useEffect(() => {
         (titPasswordCheck === '') 
         ? setIsNull(fillMessage)
-        : (isEqual)? setIsPasswordCheck(true): setIsPasswordCheck(false);
+        : (isEqual)? setIsPasswordCheck(titPasswordCheck): setIsPasswordCheck('');
     }, [fillMessage, titPasswordCheck])
     return(
         <React.Fragment>

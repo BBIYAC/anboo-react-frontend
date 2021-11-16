@@ -13,7 +13,9 @@ const ApprovalsListBlock = () => {
     { image: <ImageSmall/>, name: "최갑수", year: "2004.01.01" },
     { image: <ImageSmall/>, name: "권갑수", year: "2005.01.01" },
   ];
-
+  /*
+  axios register member list GET
+  */
   const [members, setMembers] = useState([]);
 
   useEffect(() => {

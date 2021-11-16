@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
-const Password = ({setPwd, setIsPassword, fillMessage}) =>{
+const Password = ({setIsPassword, fillMessage}) =>{
     const [titPassword, setTitPassword] = useState('');
     const [isLong, setIsLong] = useState(false);
     const [isNull, setIsNull] = useState(false);
     const onChange = (e) => {
         setTitPassword(e.target.value);
         (e.target.value.length < 8 || e.target.value.length > 15)? setIsLong(true): setIsLong(false);
-        setPwd(e.target.value);
         (e.target.value.length > 0) 
         ? setIsNull(false)
         : (isLong)? setIsNull(false): setIsNull(true);
@@ -15,7 +14,7 @@ const Password = ({setPwd, setIsPassword, fillMessage}) =>{
     useEffect(() => {
         (titPassword === '') 
         ? setIsNull(fillMessage)
-        : (!isLong)? setIsPassword(true): setIsPassword(false);
+        : (!isLong)? setIsPassword(titPassword): setIsPassword('');
       }, [fillMessage, titPassword])
 
     return(

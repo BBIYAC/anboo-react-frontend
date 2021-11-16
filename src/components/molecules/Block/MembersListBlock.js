@@ -13,7 +13,9 @@ const MembersListBlock = () => {
     { image: <ImageSmall/>, name: "최순덕", year: "2004.01.01" },
     { image: <ImageSmall/>, name: "권순덕", year: "2005.01.01" },
   ];
-
+  /*
+  axios member list GET
+  */
   const [members, setMembers] = useState([]);
 
   useEffect(() => {

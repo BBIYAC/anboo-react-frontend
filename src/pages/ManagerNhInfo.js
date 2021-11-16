@@ -5,15 +5,12 @@ import '../components/atoms/Button/Button.css';
 
 const ManagerNhInfo= () => {
   const [isEdit, setIsEdit] = useState(false);
-  const onClickEdit = () => {
-    setIsEdit(false);
-  }
-  const onClickSave = () => {
-    setIsEdit(true);
-  }
+
   return (
     <React.Fragment>
-      {isEdit? <NursingHomeInfoEdit onClick={onClickEdit} />: <NursingHomeInfo onClick={onClickSave} />}
+      {isEdit
+      ? <NursingHomeInfoEdit onClick={()=>setIsEdit(false)} />
+      : <NursingHomeInfo onClick={()=>setIsEdit(true)} />}
     </React.Fragment>
   );
 };

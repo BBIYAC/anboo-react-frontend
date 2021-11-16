@@ -19,7 +19,7 @@ const NameLong = ({setIsName, fillMessage}) =>{
     useEffect(() => {
         (titName === '') 
         ? setIsNull(fillMessage)
-        : (!isExept && !isNumExept)? setIsName(true): setIsName(false);
+        : (!isExept && !isNumExept)? setIsName(titName): setIsName('');
       }, [fillMessage, titName])
     return(
         <React.Fragment>

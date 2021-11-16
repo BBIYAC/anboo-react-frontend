@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {IoIosSend} from 'react-icons/io'
 ;
 const RequestBlock = ({requestTitle, requestContent, requestDate, response, isManager}) => {
@@ -25,25 +25,41 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response, isMa
         display: 'flex',
     };
 
+    const [content, setContent] = useState('');
+    const [clicked, setClicked] = useState(false);
+    const onSubmit = () => {
+        setClicked(true);
+        if(content){
+            console.log(content);
+            /*
+            axios request response POST
+            */
+        }
+    }
+    const onChange = (e) => {
+        setContent(e.target.value);
+    }
+
     return(
-        <div style={handleRequestBlockStyle}>
+        <><div style={handleRequestBlockStyle}>
             <div>{requestTitle}</div>
             <div>{requestContent}</div>
             <div style={handleRequestDateStyle}>{requestDate}</div>
-            {response
+            {
+            response
             ?<div style={handleResponseStyle}>
                 <p className='response-title'>답글:</p> 
                 <p>{response}</p>
             </div>
-            : isManager
-            ? <div style={handleResponseStyle}>
-                <p className='response-title'>답글:</p> 
-                <input className='input-response' type='text'></input>
-                <IoIosSend className='icon-send'/>
-            </div>
-            : <></> }
-            
+            :isManager &&
+                <div style={handleResponseStyle}>
+                    <p className='response-title'>답글:</p> 
+                    <input className='input-response' type='text' value={content} onChange={onChange}></input>
+                    <IoIosSend className='icon-send' onClick={onSubmit}/>
+                </div> 
+            }
         </div>
+        {clicked && content === '' && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}</>
     );
 };
 

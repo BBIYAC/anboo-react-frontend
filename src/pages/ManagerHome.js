@@ -1,15 +1,32 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import {IoIosArrowBack} from 'react-icons/io';
 import {BiLogOut} from 'react-icons/bi';
 import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
 import '../components/atoms/Label/Label.css';
 import '../components/molecules/Block/Block.css';
 import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBefore';
-// import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
-// import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
+import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
+import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
 import { Link } from 'react-router-dom';
 
 const ManagerHome = () => {
+  const [userState, setUserState] = useState('');
+  const pageState = (state) => {
+    switch(state){
+      case 'after':{
+        return <ManagerHomeAfter />
+      }
+      case 'waiting':{
+        return <ManagerHomeWaiting />
+      }
+      default:{
+        return <ManagerHomeBefore />
+      }
+    }
+  }
+  useEffect(()=>{
+    setUserState('');
+  })
     return (
         <React.Fragment>
             <div className="header">
@@ -19,9 +36,7 @@ const ManagerHome = () => {
                 <BiLogOut size="20"/>
               </Link>
             </div>
-            <ManagerHomeBefore />
-            {/* <ManagerHomeWaiting /> */}
-            {/* <ManagerHomeAfter /> */}
+            {pageState(userState)}
             <ManagerBelowBarBlock isHome />
         </React.Fragment>
     );

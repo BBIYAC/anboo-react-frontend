@@ -17,7 +17,7 @@ const BelowRectangleBlock = () => {
           <RectangleLarge btnText="요양자 등록하기"/>
         </Link>
         <RectangleLarge borderLeftWidth="0.01rem" borderLeftStyle="solid" btnText="문의하기" onClick={onClick}/>
-        <CallModal isClicked={isClicked} setIsClicked={setIsClicked} />
+        <CallModal isClicked={isClicked} setIsClicked={setIsClicked} modalText='010-1234-5678' />
       </div>
     </React.Fragment>
   );

@@ -16,7 +16,7 @@ const PhoneNumber = ({setIsPhone, fillMessage}) =>{
     useEffect(() => {
         (titPhone === '') 
         ? setIsNull(fillMessage)
-        : (!isLong && !isNotNum)? setIsPhone(true): setIsPhone(false);
+        : (!isLong && !isNotNum)? setIsPhone(titPhone): setIsPhone('');
     }, [fillMessage, titPhone])
     return(
         <React.Fragment>

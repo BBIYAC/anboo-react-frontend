@@ -11,17 +11,19 @@ import '../components/atoms/Button/Button.css';
 import { Link } from 'react-router-dom';
 
 const SignIn = () => {
+  // 유효성 검사
+  const [isUser, setIsUser] = useState('');
+  const [isId, setIsId] = useState('');
+  const [isPassword, setIsPassword] = useState('');
+  const [fillMessage, setFillMessage] = useState(false);
+
   const signinSubmit = (event) => {
     event.preventDefault();
-    alert('로그인 완료');
+    console.log({isUser, isId, isPassword});
+    /*
+     axios signin form POST
+    */
   };
-  const [pwd, setPwd] = useState('');
-
-  // 유효성 검사
-  const [isUser, setIsUser] = useState(false);
-  const [isId, setIsId] = useState(false);
-  const [isPassword, setIsPassword] = useState(false);
-  const [fillMessage, setFillMessage] = useState(false);
 
   const onClick = () => {
     setFillMessage(true); // 비어있는 input 경고
@@ -38,12 +40,13 @@ const SignIn = () => {
       <form onSubmit={signinSubmit}>
         <UserChoice setIsUser={setIsUser} fillMessage={fillMessage} />
         <Id setIsId={setIsId} fillMessage={fillMessage} />
-        <Password setPwd={setPwd} setIsPassword={setIsPassword} fillMessage={fillMessage} />
+        <Password setIsPassword={setIsPassword} fillMessage={fillMessage} />
         {
             (isUser && isId && isPassword)
-            ?<Link className="linkComponent" to="/mg/home">
-                <RoundRectangle type='submit' btnText="로그인" />
-            </Link>
+            // ?<Link className="linkComponent" to="/mg/home">
+            //     <RoundRectangle type='submit' btnText="로그인" />
+            // </Link>
+            ?<RoundRectangle type='submit' btnText="로그인" />
             :<RoundRectangle type='button' btnText="로그인" onClick={onClick} />
         }
         {/* <Link to="/rg/acts">

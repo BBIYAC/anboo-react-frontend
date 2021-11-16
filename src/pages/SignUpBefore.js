@@ -12,24 +12,27 @@ import { BiLogOut } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
 const SignUpBefore = () => {
-    const signupSubmit = (event) => {
-        event.preventDefault();
-    };
-    const [pwd, setPwd] = useState('');
+    // 유효성 검사
+    const [isUser, setIsUser] = useState('');
+    const [isName, setIsName] = useState('');
+    const [isId, setIsId] = useState('');
+    const [isPassword, setIsPassword] = useState('');
+    const [isPasswordCheck, setIsPasswordCheck] = useState('');
+    const [isPhone, setIsPhone] = useState('');
+    const [isEmail, setIsEmail] = useState('');
     const [fillMessage, setFillMessage] = useState(false);
 
-    // 유효성 검사
-    const [isUser, setIsUser] = useState(false);
-    const [isName, setIsName] = useState(false);
-    const [isId, setIsId] = useState(false);
-    const [isPassword, setIsPassword] = useState(false);
-    const [isPasswordCheck, setIsPasswordCheck] = useState(false);
-    const [isPhone, setIsPhone] = useState(false);
-    const [isEmail, setIsEmail] = useState(false);
-
+    const signupSubmit = (event) => {
+        event.preventDefault();
+        console.log({isUser, isName, isId, isPassword, isPhone, isEmail} );
+        /*
+        axios signup form POST
+        */
+    };
+    
+    
     const onClick = () => {
         setFillMessage(true); // 비어있는 input 경고
-        console.log(isUser, isName, isId, isPassword, isPasswordCheck, isPhone, isEmail);
     }
 
 
@@ -44,15 +47,16 @@ const SignUpBefore = () => {
                 <UserChoice setIsUser={setIsUser} fillMessage={fillMessage} />
                 <NameLong setIsName={setIsName} fillMessage={fillMessage} />
                 <Id setIsId={setIsId} fillMessage={fillMessage} />
-                <Password setIsPassword={setIsPassword} fillMessage={fillMessage} setPwd={setPwd}/>
-                <PasswordCheck setIsPasswordCheck={setIsPasswordCheck} fillMessage={fillMessage} pwdCheck={pwd}/>
+                <Password setIsPassword={setIsPassword} fillMessage={fillMessage}/>
+                <PasswordCheck setIsPasswordCheck={setIsPasswordCheck} fillMessage={fillMessage} pwdCheck={isPassword}/>
                 <PhoneNumber setIsPhone={setIsPhone} fillMessage={fillMessage} />
                 <Email setIsEmail={setIsEmail} fillMessage={fillMessage} />
                 {
                     (isUser && isName && isId && isPassword && isPasswordCheck && isPhone && isEmail)
-                    ?<Link className="linkComponent" to="/signup/after">
-                        <RoundRectangle type='submit' btnText="회원가입" />
-                    </Link>
+                    // ?<Link className="linkComponent" to="/signup/after">
+                    //     <RoundRectangle type='submit' btnText="회원가입"/>
+                    // </Link>
+                    ?<RoundRectangle type='submit' btnText="회원가입"/>
                     :<RoundRectangle type='button' btnText="회원가입" onClick={onClick} />
                 }
             </form>

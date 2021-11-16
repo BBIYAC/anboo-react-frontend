@@ -15,7 +15,7 @@ const Birth = ({setIsBirth, fillMessage}) => {
     useEffect(() => {
         (titBirth === '') 
         ? setIsNull(fillMessage)
-        : (!isLong)? setIsBirth(true): setIsBirth(false);
+        : (!isLong)? setIsBirth(titBirth): setIsBirth('');
     }, [fillMessage, titBirth])
 
     return(
