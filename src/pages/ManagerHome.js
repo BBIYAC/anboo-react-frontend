@@ -13,11 +13,9 @@ import axios from "axios";
 const ManagerHome = () => {
   let history = useHistory();
   const [userState, setUserState] = useState('');
-  
+
   // ################################사용자 구분 코드################################
-  const headers = {
-    Authorization : 'Bearer ' + localStorage.getItem('accessToken')
-  }
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
@@ -57,14 +55,17 @@ const ManagerHome = () => {
   useEffect(()=>{
     setUserState('');
   })
+
+  const onSigninClick = () => {
+    setHeaders({Authorization : 'Bearer ' + localStorage.removeItem('accessToken')});
+    history.push('/');
+  }
     return (
         <React.Fragment>
             <div className="header">
               <IoIosArrowBack opacity='0' size="20"/>
               관리자 홈
-              <Link className="linkComponent" to="/">
-                <BiLogOut size="20"/>
-              </Link>
+              <BiLogOut size="20" onClick={onSigninClick}/>
             </div>
             {pageState(userState)}
             <ManagerBelowBarBlock isHome />
