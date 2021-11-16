@@ -80,9 +80,6 @@ const SignUpBefore = () => {
                 <Email setIsEmail={setIsEmail} fillMessage={fillMessage} />
                 {
                     (isUser && isName && isId && isPassword && isPasswordCheck && isPhone && isEmail)
-                    // ?<Link className="linkComponent" to="/signup/after">
-                    //     <RoundRectangle type='submit' btnText="회원가입"/>
-                    // </Link>
                     ?<RoundRectangle type='submit' btnText="회원가입"/>
                     :<RoundRectangle type='button' btnText="회원가입" onClick={onClick} />
                 }
