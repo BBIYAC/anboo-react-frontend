@@ -7,3 +7,4 @@
 - npm install --save react-icons@4.3.1
 - npm install --save @react-google-maps/api@2.5.0
 - npm install --save emailjs-com@3.2.0
+- npm install axios@0.24.0
