@@ -38,7 +38,9 @@ const  RegisterProfileAfter= () => {
     <div className="header">
         <IoIosArrowBack opacity='0' size="20"/>
         요양자 프로필
-        <BiLogOut size="20"/>
+        <Link className="linkComponent" to="/">
+          <BiLogOut size="20"/>
+        </Link>
     </div>
       <AddImage />
       <InputSelectBlock setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />

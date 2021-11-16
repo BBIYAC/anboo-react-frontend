@@ -96,6 +96,7 @@ button {
   border: solid 1px;
   font-size: var(--font-size-small);
   color: var(--color-blue);
+  outline: none;
 }
 .btn-favorites:active {
   background-color: var(--color-blue);

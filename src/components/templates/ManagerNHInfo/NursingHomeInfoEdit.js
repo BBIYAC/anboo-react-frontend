@@ -10,9 +10,13 @@ const NursingHomeInfoEdit = ({onClick}) => {
   return(
     <>
       <div className="header">
-        <IoIosArrowBack size="20"/>
+        <Link className="linkComponent" to="/mg/profile">
+          <IoIosArrowBack size="20"/>
+        </Link>
         요양원 정보 수정
-        <BiLogOut size="20"/>
+        <Link className="linkComponent" to="/">
+          <BiLogOut size="20"/>
+        </Link>
       </div>
       <MgNHInfoEdit onClick={onClick} />
       <Link className="linkComponent" to="/mg/home">

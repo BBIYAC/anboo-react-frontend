@@ -9,9 +9,9 @@ import RegisterProfileBefore from '../components/templates/RegisterProfile/Regis
 const  RegisterProfile= () => {
   return (
     <React.Fragment>
-      <RegisterProfileAfter />
+      {/* <RegisterProfileAfter /> */}
       {/* <RegisterProfileWaiting /> */}
-      {/* <RegisterProfileBefore /> */}
+      <RegisterProfileBefore />
     </React.Fragment>
   );
 };
