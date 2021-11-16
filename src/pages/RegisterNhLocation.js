@@ -63,7 +63,7 @@ const locations = [
 ]
 const imageOptions = {
   imagePath:
-    'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m4.png', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
+    '../MarkerCluster',
 }
 
 const center = {lat: 36.481275, lng: 128.098754}
@@ -141,7 +141,7 @@ const RegisterNhLocation = () => {
       <MarkerClusterer 
       options={imageOptions}
       averageCenter={true}
-      gridSize={50}>
+      gridSize={30}>
         {(clusterer) =>
           locations.map((location) => (
             <Marker 

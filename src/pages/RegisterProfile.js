@@ -27,13 +27,7 @@ const  RegisterProfile= () => {
   })
   return (
     <React.Fragment>
-<<<<<<< HEAD
-      {/* <RegisterProfileAfter /> */}
-      {/* <RegisterProfileWaiting /> */}
-      <RegisterProfileBefore />
-=======
       {pageState(userState)}
->>>>>>> bde66563abbe0f8a3ffc2a9cb3a8ba5e07fce914
     </React.Fragment>
   );
 };
