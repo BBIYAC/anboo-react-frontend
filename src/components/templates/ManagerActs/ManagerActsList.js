@@ -4,7 +4,7 @@ import AddPost from '../../atoms/Button/AddPost';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 
-const ManagerActsList = ({onClick}) => {
+const ManagerActsList = ({onClick, onSigninClick}) => {
   const NursingHomeActs = [
     {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
     {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
@@ -23,7 +23,7 @@ const ManagerActsList = ({onClick}) => {
       <div className="header">
         <IoIosArrowBack size="20"/>
           활동 기록
-        <BiLogOut size="20"/>
+        <BiLogOut size="20" onClick={onSigninClick}/>
       </div>
       <AddPost className='manager' onClick={onClick}/>
       <ul>

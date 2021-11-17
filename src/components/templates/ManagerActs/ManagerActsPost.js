@@ -8,7 +8,7 @@ import OvalLarge from '../../atoms/Button/OvalLarge';
 import UsersBlock from '../../molecules/Block/UsersBlock';
 import { Link } from "react-router-dom";
 
-const ManagerActsPost = () => {
+const ManagerActsPost = ({onSigninClick}) => {
   // 회원관리(/mg/rgs/) 페이지에서 선택한 사람들
   const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수']; 
   const [url, setUrl] = useState('');
@@ -30,9 +30,7 @@ const ManagerActsPost = () => {
           <IoIosArrowBack size="20"/>
         </Link>
           활동 등록
-        <Link className="linkComponent" to="/">
-          <BiLogOut size="20"/>
-        </Link>
+        <BiLogOut size="20" onClick={onSigninClick}/>
       </div>
       {clicked && url === '' && <div className='notice-massage'>※ 필수로 추가해주세요.</div>}
       <AddActImage setUrl={setUrl} />

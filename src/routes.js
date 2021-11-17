@@ -13,6 +13,7 @@ import ManagerNhInfo from "./pages/ManagerNhInfo";
 import ManagerRgs from "./pages/ManagerRgs";
 import ManagerRequests from "./pages/ManagerRequests";
 import ManagerActs from "./pages/ManagerActs";
+import ManagerHomeWaiting from "./pages/ManagerHomeWaiting";
 
 
 const routes =  [
@@ -59,6 +60,10 @@ const routes =  [
     {
         path: '/mg/home',
         component: ManagerHome
+    },
+    {
+        path: '/mg/waiting',
+        component: ManagerHomeWaiting
     },
     {
         path: '/mg/nh-info',

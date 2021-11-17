@@ -5,14 +5,13 @@ import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarB
 import '../components/atoms/Label/Label.css';
 import '../components/molecules/Block/Block.css';
 import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBefore';
-import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
 import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
 const ManagerHome = () => {
   let history = useHistory();
-  const [userState, setUserState] = useState('');
+  const [userState, setUserState] = useState();
 
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
@@ -26,39 +25,32 @@ const ManagerHome = () => {
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
-        setUserState('before');
+        // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
+        setUserState(3); // 요양원 등록 전
+        // history.push('/mg/waiting'); // 요양원 승인 대기
       }else if(key === 4){ // 승인 관리자
-        setUserState('after');
-      }else{ // 관리자 승인 대기
-        setUserState('waiting');
+        setUserState(4);
       }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
-        console.error(error);
-        history.push('/rg/nh-location');
-    })
-  },[])
+    }).catch(error => { // access token 없는 경우(비회원)
+        history.push('/');
+    },[headers]);
+  })
   // ################################사용자 구분 코드################################
 
   const pageState = (state) => {
     switch(state){
-      case 'after':{
-        return <ManagerHomeAfter />
+      case 4:{
+        return <><ManagerHomeAfter />
+                 <ManagerBelowBarBlock isHome /></>
       }
-      case 'waiting':{
-        return <ManagerHomeWaiting />
-      }
-      default:{
+      case 3:{
         return <ManagerHomeBefore />
       }
     }
   }
-  useEffect(()=>{
-    setUserState('');
-  })
 
   const onSigninClick = () => {
     setHeaders({Authorization : 'Bearer ' + localStorage.removeItem('accessToken')});
-    history.push('/');
   }
     return (
         <React.Fragment>
@@ -68,7 +60,6 @@ const ManagerHome = () => {
               <BiLogOut size="20" onClick={onSigninClick}/>
             </div>
             {pageState(userState)}
-            <ManagerBelowBarBlock isHome />
         </React.Fragment>
     );
 };
