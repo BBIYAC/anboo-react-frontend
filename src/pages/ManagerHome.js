@@ -7,7 +7,7 @@ import '../components/molecules/Block/Block.css';
 import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBefore';
 import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
 import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
 const ManagerHome = () => {

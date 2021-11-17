@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineAim } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link, useHistory } from 'react-router-dom';
 import '../components/atoms/Button/Button.css';
+import axios from 'axios';
 import '../components/molecules/Block/Block.css';
 import { 
   GoogleMap, 
@@ -11,6 +12,8 @@ import {
   MarkerClusterer ,
   Marker, } from '@react-google-maps/api';
 
+
+  
 const mapContainerStyle = {
   width: "var(--width)",
   height: "calc(100vh - 180px)",
@@ -18,6 +21,7 @@ const mapContainerStyle = {
   marginBottom: "1rem",
 };
 
+// 충남 대전 위경도
 const locations = [
   // 대전광역시
   { lat:36.324082 , lng:127.475089 },     // 동구
@@ -58,7 +62,6 @@ const restriction = {
     west: 116,
   },
 }
-
 const mapDefaultOptions = {
   disableDefaultUI: true,
   zoom,
@@ -89,26 +92,55 @@ const RegisterNhLocation = () => {
     } else {}
   }
 
+  // 각 지역 마다의 요양원 개수를 label로 출력하는 코드입니다.
+  // const markerLabel = {
+  //   text: "00시",
+  //   fontSize: "8px",
+  //   fontWeight: "bold",
+  //   color: "black",
+  // };
+
   let history = useHistory();
+  const [userState, setUserState] = useState('');
   const markerOnClick = () => {
     history.push("/rg/nhs");
   }
 
-  // 각 지역 마다의 요양원 개수를 label로 출력하는 코드입니다.
-  const markerLabel = {
-    text: "00시",
-    fontSize: "8px",
-    fontWeight: "bold",
-    color: "black",
-  };
+  // ################################사용자 구분 코드################################
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
+  useEffect(()=>{
+    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
+    .then(response =>{
+      let key = response.data.key;
+      if(key === 1){ // 미등록 보호자
+        history.push('/rg/nh-location');
+      }else if(key === 2){ // 등록 보호자
+        history.push('/rg/acts');
+      }else if(key === 3){ // 미승인 관리자
+        setUserState('before');
+      }else if(key === 4){ // 승인 관리자
+        setUserState('after');
+      }else{ // 관리자 승인 대기
+        setUserState('waiting');
+      }
+    }).catch(error => { // 로그인 token 없는 경우(비회원)
+        console.error(error);
+        history.push('/rg/nh-location');
+    })
+  },[])
+  // ################################사용자 구분 코드################################
 
+  const onLogoutClick = () => {
+    setHeaders({Authorization : localStorage.removeItem('accessToken')});
+  }
   return (
   <LoadScript googleMapsApiKey="AIzaSyC526zoNUjyiZlFOXmIy7_KGgaxcj7ecIo">
     <div className="header">
       <IoIosArrowBack opacity="0" size="20"/>
       요양원 위치
       <Link className="linkComponent" to="/">
-        <BiLogOut size="20"/>
+        <BiLogOut size="20" onClick={onLogoutClick}/>
       </Link>
     </div>
     <div className="block-location">
