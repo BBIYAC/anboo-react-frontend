@@ -16,26 +16,25 @@ const ManagerHome = () => {
   const [userState, setUserState] = useState();
 
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
     axios({url: `${apiUrl}/authentication/check/` ,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      console.log(key);
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts'); 
-      }else if(key === 5){ // 비회원
-        history.push('/');
-      }else{ // 미승인 관리자 & 승인 관리자 
+      }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 
         // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
         setUserState(key); // 요양원 등록 전 & 요양원 등록 승인
         // setUserState(); // 요양원 승인 대기
+      }else{ // 비회원
+        history.push('/');
       }
     }).catch(error => {
         console.error(error);
-    },[headers]);
+    },[]);
   })
   // ################################사용자 구분 코드################################
 
