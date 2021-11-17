@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { AiOutlineAim } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
-import { BiColorFill, BiLogOut } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { BiLogOut } from 'react-icons/bi';
+import { Link, useHistory } from 'react-router-dom';
 import '../components/atoms/Button/Button.css';
 import '../components/molecules/Block/Block.css';
 import { 
@@ -20,27 +20,27 @@ const mapContainerStyle = {
 
 const locations = [
   // 대전광역시
-  { lat:36.327099 , lng:127.475060 },     // 동구
-  { lat:36.283761 , lng:127.411601 },     // 중구
-  { lat:36.283472 , lng:127.344916 },     // 서구
-  { lat:36.380228 , lng:127.333443 },     // 유성구
-  { lat:36.414858 , lng:127.440642 },     // 대덕구
+  { lat:36.324082 , lng:127.475089 },     // 동구
+  { lat:36.280926 , lng:127.411073 },     // 중구
+  { lat:36.280382 , lng:127.345191 },     // 서구
+  { lat:36.377231 , lng:127.333387 },     // 유성구
+  { lat:36.412396 , lng:127.440246 },     // 대덕구
   // 충청남도
-  { lat:36.299673 , lng:127.231917 },     // 계룡시
-  { lat:36.489584 , lng:127.072094 },     // 공주시
-  { lat:36.127741 , lng:127.474189 },     // 금산군
-  { lat:36.200449 , lng:127.155811 },     // 논산시
-  { lat:36.918734 , lng:126.650972 },     // 당진시
-  { lat:36.340553 , lng:126.610382 },     // 보령시
-  { lat:36.253657 , lng:126.857728 },     // 부여군
-  { lat:36.791866 , lng:126.446753 },     // 서산시
-  { lat:36.090850 , lng:126.691562 },     // 서천군
-  { lat:36.818272 , lng:126.976961 },     // 아산시
-  { lat:36.681065 , lng:126.782890 },     // 예산군
-  { lat:36.824652 , lng:127.201716 },     // 천안시
-  { lat:36.444492 , lng:126.846507 },     // 청양군
-  { lat:36.766131 , lng:126.299652 },     // 태안군
-  { lat:36.583657 , lng:126.614090 },     // 홍성군
+  { lat:36.291933 , lng:127.234403 },     // 계룡시
+  { lat:36.480288 , lng:127.075043 },     // 공주시
+  { lat:36.119378 , lng:127.478240 },     // 금산군
+  { lat:36.191263 , lng:127.157623 },     // 논산시
+  { lat:36.911535 , lng:126.654480 },     // 당진시
+  { lat:36.333612 , lng:126.612906 },     // 보령시
+  { lat:36.246767 , lng:126.856818 },     // 부여군
+  { lat:36.784875 , lng:126.450234 },     // 서산시
+  { lat:36.080735 , lng:126.691281 },     // 서천군
+  { lat:36.808837 , lng:126.978682 },     // 아산시
+  { lat:36.671042 , lng:126.784322 },     // 예산군
+  { lat:36.804501 , lng:127.202564 },     // 천안시
+  { lat:36.431013 , lng:126.852949 },     // 청양군
+  { lat:36.745988 , lng:126.298059 },     // 태안군
+  { lat:36.568189 , lng:126.608199 },     // 홍성군
 ]
 
 const imageOptions = {
@@ -89,10 +89,17 @@ const RegisterNhLocation = () => {
     } else {}
   }
 
+  let history = useHistory();
+  const markerOnClick = () => {
+    history.push("/rg/nhs");
+  }
+
+  // 각 지역 마다의 요양원 개수를 label로 출력하는 코드입니다.
   const markerLabel = {
-    text: "123",
+    text: "00시",
     fontSize: "8px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "black",
   };
 
   return (
@@ -118,7 +125,7 @@ const RegisterNhLocation = () => {
     center={center}
     // 0: earth, 3: continent, 4: large islands, 6: large rivers
     // 10: large roads, 15: buildings, ~20
-    zoom={6}>
+    Zoom={6}>
       <MarkerClusterer 
       options={imageOptions}
       averageCenter={true}
@@ -130,7 +137,10 @@ const RegisterNhLocation = () => {
             key={createKey(location)} 
             position={location} 
             clusterer={clusterer}
-            label={markerLabel}
+            clickable={true}
+            icon={require("./marker.png").default}
+            // label={markerLabel}
+            onClick={markerOnClick}
             />
           ))
         }
