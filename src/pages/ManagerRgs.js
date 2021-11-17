@@ -22,7 +22,8 @@ const ManagerRgs= () => {
         return;
       }
     }).catch(error => { // access token 없는 경우(비회원)
-        history.push('/');
+        // history.push('/');
+        return;
     })
   },[headers])
   // ################################사용자 구분 코드################################

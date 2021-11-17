@@ -3,9 +3,10 @@ import TextIcon from "../../atoms/Button/TextIcon";
 import ImageSmall from "../../atoms/Input/ImageSmall";
 import {AiOutlineDoubleRight} from 'react-icons/ai';
 import RoundRectangleSmall from "../../atoms/Button/RoundRectangleSmall";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const MembersListBlock = () => {
+  const history = useHistory();
   const memberInfo = [
     { image: <ImageSmall/>, name: "김순덕", year: "2001.01.01" },
     { image: <ImageSmall/>, name: "이순덕", year: "2002.01.01" },
@@ -37,6 +38,19 @@ const MembersListBlock = () => {
     }
   };
 
+
+  const onClick = () => {
+    let selected = members.filter((member) => {return member?.isChecked});
+    (selected.length > 0)
+    ?(selected.length < members.length)
+      ?(selected.length === 1)
+        ?history.push('/mg/acts')
+        :history.push('/mg/acts')
+      :history.push('/mg/acts')
+    :console.log('선택안함')
+    
+  }
+
   return (
     <React.Fragment>
       <hr/>
@@ -47,12 +61,12 @@ const MembersListBlock = () => {
 
       <hr/>
 
-      <div className="managementOption">
-        <Link className="linkComponent" to="/mg/acts">
-          <TextIcon
+      <div className="managementOption" >
+        <TextIcon
           btnText="활동 등록" 
-          icon={<AiOutlineDoubleRight size="13"/>}/>
-        </Link>
+          icon={<AiOutlineDoubleRight size="13"/>}
+          onClick={onClick}
+        />
         <div className="btn-option">
           <label className="lbl-allSelect">모두 선택</label>
           <input 

@@ -3,7 +3,7 @@ import ManagerActsList from '../components/templates/ManagerActs/ManagerActsList
 import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
 import Floating from '../components/atoms/Button/Floating'
 import ManagerActsPost from '../components/templates/ManagerActs/ManagerActsPost';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import axios from 'axios';
 import { apiUrl } from './ApiURL';
 
@@ -26,13 +26,20 @@ const ManagerActs = () => {
         return;
       }
     }).catch(error => { // access token 없는 경우(비회원)
-        history.push('/');
+        // history.push('/');
+        return;
     })
   },[headers])
   // ################################사용자 구분 코드################################
   const onSigninClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
+
+
+  // const location = useLocation();
+  // useEffect(()=>{
+  //   console.log(location.state.members);
+  // },[])
 
   return (
     <React.Fragment>
