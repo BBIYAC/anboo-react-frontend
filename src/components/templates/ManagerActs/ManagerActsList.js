@@ -4,7 +4,7 @@ import AddPost from '../../atoms/Button/AddPost';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 
-const ManagerActsList = ({onClick, onSigninClick}) => {
+const ManagerActsList = ({onClick, onSigninClick, members}) => {
   const NursingHomeActs = [
     {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
     {url: '', content:'오늘은 윷놀이를 했어요~', date:'2021년 10월 29일'},
@@ -13,9 +13,13 @@ const ManagerActsList = ({onClick, onSigninClick}) => {
   /*
   axios request GET
   */
+  const users = [...members['selected']];
+  const allUsers = members['members'];
   const [acts, setActs] = useState([]);
   useEffect(()=>{
     setActs(NursingHomeActs);
+    users.length === allUsers && console.log('전체 공지');
+    users.length === 1 && console.log('한 명 활동 기록');
   },[])
 
   return (

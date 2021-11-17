@@ -34,16 +34,22 @@ const ManagerActs = () => {
   const onSigninClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
+  
+  const location = useLocation();
+  const params = location.state.params;
+  const member_length = params['members'];
+  const selected = params['selected'];
 
+  useEffect(()=>{
+    selected.length > 1 && selected.length < member_length && setIsPost(true); // 일부 선택
+  },[params])
 
-  // const location = useLocation();
-  // useEffect(()=>{
-  //   console.log(location.state.members);
-  // },[])
 
   return (
     <React.Fragment>
-      {isPost? <ManagerActsPost onSigninClick={onSigninClick} />: <ManagerActsList onClick={()=>setIsPost(true)} onSigninClick={onSigninClick}/>}
+      {isPost
+      ? <ManagerActsPost onSigninClick={onSigninClick} members={selected} />
+      : <ManagerActsList onClick={()=>setIsPost(true)} onSigninClick={onSigninClick} members={params}/>}
       <Link className="linkComponent" to="/mg/requests">
         <Floating background='var(--color-green)' />
       </Link>

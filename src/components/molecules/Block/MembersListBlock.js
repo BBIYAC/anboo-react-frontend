@@ -40,14 +40,18 @@ const MembersListBlock = () => {
 
 
   const onClick = () => {
-    let selected = members.filter((member) => {return member?.isChecked});
-    (selected.length > 0)
-    ?(selected.length < members.length)
-      ?(selected.length === 1)
-        ?history.push('/mg/acts')
-        :history.push('/mg/acts')
-      :history.push('/mg/acts')
-    :console.log('선택안함')
+    const selected = members.filter((member) => {return member?.isChecked});
+    const data = {}
+    const temp_array = []
+    for (let i=0; i<selected.length; i++){
+      let temp = {}
+      temp['name'] = selected[i].name; 
+      temp['year'] = selected[i].year;
+      temp_array.push(temp);
+    }
+    data['selected'] = temp_array;
+    data["members"] = members.length;
+    selected.length > 0 && history.push({pathname: '/mg/acts', state: {params: data}})
     
   }
 

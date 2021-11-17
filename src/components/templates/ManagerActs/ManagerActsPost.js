@@ -8,9 +8,10 @@ import OvalLarge from '../../atoms/Button/OvalLarge';
 import UsersBlock from '../../molecules/Block/UsersBlock';
 import { Link } from "react-router-dom";
 
-const ManagerActsPost = ({onSigninClick}) => {
+const ManagerActsPost = ({onSigninClick, members}) => {
   // 회원관리(/mg/rgs/) 페이지에서 선택한 사람들
-  const users = ['이말순', '홍길동', '김춘향', '박순자', '박상순', '김갑수']; 
+  const users = [...members];
+  const names = users.map(user=> user['name']); 
   const [url, setUrl] = useState('');
   const [content, setContent] = useState('');
   const [clicked, setClicked] = useState(false);
@@ -37,7 +38,7 @@ const ManagerActsPost = ({onSigninClick}) => {
       {clicked && content === '' && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}
       <PostActTextArea content={content} setContent={setContent} />
       <RequestDate />
-      <UsersBlock users={users}/>
+      <UsersBlock users={names}/>
       <OvalLarge btnText="등록하기" onClick={onClick}/>
     </React.Fragment>
   );
