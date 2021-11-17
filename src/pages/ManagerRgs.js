@@ -7,7 +7,7 @@ import { apiUrl } from './ApiURL';
 const ManagerRgs= () => {
   let history = useHistory();
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{

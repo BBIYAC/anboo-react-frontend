@@ -27,15 +27,17 @@ const ManagerHome = () => {
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
-        history.push('/rg/acts');
-      }else{ // 미승인 관리자 & 승인 관리자 
+        history.push('/rg/acts'); 
+      }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 
         // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
         setUserState(key); // 요양원 등록 전 & 요양원 등록 승인
         // setUserState(); // 요양원 승인 대기
-      }
-    }).catch(error => { // access token 없는 경우(비회원)
+      }else{ // 비회원
         history.push('/');
-    },[headers]);
+      }
+    }).catch(error => {
+        console.error(error);
+    },[]);
   })
   // ################################사용자 구분 코드################################
 
