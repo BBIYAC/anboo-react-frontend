@@ -25,4 +25,3 @@ const ManagerHomeBefore = () => {
 };
 
 export default ManagerHomeBefore;
-

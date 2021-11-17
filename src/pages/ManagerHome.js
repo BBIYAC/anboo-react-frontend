@@ -1,26 +1,29 @@
 import React,{useState, useEffect} from 'react';
 import {IoIosArrowBack} from 'react-icons/io';
+import { useHistory } from 'react-router-dom';
 import {BiLogOut} from 'react-icons/bi';
+import { apiUrl } from './ApiURL';
 import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
-import '../components/atoms/Label/Label.css';
-import '../components/molecules/Block/Block.css';
 import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBefore';
 import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
-import { useHistory } from 'react-router-dom';
-import axios from "axios";
 import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
-import { apiUrl } from './ApiURL';
+import axios from "axios";
+import '../components/atoms/Label/Label.css';
+import '../components/molecules/Block/Block.css';
 
 const ManagerHome = () => {
   let history = useHistory();
   const [userState, setUserState] = useState();
 
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
+    console.log(headers);
     axios({url: `${apiUrl}/authentication/check/` ,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
+      console.log(response.data.access);
+      console.log(key);
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
