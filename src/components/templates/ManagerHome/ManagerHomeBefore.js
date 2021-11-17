@@ -5,7 +5,6 @@ import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
 import NoticeBlock from '../../molecules/Block/NoticeBlock';
 import { FaSearch } from 'react-icons/fa';
 import './ManagerHome.css';
-const axios = require('axios');
 
 const ManagerHomeBefore = () => {
     return(

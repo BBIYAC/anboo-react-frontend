@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import PostRequestTextArea from '../components/atoms/Input/PostRequestTextArea';
 import RequestDate from '../components/atoms/Label/RequestDate';
 import { BiLogOut } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const  RegisterPostRequest= () => {
   const [request, setRequest] = useState('');
@@ -13,6 +14,35 @@ const  RegisterPostRequest= () => {
   const onChange = (e) =>{
     setRequest(e.target.value);
   }
+  let history = useHistory();
+  const [userState, setUserState] = useState('');
+  // ################################사용자 구분 코드################################
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
+  useEffect(()=>{
+    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
+    .then(response =>{
+      let key = response.data.key;
+      if(key === 1){ // 미등록 보호자
+        history.push('/rg/nh-location');
+      }else if(key === 3){ // 미승인 관리자
+        setUserState('before');
+      }else if(key === 4){ // 승인 관리자
+        setUserState('after');
+      }else{ // 관리자 승인 대기
+        setUserState('waiting');
+      }
+    }).catch(error => { // 로그인 token 없는 경우(비회원)
+        console.error(error);
+        history.push('/rg/nh-location');
+    })
+  },[])
+  // ################################사용자 구분 코드################################
+
+  const onLogoutClick = () => {
+    setHeaders({Authorization : localStorage.removeItem('accessToken')});
+  }
+
   const onClick = () => {
     setClicked(true);
     if(request){
@@ -31,7 +61,7 @@ const  RegisterPostRequest= () => {
         </Link>
         요청사항 작성
         <Link className="linkComponent" to="/">
-          <BiLogOut size="20"/>
+          <BiLogOut size="20" onClick={onLogoutClick}/>
         </Link>
       </div>
       <PostRequestTextArea request={request} setRequest={setRequest} onChange={onChange} />
