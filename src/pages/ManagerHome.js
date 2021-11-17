@@ -8,6 +8,7 @@ import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBe
 import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import ManagerHomeWaiting from '../components/templates/RegisterProfile/RegisterProfileWaiting';
 
 const ManagerHome = () => {
   let history = useHistory();
@@ -24,12 +25,10 @@ const ManagerHome = () => {
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
-      }else if(key === 3){ // 미승인 관리자
+      }else{ // 미승인 관리자 & 승인 관리자 
         // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
-        setUserState(3); // 요양원 등록 전
-        // history.push('/mg/waiting'); // 요양원 승인 대기
-      }else if(key === 4){ // 승인 관리자
-        setUserState(4);
+        setUserState(key); // 요양원 등록 전 & 요양원 등록 승인
+        // setUserState(); // 요양원 승인 대기
       }
     }).catch(error => { // access token 없는 경우(비회원)
         history.push('/');
@@ -45,6 +44,9 @@ const ManagerHome = () => {
       }
       case 3:{
         return <ManagerHomeBefore />
+      }
+      default:{
+        return <ManagerHomeWaiting />
       }
     }
   }
