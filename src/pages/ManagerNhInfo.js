@@ -4,13 +4,13 @@ import NursingHomeInfoEdit from '../components/templates/ManagerNHInfo/NursingHo
 import '../components/atoms/Button/Button.css';
 import { useHistory } from 'react-router';
 import axios from 'axios';
+import { apiUrl } from './ApiURL';
 
 const ManagerNhInfo= () => {
   const [isEdit, setIsEdit] = useState(false);
   let history = useHistory();
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
-  const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{

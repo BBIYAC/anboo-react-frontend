@@ -8,7 +8,8 @@ import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBe
 import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
-import ManagerHomeWaiting from '../components/templates/RegisterProfile/RegisterProfileWaiting';
+import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
+import { apiUrl } from './ApiURL';
 
 const ManagerHome = () => {
   let history = useHistory();
@@ -16,9 +17,8 @@ const ManagerHome = () => {
 
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
-  const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
   useEffect(()=>{
-    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
+    axios({url: `${apiUrl}/authentication/check/` ,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
