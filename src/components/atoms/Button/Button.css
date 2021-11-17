@@ -1,0 +1,217 @@
+button {
+  padding: 0;
+}
+
+/* Search */
+.search-icon {
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  outline: none;
+  padding-top: 0.3rem;
+}
+
+.btn_search {
+  border: 1px solid var(--color-blue);
+  border-radius: var(--border-radius);
+  background: none;
+  color: var(--color-blue);
+  width: 100%;
+  height: 2rem;
+  box-sizing: border-box;
+  outline: none;
+}
+.btn_search:active{
+  background: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* Certification */
+.btn-certification{
+  border: var(--border-bottom);
+  border-color: var(--color-blue);
+  background-color: var(--color-white);
+  color: var(--color-blue);
+  width: 80px;
+  height: 45px;
+  margin-left: 10px;
+  /* margin-bottom: var(--margin-bottom); */
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-middle);
+}
+
+/* RoundRectangle */
+.btn-roundrectangle{
+  background-color: var(--color-blue);
+  border: 0;
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+  width: var(--width);
+  height: var(--height);
+  padding: var(--btn-padding);
+  margin-top: 15px;
+  font-size: var(--font-size-middle);
+  outline: none;
+}
+.btn-roundrectanglesmall{
+  background-color: var(--color-red);
+  border:none;
+  border-radius: 5px;
+  width: 35px;
+  height: 25px;
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+  margin-right: 0.5rem;
+}
+
+/* Rectangle Large */
+.btn-rectangleLarge {
+  background-Color: var(--color-blue);
+  color: var(--color-white);
+  font-size: var(--font-size-middle);
+  border: none;
+  width: 100%;
+  height: 50px;
+}
+
+/* Oval Large */
+.btn-ovalLarge {
+  width: 5rem;
+  height: 2.5rem;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border-radius: var(--border-radius-oval);
+  border: none;
+  outline: none;
+  font-size: var(--font-size-small);
+}
+
+/* Favorites Button */
+.btn-favorites {
+  width: 5rem;
+  height: 2rem;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  border: solid 1px;
+  font-size: var(--font-size-small);
+  color: var(--color-blue);
+  outline: none;
+}
+.btn-favorites:active {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* Back button */
+.btn-back {
+  color: var(--color-blue);
+}
+
+/* handleBgFloatingStyle */
+.handleBgFloatingStyle {
+  /* background-color: var(--color-blue); */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 70px;
+  right: 1.5rem
+}
+
+.rg-floatingShadow{
+  box-shadow: 0px 0px 7px dodgerblue;
+}
+
+.mg-floatingShadow{
+  box-shadow: 0px 0px 7px var(--color-green);
+}
+
+/* handleFloatingStyle */
+.handleFloatingStyle {
+  color: white;
+  font-Size: 25px;
+  margin: 12px;
+}
+
+.addNhImage {
+  width: 92px;
+  height: 92px;
+  border: 1px solid;
+  border-color: var(--color-green);
+  font-size: var(--font-size-big);
+  color: var(--color-green);
+  background-color: var(--color-white);
+  outline: none;
+  padding: 1.75rem;
+}
+
+/* See More, TextIcon Button */
+.seemore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+}
+.btn-textIcon {
+  width: 5.8rem;
+  height: 1.7rem;
+  background: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50px;
+  outline: none;
+  font-size: var(--font-size-small);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.7rem 0 0.7rem;
+}
+
+/* file & Act Image Upload */
+.div-fileButton{
+  display: flex;
+  margin-top: 10px;
+}
+.btn-fileUpload{
+  padding: 5px 10px;
+  color: var(--color-green);
+  background-color: white;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin-left: 10px;
+}
+
+.btn-fileDelete{
+  padding: 5px 10px;
+  color: white;
+  background-color: var(--color-red);
+  border: 1px solid var(--color-red);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 3px;
+  margin-left: auto;
+  align-items: center;
+}
+
+
+.btn-actImageUpload{
+  padding: 5px 10px;
+  color: var(--color-green);
+  background-color: white;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin-left: auto;
+}
+
+.btn-actImageDelete {
+  position: absolute;
+  right: 0;
+  border: 1px solid var(--color-red);
+  color: var(--color-red);
+  background: var(--color-white);
+  outline: none;
+}
+.btn-actImageDelete:active {
+  background: var(--color-red);
+  color: var(--color-white);
+}

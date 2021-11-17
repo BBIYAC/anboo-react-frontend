@@ -1,0 +1,84 @@
+
+.div-nursinghomeinfo,
+.div-nursinghomeactstext {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.div-nursinghomenoticeinfo {
+  color:var(--color-blue);
+}
+
+.nursinghome-info,
+.nursinghome-address,
+.nursinghome-operatingtime,
+.nursinghome-religion {
+  font-size: var(--font-size-small);
+  margin-bottom: 0.2rem;
+}
+.nursinghome-acttext,
+.nursinghome-actdate {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.noticetext{
+  margin-left: 10px;
+}
+
+.handleDataStyle {
+  position: relative;
+  margin: 10px 10px 50px auto;
+  text-Align: right;
+  font-Size: 0.8rem;
+}
+
+/* Left Text */
+.txt-leftlarge{
+  font-size: 1.2rem;
+  text-align: left;
+  line-height: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 2rem;
+}
+.txt-leftsmall{
+  text-align: left;
+  line-height: 1rem;
+  padding-right: 1rem;
+}
+
+/* Member Management Information*/
+.membersInfo {
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-small);
+}
+.div-membersInfo{
+  text-align: left;
+  padding-left: 1rem;
+}
+.approvalsInfo {
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-small);
+}
+.div-approvalsInfo{
+  text-align: left;
+  padding-left: 1rem;
+}
+
+
+.div-starLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  font-size: var(--font-size-small);
+}
+
+/* email check timer */
+.emailcheck_timer{
+  position: absolute;
+  top: 15px;
+  right: 90px;
+}

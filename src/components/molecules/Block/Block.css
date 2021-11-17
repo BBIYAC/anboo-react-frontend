@@ -1,0 +1,352 @@
+/* Search */
+.block-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+    margin-bottom: 15px;
+}
+.block_location{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 3rem;
+  margin-bottom: 15px;
+}
+.box-search {
+  display: flex;
+  border: 1px solid var(--color-gray);
+  border-radius: 5px;
+  padding: 0 0.5rem 0 0.5rem;
+  align-items: center;
+}
+.box-location {
+  display: flex;
+  align-items: center;
+}
+
+/* Keyword */
+.block-keyword {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.btn-myLocation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  border: 1px solid;
+  border-radius: 5px;
+  background: none;
+  color: var(--color-blue);
+  width: 2rem;
+  height: 2rem;
+}
+.btn-myLocation:active{
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+
+/* Map */
+.div-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Nursinghome Information */
+.block-NursingHomeInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.NursingHomeInfo {
+  display: flex;
+  align-items: center;
+}
+.block-NursingHomeDetailInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.div-nursingHomeScroll {
+  width: 100%;
+  margin-top: 1rem;
+}
+.nursingHomeInfo-name,
+.nursingHomeInfo-address,
+.nursingHomeInfo-religion {
+  margin-bottom: 0.2rem;
+}
+.div-nhInfo {
+  padding-left: 0.5rem;
+  text-align: left;
+  font-size: var(--font-size-small);
+}
+.nursingHome{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  height: 90px;
+}
+
+/* Nursinghome Manager Information */
+.div-NursingHomeManagerInfo {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.block-NHAddManagerInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.block-NursingHomeManagerInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
+}
+.NursingHomeManagerInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Nursinghome Image */
+.grid-container {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(3, minmax(90px, auto));
+  grid-template-rows: max-content max-content max-content;
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+  gap: 10px;
+}
+.grid-item {
+  border-color: var(--color-gray);
+}
+
+/* NursingHome ActBlock */
+.block-NursingHomeAct {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+/* Icon */
+.aifillstar {
+  font-size: 1.6rem;
+  color: var(--color-yellow);
+}
+
+/* NursingHome Check */
+.NursingHomeCheck {
+  font-size: 30px;
+  color: var(--color-green);
+}
+
+/* Notice Block */
+.noticeblock{
+  display: flex;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* Notice Waiting Block */
+.noticewaitingblock{
+  margin: 30vh auto;
+  line-height: 30px;
+}
+
+
+/* belowbar */
+.belowbar{
+  display: flex;
+  justify-content: space-between;
+  border-top: var(--border-bottom);
+  padding: 10px 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+}
+.block-rectanglebelowbar{
+  display: flex;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  table-layout: fixed;
+}
+.link-regist {
+  display: flex;
+  text-decoration: none;
+  width: 100%;
+}
+
+/* Count Request Block */
+.countrequestblock{
+  padding: 25px;
+  border: 1px solid var(--color-green);
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+}
+
+.request{
+  text-align: left;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.count{
+  text-align: right;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Manager Response to Request */
+.input-response{
+  outline: none;
+  width: 80%;
+  font-size: 1rem;
+  font-family: sans-serif;
+  height: 1.5rem;
+}
+.icon-send{
+  color: var(--color-green);
+  font-size: 25px;
+}
+.response-title{
+  width: 40px;
+  padding-right: 0.5rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+}
+
+/* Manager Member Management */
+.div-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem 0 0.5rem;
+  height: 90px;
+}
+.membersListTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.listInfo-name,
+.listInfo-year {
+  margin-bottom: 0.5rem;
+}
+.div-info {
+  text-align: left;
+  font-size: var(--font-size-small);
+}
+.div-checkBoxAndDelete {
+  display: flex;
+}
+.approval {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-right: 0.5rem;
+}
+.approvalsListTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+}
+.div-approvalInfo {
+  display: flex;
+  align-items: center;
+}
+.managementOption {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+.btn-option {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+}
+.lbl-allSelect {
+  font-size:var(--font-size-small);
+  padding-right: 0.5rem;
+}
+.div-managementScroll {
+  width: 100%;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+
+/* CheckBox */
+input[type="checkbox"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  height: 25px;
+  width: 25px;
+  border: 1px solid var(--color-green);
+  border-radius: 5px;
+}
+input[type="checkbox"]:checked {
+  background: var(--color-green);
+}
+input[type="checkbox"]:after {
+  content: '';
+  position: relative;
+  left: 40%;
+  top: 20%;
+  width: 15%;
+  height: 40%;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+input[type="checkbox"]:checked:after {
+  display: block;
+}
+
+/* Post Acts */
+.txt-users{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.txt-user{
+  margin: auto;
+  padding: 10px;
+  width: 25%;
+}
+.one-user{
+  margin: 2rem 0.5rem;
+  text-align: left;
+}
