@@ -10,7 +10,9 @@ import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
-const axios = require('axios');
+import { apiUrl } from './ApiURL';
+import axios from 'axios';
+
 const SignUpBefore = () => {
     // 유효성 검사
     const [isUser, setIsUser] = useState('');
@@ -36,7 +38,6 @@ const SignUpBefore = () => {
         "name": isName,
         "email" : isEmail
       }
-      const apiUrl = 'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com'
       if (isUser === '보호자'){
         axios({url:`${apiUrl}/signup/nok/`,method : 'post',data:params})
         .then(response =>{

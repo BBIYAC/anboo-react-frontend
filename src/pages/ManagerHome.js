@@ -5,60 +5,54 @@ import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarB
 import '../components/atoms/Label/Label.css';
 import '../components/molecules/Block/Block.css';
 import ManagerHomeBefore from '../components/templates/ManagerHome/ManagerHomeBefore';
-import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
 import ManagerHomeAfter from '../components/templates/ManagerHome/ManagerHomeAfter';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import ManagerHomeWaiting from '../components/templates/ManagerHome/ManagerHomeWaiting';
+import { apiUrl } from './ApiURL';
 
 const ManagerHome = () => {
   let history = useHistory();
-  const [userState, setUserState] = useState('');
+  const [userState, setUserState] = useState();
 
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
-  const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
+  const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
   useEffect(()=>{
-    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
+    axios({url: `${apiUrl}/authentication/check/` ,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
-      }else if(key === 3){ // 미승인 관리자
-        setUserState('before');
-      }else if(key === 4){ // 승인 관리자
-        setUserState('after');
-      }else{ // 관리자 승인 대기
-        setUserState('waiting');
+      }else{ // 미승인 관리자 & 승인 관리자 
+        // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
+        setUserState(key); // 요양원 등록 전 & 요양원 등록 승인
+        // setUserState(); // 요양원 승인 대기
       }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
-        console.error(error);
-        history.push('/rg/nh-location');
-    })
-  },[])
+    }).catch(error => { // access token 없는 경우(비회원)
+        history.push('/');
+    },[headers]);
+  })
   // ################################사용자 구분 코드################################
 
   const pageState = (state) => {
     switch(state){
-      case 'after':{
-        return <ManagerHomeAfter />
+      case 4:{
+        return <><ManagerHomeAfter />
+                 <ManagerBelowBarBlock isHome /></>
       }
-      case 'waiting':{
-        return <ManagerHomeWaiting />
+      case 3:{
+        return <ManagerHomeBefore />
       }
       default:{
-        return <ManagerHomeBefore />
+        return <ManagerHomeWaiting />
       }
     }
   }
-  useEffect(()=>{
-    setUserState('');
-  })
 
   const onSigninClick = () => {
-    setHeaders({Authorization : 'Bearer ' + localStorage.removeItem('accessToken')});
-    history.push('/');
+    setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
     return (
         <React.Fragment>
@@ -68,7 +62,6 @@ const ManagerHome = () => {
               <BiLogOut size="20" onClick={onSigninClick}/>
             </div>
             {pageState(userState)}
-            <ManagerBelowBarBlock isHome />
         </React.Fragment>
     );
 };

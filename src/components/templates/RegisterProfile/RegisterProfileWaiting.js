@@ -5,7 +5,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 
-const ManagerHomeWaiting = () => {
+const RegisterProfileWaiting = () => {
   return(
     <>
       <div className="header">
@@ -23,4 +23,4 @@ const ManagerHomeWaiting = () => {
   );
 };
 
-export default ManagerHomeWaiting;
+export default RegisterProfileWaiting;

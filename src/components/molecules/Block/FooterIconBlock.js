@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FooterIconBlock = ({icon, name, isSelected, isManager}) => {
+const FooterIconBlock = ({icon, name, isSelected, isManager, onClick}) => {
     const handleStyle = isSelected?isManager?{
         fontSize: '1.5rem',
         color: 'var(--color-green)',
@@ -16,7 +16,7 @@ const FooterIconBlock = ({icon, name, isSelected, isManager}) => {
         fontSize: '0.8rem'
     };
     return(
-        <div style={handleStyle}>
+        <div style={handleStyle} onClick={onClick}>
             {icon}
             <div style={handleTextStyle}>{name}</div>
         </div>

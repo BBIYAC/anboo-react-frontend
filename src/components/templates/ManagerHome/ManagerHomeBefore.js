@@ -8,6 +8,7 @@ import './ManagerHome.css';
 const axios = require('axios');
 
 const ManagerHomeBefore = () => {
+<<<<<<< HEAD
   // ################################아래 코드는 각 화면에 모두 들어갈 코드입니다.################################
   // 사용자 구별을 위한 코드
   const headers = {
@@ -33,6 +34,8 @@ const ManagerHomeBefore = () => {
   4: 승인된 관리자 
   no key : 비회원 
   */
+=======
+>>>>>>> dc32519c20f5fd1d82bef0086a00160a5d63cbb2
     return(
         <React.Fragment>
             <NoticeBlock />

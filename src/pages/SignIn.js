@@ -9,7 +9,9 @@ import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
 import { Link, useHistory } from 'react-router-dom';
-const axios = require('axios');
+import { apiUrl } from './ApiURL';
+import axios from 'axios';
+
 const SignIn = () => {
   // 유효성 검사
   const [isUser, setIsUser] = useState('');
@@ -29,7 +31,6 @@ const SignIn = () => {
         "username" : isId,
         "password" : isPassword,
      }
-     const apiUrl = 'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com'
     if (isUser === '보호자') {
       axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
         .then(response => {
