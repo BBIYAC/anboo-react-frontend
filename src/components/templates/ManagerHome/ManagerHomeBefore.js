@@ -5,9 +5,9 @@ import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
 import NoticeBlock from '../../molecules/Block/NoticeBlock';
 import { FaSearch } from 'react-icons/fa';
 import './ManagerHome.css';
+const axios = require('axios');
 
 const ManagerHomeBefore = () => {
-<<<<<<< HEAD
   // ################################아래 코드는 각 화면에 모두 들어갈 코드입니다.################################
   // 사용자 구별을 위한 코드
   const headers = {
@@ -33,8 +33,6 @@ const ManagerHomeBefore = () => {
   4: 승인된 관리자 
   no key : 비회원 
   */
-=======
->>>>>>> 4cb6bee47b830ee2c47a17f79db2f812a2e520f7
     return(
         <React.Fragment>
             <NoticeBlock />
