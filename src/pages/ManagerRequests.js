@@ -10,7 +10,7 @@ import axios from 'axios';
 const  ManagerRequests= () => {
   let history = useHistory();
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  const [headers, setHeaders] = useState({Authorization : localStorage.getItem('accessToken')})
   const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
@@ -31,7 +31,7 @@ const  ManagerRequests= () => {
   },[headers])
   // ################################사용자 구분 코드################################
   const onSigninClick = () => {
-    setHeaders({Authorization : 'Bearer ' + localStorage.removeItem('accessToken')});
+    setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
   const [requests, setRequests] = useState([]);
   const requestInfo = [
