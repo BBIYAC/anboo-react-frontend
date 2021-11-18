@@ -10,7 +10,7 @@ const RegisterProfileWaiting = () => {
     <>
       <div className="header">
         <IoIosArrowBack opacity='0' size="20"/>
-        요양자 프로필
+        요양인 프로필
         <Link className="linkComponent" to="/">
           <BiLogOut size="20"/>
         </Link>

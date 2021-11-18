@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Gender = ({setIsGender, fillMessage}) => {
+const Gender = ({isGender, setIsGender, fillMessage}) => {
     const selectList = ['남', '여'];
     const [selected, setSelected] = useState('');
     const [color, setColor] = useState({color: 'gray'});
@@ -11,6 +11,7 @@ const Gender = ({setIsGender, fillMessage}) => {
         setColor({color: 'black'});
         e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
     };
+
 
     useEffect(() => {
         selected === '' ? setIsNull(fillMessage): setIsGender(selected);
