@@ -6,6 +6,8 @@ import RequestBlock from '../components/molecules/Block/RequestBlock';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { apiUrl } from './ApiURL';
+
 
 const  RegisterRequests = () => {
   const [requests, setRequests] = useState([]);
@@ -19,7 +21,6 @@ const  RegisterRequests = () => {
   const [userState, setUserState] = useState('');
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
-  const apiUrl =  'http://ec2-54-180-93-130.ap-northeast-2.compute.amazonaws.com';
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
@@ -35,7 +36,7 @@ const  RegisterRequests = () => {
       }
     }).catch(error => { // 로그인 token 없는 경우(비회원)
         console.error(error);
-        history.push('/rg/nh-location');
+        history.push('/rg/requests');
     })
   },[])
   // ################################사용자 구분 코드################################

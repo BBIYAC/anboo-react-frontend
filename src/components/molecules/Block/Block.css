@@ -81,6 +81,7 @@
 .nursingHomeInfo-address,
 .nursingHomeInfo-religion {
   margin-bottom: 0.2rem;
+  word-break: break-all;
 }
 .div-nhInfo {
   padding-left: 0.5rem;

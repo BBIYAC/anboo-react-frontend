@@ -58,6 +58,7 @@ code {
 
 .header{
   display: flex;
+  position: sticky;
   justify-content: space-between;
   font-size: 1.5rem;
   margin-bottom: var(--margin-bottom);

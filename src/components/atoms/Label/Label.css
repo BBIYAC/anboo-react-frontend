@@ -82,3 +82,11 @@
   top: 15px;
   right: 90px;
 }
+
+.div-notMemberNotice {
+  color: var(--color-blue);
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
