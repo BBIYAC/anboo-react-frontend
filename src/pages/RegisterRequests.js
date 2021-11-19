@@ -11,9 +11,9 @@ import { apiUrl } from './ApiURL';
 const  RegisterRequests = () => {
   const [requests, setRequests] = useState([]);
   let history = useHistory();
-  // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
+    // axios authentication GET - 사용자 구분
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
@@ -29,14 +29,8 @@ const  RegisterRequests = () => {
     }).catch(error => { 
         console.error(error);
     })
-  },[])
-  // ################################사용자 구분 코드################################
 
-  const onLogoutClick = () => {
-    setHeaders({Authorization : localStorage.removeItem('accessToken')});
-  }
-
-  useEffect(()=>{
+    // axios request GET - 요청사항 확인
     axios({url:`${apiUrl}/nok/requests/get/`,method : 'get' ,headers: headers})
     .then(response =>{
       setRequests(response.data);
@@ -44,6 +38,10 @@ const  RegisterRequests = () => {
         console.error(error);
     })
   },[])
+
+  const onLogoutClick = () => {
+    setHeaders({Authorization : localStorage.removeItem('accessToken')});
+  }
 
   return (
       <React.Fragment>

@@ -1,7 +1,9 @@
 import React, {useState} from "react";
-import {IoIosSend} from 'react-icons/io'
-;
-const RequestBlock = ({requestTitle, requestContent, requestDate, response, isManager}) => {
+import {IoIosSend} from 'react-icons/io';
+import axios from 'axios';
+import { apiUrl } from "../../../pages/ApiURL";
+
+const RequestBlock = ({setFeedback, requestId, requestTitle, requestContent, requestDate, response, isManager}) => {
     const handleRequestBlockStyle = {
         border: 'var(--border-bottom)',
         borderRadius: 'var(--border-radius)',
@@ -34,10 +36,18 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response, isMa
     const onSubmit = () => {
         setClicked(true);
         if(content){
-            console.log(content);
-            /*
-            axios request response POST
-            */
+            // axios request response POST - 요청사항 응답
+            const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
+            axios({url:`${apiUrl}/supervisor/requests/`,method : 'post' ,headers: headers, data:{
+                nok_request_id: requestId,
+                comment: content,
+            }})
+            .then(response =>{
+                console.log('post success!', response.data);
+                setFeedback(true);
+            }).catch(error => {
+                console.error(error);
+    })
         }
     }
     const onChange = (e) => {
@@ -54,7 +64,7 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response, isMa
 
     return(
         <><div style={handleRequestBlockStyle}>
-            <div style={handleBoldStyle}>{requestTitle}</div>
+            <div style={handleBoldStyle}>{requestTitle} 님</div>
             <div>{requestContent}</div>
             <div style={handleRequestDateStyle}>{date}</div>
             {
