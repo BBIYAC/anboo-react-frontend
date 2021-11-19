@@ -9,7 +9,7 @@ import Email from '../components/atoms/Input/Email';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { apiUrl } from './ApiURL';
 import axios from 'axios';
 
@@ -67,7 +67,9 @@ const SignUpBefore = () => {
     return (
         <React.Fragment>
             <div className="header">
-              <IoIosArrowBack  opacity="0" size="20"/>
+              <Link className="linkComponent" to="/">
+                <IoIosArrowBack size="20"/>
+              </Link>
               회원가입
               <BiLogOut opacity="0" size="20"/>
             </div>

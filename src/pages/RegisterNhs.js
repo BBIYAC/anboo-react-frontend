@@ -8,7 +8,7 @@ import axios from "axios";
 import { FaSearch } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
-import { BiLogOut } from 'react-icons/bi';
+import { BiLogOut, BiLogIn } from 'react-icons/bi';
 import { apiUrl } from './ApiURL';
 import '../components/atoms/Button/Button.css';
 import '../components/molecules/Block/Block.css';
@@ -19,20 +19,31 @@ const RegisterNhs= () => {
   let history = useHistory();
   let arr = [];
   const [userState, setUserState] = useState('');
+  const [logState, setLogState] = useState(false);
   const [nursingHomes, setNursingHomes] = useState([]);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
+    console.log(headers);
+
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
-    console.log(headers);
-    console.log(history.location.state.key);
-    console.log(history.location.state.cityName);
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       console.log(key);
-      if(key === 2){ // 등록 보호자
+      if(key === 1){ // 미등록 보호자
+        axios({url:`${apiUrl}/nh-info/search=${history.location.state.cityName}/`, method: 'get'})
+        .then(response=>{
+          for(let i = 0; i < response.data.length; i++){
+            arr[i] = response.data[i];
+            // console.log(response.data[i])        // 요양원 리스트 데이터
+          }
+          setNursingHomes(arr);
+          console.log(response);
+
+        })
+      }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
         setUserState('before');
@@ -45,7 +56,9 @@ const RegisterNhs= () => {
             arr[i] = response.data[i];
             // console.log(response.data[i])        // 요양원 리스트 데이터
           }
+          setLogState(true);
           setNursingHomes(arr);
+          console.log(response.data);
 
         })
       }else{ // 관리자 승인 대기
@@ -56,9 +69,13 @@ const RegisterNhs= () => {
   },[])
   // ################################사용자 구분 코드################################
   
-  // 로그아웃 처리 코드
+  // 로그아웃 이벤트
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+  }
+  // 로그인 이벤트
+  const onLoginClick = () => {
+    history.push('/');
   }
 
   // 요양원 개수만큼 반복
@@ -76,9 +93,7 @@ const RegisterNhs= () => {
             <IoIosArrowBack size="20"/>
           </Link>
           요양원 리스트
-          <Link className="linkComponent" to="/">
-            <BiLogOut size="20" onClick={onLogoutClick}/>
-          </Link>
+          {logState?<BiLogIn size="20" onClick={onLoginClick}/>:<BiLogOut size="20" onClick={onLogoutClick}/>}
         </div>
         <div className="block-search">
           <div className="box-search">

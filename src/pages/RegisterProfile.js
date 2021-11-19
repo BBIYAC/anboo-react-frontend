@@ -12,25 +12,28 @@ import '../components/atoms/Button/Button.css';
 
 const  RegisterProfile= () => {
   const [userState, setUserState] = useState('');
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+
+  
   let history = useHistory();
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      if(key === 2){ // 등록 보호자
+      if(key === 1){ // 미등록 보호자
+        // history.push('/rg/profile')
+        // setUserState('after');
+      }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 6){ // 비회원
-        setUserState('before');
+        // setUserState('before');
       }else if(key === 4){ // 승인 관리자
         setUserState('after');
       }else{ // 관리자 승인 대기
         setUserState('waiting');
       }
     }).catch(error => { // 로그인 token 없는 경우(비회원)
-        console.error(error);
-        history.push('/rg/profile');
     })
   },[])
   // ################################사용자 구분 코드################################
@@ -44,7 +47,7 @@ const  RegisterProfile= () => {
         return <RegisterProfileWaiting />
       }
       default:{
-        return <RegisterProfileBefore />
+        return <RegisterProfileBefore/>
       }
     }
   }

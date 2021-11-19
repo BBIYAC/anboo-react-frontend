@@ -5,7 +5,7 @@ const RectangleLarge = ({btnText, background, borderLeftWidth , borderLeftStyle,
     <React.Fragment>
       <button 
       className="btn-rectangleLarge"
-      style={{background,borderLeftWidth , borderLeftStyle}}
+      style={{background, borderLeftWidth , borderLeftStyle}}
       onClick={onClick}>
         {btnText}
       </button>

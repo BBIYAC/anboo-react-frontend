@@ -9,20 +9,26 @@ import NotMemberNotice from '../components/atoms/Label/NotMemberNotice';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
-import { BiLogOut } from 'react-icons/bi';
+import { BiLogOut, BiLogIn } from 'react-icons/bi';
 import { apiUrl } from './ApiURL';
 
 const  RegisterNhInfo= () => {
   let history = useHistory();
-  const [nhInfo, setNHInfo] = useState("");
   const [isNotMember, setIsNotMember] = useState(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  // ################################사용자 구분 코드################################
+  const [id, setId] = useState('');
+  const [tel, setTel] = useState()
+  const [logState, setLogState] = useState(false);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  const [starRating, setStarRating] = useState('');
+
+
+  // ################################사용자 구분 코드################################
   useEffect(()=>{
-    console.log(history.location.state.id);
-    console.log(history.location.state.starRating);
+
+    
+    // console.log(history.location.state.starRating);
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
@@ -31,7 +37,25 @@ const  RegisterNhInfo= () => {
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      if(key === 2){ // 등록 보호자
+      if(key === 1){ // 미등록 보호자
+        axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
+        .then(response => {
+          console.log(response);
+          console.log(history.location.state.id+"dfdf");
+          setIsNotMember(false);
+          setName(response.data.nh_info.nh_name);
+          setAddress(response.data.nh_info.nh_address);
+          setTel(response.data.nh_info.nh_tel);
+          setStarRating(history.location.state.starRating);
+          setId(history.location.state.id);
+        })
+        axios({url:`${apiUrl}/not-nok/employee-info/${history.location.state.id}/`, method: 'get', headers:headers})
+        .then(response => {
+          console.log(history.location.state.id);
+          console.log("여기");
+          console.log(response);
+        })
+      }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
         history.push('/mg/home');
@@ -41,10 +65,11 @@ const  RegisterNhInfo= () => {
         console.log(`${apiUrl}/nh-info/${history.location.state.id}/`)
         axios({url:`${apiUrl}/nh-info/${history.location.state.id}/`, method: 'get'})
         .then(response => {
-          console.log(response);
+          // console.log(response);
           setIsNotMember(true);
           setName(response.data.nh_name);
           setAddress(response.data.nh_address);
+          setLogState(true);
         })
       }else{ // 관리자 승인 대기
         history.push('/mg/home');
@@ -56,6 +81,11 @@ const  RegisterNhInfo= () => {
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+    history.push('/');
+  }
+
+  const onLoginClick = () => {
+    history.push('/');
   }
 
   const onClick = () => {
@@ -66,11 +96,13 @@ const  RegisterNhInfo= () => {
       <div className="header">
         <IoIosArrowBack size="20" onClick={onClick}/>
         요양원 정보
-        <Link className="linkComponent" to="/">
-          <BiLogOut size="20" onClick={onLogoutClick}/>
-        </Link>
+        {logState?<BiLogIn size="20" onClick={onLoginClick}/>:<BiLogOut size="20" onClick={onLogoutClick}/>}
       </div>
-      <NursingHomeDetailInfoBlock name={name} address={address} starRating={history.location.state.starRating}/>
+      <NursingHomeDetailInfoBlock 
+      isNotMember={isNotMember} 
+      name={name} 
+      address={address} 
+      starRating={starRating}/>
       <hr/>
       {isNotMember
       ?<NotMemberNotice/>
@@ -79,7 +111,7 @@ const  RegisterNhInfo= () => {
       <hr/>
       <NursingHomeManagerInfoBlock />
       <NursingHomeImageBlock />
-      <BelowRectangleBlock />
+      <BelowRectangleBlock tel={tel} id={id}/>
       </div>
       }
       <Link className="linkComponent" to="/rg/nh-location">

@@ -58,7 +58,7 @@ const  RegisterActs= () => {
         <IoIosArrowBack opacity="0" size="20"/>
         요양원 활동 목록
         <Link className="linkComponent" to="/">
-          <BiLogOut size="20" onClick={onLogoutClick}/>
+          <BiLogOut className="BiLogOut" size="20" onClick={onLogoutClick}/>
         </Link>
       </div>
       <ul>

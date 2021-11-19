@@ -19,7 +19,9 @@ const RegisterProfileWaiting = () => {
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      if(key === 2){ // 등록 보호자
+      if(key === 1){ // 미등록 보호자
+        // ...
+      }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
         history.push('/mg/home')

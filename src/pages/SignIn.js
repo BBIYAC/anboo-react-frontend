@@ -36,7 +36,7 @@ const SignIn = () => {
         .then(response => {
           console.log(response.data.access);
           localStorage.setItem('accessToken',response.data.access);
-          history.push('/rg/nh-location');
+          history.push({pathname: '/rg/nh-location', state:{key:1}});
         }).catch(error => {
           console.log(error)
         })
