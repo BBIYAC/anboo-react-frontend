@@ -52,12 +52,22 @@ const SignIn = () => {
     }
     if (isUser === '보호자') {
       axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
+<<<<<<< HEAD
+        .then(response => {
+          console.log(response.data.access);
+          localStorage.setItem('accessToken',response.data.access);
+          history.push({pathname: '/rg/nh-location', state:{key:1}});
+        }).catch(error => {
+          console.log(error)
+        })
+=======
       .then(response => {
         localStorage.setItem('accessToken',response.data.access);
         userAuthorization();
       }).catch(error => {
         console.log(error)
       })
+>>>>>>> aa1205a45888d534cef61695cc2ee20f4dca20dc
     }
     else if (isUser === '관리자') {
       axios({ url: `${apiUrl}/signin/nh-supervisor/`, method: 'post', data: params })

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineAim } from 'react-icons/ai';
 import { IoIosArrowBack } from 'react-icons/io';
-import { BiLogOut } from 'react-icons/bi';
+import { BiLogOut, BiLogIn } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
 import { apiUrl } from './ApiURL';
 import axios from 'axios';
@@ -23,11 +23,11 @@ const mapContainerStyle = {
 // 충남 대전 위경도
 const locations = [
   // 대전광역시
-  { name: "동구" , lat:36.324082 , lng:127.475089 },     // 동구
-  { name: "중구" , lat:36.280926 , lng:127.411073 },     // 중구
-  { name: "서구" , lat:36.280382 , lng:127.345191 },     // 서구
-  { name: "유성구" , lat:36.377231 , lng:127.333387 },     // 유성구
-  { name: "대덕구" , lat:36.412396 , lng:127.440246 },     // 대덕구
+  // { name: "동구" , lat:36.324082 , lng:127.475089 },     // 동구
+  // { name: "중구" , lat:36.280926 , lng:127.411073 },     // 중구
+  // { name: "서구" , lat:36.280382 , lng:127.345191 },     // 서구
+  // { name: "유성구" , lat:36.377231 , lng:127.333387 },     // 유성구
+  // { name: "대덕구" , lat:36.412396 , lng:127.440246 },     // 대덕구
   // 충청남도
   { name: "계룡시" , lat:36.291933 , lng:127.234403 },     // 계룡시
   { name: "공주시" , lat:36.480288 , lng:127.075043 },     // 공주시
@@ -77,9 +77,12 @@ const createKey = (location) => {
 const RegisterNhLocation = () => {
   const [latitude, setLat] = useState(null);
   const [longitude, setLng] = useState(null);
-
   const center = {lat: latitude, lng: longitude};
-
+  const [userState, setUserState] = useState('');
+  const [logState, setLogState] = useState(false);
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem("accessToken")});
+  
+  
   const getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -100,10 +103,8 @@ const RegisterNhLocation = () => {
   // };
   
   let history = useHistory();
-  const [userState, setUserState] = useState('');
   
   // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem("accessToken")});
   useEffect(()=>{         // 마운트 될 시 바로 실행되는 코드
     // 키 값 보는 if문 코드
     if(headers.Authorization.split(" ")[1] === "null"){
@@ -112,13 +113,17 @@ const RegisterNhLocation = () => {
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      console.log(history.location.state.key);
-      if(key === 2){ // 등록 보호자
+      console.log(key);
+      if(key === 1){ // 미등록 보호자
+        setLogState(false);
+      }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
         setUserState('before');
       }else if(key === 4){ // 승인 관리자
         setUserState('after');
+      }else if(key === 6){ // 비회원
+        setLogState(true);
       }else{ // 관리자 승인 대기
         setUserState('waiting');
       }
@@ -131,13 +136,17 @@ const RegisterNhLocation = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
     history.push('/');
   }
+
+  const onLoginClick = ()  => {
+    history.push('/');
+  }
   
   return (
     <LoadScript googleMapsApiKey="AIzaSyC526zoNUjyiZlFOXmIy7_KGgaxcj7ecIo">
     <div className="header">
       <IoIosArrowBack opacity="0" size="20"/>
       요양원 위치
-      <BiLogOut size="20" onClick={onLogoutClick}/>
+      {logState?<BiLogIn size="20" onClick={onLoginClick}/>:<BiLogOut size="20" onClick={onLogoutClick}/>}
     </div>
     <div className="block-location">
       <div className="box-location">

@@ -1,7 +1,7 @@
 import React from 'react';
 import StarRatingLabel from './StarRatingLabel';
 
-const NursingHomeInfo = ({name, address, starRating}) => {
+const NursingHomeInfo = ({name, address, tel, starRating}) => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
