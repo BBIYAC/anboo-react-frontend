@@ -26,13 +26,33 @@ const SignIn = () => {
     /*
      axios signin form POST
     */
+
+    const userAuthorization = ()=>{
+      const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
+      axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
+      .then(response =>{
+        let key = response.data.key;
+        if(key === 1){ // 미등록 보호자
+          history.push('/rg/nh-location');
+        }else if(key === 2){ // 등록 보호자
+          history.push('/rg/acts');
+        }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
+          history.push('/mg/home');
+        }else{ // 비회원의 경우
+          history.push('/rg/nh-location');
+        }
+      }).catch(error => {
+          console.error(error);
+      })
+    }
      
-     const params = {
-        "username" : isId,
-        "password" : isPassword,
-     }
+    const params = {
+      "username" : isId,
+      "password" : isPassword,
+    }
     if (isUser === '보호자') {
       axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
+<<<<<<< HEAD
         .then(response => {
           console.log(response.data.access);
           localStorage.setItem('accessToken',response.data.access);
@@ -40,18 +60,26 @@ const SignIn = () => {
         }).catch(error => {
           console.log(error)
         })
+=======
+      .then(response => {
+        localStorage.setItem('accessToken',response.data.access);
+        userAuthorization();
+      }).catch(error => {
+        console.log(error)
+      })
+>>>>>>> aa1205a45888d534cef61695cc2ee20f4dca20dc
     }
     else if (isUser === '관리자') {
       axios({ url: `${apiUrl}/signin/nh-supervisor/`, method: 'post', data: params })
         .then(response => {
-          console.log(response)
           localStorage.setItem('accessToken',response.data.access);
-          history.push('/mg/home');
-
+          userAuthorization();
         }).catch(error => {
           console.log(error)
         })
     }
+
+    
 
 
   };

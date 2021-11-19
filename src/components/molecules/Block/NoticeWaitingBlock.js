@@ -12,7 +12,7 @@ const NoticeBlock = ({isManager}) => {
             </div>:
             <div className='register noticewaitingblock'>
                 <AiOutlineExclamationCircle size='100'/>
-                <p>요양자 등록 승인 대기 중입니다.</p>
+                <p>요양인 등록 승인 대기 중입니다.</p>
             </div>
         }
         </>    

@@ -25,6 +25,10 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response, isMa
         display: 'flex',
     };
 
+    const handleBoldStyle = {
+        fontWeight: 'bold'
+    };
+
     const [content, setContent] = useState('');
     const [clicked, setClicked] = useState(false);
     const onSubmit = () => {
@@ -40,11 +44,19 @@ const RequestBlock = ({requestTitle, requestContent, requestDate, response, isMa
         setContent(e.target.value);
     }
 
+    const year = requestDate.substring(0, 4);
+    const month = requestDate.substring(5, 7);
+    const day = requestDate.substring(8, 10);
+    const hour = requestDate.substring(11, 13);
+    const minutes = requestDate.substring(14, 16);
+    const date = year+'년 '+month+'월 '+day+'일 '+hour+'시 '+minutes+'분';
+    
+
     return(
         <><div style={handleRequestBlockStyle}>
-            <div>{requestTitle}</div>
+            <div style={handleBoldStyle}>{requestTitle}</div>
             <div>{requestContent}</div>
-            <div style={handleRequestDateStyle}>{requestDate}</div>
+            <div style={handleRequestDateStyle}>{date}</div>
             {
             response
             ?<div style={handleResponseStyle}>

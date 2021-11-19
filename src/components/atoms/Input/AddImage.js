@@ -1,7 +1,7 @@
-import React, {useState, useRef } from 'react';
+import React, {useState, useRef, useEffect } from 'react';
 
 
-const AddImage = ({border, borderColor}) => {
+const AddImage = ({url, border, borderColor}) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
   const onChange = (e) => {
@@ -14,6 +14,10 @@ const AddImage = ({border, borderColor}) => {
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
   }
+
+  useEffect(()=>{
+    setFileURL(url);
+  }, [url])
   
   return(
     <>

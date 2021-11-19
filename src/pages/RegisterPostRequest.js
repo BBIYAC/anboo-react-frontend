@@ -17,7 +17,6 @@ const  RegisterPostRequest= () => {
     setRequest(e.target.value);
   }
   let history = useHistory();
-  const [userState, setUserState] = useState('');
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
@@ -26,16 +25,15 @@ const  RegisterPostRequest= () => {
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
-      }else if(key === 3){ // 미승인 관리자
-        setUserState('before');
-      }else if(key === 4){ // 승인 관리자
-        setUserState('after');
-      }else{ // 관리자 승인 대기
-        setUserState('waiting');
+      }else if(key === 2){ // 등록 보호자
+        return;
+      }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
+        history.push('/mg/home');
+      }else{ // 비회원의 경우
+        history.push('/rg/nh-location');
       }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
+    }).catch(error => {
         console.error(error);
-        history.push('/rg/post-request');
     })
   },[])
   // ################################사용자 구분 코드################################
@@ -48,18 +46,25 @@ const  RegisterPostRequest= () => {
     setClicked(true);
     if(request){
       console.log(request);
-      /*
-      axios request post in register request POST
-      */
+      // axios request post in register request POST
+      axios({url:`${apiUrl}/nok/requests/post/`,method : 'post' ,headers: headers, data: {
+        title: '보호자',
+        context: request,
+      }})
+      .then(response =>{
+        console.log(response);
+        history.push('/rg/requests');
+        
+      }).catch(error => {
+          console.error(error);
+      })
     }
   }
 
   return (
     <React.Fragment>
       <div className="header">
-        <Link className="linkComponent" to="/rg/requests">
-          <IoIosArrowBack size="20"/>
-        </Link>
+        <IoIosArrowBack size="20" onClick={()=>history.goBack(-1)}/>
         요청사항 작성
         <Link className="linkComponent" to="/">
           <BiLogOut size="20" onClick={onLogoutClick}/>
@@ -67,7 +72,6 @@ const  RegisterPostRequest= () => {
       </div>
       <PostRequestTextArea request={request} setRequest={setRequest} onChange={onChange} />
       {clicked && request === '' && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}
-      <RequestDate />
       {
         clicked
         ?<Link className="linkComponent" to="/rg/requests">

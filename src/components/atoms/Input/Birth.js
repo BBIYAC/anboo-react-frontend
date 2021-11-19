@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const Birth = ({setIsBirth, fillMessage}) => {
+const Birth = ({isBirth, setIsBirth, fillMessage}) => {
     const [titBirth, setTitBirth] = useState('');
     const [isNull, setIsNull] = useState(false);
     const onChange = (e) => {
@@ -10,6 +10,10 @@ const Birth = ({setIsBirth, fillMessage}) => {
         : setIsNull(true);
         
     };
+
+    useEffect(()=>{
+        setTitBirth(isBirth);
+    },[isBirth])
 
     useEffect(() => {
         (titBirth === '') 

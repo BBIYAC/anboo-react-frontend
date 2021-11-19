@@ -3,13 +3,11 @@ import NoticeWaitingBlock from '../../molecules/Block/NoticeWaitingBlock';
 import RoundRectangle from "../../atoms/Button/RoundRectangle";
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
-import { Link, useHistory } from 'react-router-dom';
-import axios from "axios";
-import { apiUrl } from "../../../pages/ApiURL";
+import { useHistory } from 'react-router-dom';
 
-const RegisterProfileWaiting = () => {
-  const [userState, setUserState] = useState('');
+const RegisterProfileWaiting = ({onLogoutClick}) => {
   let history = useHistory();
+<<<<<<< HEAD
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
@@ -39,20 +37,20 @@ const RegisterProfileWaiting = () => {
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+=======
+  const onClick = () => {
+    history.push("/rg/nh-location");
+>>>>>>> aa1205a45888d534cef61695cc2ee20f4dca20dc
   }
   return(
     <>
       <div className="header">
         <IoIosArrowBack opacity='0' size="20"/>
-        요양자 프로필
-        <Link className="linkComponent" to="/">
-          <BiLogOut size="20" onClick={onLogoutClick}/>
-        </Link>
+        요양인 프로필
+        <BiLogOut size="20" onClick={onLogoutClick}/>
       </div>
       <NoticeWaitingBlock />
-      <Link className="linkComponent" to="/rg/nh-location">
-        <RoundRectangle btnText="홈으로 이동하기"/>
-      </Link>
+      <RoundRectangle btnText="홈으로 이동하기" onClick={onClick}/>
     </>
   );
 };
