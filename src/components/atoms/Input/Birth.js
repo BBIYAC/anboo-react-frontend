@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const Birth = ({setIsBirth, fillMessage}) => {
+const Birth = ({isBirth, setIsBirth, fillMessage}) => {
     const [titBirth, setTitBirth] = useState('');
     const [isNull, setIsNull] = useState(false);
     const [isLong, setIsLong] = useState(false);
@@ -11,6 +11,11 @@ const Birth = ({setIsBirth, fillMessage}) => {
         : (isLong)? setIsNull(false): setIsNull(true);
         e.target.value.length !== 6 ? setIsLong(true): setIsLong(false);
     };
+
+    useEffect(()=>{
+        const birth = isBirth.substring(2, 4)+isBirth.substring(5,7)+isBirth.substring(8,10);
+        setTitBirth(birth);
+    },[isBirth])
 
     useEffect(() => {
         (titBirth === '') 

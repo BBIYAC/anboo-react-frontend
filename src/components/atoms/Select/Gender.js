@@ -12,6 +12,9 @@ const Gender = ({isGender, setIsGender, fillMessage}) => {
         e.target.value.length > 0 ? setIsNull(false) : setIsNull(true);
     };
 
+    useEffect(()=>{
+        setSelected(isGender);
+    },[isGender])
 
     useEffect(() => {
         selected === '' ? setIsNull(fillMessage): setIsGender(selected);
@@ -29,11 +32,32 @@ const Gender = ({isGender, setIsGender, fillMessage}) => {
             <div className="tit-userchoice">성별</div>
             <select name='gender' className="sel-userchoice" defaultValue='default' onChange={changeSelect} style={color}>
                 <option value='default' disabled hidden>선택</option>
-                {selectList.map((item) =>(
-                    <option value={item} key={item} style={{color: 'black'}}>
-                        {item}
-                    </option>
-                ))}
+                {selectList.map((item) =>{
+                    if(item === isGender){
+                        <option value={item} key={item} style={{color: 'black'}} selected>
+                            {item}
+                        </option>
+                    }else{
+                        <option value={item} key={item} style={{color: 'black'}}>
+                            {item}
+                        </option>
+                    }
+                })}
+                {/* {
+                    isGender === '여'
+                    ?<><option value='여' style={{color: 'black'}} selected>
+                            여
+                        </option>
+                        <option value='남' style={{color: 'black'}}>
+                            남
+                        </option></>
+                    :<><option value='여' style={{color: 'black'}}>
+                            여
+                        </option>
+                        <option value='남' style={{color: 'black'}} selected>
+                            남
+                        </option></>
+                } */}
             </select>
             {isNull && <div className='notice-massage'>※ 필수</div>}
         </div>

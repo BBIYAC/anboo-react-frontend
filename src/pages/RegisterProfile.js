@@ -21,8 +21,8 @@ const  RegisterProfile= () => {
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         // axios 미등록 보호자인지 등록 대기중인지 GET
-        history.push('/rg/nh-location');
-        // setUserState();
+        setUserState(key);
+        // setUserState(0);
       }else if(key === 2){ // 등록 보호자
         setUserState(key);
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
@@ -32,19 +32,27 @@ const  RegisterProfile= () => {
       }
     }).catch(error => {
         console.error(error);
-  },[])
+      })
+    },[])
   // ################################사용자 구분 코드################################
+
+  const onLogoutClick = () => {
+    setHeaders({Authorization : localStorage.removeItem('accessToken')});
+  }
 
   const pageState = (state) => {
     switch(state){
-      case 2:{
+      case 2:{ // 등록 보호자
         return <RegisterProfileAfter onLogoutClick={onLogoutClick}/>
       }
-      case 1:{
+      case 1:{ // 미등록 보호자
         return <RegisterProfileBefore onLogoutClick={onLogoutClick} />
       }
+      case 0: { // 등록 대기 보호자
+        <RegisterProfileWaiting onLogoutClick={onLogoutClick} />
+      }
       default:{
-        return <RegisterProfileWaiting onLogoutClick={onLogoutClick} />
+        return;
       }
     }
   }

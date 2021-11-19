@@ -1,11 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-const Caution = ({setIsCaution}) => {
+const Caution = ({isCaution, setIsCaution}) => {
     const [titName, setTitName] = useState('');
     const onChange = (e) => {
         setTitName(e.target.value);
         setIsCaution(titName);
     };
+
+    useEffect(()=>{
+        setTitName(isCaution);
+    },[isCaution])
+    
     return(
         <>
             <div className="tit-name">특이사항</div>

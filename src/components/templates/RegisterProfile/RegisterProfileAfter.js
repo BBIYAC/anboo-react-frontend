@@ -11,30 +11,41 @@ import { BiLogOut } from 'react-icons/bi';
 import SaveModal from '../../organisms/Modal/SaveModal'
 import { apiUrl } from '../../../pages/ApiURL';
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
 
-const  RegisterProfileAfter= () => {
+const  RegisterProfileAfter= ({onLogoutClick}) => {
   const [fillMessage, setFillMessage] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isRegister, setIsRegister] = useState('');
   const [isGender, setIsGender] = useState('');
   const [isBirth, setIsBirth] = useState('');
   const [isCaution, setIsCaution] = useState('');
+  const [defaults, setDefaults] = useState({
+    np_name: '',
+    gender: '',
+    np_date: '',
+    memo: '',
+  });
 
-  // axios 요양인 정보 GET
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  
   useEffect(()=>{
+    const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
+    // axios 요양인 정보 GET
     axios({url:`${apiUrl}/nok/np-profile/`,method : 'get' ,headers:headers})
     .then(response =>{
       const datas = response.data.profile;
-      setIsRegister(datas.np_name);
-      setIsGender(datas.gender);
-      setIsBirth(datas.np_date);
-      setIsCaution(datas.memo);
-      console.log('datas:', isRegister, isGender, isBirth, isCaution);
+      console.log(datas)
+      setDefaults(datas);
     }).catch(error => {
         console.error(error);
     })
+
+    // 별점 GET
+    // axios({url:`${apiUrl}/not-nok/star/detail/`,method : 'get' ,headers:headers})
+    // .then(response =>{
+    //   console.log('response:', response);
+    // }).catch(error => {
+    //     console.error(error);
+    // })
   },[])
 
   const onClickEdit = () => {
@@ -47,37 +58,7 @@ const  RegisterProfileAfter= () => {
       */
     }
   }
-  const onLogoutClick = () => {
-    setHeaders({Authorization : localStorage.removeItem('accessToken')});
-  }
 
-  const [userState, setUserState] = useState('');
-  let history = useHistory();
-  // ################################사용자 구분 코드################################
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
-  useEffect(()=>{
-    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
-    .then(response =>{
-      let key = response.data.key;
-      if(key === 2){ // 등록 보호자
-        history.push('/rg/acts');
-      }else if(key === 3){ // 미승인 관리자
-        setUserState('before');
-      }else if(key === 4){ // 승인 관리자
-        setUserState('after');
-      }else{ // 관리자 승인 대기
-        setUserState('waiting');
-      }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
-      console.error(error);
-      history.push('/rg/profile');
-    })
-  },[])
-  // ################################사용자 구분 코드################################
-
-  const onLogoutClick = () => {
-    setHeaders({Authorization : localStorage.removeItem('accessToken')});
-  }
   return (
     <React.Fragment>
     <div className="header">
@@ -86,9 +67,9 @@ const  RegisterProfileAfter= () => {
         <BiLogOut size="20" onClick={onLogoutClick}/>
     </div>
       <AddImage />
-      <InputSelectBlock isRegister={isRegister} isGender={isGender} setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
-      <Birth isBirth={isBirth} setIsBirth={setIsBirth} fillMessage={fillMessage} />
-      <Caution isCaution={isCaution} setIsCaution={setIsCaution} />
+      <InputSelectBlock isRegister={defaults.np_name} isGender={defaults.gender} setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
+      <Birth isBirth={defaults.np_date} setIsBirth={setIsBirth} fillMessage={fillMessage} />
+      <Caution isCaution={defaults.memo} setIsCaution={setIsCaution} />
       <div className="tit-name">이용하고 계신 요양원이 마음에 드시나요?</div>
       <StarBlock />
       {

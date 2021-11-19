@@ -4,7 +4,7 @@ import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import { BiLogOut } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';
 import '../components/atoms/Label/Label.css';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { apiUrl } from './ApiURL';
 
@@ -20,7 +20,6 @@ const  RegisterActs= () => {
   */
 
   let history = useHistory();
-  const [userState, setUserState] = useState('');
   // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
@@ -29,16 +28,13 @@ const  RegisterActs= () => {
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
-      }else if(key === 3){ // 미승인 관리자
-        setUserState('before');
-      }else if(key === 4){ // 승인 관리자
-        setUserState('after');
-      }else{ // 관리자 승인 대기
-        setUserState('waiting');
+      }else if(key === 2){ // 등록 보호자
+        return;
+      }else{ // 미승인 관리자 & 승인 관리자 & 관리자 승인 대기
+        history.push('/mg/home')
       }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
+    }).catch(error => {
         console.error(error);
-        history.push('/rg/nh-location');
     })
   },[])
   // ################################사용자 구분 코드################################
@@ -57,9 +53,7 @@ const  RegisterActs= () => {
       <div className="header">
         <IoIosArrowBack opacity="0" size="20"/>
         요양원 활동 목록
-        <Link className="linkComponent" to="/">
-          <BiLogOut size="20" onClick={onLogoutClick}/>
-        </Link>
+        <BiLogOut size="20" onClick={onLogoutClick}/>
       </div>
       <ul>
         {
