@@ -1,11 +1,15 @@
 import React from 'react';
 
-const NursingHomeManagerInfo = () => {
+const NursingHomeManagerInfo = ({
+  memberName,
+  membersTel,
+  position,}) => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
-        <p className="nursinghome-info">이요양</p>
-        <p className="nursinghome-address">000-0000-0000</p>
+        <p className="nursinghome-position">{position}</p>
+        <p className="nursinghome-info">{memberName}</p>
+        <p className="nursinghome-address">{membersTel}</p>
       </div>
     </React.Fragment>
   );

@@ -44,8 +44,7 @@ const ManagerHome = () => {
   const pageState = (state) => {
     switch(state){
       case 4:{
-        return <><ManagerHomeAfter />
-                 <ManagerBelowBarBlock isHome /></>
+        return <><ManagerHomeAfter /><ManagerBelowBarBlock isHome /></>
       }
       case 3:{
         return <ManagerHomeBefore />

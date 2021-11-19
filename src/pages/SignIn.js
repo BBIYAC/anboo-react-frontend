@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import UserChoice from '../components/atoms/Select/UserChoice';
-import Id from '../components/atoms/Input/Id';
-import Password from '../components/atoms/Input/Password';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
+import UserChoice from '../components/atoms/Select/UserChoice';
+import Password from '../components/atoms/Input/Password';
+import Id from '../components/atoms/Input/Id';
+import axios from 'axios';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
+import { Link, useHistory } from 'react-router-dom';
+import { apiUrl } from './ApiURL';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';
-import { Link, useHistory } from 'react-router-dom';
-import { apiUrl } from './ApiURL';
-import axios from 'axios';
 
 const SignIn = () => {
   // 유효성 검사
@@ -23,12 +23,11 @@ const SignIn = () => {
   const signinSubmit = (event) => {
     event.preventDefault();
     console.log({ isUser, isId, isPassword });
-    /*
-     axios signin form POST
-    */
 
     const userAuthorization = ()=>{
       const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
+      
+      // 사용자 체크
       axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
       .then(response =>{
         let key = response.data.key;
@@ -51,25 +50,17 @@ const SignIn = () => {
       "password" : isPassword,
     }
     if (isUser === '보호자') {
+      // 보호자 계정 POST
       axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
-<<<<<<< HEAD
-        .then(response => {
-          console.log(response.data.access);
-          localStorage.setItem('accessToken',response.data.access);
-          history.push({pathname: '/rg/nh-location', state:{key:1}});
-        }).catch(error => {
-          console.log(error)
-        })
-=======
       .then(response => {
         localStorage.setItem('accessToken',response.data.access);
         userAuthorization();
       }).catch(error => {
         console.log(error)
       })
->>>>>>> aa1205a45888d534cef61695cc2ee20f4dca20dc
     }
     else if (isUser === '관리자') {
+      // 관리자 계정 POST
       axios({ url: `${apiUrl}/signin/nh-supervisor/`, method: 'post', data: params })
         .then(response => {
           localStorage.setItem('accessToken',response.data.access);
@@ -78,16 +69,11 @@ const SignIn = () => {
           console.log(error)
         })
     }
-
-    
-
-
   };
 
   const onClick = () => {
     setFillMessage(true); // 비어있는 input 경고
   }
-
 
   return (
     <React.Fragment>
@@ -102,15 +88,9 @@ const SignIn = () => {
         <Password setIsPassword={setIsPassword} fillMessage={fillMessage} />
         {
           (isUser && isId && isPassword)
-            // ?<Link className="linkComponent" to="/mg/home">
-            //     <RoundRectangle type='submit' btnText="로그인" />
-            // </Link>
             ? <RoundRectangle type='submit' btnText="로그인" />
             : <RoundRectangle type='button' btnText="로그인" onClick={onClick} />
         }
-        {/* <Link to="/rg/acts">
-          <RoundRectangle btnText="로그인" />
-        </Link> */}
       </form>
       <Link className="linkComponent" to="/signup/before">
         <RoundRectangle btnText="회원가입" />

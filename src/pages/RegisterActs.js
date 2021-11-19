@@ -53,13 +53,7 @@ const  RegisterActs= () => {
       <div className="header">
         <IoIosArrowBack opacity="0" size="20"/>
         요양원 활동 목록
-<<<<<<< HEAD
-        <Link className="linkComponent" to="/">
-          <BiLogOut className="BiLogOut" size="20" onClick={onLogoutClick}/>
-        </Link>
-=======
         <BiLogOut size="20" onClick={onLogoutClick}/>
->>>>>>> aa1205a45888d534cef61695cc2ee20f4dca20dc
       </div>
       <ul>
         {
