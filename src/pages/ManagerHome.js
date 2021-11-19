@@ -14,16 +14,12 @@ import '../components/molecules/Block/Block.css';
 const ManagerHome = () => {
   let history = useHistory();
   const [userState, setUserState] = useState();
-
-  // ################################사용자 구분 코드################################
+  // axios authentication GET - 사용자 구분
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
-    console.log(headers);
     axios({url: `${apiUrl}/authentication/check/` ,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      console.log(response.data.access);
-      console.log(key);
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
@@ -37,9 +33,9 @@ const ManagerHome = () => {
       }
     }).catch(error => {
         console.error(error);
-    },[]);
+        history.push('/');
+    });
   })
-  // ################################사용자 구분 코드################################
 
   const pageState = (state) => {
     switch(state){

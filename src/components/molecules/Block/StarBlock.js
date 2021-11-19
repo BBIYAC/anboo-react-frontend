@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Star from '../../atoms/Button/Star';
 
-const Satisfaction = ({star_rating}) => {
+const Satisfaction = ({star_rating, setStarRating}) => {
     const [starOnOff, setStarOnOff] = useState([]);
     const onClickStarRating = (idx) => {
         let temp = [];
@@ -14,6 +14,7 @@ const Satisfaction = ({star_rating}) => {
             }
         }
         setStarOnOff([...temp]);
+        setStarRating(idx+1);
     }
 
     useEffect(()=>{

@@ -9,6 +9,7 @@ const Caution = ({isCaution, setIsCaution}) => {
 
     useEffect(()=>{
         setTitName(isCaution);
+        setIsCaution(isCaution);
     },[isCaution])
     
     return(

@@ -9,10 +9,12 @@ import axios from 'axios';
 import { apiUrl } from './ApiURL';
 
 const  ManagerRequests= () => {
+  const [requests, setRequests] = useState([]);
+  const [feedback, setFeedback] = useState(false);
   let history = useHistory();
-  // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
+    // axios authentication GET - 사용자 구분
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
@@ -23,28 +25,26 @@ const  ManagerRequests= () => {
       }else if(key === 3){ // 미승인 관리자
         history.push('/mg/home');
       }else if(key === 4){ // 승인 관리자
-        return;
+        // axios request GET - 요청사항 확인
+        axios({url:`${apiUrl}/supervisor/requests/`,method : 'get' ,headers: headers})
+        .then(response =>{
+          setRequests(response.data);
+        }).catch(error => {
+            console.error(error);
+        })
+      }else{ // 비회원
+        history.push('/');
       }
     }).catch(error => { // access token 없는 경우(비회원)
+      console.error(error);
         history.push('/');
     })
-  },[headers])
-  // ################################사용자 구분 코드################################
+  },[headers, feedback])
+ 
   const onSigninClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
-  const [requests, setRequests] = useState([]);
-  const requestInfo = [
-    { title:'# 박혁거세(박순자님 아들)', content:'박순자님 견과류 알레르기가 있으니 음식에 견과류 넣지 말아주세요!', date:'2021년 10월 28일 20시 34분',  response:'' },
-    { title:'# 박혁거세(박순자님 아들)', content:'박순자님 견과류 알레르기가 있으니 음식에 견과류 넣지 말아주세요!', date:'2021년 10월 28일 20시 34분',  response:'네, 확인했습니다.' },
-    { title:'# 박혁거세(박순자님 아들)', content:'박순자님 견과류 알레르기가 있으니 음식에 견과류 넣지 말아주세요!', date:'2021년 10월 28일 20시 34분',  response:'박순자님 견과류 금지 확인했습니다 :)' },
-  ]
-  /*
-  axios request GET
-  */
-  useEffect(()=>{
-    setRequests(requestInfo);
-  },[])
+  
 
   return (
     <React.Fragment>
@@ -54,12 +54,20 @@ const  ManagerRequests= () => {
         <BiLogOut size="20" onClick={onSigninClick}/>
       </div>
       {
-        requests.map((request, idx)=>(
+        requests.sort((a, b)=>{ // 최신 날짜순으로 정렬
+          var date1 = a.uploaded_date;
+          var date2 = b.uploaded_date;
+          if(date1 > date2) return -1;
+          if(date1 < date2) return 1;
+          return 0;
+        }).map((request, idx)=>(
           <RequestBlock 
-            requestTitle={request.title} 
-            requestContent={request.content} 
-            requestDate={request.date} 
-            response={request.response} 
+            requestId={request.id} // 요청사항 식별 ID
+            requestTitle={request.requester_name} // 보호자 이름
+            requestContent={request.context} // 보호자 요청사항 내용
+            requestDate={request.uploaded_date} // 요청사항 날짜
+            response={request.feed} // 관리자 답변
+            setFeedback={setFeedback} // 답변 여부
             isManager
             key={idx}
           />

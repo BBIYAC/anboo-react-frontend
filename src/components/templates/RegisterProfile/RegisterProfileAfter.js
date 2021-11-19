@@ -19,6 +19,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
   const [isGender, setIsGender] = useState('');
   const [isBirth, setIsBirth] = useState('');
   const [isCaution, setIsCaution] = useState('');
+  const [isImage, setIsImage] = useState('');
   const [defaults, setDefaults] = useState({
     np_name: '',
     gender: '',
@@ -27,10 +28,10 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     np_profile_image: '',
   });
   const [star, setStar] = useState('');
+  const [putCheck, setPutCheck] = useState([]);
 
-  
+  const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
   useEffect(()=>{
-    const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
     // axios 요양인 정보 GET
     axios({url:`${apiUrl}/nok/np-profile/`,method : 'get' ,headers:headers})
     .then(response =>{
@@ -53,13 +54,38 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
   const onClickEdit = () => {
     setFillMessage(true); // 비어있는 input 경고
     if(isRegister && isGender && isBirth){
-      setIsClicked(true);
-      console.log({type:'PUT', isRegister, isGender, isBirth, isCaution});
-      /*
-      axios register profile PUT
-      */
+      // console.log({type:'PUT', isRegister, isGender, isBirth, isCaution, isImage, star});
+      // axios register profile PUT
+      const formData = new FormData();
+      formData.append('np_name', isRegister);
+      formData.append('np_date', isBirth);
+      formData.append('memo', isCaution);
+      formData.append('gender', isGender);
+      isImage && formData.append('np_profile_image', isImage);
+
+      axios({url:`${apiUrl}/nok/np-profile/`,method : 'put' ,headers:headers, data: formData})
+      .then(response =>{
+        setPutCheck(putCheck =>[...putCheck, true]);
+      }).catch(error => {
+          console.error(error);
+      })
+
+      // axios star rating PUT
+      axios({url:`${apiUrl}/nok/star/post/`,method : 'put' ,headers:headers, data: {
+        star_rating: star
+      }})
+      .then(response =>{
+        setPutCheck(putCheck => [...putCheck, true]);
+      }).catch(error => {
+          console.error(error);
+      })
+
     }
   }
+
+  useEffect(()=>{
+    putCheck.length === 2 && setIsClicked(true);
+  },[putCheck]);
 
   return (
     <React.Fragment>
@@ -68,12 +94,12 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
         요양인 프로필
         <BiLogOut size="20" onClick={onLogoutClick}/>
     </div>
-      <AddImage url={defaults.np_profile_image} />
+      <AddImage url={defaults.np_profile_image} setIsImage={setIsImage} />
       <InputSelectBlock isRegister={defaults.np_name} isGender={defaults.gender} setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
       <Birth isBirth={defaults.np_date} setIsBirth={setIsBirth} fillMessage={fillMessage} />
       <Caution isCaution={defaults.memo} setIsCaution={setIsCaution} />
       <div className="tit-name">이용하고 계신 요양원이 마음에 드시나요?</div>
-      <StarBlock star_rating={star} />
+      <StarBlock star_rating={star} setStarRating={setStar} />
       {
         (isRegister && isGender && isBirth)
         ?<><RoundRectangle btnText='요양인 프로필 수정하기' onClick={onClickEdit}/>

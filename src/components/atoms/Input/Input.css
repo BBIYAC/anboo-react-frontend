@@ -49,9 +49,8 @@
 }
 .img-actImage {
   width: var(--width);
-  height: 10rem;
-  margin-bottom: 1rem;
   border: 1px solid var(--color-gray);
+  margin-bottom: 10px;
 }
 .img-rgProfile {
   width: 110px;

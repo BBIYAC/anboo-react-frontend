@@ -6,10 +6,9 @@ const NursingHomeActBlock = ({contents}) => {
   return(
     <React.Fragment>
       <div className="block-NursingHomeAct">
-        <ActImage url={contents.url} />
+        {contents.post_picture && <ActImage url={contents.post_picture} />}
         <NursingHomeActsText contents={contents} />
       </div>
-      <hr></hr>
     </React.Fragment>
   );
 };
