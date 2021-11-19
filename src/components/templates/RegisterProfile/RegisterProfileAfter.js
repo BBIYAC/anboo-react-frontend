@@ -24,6 +24,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     gender: '',
     np_date: '',
     memo: '',
+    np_profile_image: '',
   });
 
   
@@ -33,7 +34,6 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     axios({url:`${apiUrl}/nok/np-profile/`,method : 'get' ,headers:headers})
     .then(response =>{
       const datas = response.data.profile;
-      console.log(datas)
       setDefaults(datas);
     }).catch(error => {
         console.error(error);
@@ -66,7 +66,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
         요양인 프로필
         <BiLogOut size="20" onClick={onLogoutClick}/>
     </div>
-      <AddImage />
+      <AddImage url={defaults.np_profile_image} />
       <InputSelectBlock isRegister={defaults.np_name} isGender={defaults.gender} setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
       <Birth isBirth={defaults.np_date} setIsBirth={setIsBirth} fillMessage={fillMessage} />
       <Caution isCaution={defaults.memo} setIsCaution={setIsCaution} />

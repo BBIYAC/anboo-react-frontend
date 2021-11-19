@@ -13,8 +13,7 @@ const Birth = ({isBirth, setIsBirth, fillMessage}) => {
     };
 
     useEffect(()=>{
-        const birth = isBirth.substring(2, 4)+isBirth.substring(5,7)+isBirth.substring(8,10);
-        setTitBirth(birth);
+        setTitBirth(isBirth);
     },[isBirth])
 
     useEffect(() => {
