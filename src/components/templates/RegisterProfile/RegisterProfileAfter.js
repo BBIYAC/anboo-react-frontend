@@ -26,6 +26,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     memo: '',
     np_profile_image: '',
   });
+  const [star, setStar] = useState('');
 
   
   useEffect(()=>{
@@ -40,12 +41,13 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     })
 
     // 별점 GET
-    // axios({url:`${apiUrl}/not-nok/star/detail/`,method : 'get' ,headers:headers})
-    // .then(response =>{
-    //   console.log('response:', response);
-    // }).catch(error => {
-    //     console.error(error);
-    // })
+    axios({url:`${apiUrl}/nok/star/detail/`,method : 'get' ,headers:headers})
+    .then(response =>{
+      const star_rating = response.data.star_rating;
+      setStar(star_rating);
+    }).catch(error => {
+        console.error(error);
+    })
   },[])
 
   const onClickEdit = () => {
@@ -71,7 +73,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
       <Birth isBirth={defaults.np_date} setIsBirth={setIsBirth} fillMessage={fillMessage} />
       <Caution isCaution={defaults.memo} setIsCaution={setIsCaution} />
       <div className="tit-name">이용하고 계신 요양원이 마음에 드시나요?</div>
-      <StarBlock />
+      <StarBlock star_rating={star} />
       {
         (isRegister && isGender && isBirth)
         ?<><RoundRectangle btnText='요양인 프로필 수정하기' onClick={onClickEdit}/>
