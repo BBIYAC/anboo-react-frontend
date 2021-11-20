@@ -26,8 +26,12 @@ const ManagerHome = () => {
         history.push('/rg/acts'); 
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 
         // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
-        setUserState(key); // 요양원 등록 전 & 요양원 등록 승인
-        // setUserState(); // 요양원 승인 대기
+        axios({url: `${apiUrl}/supervisor/if-approved-by-admin/` ,method : 'get' ,headers:headers})
+        .then(response =>{
+          setUserState(key);
+        }).catch(error => {
+            console.error(error);
+        });
       }else{ // 비회원
         history.push('/');
       }

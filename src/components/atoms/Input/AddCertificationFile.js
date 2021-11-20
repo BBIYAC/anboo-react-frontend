@@ -1,7 +1,7 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import {AiOutlinePaperClip} from 'react-icons/ai';
 
-const AddCertificationFile = () => {
+const AddCertificationFile = ({setUploadFiles}) => {
     const fileInput = useRef();
     const [files, setFiles] = useState([]);
     const [isUpload, setIsUpload] = useState(false);
@@ -17,6 +17,10 @@ const AddCertificationFile = () => {
         setFiles([...files, ...e.target.files]);
         (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
     };
+    
+    useEffect(()=>{
+        setUploadFiles(files);
+    },[files])
 
     return(
         <>

@@ -264,6 +264,8 @@
 .div-info {
   text-align: left;
   font-size: var(--font-size-small);
+  margin: 0 1rem;
+  width: 60%;
 }
 .div-checkBoxAndDelete {
   display: flex;
