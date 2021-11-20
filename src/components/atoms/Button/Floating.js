@@ -10,7 +10,7 @@ const Floating = ({background, onClick}) => {
         <div className="handleBgFloatingStyle mg-floatingShadow" style={{background}} onClick={onClick}>
           <AiOutlineMail className='handleFloatingStyle' />
         </div>:
-        <div className="handleBgFloatingStyle rg-floatingShadow" style={{background}} ibClick={onClick}>
+        <div className="handleBgFloatingStyle rg-floatingShadow" style={{background}} onClick={onClick}>
           <HiHome className="handleFloatingStyle"/>
         </div>
       }

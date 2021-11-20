@@ -14,6 +14,7 @@ const  RegisterActs= () => {
   let history = useHistory();
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
+    
     // axios authentication GET - 사용자 확인
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{

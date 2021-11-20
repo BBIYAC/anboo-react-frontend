@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import NursingHomeDetailInfoBlock from '../components/molecules/Block/NursingHomeDetailInfoBlock';
 import NursingHomeChiefInfoBlock from '../components/molecules/Block/NursingHomeChiefInfoBlock';
 import NursingHomeManagerInfoBlock from '../components/molecules/Block/NursingHomeManagerInfoBlock';
-import NursingHomeImageBlock from '../components/molecules/Block/NursingHomeImageBlock';
 import BelowRectangleBlock from '../components/molecules/Block/BelowRectangleBlock';
 import NotMemberNotice from '../components/atoms/Label/NotMemberNotice';
+import NotRegisteredNotice from '../components/atoms/Label/NotRegisteredNotice';
+import NhImageGrid from '../components/molecules/Block/NhImageGrid';
 import Floating from '../components/atoms/Button/Floating';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
@@ -12,14 +13,17 @@ import { BiLogOut, BiLogIn } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';
 import { apiUrl } from './ApiURL';
 import '../components/molecules/Block/Block.css';
+import '../components/atoms/Label/Label.css';
 
 const  RegisterNhInfo= () => {
   let history = useHistory();
   const [isNotMember, setIsNotMember] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(true);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [id, setId] = useState('');
-  const [tel, setTel] = useState()
+  const [tel, setTel] = useState('')
+  const [images, setImages] = useState([]);
   const [logState, setLogState] = useState(false);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   const [starRating, setStarRating] = useState('');
@@ -46,23 +50,28 @@ const  RegisterNhInfo= () => {
         axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
         .then(response => {
           console.log(response);
-          console.log(history.location.state.id+"dfdf");
           setIsNotMember(false);
           setName(response.data.nh_info.nh_name);
           setAddress(response.data.nh_info.nh_address);
           setTel(response.data.nh_info.nh_tel);
+          setImages(response.data.nh_images)
           setStarRating(history.location.state.starRating);
           setId(history.location.state.id);
         })
         // 관리자 상세정보 GET
         axios({url:`${apiUrl}/not-nok/employee-info/${history.location.state.id}/`, method: 'get', headers:headers})
         .then(response => {
-          console.log(response.data);
-          setChiefName(response.data[0].nh_employee_name);
-          setChiefTel(response.data[0].nh_employee_tel);
-          setChiefImage(response.data[0].image);
-          setPosition(response.data[0].position);
-          setMembersArray(response.data);
+          console.log(response.data.is_registered);
+          if(response.data.is_registered == false){     // 요양원이 등록되지 않았다면
+            setIsRegistered(false);
+          }else{        // 요양원이 등록되었다면
+            console.log(response.data);
+            setChiefName(response.data[0].nh_employee_name);
+            setChiefTel(response.data[0].nh_employee_tel);
+            setChiefImage(response.data[0].image);
+            setPosition(response.data[0].position);
+            setMembersArray(response.data);
+          }
         })
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
@@ -107,7 +116,6 @@ const  RegisterNhInfo= () => {
       return(
         <NursingHomeManagerInfoBlock 
         memberName={member.nh_employee_name}
-        // 0 + chiefTel.substring(3,5)+'-'+chiefTel.substring(5,9)+'-'+chiefTel.substring(9,13)
         membersTel={
           0 + member.nh_employee_tel.substring(3,5)
         +'-'+ member.nh_employee_tel.substring(5,9)
@@ -115,7 +123,13 @@ const  RegisterNhInfo= () => {
         membersImage={member.image}
         position={member.position} />
       );
-    }
+    };
+  });
+
+  const renderImages = images.map(image => {
+    return(
+      <NhImageGrid url={image.nh_image}/>
+    );
   });
 
   return (
@@ -126,14 +140,15 @@ const  RegisterNhInfo= () => {
         {logState?<BiLogIn size="20" onClick={onLoginClick}/>:<BiLogOut size="20" onClick={onLogoutClick}/>}
       </div>
       <NursingHomeDetailInfoBlock 
-      isNotMember={isNotMember} 
+      isNotMember={isNotMember}
       name={name} 
       address={address} 
       starRating={starRating}/>
       <hr/>
       {isNotMember
       ?<NotMemberNotice/>
-      :<div>
+      :isRegistered
+      ?<div>
       <NursingHomeChiefInfoBlock 
       chiefName={chiefName} 
       chiefTel={
@@ -146,9 +161,13 @@ const  RegisterNhInfo= () => {
       <div className="div_memberBox">
         { renderManagers }
       </div>
-      <NursingHomeImageBlock />
+      <hr></hr>
+      <div className="grid-container">
+        {renderImages}
+      </div>
       <BelowRectangleBlock tel={tel} id={id}/>
       </div>
+      :<NotRegisteredNotice/>
       }
       <Link className="linkComponent" to="/rg/nh-location">
         <Floating background="var(--color-blue)"/>
