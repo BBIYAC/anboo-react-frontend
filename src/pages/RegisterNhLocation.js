@@ -114,6 +114,7 @@ const RegisterNhLocation = () => {
     .then(response =>{
       let key = response.data.key;
       console.log(key);
+      console.log(response.data);
       if(key === 1){ // 미등록 보호자
         setLogState(false);
       }else if(key === 2){ // 등록 보호자
@@ -151,7 +152,7 @@ const RegisterNhLocation = () => {
     <div className="block-location">
       <div className="box-location">
         <button className="btn_search" 
-        onClick={()=>history.push({pathname: '/rg/nhs', state: {searchDefault: "요양원 이름, 주소, 지역 검색하기"}})}>요양원 이름, 주소, 지역 검색하기</button>
+        onClick={()=>history.push({pathname: '/rg/nhs', state:{allList: true, searchDefault: true}})}>요양원 이름, 주소, 지역 검색하기</button>
         <button className="btn-myLocation" 
         onClick={getLocation}><AiOutlineAim size="25"/></button>
       </div>

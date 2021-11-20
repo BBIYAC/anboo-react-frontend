@@ -4,6 +4,7 @@ import Religion from '../components/atoms/Select/Religion';
 import Favorites from '../components/atoms/Button/Favorites';
 import Floating from '../components/atoms/Button/Floating';
 import NursingHomeInfoBlock from '../components/molecules/Block/NursingHomeInfoBlock';
+import AllNHInfoBlock from '../components/molecules/Block/AllNHInfoBlock';
 import axios from "axios";
 import { FaSearch } from 'react-icons/fa';
 import { Link, useHistory } from 'react-router-dom';
@@ -21,9 +22,9 @@ const RegisterNhs= () => {
   const [userState, setUserState] = useState('');
   const [logState, setLogState] = useState(false);
   const [nursingHomes, setNursingHomes] = useState([]);
+  const [allNH, setAllNH] = useState([]);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
-    console.log(headers);
 
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
@@ -31,17 +32,13 @@ const RegisterNhs= () => {
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
-      console.log(key);
+      const allList = history.location.state.allList;
       if(key === 1){ // 미등록 보호자
+        console.log(history.location.state.allList);
+        console.log(history.location.state.searchDefault);
         axios({url:`${apiUrl}/nh-info/search=${history.location.state.cityName}/`, method: 'get'})
         .then(response=>{
-          for(let i = 0; i < response.data.length; i++){
-            arr[i] = response.data[i];
-            // console.log(response.data[i])        // 요양원 리스트 데이터
-          }
-          setNursingHomes(arr);
-          console.log(response);
-
+          setNursingHomes(response.data);
         })
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
@@ -50,17 +47,24 @@ const RegisterNhs= () => {
       }else if(key === 4){ // 승인 관리자
         setUserState('after');
       }else if(key === 6){  // 비회원
-        axios({url:`${apiUrl}/nh-info/search=${history.location.state.cityName}/`, method: 'get'})
-        .then(response=>{
-          for(let i = 0; i < response.data.length; i++){
-            arr[i] = response.data[i];
-            // console.log(response.data[i])        // 요양원 리스트 데이터
-          }
-          setLogState(true);
-          setNursingHomes(arr);
-          console.log(response.data);
-
-        })
+        console.log(history.location.state.searchDefault);
+        if(allList){
+          axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+          .then(response=>{
+            console.log("여기");
+            console.log(response.data[0]);
+            setAllNH(response.data);
+            setLogState(true);
+          })
+        }else{
+          axios({url:`${apiUrl}/nh-info/search=${history.location.state.cityName}/`, method: 'get'})
+          .then(response=>{
+            setLogState(true);
+            setNursingHomes(response.data);
+            console.log("여기");
+          })
+        }
+        
       }else{ // 관리자 승인 대기
         setUserState('waiting');
       }
@@ -78,10 +82,17 @@ const RegisterNhs= () => {
     history.push('/');
   }
 
-  // 요양원 개수만큼 반복
+  // 마커 클릭된 지역의 요양원
   const renderNursingHomes = nursingHomes.map(nursingHome => {
     return (
       <NursingHomeInfoBlock nursingHome={nursingHome}/>
+    );
+  });
+
+  // 모든 요양원
+  const renderAllNH = allNH.map(NH => {
+    return (
+      <AllNHInfoBlock nh={NH}/>
     );
   });
 
@@ -101,11 +112,10 @@ const RegisterNhs= () => {
             className="searchBox"
             type="text"
             // 지도 화면에서 마커를 클릭할 시와 클릭하지 않고 상단의 검색하러 가기 버튼을 누를 시 이벤트를 다르게 하기 위함.
-            placeholder={
-              history.location.state.searchDefault==="요양원 이름, 주소, 지역 검색하기"
-              ? "요양원 이름, 주소, 지역 검색하기"
-              : history.location.state.cityName
-              }>
+            placeholder={history.location.state.searchDefault
+              ?"요양원 이름, 주소, 지역 검색하기"
+              :history.location.state.cityName}
+            >
             </input>
             <button className="search-icon"><FaSearch size="20"/></button>
           </div>
@@ -118,6 +128,7 @@ const RegisterNhs= () => {
       </div>
       <div className="div-nursingHomeScroll">
         {renderNursingHomes}
+        {renderAllNH}
       </div>
       <Link className="linkComponent" to="/rg/nh-location">
         <Floating background="var(--color-blue)"/>
