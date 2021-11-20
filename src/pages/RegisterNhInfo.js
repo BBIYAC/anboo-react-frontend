@@ -14,11 +14,13 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { apiUrl } from './ApiURL';
 import '../components/molecules/Block/Block.css';
 import '../components/atoms/Label/Label.css';
+import NotRegisteredEmptyNotice from '../components/atoms/Label/NotRegisteredEmptyNotice';
 
 const  RegisterNhInfo= () => {
   let history = useHistory();
   const [isNotMember, setIsNotMember] = useState(false);
   const [isRegistered, setIsRegistered] = useState(true);
+  const [isRegisteredEmpty, setIsRegisteredEmpty] = useState(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [id, setId] = useState('');
@@ -39,7 +41,6 @@ const  RegisterNhInfo= () => {
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
-    console.log(headers);
 
     // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
@@ -49,8 +50,6 @@ const  RegisterNhInfo= () => {
         // 요양원 상세정보 GET
         axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
         .then(response => {
-          console.log(response);
-          setIsNotMember(false);
           setName(response.data.nh_info.nh_name);
           setAddress(response.data.nh_info.nh_address);
           setTel(response.data.nh_info.nh_tel);
@@ -61,16 +60,18 @@ const  RegisterNhInfo= () => {
         // 관리자 상세정보 GET
         axios({url:`${apiUrl}/not-nok/employee-info/${history.location.state.id}/`, method: 'get', headers:headers})
         .then(response => {
-          console.log(response.data.is_registered);
-          if(response.data.is_registered == false){     // 요양원이 등록되지 않았다면
+          if(response.data.is_registered == false ){     // 요양원이 등록되지 않은 경우
             setIsRegistered(false);
-          }else{        // 요양원이 등록되었다면
-            console.log(response.data);
-            setChiefName(response.data[0].nh_employee_name);
-            setChiefTel(response.data[0].nh_employee_tel);
-            setChiefImage(response.data[0].image);
-            setPosition(response.data[0].position);
-            setMembersArray(response.data);
+          }else if(response.data.is_registered == true && response.data.employee_info.length != 0 ){        // 요양원이 등록되었고 요양사, 활동 정보가 있을 경우
+            console.log(response.data.employee_info.length);
+            console.log("요기");
+            setChiefName(response.data.employee_info[0].nh_employee_name);
+            setChiefTel(response.data.employee_info[0].nh_employee_tel);
+            setChiefImage(response.data.employee_info[0].image);
+            setPosition(response.data.employee_info[0].position);
+            setMembersArray(response.data.employee_info);
+          }else {                 // 요양원이 등록되었지만 요양사, 활동 정보가 없을 경우
+            setIsRegisteredEmpty(true);
           }
         })
       }else if(key === 2){ // 등록 보호자
@@ -93,10 +94,9 @@ const  RegisterNhInfo= () => {
       }else{ // 관리자 승인 대기
         history.push('/mg/home');
       }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
+    }).catch(error => { 
     })
   },[])
-  // ################################사용자 구분 코드################################
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
@@ -145,10 +145,13 @@ const  RegisterNhInfo= () => {
       address={address} 
       starRating={starRating}/>
       <hr/>
+
       {isNotMember
-      ?<NotMemberNotice/>
-      :isRegistered
-      ?<div>
+      ?<NotMemberNotice/>         // 비회원인 경우
+      :isRegistered               // 등록된 요양원인 경우
+      ?isRegisteredEmpty 
+      ?<NotRegisteredEmptyNotice/>
+      :<div>
       <NursingHomeChiefInfoBlock 
       chiefName={chiefName} 
       chiefTel={
@@ -167,8 +170,9 @@ const  RegisterNhInfo= () => {
       </div>
       <BelowRectangleBlock tel={tel} id={id}/>
       </div>
-      :<NotRegisteredNotice/>
+      :<NotRegisteredNotice/>         // 등록되지 않은 요양원인 경우
       }
+
       <Link className="linkComponent" to="/rg/nh-location">
         <Floating background="var(--color-blue)"/>
       </Link>

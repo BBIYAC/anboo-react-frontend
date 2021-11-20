@@ -97,3 +97,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.div_emptyManager,
+.div_emptyActImage  {
+  height: 200px;
+  width: 100%;
+  color: var(--color-blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0 30px 0;
+}
