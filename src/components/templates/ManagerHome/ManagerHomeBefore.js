@@ -5,7 +5,6 @@ import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
 import NoticeBlock from '../../molecules/Block/NoticeBlock';
 import { FaSearch } from 'react-icons/fa';
 import './ManagerHome.css';
-import { useHistory } from "react-router";
 import axios from 'axios';
 import { apiUrl } from "../../../pages/ApiURL";
 
@@ -13,7 +12,6 @@ const ManagerHomeBefore = () => {
   const [search, setSearch] = useState('');
   const [uploadFiles, setUploadFiles] = useState([]);
   const [nursingHome, setNursingHome] = useState();
-  let history = useHistory();
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const onChange = (e) => {
     setSearch(e.target.value);
