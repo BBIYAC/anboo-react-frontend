@@ -24,13 +24,16 @@ const ApprovalsListBlock = () => {
   },[])
 
   const userName = (member) =>{
+    let result = ''
     for(let i=0; i<users.length; i++){
       if(users[i].id === member.integrated_id){
-        return users[i].name;
+        result = users[i].name;
+        break;
       }else{
-        return 'Null';
+        result = 'Null';
       }
     }
+    return result;
   }
 
   const handleChange = (e) => {
