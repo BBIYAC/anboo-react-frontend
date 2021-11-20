@@ -12,7 +12,8 @@ const ManagerHomeBefore = () => {
   const [search, setSearch] = useState('');
   const [uploadFiles, setUploadFiles] = useState([]);
   const [nursingHome, setNursingHome] = useState();
-  const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
+  const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken'),
+                  'Content-Type': 'multipart/form-data'}
   const onChange = (e) => {
     setSearch(e.target.value);
   }
@@ -20,16 +21,14 @@ const ManagerHomeBefore = () => {
     // axios 파일 등록 후 승인 요청 POST
     var formData = new FormData();
     formData.append('nh_id', nursingHome);
-    formData.append('documentary_evidence_file', uploadFiles);
+    uploadFiles.forEach((file)=> formData.append('documentary_evidence_file', file));
 
     axios({url: `${apiUrl}/supervisor/document-evidence/` ,method : 'post' ,headers:headers, data:formData})
     .then(response =>{
-      console.log('post success!!', response);
+      window.location.reload();
     }).catch(error => {
         console.error(error);
     });
-    console.log('nursingHome:', nursingHome);
-    console.log('uploadFiles:', uploadFiles);
   }
     return(
         <React.Fragment>
