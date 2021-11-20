@@ -28,7 +28,9 @@ const ManagerHome = () => {
         // axios supervisor/if-approved-by-admin/ GET 관리자 승인 여부
         axios({url: `${apiUrl}/supervisor/if-approved-by-admin/` ,method : 'get' ,headers:headers})
         .then(response =>{
-          setUserState(key);
+          response.data.is_waiting
+          ? setUserState(0)
+          : setUserState(key)
         }).catch(error => {
             console.error(error);
         });

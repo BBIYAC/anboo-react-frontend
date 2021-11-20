@@ -24,14 +24,14 @@ const ManagerHomeBefore = () => {
     formData.append('nh_id', nursingHome);
     formData.append('documentary_evidence_file', uploadFiles);
 
-    axios({url: `${apiUrl}/supervisor/no-response-to-request/` ,method : 'post' ,headers:headers, data:formData})
+    axios({url: `${apiUrl}/supervisor/document-evidence/` ,method : 'post' ,headers:headers, data:formData})
     .then(response =>{
       console.log('post success!!', response);
     }).catch(error => {
-      console.log('nursingHome:', nursingHome);
-      console.log('uploadFiles:', uploadFiles);
         console.error(error);
     });
+    console.log('nursingHome:', nursingHome);
+    console.log('uploadFiles:', uploadFiles);
   }
     return(
         <React.Fragment>
