@@ -24,9 +24,10 @@ const ManagerActs = () => {
         history.push('/mg/home');
       }else if(key === 4){ // 승인 관리자
         return;
+      }else{ // 비회원
+        history.push('/');
       }
-    }).catch(error => { // access token 없는 경우(비회원)
-        // history.push('/');
+    }).catch(error => { 
         return;
     })
   },[headers])

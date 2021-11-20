@@ -4,24 +4,23 @@ import ImageSmall from "../../atoms/Input/ImageSmall";
 import {AiOutlineDoubleRight} from 'react-icons/ai';
 import RoundRectangleSmall from "../../atoms/Button/RoundRectangleSmall";
 import { useHistory } from "react-router";
+import axios from "axios";
+import { apiUrl } from '../../../pages/ApiURL';
 
 const MembersListBlock = () => {
   const history = useHistory();
-  const memberInfo = [
-    { image: <ImageSmall/>, name: "김순덕", year: "2001.01.01" },
-    { image: <ImageSmall/>, name: "이순덕", year: "2002.01.01" },
-    { image: <ImageSmall/>, name: "박순덕", year: "2003.01.01" },
-    { image: <ImageSmall/>, name: "최순덕", year: "2004.01.01" },
-    { image: <ImageSmall/>, name: "권순덕", year: "2005.01.01" },
-  ];
-  /*
-  axios member list GET
-  */
   const [members, setMembers] = useState([]);
-
-  useEffect(() => {
-    setMembers(memberInfo);
-  }, []);
+  // axios member list GET
+  const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
+  useEffect(()=>{
+    axios({url:`${apiUrl}/supervisor/nh-nok-list/`,method : 'get' ,headers:headers})
+    .then(response =>{
+      setMembers(response.data.np_info);
+    }).catch(error => { 
+        console.error(error);
+    })
+    
+  },[])
 
   const handleChange = (e) => {
     const {name, checked} = e.target;
@@ -32,7 +31,7 @@ const MembersListBlock = () => {
       setMembers(tempMember);
     } else {
       let tempMember = members.map(member => 
-        member.name === name ? {...member, isChecked : checked} : member
+        member.np_name === name ? {...member, isChecked : checked} : member
       );
       setMembers(tempMember);
     }
@@ -45,14 +44,26 @@ const MembersListBlock = () => {
     const temp_array = []
     for (let i=0; i<selected.length; i++){
       let temp = {}
-      temp['name'] = selected[i].name; 
-      temp['year'] = selected[i].year;
+      temp['np_name'] = selected[i].np_name; 
+      temp['np_date'] = selected[i].np_date;
       temp_array.push(temp);
     }
     data['selected'] = temp_array;
     data["members"] = members.length;
     selected.length > 0 && history.push({pathname: '/mg/acts', state: {params: data}})
     
+  }
+
+  const onDelete = (e) => {
+    const {id} = e.target
+    axios({url:`${apiUrl}/supervisor/nh-nok-list/`,method : 'delete' ,headers:headers, data:{
+      user_id: id,
+    }})
+    .then(response =>{
+      window.location.reload();
+    }).catch(error => { 
+        console.error(error);
+    })
   }
 
   return (
@@ -84,19 +95,21 @@ const MembersListBlock = () => {
       <hr/>
 
       <div className="div-managementScroll">
-        {members.map(member => (
-        <div className="div-list">
-          {member.image}
+        {members.map((member, idx) => (
+        <div className="div-list" key={idx}>
+          <ImageSmall url={member.image} />
           <div className="div-info">
-            <div className="listInfo-name">{member.name} 님</div>
-            <div className="listInfo-year">생년월일: {member.year}</div>
+            <div className="listInfo-name">{member.np_name} 님</div>
+            <div className="listInfo-year">생년월일: {member.np_date.split('-')[0]+'.'
+                                                    + member.np_date.split('-')[1]+'.'
+                                                    + member.np_date.split('-')[2]}</div>
           </div>
           
           <div className="div-checkBoxAndDelete">
-            <RoundRectangleSmall btnText="삭제"/>
+            <RoundRectangleSmall id={member.integrated_id} btnText="삭제" onClick={onDelete}/>
             <input type="checkbox" 
             className="form-check-input" 
-            name={member.name}
+            name={member.np_name}
             checked={member?.isChecked || false}
             onChange={handleChange}/>
           </div>

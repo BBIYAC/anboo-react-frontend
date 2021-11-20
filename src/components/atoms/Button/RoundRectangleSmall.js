@@ -1,10 +1,12 @@
 import React from 'react';
 
-const RoundRectangleSmall = ({btnText}) =>{
+const RoundRectangleSmall = ({btnText, onClick, id}) =>{
   return(
     <React.Fragment>
       <button 
-      className="btn-roundrectanglesmall">
+      className="btn-roundrectanglesmall"
+      onClick={onClick}
+      id={id}>
         {btnText}
       </button>
     </React.Fragment>
