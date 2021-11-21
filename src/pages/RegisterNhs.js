@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Rating from '../components/atoms/Select/Rating';
-import Religion from '../components/atoms/Select/Religion';
 import Favorites from '../components/atoms/Button/Favorites';
 import Floating from '../components/atoms/Button/Floating';
 import NursingHomeInfoBlock from '../components/molecules/Block/NursingHomeInfoBlock';
@@ -99,6 +98,15 @@ const RegisterNhs= () => {
     setSearch(e.target.value);
   }
 
+  const onFavClick = () => {
+    axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+    .then(response=>{
+      console.log("헤이헤이 리헤이")
+    }).catch(error=> {
+      console.error(error);
+    })
+  }
+
   return (
     <React.Fragment>
       <div className="header-contain">
@@ -122,11 +130,10 @@ const RegisterNhs= () => {
           </div>
 					<div className="block-keyword">
             {isMember
-              ? <Favorites />
+              ? <Favorites onClick={onFavClick}/>
               : null
             }
 						<Rating />
-						<Religion />
 					</div>
 				</div>
       </div>

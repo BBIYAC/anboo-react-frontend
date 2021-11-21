@@ -19,7 +19,6 @@ const NursingHomeInfoBlock = ({nursingHome}) => {
         <div className="div-nhInfo">
           <div className="nursingHomeInfo-name">{nursingHome.nh_name}</div>
           <div className="nursingHomeInfo-address">{nursingHome.nh_address}</div>
-          {/* <div className="nursingHomeInfo-religion">{nursingHome.religion}</div> */}
           <StarRatingLabel starRating={nursingHome.star_avg}/>
         </div>
       </div>

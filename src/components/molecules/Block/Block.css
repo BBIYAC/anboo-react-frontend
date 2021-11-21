@@ -78,8 +78,7 @@
   margin-top: 1rem;
 }
 .nursingHomeInfo-name,
-.nursingHomeInfo-address,
-.nursingHomeInfo-religion {
+.nursingHomeInfo-address{
   margin-bottom: 0.2rem;
   word-break: break-all;
 }
