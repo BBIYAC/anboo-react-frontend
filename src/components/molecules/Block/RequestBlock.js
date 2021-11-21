@@ -3,7 +3,7 @@ import {IoIosSend} from 'react-icons/io';
 import axios from 'axios';
 import { apiUrl } from "../../../pages/ApiURL";
 
-const RequestBlock = ({setFeedback, requestId, requestTitle, requestContent, requestDate, response, isManager}) => {
+const RequestBlock = ({setFeedback, requestId, requestTitle, requestName, requestContent, requestDate, response, isManager}) => {
     const handleRequestBlockStyle = {
         border: 'var(--border-bottom)',
         borderRadius: 'var(--border-radius)',
@@ -64,7 +64,9 @@ const RequestBlock = ({setFeedback, requestId, requestTitle, requestContent, req
 
     return(
         <><div style={handleRequestBlockStyle}>
-            <div style={handleBoldStyle}>{requestTitle} 님</div>
+            { isManager &&
+                <div style={handleBoldStyle}>{requestTitle} 님({requestName} 님 보호자)</div>
+            }
             <div>{requestContent}</div>
             <div style={handleRequestDateStyle}>{date}</div>
             {
