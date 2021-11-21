@@ -22,7 +22,14 @@ const  RegisterActs= () => {
       if(key === 1){ // 미등록 보호자
         history.push('/rg/nh-location');
       }else if(key === 2){ // 등록 보호자
-        return;
+        // axios acts GET - 요양원 활동 목록
+        axios({url:`${apiUrl}/nok/nh-activity/`,method : 'get' ,headers:headers})
+        .then(response =>{
+          const posts = [...response.data.posts_for_all, ...response.data.posts_for_me]
+          setActs(posts);
+        }).catch(error => {
+            console.error(error);
+        })
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 관리자 승인 대기
         history.push('/mg/home')
       }else{ // 비회원
@@ -32,14 +39,7 @@ const  RegisterActs= () => {
         history.push('/');
     })
     
-    // axios acts GET - 요양원 활동 목록
-    axios({url:`${apiUrl}/nok/nh-activity/`,method : 'get' ,headers:headers})
-    .then(response =>{
-      const posts = [...response.data.posts_for_all, ...response.data.posts_for_me]
-      setActs(posts);
-    }).catch(error => {
-        console.error(error);
-    })
+    
 
   },[])
 
