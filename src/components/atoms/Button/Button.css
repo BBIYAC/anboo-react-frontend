@@ -216,3 +216,8 @@ button {
   background: var(--color-red);
   color: var(--color-white);
 }
+
+/* Add Post Icon */
+.addPostIcon{
+  margin-bottom: 1rem;
+}

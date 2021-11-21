@@ -28,6 +28,7 @@ const  ManagerRequests= () => {
         // axios request GET - 요청사항 확인
         axios({url:`${apiUrl}/supervisor/requests/`,method : 'get' ,headers: headers})
         .then(response =>{
+          console.log(response.data)
           setRequests(response.data);
         }).catch(error => {
             console.error(error);
@@ -64,6 +65,7 @@ const  ManagerRequests= () => {
           <RequestBlock 
             requestId={request.id} // 요청사항 식별 ID
             requestTitle={request.requester_name} // 보호자 이름
+            requestName={request.np_name} // 요양인 이름
             requestContent={request.context} // 보호자 요청사항 내용
             requestDate={request.uploaded_date} // 요청사항 날짜
             response={request.feed} // 관리자 답변

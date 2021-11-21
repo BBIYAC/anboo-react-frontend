@@ -48,7 +48,7 @@ const ManagerActs = () => {
   return (
     <React.Fragment>
       {isPost
-      ? <ManagerActsPost onSigninClick={onSigninClick} members={selected} />
+      ? <ManagerActsPost onSigninClick={onSigninClick} members={params} />
       : <ManagerActsList onClick={()=>setIsPost(true)} onSigninClick={onSigninClick} members={params}/>}
       <Link className="linkComponent" to="/mg/requests">
         <Floating background='var(--color-green)' />

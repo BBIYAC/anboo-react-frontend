@@ -5,11 +5,14 @@ const AddActImage = ({setUrl}) => {
   const [fileURL, setFileURL] = useState(""); 
   const [isUpload, setIsUpload] = useState(false);
   const onChange = (e) => {
-    (e.target.files[0] !== 0)
-    ? setFileURL(URL.createObjectURL(e.target.files[0]))
-    : setFileURL('')
-    (e.target.files.length > 0)? setIsUpload(true) : setIsUpload(false);
-    setUrl(URL.createObjectURL(e.target.files[0]));
+    if(e.target.files[0] !== 0){
+      setFileURL(URL.createObjectURL(e.target.files[0]));
+      setIsUpload(true);
+      setUrl(e.target.files[0]);
+    }else{
+      setFileURL('');
+      setIsUpload(false);
+    }
   };
   
   return(
