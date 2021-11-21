@@ -44,6 +44,7 @@ const MembersListBlock = () => {
     const temp_array = []
     for (let i=0; i<selected.length; i++){
       let temp = {}
+      temp['np_id'] = selected[i].id;
       temp['np_name'] = selected[i].np_name; 
       temp['np_date'] = selected[i].np_date;
       temp_array.push(temp);

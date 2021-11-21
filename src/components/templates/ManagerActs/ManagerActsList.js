@@ -33,7 +33,7 @@ const ManagerActsList = ({onClick, onSigninClick, members}) => {
       <ul>
         {
           acts.map((contents, idx)=>(
-            <li><NursingHomeActBlock contents={contents} key={idx} /></li>
+            <li key={idx}><NursingHomeActBlock contents={contents} /></li>
           ))
         }
       </ul>
