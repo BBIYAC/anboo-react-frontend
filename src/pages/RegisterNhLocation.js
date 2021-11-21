@@ -104,7 +104,6 @@ const RegisterNhLocation = () => {
   
   let history = useHistory();
   
-  // ################################사용자 구분 코드################################
   useEffect(()=>{         // 마운트 될 시 바로 실행되는 코드
     // 키 값 보는 if문 코드
     if(headers.Authorization.split(" ")[1] === "null"){
@@ -131,7 +130,6 @@ const RegisterNhLocation = () => {
     }).catch(error => { // 로그인 token 없는 경우(비회원)
     })
   },[])
-  // ################################사용자 구분 코드################################
   
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});

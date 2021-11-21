@@ -95,12 +95,13 @@ button {
 .btn-favorites {
   width: 5rem;
   height: 2rem;
-  background-color: var(--color-white);
-  border-radius: var(--border-radius);
   border: solid 1px;
-  font-size: var(--font-size-small);
+  border-radius: var(--border-radius);
+  background-color: var(--color-white);
   color: var(--color-blue);
   outline: none;
+  margin-right: 0.5rem;
+  font-size: var(--font-size-small);
 }
 .btn-favorites:active {
   background-color: var(--color-blue);

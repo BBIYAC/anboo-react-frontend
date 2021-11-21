@@ -15,26 +15,26 @@ import '../components/molecules/Block/Block.css';
 import '../components/atoms/Label/Label.css';
 
 const RegisterNhs= () => {
-  // ################################사용자 구분 코드################################
   let history = useHistory();
   const [userState, setUserState] = useState('');
-  const [logState, setLogState] = useState(false);
   const [nursingHomes, setNursingHomes] = useState([]);
-  const [search, setSearch] = useState("");
+  const [isMember, setIsMember] = useState(true);
+  const [search, setSearch] = useState(history.location.state.cityName);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
 
   useEffect(()=>{
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
+    // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
+        setIsMember(true);
         if(search){
           axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
           .then(response=>{
-            setLogState(true);
             setNursingHomes(response.data);
           }).catch(error=> {
             console.error(error);
@@ -50,14 +50,14 @@ const RegisterNhs= () => {
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
-        setUserState('before');
+        history.push('/mg/home');
       }else if(key === 4){ // 승인 관리자
-        setUserState('after');
+        history.push('/mg/home');
       }else if(key === 6){  // 비회원
+        setIsMember(false);
         if(search){
           axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
           .then(response=>{
-            setLogState(true);
             setNursingHomes(response.data);
           }).catch(error=> {
             console.error(error);
@@ -65,7 +65,6 @@ const RegisterNhs= () => {
         }else{
           axios({url:`${apiUrl}/nh-info/`, method: 'get'})
           .then(response=>{
-            setLogState(true);
             setNursingHomes(response.data);
           }).catch(error=> {
             console.error(error);
@@ -75,13 +74,14 @@ const RegisterNhs= () => {
         setUserState('waiting');
       }
     }).catch(error => {
+      console.log(error);
     })
   },[search]);
-  // ################################사용자 구분 코드################################
   
   // 로그아웃 이벤트
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+    history.push('/');
   }
   // 로그인 이벤트
   const onLoginClick = () => {
@@ -107,7 +107,7 @@ const RegisterNhs= () => {
             <IoIosArrowBack size="20"/>
           </Link>
           요양원 리스트
-          {logState?<BiLogIn size="20" onClick={onLoginClick}/>:<BiLogOut size="20" onClick={onLogoutClick}/>}
+          {isMember?<BiLogOut size="20" onClick={onLogoutClick}/>:<BiLogIn size="20" onClick={onLoginClick}/>}
         </div>
         <div className="block-search">
           <div className="box-search">
@@ -115,16 +115,16 @@ const RegisterNhs= () => {
               className="searchBox"
               type="text"
               // 지도 화면에서 마커를 클릭할 시와 클릭하지 않고 상단의 검색하러 가기 버튼을 누를 시 이벤트를 다르게 하기 위함.
-              placeholder={history.location.state.searchDefault
-                ? "요양원 이름, 주소 검색하기"
-                : history.location.state.cityName}
+              placeholder="요양원 이름, 주소 검색하기"
               onChange={onChange}
-            >
-            </input>
+            ></input>
             <button className="search-icon"><FaSearch size="20"/></button>
           </div>
 					<div className="block-keyword">
-						<Favorites />
+            {isMember
+              ? <Favorites />
+              : null
+            }
 						<Rating />
 						<Religion />
 					</div>

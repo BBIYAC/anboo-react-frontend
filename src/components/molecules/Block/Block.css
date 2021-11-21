@@ -84,6 +84,7 @@
   word-break: break-all;
 }
 .div-nhInfo {
+  width: 70%;
   padding-left: 0.5rem;
   text-align: left;
   font-size: var(--font-size-small);
