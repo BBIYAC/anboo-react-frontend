@@ -61,14 +61,14 @@ const ManagerHome = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
     return (
-        <React.Fragment>
-            <div className="header">
-              <IoIosArrowBack opacity='0' size="20"/>
-              관리자 홈
-              <BiLogOut size="20" onClick={onSigninClick}/>
-            </div>
-            {pageState(userState)}
-        </React.Fragment>
+      <React.Fragment>
+        <div className="header">
+          <IoIosArrowBack opacity='0' size="20"/>
+          관리자 홈
+          <BiLogOut size="20" onClick={onSigninClick}/>
+        </div>
+        {pageState(userState)}
+      </React.Fragment>
     );
 };
 

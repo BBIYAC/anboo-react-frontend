@@ -6,7 +6,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 
-const NursingHomeInfoEdit = ({onClick, onSigninClick}) => {
+const NursingHomeInfoEdit = ({onClick, onSigninClick, nh_name, nh_tel, nh_address, nh_image}) => {
   return(
     <>
       <div className="header">
@@ -16,7 +16,7 @@ const NursingHomeInfoEdit = ({onClick, onSigninClick}) => {
         요양원 정보 수정
         <BiLogOut size="20" onClick={onSigninClick}/>
       </div>
-      <MgNHInfoEdit onClick={onClick} />
+      <MgNHInfoEdit onClick={onClick} name={nh_name} tel={nh_tel} address={nh_address} image={nh_image} />
       <Link className="linkComponent" to="/mg/home">
         <Floating background="var(--color-green)"/>
       </Link>

@@ -100,7 +100,7 @@
 
 .div_emptyManager,
 .div_emptyActImage  {
-  height: 200px;
+  height: 150px;
   width: 100%;
   color: var(--color-blue);
   display: flex;

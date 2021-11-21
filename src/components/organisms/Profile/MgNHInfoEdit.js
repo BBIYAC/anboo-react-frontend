@@ -5,16 +5,14 @@ import NursingHomeManagerInfoEditBlock from "../../molecules/Block/NursingHomeMa
 import NursingHomeImageEditBlock from "../../molecules/Block/NursingHomeImageEditBlock";
 import OvalLarge from "../../atoms/Button/OvalLarge";
 
-const MgNHInfoEdit = ({onClick}) => {
+const MgNHInfoEdit = ({onClick, name, tel, address, image}) => {
   return(
     <React.Fragment>
-      <NursingHomeDetailInfoEditBlock />
+      <NursingHomeDetailInfoEditBlock name={name} tel={tel} address={address} image={image}/>
       <hr/>
       <NursingHomeChiefInfoEditBlock />
       <hr/>
-      <ul>
-        <NursingHomeManagerInfoEditBlock/>
-      </ul>
+      <NursingHomeManagerInfoEditBlock/>
       <NursingHomeImageEditBlock />
       <hr/>
       <OvalLarge btnText="저장하기" onClick={onClick}/>

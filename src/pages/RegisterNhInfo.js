@@ -7,6 +7,8 @@ import NotMemberNotice from '../components/atoms/Label/NotMemberNotice';
 import NotRegisteredNotice from '../components/atoms/Label/NotRegisteredNotice';
 import NhImageGrid from '../components/molecules/Block/NhImageGrid';
 import Floating from '../components/atoms/Button/Floating';
+import NotRegisteredEmptyManagers from '../components/atoms/Label/NotRegisteredEmptyManagers';
+import NotRegisteredEmptyActImages from '../components/atoms/Label/NotRegisteredEmptyActImages';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { BiLogOut, BiLogIn } from 'react-icons/bi';
@@ -14,7 +16,6 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { apiUrl } from './ApiURL';
 import '../components/molecules/Block/Block.css';
 import '../components/atoms/Label/Label.css';
-import NotRegisteredEmptyNotice from '../components/atoms/Label/NotRegisteredEmptyNotice';
 
 const  RegisterNhInfo= () => {
   let history = useHistory();
@@ -150,7 +151,11 @@ const  RegisterNhInfo= () => {
       ?<NotMemberNotice/>         // 비회원인 경우
       :isRegistered               // 등록된 요양원인 경우
       ?isRegisteredEmpty 
-      ?<NotRegisteredEmptyNotice/>
+      ?<>
+        <NotRegisteredEmptyManagers/>
+        <hr/>
+        <NotRegisteredEmptyActImages/>
+      </>
       :<div>
       <NursingHomeChiefInfoBlock 
       chiefName={chiefName} 

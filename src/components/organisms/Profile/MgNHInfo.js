@@ -2,25 +2,56 @@ import React from "react";
 import NursingHomeDetailInfoBlock from "../../molecules/Block/NursingHomeDetailInfoBlock";
 import NursingHomeChiefInfoBlock from "../../molecules/Block/NursingHomeChiefInfoBlock";
 import NursingHomeManagerInfoBlock from "../../molecules/Block/NursingHomeManagerInfoBlock";
-import NursingHomeImageBlock from "../../molecules/Block/NursingHomeImageBlock";
+import NhImageGrid from "../../molecules/Block/NhImageGrid";
 import OvalLarge from "../../atoms/Button/OvalLarge";
+import NotRegisteredEmptyActImages from "../../atoms/Label/NotRegisteredEmptyActImages";
+import NotRegisteredEmptyManagers from "../../atoms/Label/NotRegisteredEmptyManagers";
+import NotRegisteredEmptyChief from "../../atoms/Label/NotRegisteredEmptyChief";
 
-const MgNHInfo = ({onClick}) => {
+const MgNHInfo = ({onClick , name, tel, address, image, images, position, chiefName, chiefTel, chiefImage, membersArray}) => {
+  const renderManagers = membersArray.map((member, index) => {
+    if(index > 0){
+      return(
+        <NursingHomeManagerInfoBlock 
+        memberName={member.nh_employee_name}
+        membersTel={
+          0 + member.nh_employee_tel.substring(3,5)
+        +'-'+ member.nh_employee_tel.substring(5,9)
+        +'-'+ member.nh_employee_tel.substring(9,13)}
+        membersImage={member.image}
+        position={member.position} />
+      );
+    };
+  });
+
+  const renderImages = images.map(image => {
+    return(
+      <NhImageGrid url={image.nh_image}/>
+    );
+  });
+
   return(
-    <>
-      <NursingHomeDetailInfoBlock width="0" height="0"/>
+    <React.Fragment>
+      <NursingHomeDetailInfoBlock width="0" height="0" name={name} tel={tel} address={address} image={image}/>
       <hr/>
-      <NursingHomeChiefInfoBlock />
+      {chiefName==''
+        ? <NotRegisteredEmptyChief color="var(--color-green)"/>
+        : <NursingHomeChiefInfoBlock position={position} chiefName={chiefName} chiefTel={chiefTel} chiefImage={chiefImage} />
+      }
       <hr/>
-      <ul>
-        <NursingHomeManagerInfoBlock />
-        <NursingHomeManagerInfoBlock />
-        <NursingHomeManagerInfoBlock />
-      </ul>
-        <NursingHomeImageBlock />
+      {membersArray.length==0
+        ? <NotRegisteredEmptyManagers color="var(--color-green)"/>
+        : renderManagers
+      }
+        
+      <hr/>
+      {images.length==0
+        ? <NotRegisteredEmptyActImages color="var(--color-green)"/>
+        : renderImages
+      }
       <hr/>
       <OvalLarge btnText="수정하기" onClick={onClick}/>
-    </>
+    </React.Fragment>
   );
 };
 
