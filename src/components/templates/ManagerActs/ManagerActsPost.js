@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 const ManagerActsPost = ({onSigninClick, members}) => {
   // 회원관리(/mg/rgs/) 페이지에서 선택한 사람들
   const users = [...members];
-  const names = users.map(user=> user['name']); 
+  const names = users.map(user=> user['np_name']); 
   const [url, setUrl] = useState('');
   const [content, setContent] = useState('');
   const [clicked, setClicked] = useState(false);
