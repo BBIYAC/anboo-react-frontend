@@ -25,30 +25,29 @@ const  RegisterNhInfo= () => {
   const [isRegisteredEmpty, setIsRegisteredEmpty] = useState(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  const [id, setId] = useState('');
   const [tel, setTel] = useState('')
   const [images, setImages] = useState([]);
+  const [bookMark, setBookMark] = useState('');
   const [logState, setLogState] = useState(false);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
-  const [starRating, setStarRating] = useState('');
   const [chiefName, setChiefName] = useState('');
   const [chiefTel, setChiefTel] = useState('');
   const [chiefImage, setChiefImage] = useState('');
   const [position, setPosition] = useState('');
   const [membersArray, setMembersArray] = useState([]);
 
-
   useEffect(()=>{
-    // console.log(history.location.state.starRating);
+    console.log(isNotMember);
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
-
+    
     // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
+        
         // 요양원 상세정보 GET
         axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
         .then(response => {
@@ -56,8 +55,6 @@ const  RegisterNhInfo= () => {
           setAddress(response.data.nh_info.nh_address);
           setTel(response.data.nh_info.nh_tel);
           setImages(response.data.nh_images)
-          setStarRating(history.location.state.starRating);
-          setId(history.location.state.id);
         })
         // 관리자 상세정보 GET
         axios({url:`${apiUrl}/not-nok/employee-info/${history.location.state.id}/`, method: 'get', headers:headers})
@@ -65,8 +62,6 @@ const  RegisterNhInfo= () => {
           if(response.data.is_registered == false ){     // 요양원이 등록되지 않은 경우
             setIsRegistered(false);
           }else if(response.data.is_registered == true && response.data.employee_info.length != 0 ){        // 요양원이 등록되었고 요양사, 활동 정보가 있을 경우
-            console.log(response.data.employee_info.length);
-            console.log("요기");
             setChiefName(response.data.employee_info[0].nh_employee_name);
             setChiefTel(response.data.employee_info[0].nh_employee_tel);
             setChiefImage(response.data.employee_info[0].image);
@@ -76,18 +71,26 @@ const  RegisterNhInfo= () => {
             setIsRegisteredEmpty(true);
           }
         })
+        // 요양원 북마크 GET
+        axios({url:`${apiUrl}/not-nok/bookmark-list/${history.location.state.id}/`, method: 'get', headers:headers})
+        .then(response=> {
+          console.log("아래");
+          console.log(response);
+          setBookMark(response.data.result);
+        })
+
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
+        setIsNotMember(false);
         history.push('/mg/home');
       }else if(key === 4){ // 승인 관리자
+        setIsNotMember(false);
         history.push('/mg/home');
       }else if(key === 6){ // 비회원
-        console.log(`${apiUrl}/nh-info/${history.location.state.id}/`)
         // 비회원 정보 GET
         axios({url:`${apiUrl}/nh-info/${history.location.state.id}/`, method: 'get'})
         .then(response => {
-          // console.log(response);
           setIsNotMember(true);
           setName(response.data.nh_name);
           setAddress(response.data.nh_address);
@@ -145,8 +148,9 @@ const  RegisterNhInfo= () => {
       isNotMember={isNotMember}
       name={name} 
       address={address} 
-      starRating={starRating==""?"0.0":starRating.toFixed(1)}
-      id = {id}/>
+      starRating={history.location.state.starRating}
+      bookMark={bookMark}
+      id = {history.location.state.id}/>
       <hr/>
 
       {isNotMember
@@ -177,7 +181,7 @@ const  RegisterNhInfo= () => {
       <div className="grid-container">
         {renderImages}
       </div>
-      <BelowRectangleBlock tel={tel} id={id}/>
+      <BelowRectangleBlock tel={tel} id={history.location.state.id}/>
       </div>
       :<NotRegisteredNotice/>         // 등록되지 않은 요양원인 경우
       }

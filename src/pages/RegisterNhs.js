@@ -18,6 +18,7 @@ const RegisterNhs= () => {
   const [userState, setUserState] = useState('');
   const [nursingHomes, setNursingHomes] = useState([]);
   const [isMember, setIsMember] = useState(true);
+  const [btnState, setBtnState] = useState('');
   const [search, setSearch] = useState(history.location.state.cityName);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
 
@@ -46,6 +47,7 @@ const RegisterNhs= () => {
             console.error(error);
           })
         }
+        
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
@@ -87,26 +89,19 @@ const RegisterNhs= () => {
     history.push('/');
   }
 
+  
+  
   // 요양원 렌더링
   const renderNursingHomes = nursingHomes.map(nursingHome => {
     return (
       <NursingHomeInfoBlock nursingHome={nursingHome}/>
-    );
+      );
   });
-
+    
   const onChange = (e) => {
     setSearch(e.target.value);
   }
-
-  const onFavClick = () => {
-    axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-    .then(response=>{
-      console.log("헤이헤이 리헤이")
-    }).catch(error=> {
-      console.error(error);
-    })
-  }
-
+  
   return (
     <React.Fragment>
       <div className="header-contain">
@@ -130,7 +125,7 @@ const RegisterNhs= () => {
           </div>
 					<div className="block-keyword">
             {isMember
-              ? <Favorites onClick={onFavClick}/>
+              ? <Favorites setBtnState={setBtnState}/>
               : null
             }
 						<Rating />

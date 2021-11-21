@@ -4,14 +4,20 @@ import StarRatingLabel from "../../atoms/Label/StarRatingLabel";
 import { useHistory } from "react-router";
 
 const NursingHomeInfoBlock = ({nursingHome}) => {
-  /*
-  axios nursinghome info GET
-  */
   let history = useHistory();
-  const onClick = () => {
-    history.push({pathname: '/rg/nh-info', state: {id: nursingHome.id, starRating: nursingHome.star_avg}});
+  let star = 0.0;
+  if(nursingHome.star_avg===undefined){
+    star = "0.0";
+  }else {
+    star = nursingHome.star_avg.toFixed(1);
   }
 
+  const onClick = () => {
+    history.push({pathname: '/rg/nh-info', state: {id: nursingHome.id, starRating: star}});
+  }
+
+  // console.log(nursingHome.star_avg);
+  
   return (
     <React.Fragment>
       <div className="nursingHome" onClick={onClick}>
@@ -19,7 +25,7 @@ const NursingHomeInfoBlock = ({nursingHome}) => {
         <div className="div-nhInfo">
           <div className="nursingHomeInfo-name">{nursingHome.nh_name}</div>
           <div className="nursingHomeInfo-address">{nursingHome.nh_address}</div>
-          <StarRatingLabel starRating={nursingHome.star_avg}/>
+          <StarRatingLabel starRating={star}/>
         </div>
       </div>
     </React.Fragment>

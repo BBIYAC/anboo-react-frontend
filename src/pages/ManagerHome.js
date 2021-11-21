@@ -41,7 +41,7 @@ const ManagerHome = () => {
         console.error(error);
         history.push('/');
     });
-  })
+  },[headers])
 
   const pageState = (state) => {
     switch(state){

@@ -10,9 +10,9 @@ import { apiUrl } from './ApiURL';
 const ManagerActs = () => {
   const [isPost, setIsPost] = useState(false);
   let history = useHistory();
-  // ################################사용자 구분 코드################################
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   useEffect(()=>{
+    // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
@@ -31,7 +31,6 @@ const ManagerActs = () => {
         return;
     })
   },[headers])
-  // ################################사용자 구분 코드################################
   const onSigninClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }

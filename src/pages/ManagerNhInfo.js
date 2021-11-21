@@ -22,6 +22,7 @@ const ManagerNhInfo= () => {
   const [chiefImage, setChiefImage] = useState('');
   const [membersArray, setMembersArray] = useState([]);
   
+  const [isNotMember, setIsNotMember] = useState(false);
   const [images, setImages] = useState([]);
   const [position, setPosition] = useState('');
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
@@ -46,6 +47,8 @@ const ManagerNhInfo= () => {
         history.push('/');
     })
     
+    setIsNotMember(true)
+
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
     .then(response => {
@@ -91,6 +94,7 @@ const ManagerNhInfo= () => {
       : <NursingHomeInfo 
         onClick={()=>setIsEdit(true)} 
         onSigninClick={onSigninClick} 
+        isNotMember={isNotMember}
         nh_name={name}
         nh_tel={tel}
         nh_address={address} 

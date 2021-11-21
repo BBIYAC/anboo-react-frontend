@@ -16,7 +16,6 @@ const  RegisterProfile= () => {
 
   
   let history = useHistory();
-  // ################################사용자 구분 코드################################
   useEffect(()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
@@ -30,13 +29,12 @@ const  RegisterProfile= () => {
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
         history.push('/mg/home');
       }else{ // 비회원의 경우
-        history.push('/rg/nh-location');
+        history.push('/');
       }
     }).catch(error => {
         console.error(error);
       })
-    },[])
-  // ################################사용자 구분 코드################################
+    },[headers])
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});

@@ -41,7 +41,7 @@ const  RegisterActs= () => {
         console.error(error);
     })
 
-  },[])
+  },[headers])
 
 
   const onLogoutClick = () => {

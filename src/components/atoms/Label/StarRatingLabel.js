@@ -5,7 +5,7 @@ const StarRatingLabel = ({starRating}) => {
   return(
     <React.Fragment>
       <div className="div-starLabel">
-        <span>{starRating==null?"0.0":starRating.toFixed(1)}</span>
+        <span>{starRating}</span>
         <AiFillStar size="20" color="var(--color-yellow)"/>
       </div>
     </React.Fragment>

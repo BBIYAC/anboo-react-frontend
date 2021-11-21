@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const NursingHomeInfo = ({
   onClick, 
   onSigninClick, 
+  isNotMember,
   nh_name, nh_tel, 
   nh_address, 
   nh_image,
@@ -29,6 +30,7 @@ const NursingHomeInfo = ({
       </div>
       <MgNHInfo 
         onClick={onClick} 
+        isNotMember={isNotMember}
         name={nh_name} 
         tel={nh_tel} 
         address={nh_address} 

@@ -24,7 +24,7 @@ const  RegisterRequests = () => {
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
         history.push('/mg/home');
       }else{ // 비회원의 경우
-        history.push('/rg/nh-location');
+        history.push('/');
       }
     }).catch(error => { 
         console.error(error);
@@ -37,10 +37,11 @@ const  RegisterRequests = () => {
     }).catch(error => {
         console.error(error);
     })
-  },[])
+  },[headers])
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+    // history.push('/');
   }
 
   return (

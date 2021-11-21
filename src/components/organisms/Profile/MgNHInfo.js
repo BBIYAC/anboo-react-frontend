@@ -8,7 +8,19 @@ import NotRegisteredEmptyActImages from "../../atoms/Label/NotRegisteredEmptyAct
 import NotRegisteredEmptyManagers from "../../atoms/Label/NotRegisteredEmptyManagers";
 import NotRegisteredEmptyChief from "../../atoms/Label/NotRegisteredEmptyChief";
 
-const MgNHInfo = ({onClick , name, tel, address, image, images, position, chiefName, chiefTel, chiefImage, membersArray}) => {
+const MgNHInfo = ({
+  onClick, 
+  isNotMember,
+  name, 
+  tel, 
+  address, 
+  image, 
+  images, 
+  position, 
+  chiefName, 
+  chiefTel, 
+  chiefImage, 
+  membersArray}) => {
   const renderManagers = membersArray.map((member, index) => {
     if(index > 0){
       return(
@@ -32,11 +44,22 @@ const MgNHInfo = ({onClick , name, tel, address, image, images, position, chiefN
 
   return(
     <React.Fragment>
-      <NursingHomeDetailInfoBlock width="0" height="0" name={name} tel={tel} address={address} image={image}/>
+      <NursingHomeDetailInfoBlock 
+      width="0" 
+      height="0" 
+      name={name} 
+      tel={tel} 
+      address={address} 
+      image={image} 
+      isNotMember={isNotMember}/>
       <hr/>
       {chiefName==''
         ? <NotRegisteredEmptyChief color="var(--color-green)"/>
-        : <NursingHomeChiefInfoBlock position={position} chiefName={chiefName} chiefTel={chiefTel} chiefImage={chiefImage} />
+        : <NursingHomeChiefInfoBlock 
+          position={position} 
+          chiefName={chiefName} 
+          chiefTel={chiefTel} 
+          chiefImage={chiefImage} />
       }
       <hr/>
       {membersArray.length==0
@@ -47,7 +70,7 @@ const MgNHInfo = ({onClick , name, tel, address, image, images, position, chiefN
       <hr/>
       {images.length==0
         ? <NotRegisteredEmptyActImages color="var(--color-green)"/>
-        : renderImages
+        : <div className="grid-container">{renderImages}</div>
       }
       <hr/>
       <OvalLarge btnText="수정하기" onClick={onClick}/>

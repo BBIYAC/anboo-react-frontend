@@ -6,10 +6,10 @@ import defalutImage from '../../atoms/Input/picture.png';
 import axios from 'axios';
 import { apiUrl } from '../../../pages/ApiURL';
 
-const NursingHomeDetailInfoBlock = ({width, height, isNotMember, name, address, tel, starRating, id, image }) => {
-  console.log(id + " 이거 키 값");
+const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating, id, image, bookMark }) => {
   const [isSummary, setIsSummary]= useState(true);
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
+  console.log(isNotMember)
   const onClick = () => {
     if(isSummary){
       setIsSummary(false);
@@ -46,13 +46,14 @@ const NursingHomeDetailInfoBlock = ({width, height, isNotMember, name, address, 
         </div>
         {isNotMember 
         ? ""
-        :isSummary
-          ? <BsBookmark className="aifillstar" style={{width, height}} onClick={onClick}/>
-          : <BsBookmarkFill className="aifillstar" style={{width, height}} onClick={onClick}/>
-        } 
+        : isSummary
+          ? <BsBookmark className="aifillBookmark" onClick={onClick}/>
+          : <BsBookmarkFill className="aifillBookmark" onClick={onClick}/>
+        }
       </div> 
     </React.Fragment>
   );
+  
 };
 
 export default NursingHomeDetailInfoBlock;
