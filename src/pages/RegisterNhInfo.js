@@ -9,6 +9,7 @@ import NhImageGrid from '../components/molecules/Block/NhImageGrid';
 import Floating from '../components/atoms/Button/Floating';
 import NotRegisteredEmptyManagers from '../components/atoms/Label/NotRegisteredEmptyManagers';
 import NotRegisteredEmptyActImages from '../components/atoms/Label/NotRegisteredEmptyActImages';
+import NotRegisteredEmptyChief from '../components/atoms/Label/NotRegisteredEmptyChief';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { BiLogOut, BiLogIn } from 'react-icons/bi';
@@ -144,14 +145,17 @@ const  RegisterNhInfo= () => {
       isNotMember={isNotMember}
       name={name} 
       address={address} 
-      starRating={starRating}/>
+      starRating={starRating==""?"0.0":starRating.toFixed(1)}
+      id = {id}/>
       <hr/>
 
       {isNotMember
       ?<NotMemberNotice/>         // 비회원인 경우
       :isRegistered               // 등록된 요양원인 경우
-      ?isRegisteredEmpty 
+      ?isRegisteredEmpty          // 등록된 요양원이지만 정보가 없는 경우
       ?<>
+        <NotRegisteredEmptyChief/>
+        <hr/> 
         <NotRegisteredEmptyManagers/>
         <hr/>
         <NotRegisteredEmptyActImages/>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Rating from '../../atoms/Select/Rating';
-import Religion from '../../atoms/Select/Religion';
 import Favorites from '../../atoms/Button/Favorites';
 
 import {AiOutlineAim} from 'react-icons/ai';
@@ -17,7 +16,6 @@ const SearchBlock = () => {
 					<div className="block-keyword">
 						<Favorites />
 						<Rating />
-						<Religion />
             <button><AiOutlineAim size="25"/></button>
 					</div>
 				</div>

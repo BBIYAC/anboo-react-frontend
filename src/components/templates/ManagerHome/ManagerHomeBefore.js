@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import NursingHomeInfoCheckBlock from '../../molecules/Block/NursingHomeInfoCheckBlock';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
@@ -31,19 +31,19 @@ const ManagerHomeBefore = () => {
     });
   }
     return(
-        <React.Fragment>
-            <NoticeBlock />
-            <div className="box-search">
-              <input className="searchBox" type="text" placeholder="요양원 이름, 주소, 지역 검색" onChange={onChange}></input>
-              <button className="search-icon"><FaSearch size="20"/></button>
-            </div>
-            <hr/>
-            <div className="div-NursingHomeInfoCheckBlockList">
-              <NursingHomeInfoCheckBlock search={search} setNursingHome={setNursingHome} />
-            </div>
-            <AddCertificationFile setUploadFiles={setUploadFiles} />
-            <RoundRectangle type='button' btnText='요양원 등록 요청하기' background='var(--color-green)' onClick={onClick} />
-        </React.Fragment>
+      <React.Fragment>
+        <NoticeBlock />
+        <div className="box-search">
+          <input className="searchBox" type="text" placeholder="요양원 이름, 주소, 지역 검색" onChange={onChange}></input>
+          <button className="search-icon"><FaSearch size="20"/></button>
+        </div>
+        <hr/>
+        <div className="div-NursingHomeInfoCheckBlockList">
+          <NursingHomeInfoCheckBlock search={search} setNursingHome={setNursingHome} />
+        </div>
+        <AddCertificationFile setUploadFiles={setUploadFiles} />
+        <RoundRectangle type='button' btnText='요양원 등록 요청하기' background='var(--color-green)' onClick={onClick} />
+      </React.Fragment>
     );
 };
 

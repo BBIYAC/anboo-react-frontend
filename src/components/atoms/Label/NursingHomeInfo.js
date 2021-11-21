@@ -7,7 +7,6 @@ const NursingHomeInfo = ({name, address, tel, starRating}) => {
       <div className="div-nursinghomeinfo">
         <span className="nursinghome-info">{name}</span>
         <span className="nursinghome-address">{address}</span>
-        <span className="nursinghome-religion">기독교</span>
         <StarRatingLabel size="20" color="var(--color-yellow)" starRating={starRating}/>
       </div>
     </React.Fragment>

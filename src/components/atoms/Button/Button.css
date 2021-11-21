@@ -103,10 +103,6 @@ button {
   margin-right: 0.5rem;
   font-size: var(--font-size-small);
 }
-.btn-favorites:active {
-  background-color: var(--color-blue);
-  color: var(--color-white);
-}
 
 /* Back button */
 .btn-back {
