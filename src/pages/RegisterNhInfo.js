@@ -50,6 +50,7 @@ const  RegisterNhInfo= () => {
         // 요양원 상세정보 GET
         axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
         .then(response => {
+          console.log(response);
           setName(response.data.nh_info.nh_name);
           setAddress(response.data.nh_info.nh_address);
           setTel(response.data.nh_info.nh_tel);
