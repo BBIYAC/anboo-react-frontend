@@ -18,7 +18,8 @@ const MgNHInfoEdit = ({
   membersArray,
   chiefName,
   chiefTel,
-  chiefImage,}) => {
+  chiefImage,
+  time,}) => {
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const members = [...membersArray];
   const onSubmit = () => {
@@ -48,7 +49,7 @@ const MgNHInfoEdit = ({
 
   return(
     <React.Fragment>
-      <NursingHomeDetailInfoEditBlock name={name} tel={tel} address={address} image={image}/>
+      <NursingHomeDetailInfoEditBlock name={name} tel={tel} address={address} time={time} image={image}/>
       <hr/>
       <NursingHomeChiefInfoEditBlock chiefInfo={chiefInfo} />
       <hr/>

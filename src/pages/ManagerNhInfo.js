@@ -15,6 +15,8 @@ const ManagerNhInfo= () => {
   const [tel, setTel] = useState('000-0000-0000');
   const [address, setAddress] = useState('요양원 주소');
   const [image, setImage] = useState('');
+  const [time, setTime] = useState('');
+  const [starRating, setStarRating] = useState('');
 
   // 요양원장 정보
   const [chiefName, setChiefName] = useState('');
@@ -32,13 +34,15 @@ const ManagerNhInfo= () => {
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
     .then(response => {
-      // console.log(response);
+      console.log(response);
       setId(response.data.nh_info.id);
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
       setAddress(response.data.nh_info.nh_address);
       setImage(response.data.nh_info.nh_representative_image);
-      setImages(response.data.nh_images)
+      setImages(response.data.nh_images);
+      setTime(response.data.nh_info.nh_operating_hour);
+      setStarRating(response.data.nh_star_avg);
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
@@ -99,7 +103,8 @@ const ManagerNhInfo= () => {
         chiefName={chiefName}
         chiefTel={chiefTel}
         chiefImage={chiefImage}
-        membersArray={membersArray}/>
+        membersArray={membersArray}
+        tiem={time}/>
       : <NursingHomeInfo 
         onClick={()=>setIsEdit(true)} 
         onSigninClick={onSigninClick} 
@@ -116,7 +121,9 @@ const ManagerNhInfo= () => {
           +'-'+chiefTel.substring(5,9)
           +'-'+chiefTel.substring(9,13)} 
         chiefImage={chiefImage}
-        membersArray={membersArray}/>}
+        membersArray={membersArray}
+        time={time}
+        starRating={starRating}/>}
     </React.Fragment>
   );
 };

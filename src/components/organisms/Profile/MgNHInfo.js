@@ -20,7 +20,9 @@ const MgNHInfo = ({
   chiefName, 
   chiefTel, 
   chiefImage, 
-  membersArray}) => {
+  membersArray,
+  time,
+  starRating,}) => {
   const renderManagers = membersArray.map((member, index) => {
     if(index > 0){
       return(
@@ -52,7 +54,9 @@ const MgNHInfo = ({
       tel={tel} 
       address={address} 
       image={image} 
-      isNotMember={isNotMember}/>
+      isNotMember={isNotMember}
+      time={time}
+      starRating={starRating}/>
       <hr/>
       {chiefName==''
         ? <NotRegisteredEmptyChief color="var(--color-green)"/>

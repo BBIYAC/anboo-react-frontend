@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 
 const NursingHomeChiefInfoInput = ({chiefInfo}) => {
-  const [name, setName] = useState('');
-  const [tel, setTel] = useState('');
+  const [name, setName] = useState('시설장 성함');
+  const [tel, setTel] = useState('시설장 전화번호');
 
   useEffect(()=>{
     setName(chiefInfo.chiefName);
@@ -24,15 +24,13 @@ const NursingHomeChiefInfoInput = ({chiefInfo}) => {
         name='chiefName' 
         className="input-mgNhInfoEditInput" 
         type="text" 
-        placeholder="시설장 성함" 
-        value={name} 
+        placeholder={name}
         onChange={onNameChange}></input>
         <input 
         name='chiefTel' 
         className="input-mgNhInfoEditInput" 
         type="text"
-        placeholder="시설장 전화번호" 
-        value={tel} 
+        placeholder={tel}
         onChange={onTelChange}></input>
       </div>
     </React.Fragment>

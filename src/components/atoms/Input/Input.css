@@ -73,6 +73,12 @@
   border-color: var(--color-gray);
 }
 
+.img-nhInfo{
+  width: 130px;
+  height: 130px;
+  border: var(--border-bottom);
+}
+
 
 /* Add */
 .addLarge{

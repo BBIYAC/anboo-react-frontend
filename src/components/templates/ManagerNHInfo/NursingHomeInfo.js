@@ -18,7 +18,9 @@ const NursingHomeInfo = ({
   chiefName, 
   chiefTel, 
   chiefImage, 
-  membersArray}) => {
+  membersArray,
+  time,
+  starRating,}) => {
   return(
     <>
       <div className="header">
@@ -41,6 +43,8 @@ const NursingHomeInfo = ({
         chiefTel={chiefTel}
         chiefImage={chiefImage}
         membersArray={membersArray}
+        time={time}
+        starRating={starRating}
        />
       <Link className="linkComponent" to="/mg/requests">
         <Floating background="var(--color-green)"/>

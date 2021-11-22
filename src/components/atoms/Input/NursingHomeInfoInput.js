@@ -1,13 +1,13 @@
 import React from 'react';
 
-const NursingHomeInfoInput = ({name, tel, address}) => {
+const NursingHomeInfoInput = ({name, tel, address, time}) => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
         <input className="input-mgNhInfoEditInput" type="text" placeholder={name}></input>
         <input className="input-mgNhInfoEditInput" type="text" placeholder={address}></input>
         <input className="input-mgNhInfoEditInput" type="text" placeholder={tel}></input>
-        <input className="input-mgNhInfoEditInput" type="text" placeholder={"운영시간"}></input>
+        <input className="input-mgNhInfoEditInput" type="text" placeholder={time}></input>
       </div>
     </React.Fragment>
   );

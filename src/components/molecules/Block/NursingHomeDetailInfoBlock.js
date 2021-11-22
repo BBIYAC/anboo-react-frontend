@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import NursingHomeInfo from '../../atoms/Label/NursingHomeInfo';
-import ImageMiddle from '../../atoms/Input/ImageMiddle';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
 import defalutImage from '../../atoms/Input/picture.png';
 import axios from 'axios';
 import { apiUrl } from '../../../pages/ApiURL';
+import ImageNhInfo from '../../atoms/Input/ImageNhInfo';
 
-const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating, id, image, bookMark }) => {
+const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating, id, image, bookMark, time }) => {
   const [isCheck, setIsCheck]= useState(bookMark);
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   
@@ -49,8 +49,8 @@ const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating
       <hr/>
       <div className="block-NursingHomeDetailInfo">
         <div className="NursingHomeInfo">
-          <ImageMiddle url={image==null ? defalutImage : image}/>
-          <NursingHomeInfo name={name} address={address} tel={tel} starRating={starRating}/>
+          <ImageNhInfo url={image==null ? defalutImage : image}/>
+          <NursingHomeInfo name={name} address={address} tel={tel} time={time} starRating={starRating} starRating={starRating}/>
         </div>
         {isNotMember
         ? ""
