@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import ImageZoomIn from '../../organisms/Modal/ImageZoomIn';
 
 const ImageSmall = ({url}) => {
@@ -9,19 +9,15 @@ const ImageSmall = ({url}) => {
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
   }
-  const [imageURL, setImageURL] = useState('');
-  useEffect(()=>{
-    setImageURL(url);
-  },[])
 
-   // Image Zoom in
-   const onClick = (e) => {
+  // Image Zoom in
+  const onClick = (e) => {
     setIsClicked(true);
   }
  
   return(
     <React.Fragment>
-      <img className="imgSmall" url="" src={imageURL} onError={handleImgError} onClick={onClick}></img>
+      <img className="imgSmall" src={url} onError={handleImgError} onClick={onClick}></img>
       <ImageZoomIn isClicked={isClicked} url={url} setIsClicked={setIsClicked} />
     </React.Fragment>
   );

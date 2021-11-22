@@ -19,10 +19,12 @@ const RegisterNhs= () => {
   const [nursingHomes, setNursingHomes] = useState([]);
   const [isMember, setIsMember] = useState(true);
   const [btnState, setBtnState] = useState('');
+  const [bookmarkedList, setBookmarkedList] = useState([]);
   const [search, setSearch] = useState(history.location.state.cityName);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
 
   useEffect(()=>{
+    console.log(btnState);
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
@@ -40,12 +42,34 @@ const RegisterNhs= () => {
             console.error(error);
           })
         }else{
-          axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-          .then(response=>{
-            setNursingHomes(response.data);
-          }).catch(error=> {
-            console.error(error);
-          })
+          if(btnState){
+            // 요양원 북마크 리스트 GET
+            axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get', headers:headers})
+            .then(response=> {
+              setBookmarkedList(response.data.objects.bookmarked_nh_id);
+            })
+            // 북마크된 요양원만 출력
+            let bookmarkedArray=[];
+            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+            .then(response=>{
+              for(let i = 0; i < bookmarkedList.length; i++){
+                let idx = bookmarkedList[i];
+                for(let j = 0; j < response.data.length; j++){
+                  if(idx == response.data[j].id){
+                    bookmarkedArray[i] = response.data[j];
+                  }
+                }
+              }
+              setNursingHomes(bookmarkedArray);
+            })
+          }else {
+            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+            .then(response=>{
+              setNursingHomes(response.data);
+            }).catch(error=> {
+              console.error(error);
+            })
+          }
         }
         
       }else if(key === 2){ // 등록 보호자
@@ -77,7 +101,7 @@ const RegisterNhs= () => {
     }).catch(error => {
       console.log(error);
     })
-  },[search]);
+  },[search, btnState]);
   
   // 로그아웃 이벤트
   const onLogoutClick = () => {
@@ -89,7 +113,12 @@ const RegisterNhs= () => {
     history.push('/');
   }
 
-  
+  // 북마크된 요양원 렌더링
+  const renderBookmarkedNH = nursingHomes.map(nursingHome => {
+    return (
+      <NursingHomeInfoBlock nursingHome={nursingHome}/>
+      );
+  });
   
   // 요양원 렌더링
   const renderNursingHomes = nursingHomes.map(nursingHome => {
@@ -121,7 +150,6 @@ const RegisterNhs= () => {
               placeholder="요양원 이름, 주소 검색하기"
               onChange={onChange}
             ></input>
-            <button className="search-icon"><FaSearch size="20"/></button>
           </div>
 					<div className="block-keyword">
             {isMember
@@ -133,7 +161,10 @@ const RegisterNhs= () => {
 				</div>
       </div>
       <div className="div-nursingHomeScroll">
-        {renderNursingHomes}
+        {btnState
+          ? renderBookmarkedNH
+          : renderNursingHomes
+        }
       </div>
       <Link className="linkComponent" to="/rg/nh-location">
         <Floating background="var(--color-blue)"/>

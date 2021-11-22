@@ -48,14 +48,14 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
 
 
     return(
-        <React.Fragment>
-            <div style={handleModalStyle}>
-                <div style={handleModalBodyStyle}>
-                    <button style={btnModalCancel} type='button' onClick={onClick}>X</button>
-                    <img style={imageModalZoomin} src={url} onError={handleImgError}></img>
-                </div>
-            </div>
-        </React.Fragment>
+      <React.Fragment>
+        <div style={handleModalStyle}>
+          <div style={handleModalBodyStyle}>
+            <button style={btnModalCancel} type='button' onClick={onClick}>X</button>
+            <img style={imageModalZoomin} src={url} onError={handleImgError}></img>
+          </div>
+        </div>
+      </React.Fragment>
     );
 };
 

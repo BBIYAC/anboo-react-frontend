@@ -6,18 +6,16 @@ const Favorites = ({setBtnState}) => {
   const [txtColor, setTxtColor] = useState("var(--color-blue)");
 
   const onFavClick = () => {
-    if(favorite==false){
-      console.log("클릭됨");
-      setFavorite(true);
+    if(favorite==true){
+      setFavorite(false);
       setBgColor("var(--color-blue)");
       setTxtColor("var(--color-white)");
-      setBtnState("북마크에 등록되었습니다.");
+      setBtnState(true);
     }else {
-      console.log("클릭안됨");
-      setFavorite(false);
+      setFavorite(true);
       setBgColor("var(--color-white)");
       setTxtColor("var(--color-blue)");
-      setBtnState("북마크가 삭제되었습니다.");
+      setBtnState(false);
     }
   }
   return (

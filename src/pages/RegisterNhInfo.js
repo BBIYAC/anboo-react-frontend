@@ -27,7 +27,7 @@ const  RegisterNhInfo= () => {
   const [address, setAddress] = useState('');
   const [tel, setTel] = useState('')
   const [images, setImages] = useState([]);
-  const [bookMark, setBookMark] = useState('');
+  const [bookMark, setBookMark] = useState(false);
   const [logState, setLogState] = useState(false);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   const [chiefName, setChiefName] = useState('');
@@ -37,7 +37,6 @@ const  RegisterNhInfo= () => {
   const [membersArray, setMembersArray] = useState([]);
 
   useEffect(()=>{
-    console.log(isNotMember);
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
@@ -74,8 +73,6 @@ const  RegisterNhInfo= () => {
         // 요양원 북마크 GET
         axios({url:`${apiUrl}/not-nok/bookmark-list/${history.location.state.id}/`, method: 'get', headers:headers})
         .then(response=> {
-          console.log("아래");
-          console.log(response);
           setBookMark(response.data.result);
         })
 

@@ -59,7 +59,6 @@ const SignIn = () => {
       .then(response => {
         localStorage.setItem('accessToken',response.data.access);
         userAuthorization();
-        console.log('sdfsdf')
 
       }).catch(error => {
         console.log(error)

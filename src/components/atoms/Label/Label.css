@@ -5,6 +5,7 @@
   flex-direction: column;
   text-align: left;
   padding: 10px;
+  width: 150px;
 }
 .div-nursinghomenoticeinfo {
   color:var(--color-blue);
