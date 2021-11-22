@@ -46,12 +46,12 @@ const NursingHomeImageEditBlock = ({prevImages}) => {
       <hr></hr>
       <form onSubmit={addImage}>
         <div className="grid-container">
-          {prevImages && prevImages}
           <button
           type="submit"
           className="addNhImage">
             <BsPlusLg /> 
           </button>
+          {prevImages && prevImages}
           <input type="file" ref={fileInput} accept="image/*" onChange={onChange} style={{display:'none'}}></input>
           {renderImages}
         </div>

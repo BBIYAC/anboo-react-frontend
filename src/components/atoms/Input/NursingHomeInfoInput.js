@@ -8,7 +8,6 @@ const NursingHomeInfoInput = ({name, tel, address}) => {
         <input className="input-mgNhInfoEditInput" type="text" placeholder={address}></input>
         <input className="input-mgNhInfoEditInput" type="text" placeholder={tel}></input>
         <input className="input-mgNhInfoEditInput" type="text" placeholder={"운영시간"}></input>
-        <input className="input-mgNhInfoEditInput" type="text" placeholder={"요양원 종교"}></input>
       </div>
     </React.Fragment>
   );
