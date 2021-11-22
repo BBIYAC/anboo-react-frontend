@@ -2,13 +2,13 @@ import React from 'react';
 import ManagerImage from '../../atoms/Input/ManagerImage';
 import NursingHomeChiefInfoInput from '../../atoms/Input/NursingHomeChiefInfoInput';
 
-const NursingHomeChiefInfoEditBlock = () => {
+const NursingHomeChiefInfoEditBlock = ({chiefInfo}) => {
   return(
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ManagerImage url=""/>
-          <NursingHomeChiefInfoInput />
+          <ManagerImage url={chiefInfo.chiefImage}/>
+          <NursingHomeChiefInfoInput chiefInfo={chiefInfo} />
         </div>
       </div>
     </React.Fragment>

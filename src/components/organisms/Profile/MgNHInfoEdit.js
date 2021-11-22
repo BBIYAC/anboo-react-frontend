@@ -8,7 +8,17 @@ import NhImageGrid from "../../molecules/Block/NhImageGrid";
 import axios from "axios";
 import { apiUrl } from "../../../pages/ApiURL";
 
-const MgNHInfoEdit = ({onClick, name, tel, address, image, images, membersArray}) => {
+const MgNHInfoEdit = ({
+  onClick, 
+  name, 
+  tel, 
+  address, 
+  image, 
+  images, 
+  membersArray,
+  chiefName,
+  chiefTel,
+  chiefImage,}) => {
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const members = [...membersArray];
   const onSubmit = () => {
@@ -22,36 +32,27 @@ const MgNHInfoEdit = ({onClick, name, tel, address, image, images, membersArray}
     // })
   }
 
-  const renderManagers = members.map((member, index) => {
-    if(index > 0){
-      return(
-        <NursingHomeChiefInfoEditBlock 
-        key={index}
-        memberName={member.nh_employee_name}
-        membersTel={
-          0 + member.nh_employee_tel.substring(3,5)
-        +'-'+ member.nh_employee_tel.substring(5,9)
-        +'-'+ member.nh_employee_tel.substring(9,13)}
-        membersImage={member.image}
-        position={member.position} />
-      );
-    };
-  });
-
   const renderImages = images.map((image, idx) => {
     return(
       <NhImageGrid url={image.nh_image} key={idx}/>
     );
   });
 
+  const chiefInfo = {
+    'chiefName': chiefName,
+    'chiefTel': 0 + chiefTel.substring(3,5)
+                  +'-'+ chiefTel.substring(5,9)
+                  +'-'+ chiefTel.substring(9,13),
+    'chiefImage': chiefImage,
+  }
+
   return(
     <React.Fragment>
       <NursingHomeDetailInfoEditBlock name={name} tel={tel} address={address} image={image}/>
       <hr/>
-      <NursingHomeChiefInfoEditBlock />
+      <NursingHomeChiefInfoEditBlock chiefInfo={chiefInfo} />
       <hr/>
-      <NursingHomeManagerInfoEditBlock/>
-      {renderManagers}
+      <NursingHomeManagerInfoEditBlock membersArray={membersArray}/>
       <NursingHomeImageEditBlock prevImages={renderImages} />
       <hr/>
       <OvalLarge btnText="저장하기" onClick={()=>onSubmit()}/>

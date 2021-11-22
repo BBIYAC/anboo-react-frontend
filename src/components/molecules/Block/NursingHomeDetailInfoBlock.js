@@ -9,7 +9,7 @@ import { apiUrl } from '../../../pages/ApiURL';
 const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating, id, image, bookMark }) => {
   const [isSummary, setIsSummary]= useState(true);
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
-  console.log(isNotMember)
+  // console.log(isNotMember)
   const onClick = () => {
     if(isSummary){
       setIsSummary(false);

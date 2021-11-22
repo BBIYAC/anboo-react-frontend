@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {IoPersonAdd} from 'react-icons/io5';
 import ManagerImage from '../../atoms/Input/ManagerImage';
 
@@ -49,7 +49,7 @@ const ManagerForm = ({ addManager }) => {
     <form onSubmit={onSubmit}>
       <div className="block-NHAddManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ManagerImage url=""/>
+          <ManagerImage url=''/>
           <div className="div-nursinghomeinfo">
             <input 
             type = "text"
