@@ -28,6 +28,36 @@ const ManagerNhInfo= () => {
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   let history = useHistory();
   
+  const detailGet = () => {
+    // 요양원 상세정보 GET
+    axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
+    .then(response => {
+      // console.log(response);
+      setId(response.data.nh_info.id);
+      setName(response.data.nh_info.nh_name);
+      setTel(response.data.nh_info.nh_tel);
+      setAddress(response.data.nh_info.nh_address);
+      setImage(response.data.nh_info.nh_representative_image);
+      setImages(response.data.nh_images)
+
+      // 관리자 상세정보 GET
+      axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
+      .then(response => {
+        setChiefName(response.data.employee_info[0].nh_employee_name);
+        setChiefTel(response.data.employee_info[0].nh_employee_tel);
+        setChiefImage(response.data.employee_info[0].image);
+        setPosition(response.data.employee_info[0].position);
+        setMembersArray(response.data.employee_info);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+    })
+    .catch(error => {
+      console.error(error);
+    })
+  }
+
   useEffect(()=>{
     // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
@@ -40,41 +70,19 @@ const ManagerNhInfo= () => {
       }else if(key === 3){ // 미승인 관리자
         history.push('/mg/home');
       }else if(key === 4){ // 승인 관리자
-        // console.log(response);
+        detailGet();
+        setIsNotMember(true);
         return;
-      }
-    }).catch(error => { // access token 없는 경우(비회원)
+      }else{ // 비회원
         history.push('/');
-    })
-    
-    setIsNotMember(true)
-
-    // 요양원 상세정보 GET
-    axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
-    .then(response => {
-      console.log(response);
-      setId(response.data.nh_info.id);
-      setName(response.data.nh_info.nh_name);
-      setTel(response.data.nh_info.nh_tel);
-      setAddress(response.data.nh_info.nh_address);
-      setImage(response.data.nh_info.nh_representative_image);
-      setImages(response.data.nh_images)
-    })
-
-    // 관리자 상세정보 GET
-    axios({url:`${apiUrl}/not-nok/employee-info/${id}/`, method: 'get', headers:headers})
-    .then(response => {
-      setChiefName(response.data.employee_info[0].nh_employee_name);
-      setChiefTel(response.data.employee_info[0].nh_employee_tel);
-      setChiefImage(response.data.employee_info[0].image);
-      setPosition(response.data.employee_info[0].position);
-      setMembersArray(response.data.employee_info);
+      }
+    }).catch(error => {
+        console.error(error)
     })
   },[headers])
 
   const onSigninClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
-    history.push('/');
   }
 
   return (
@@ -87,6 +95,7 @@ const ManagerNhInfo= () => {
         nh_tel={tel}
         nh_address={address.substring(0,12)+"..."}
         nh_image={image} 
+        nh_images={images}
         chiefName={chiefName}
         chiefTel={chiefTel}
         chiefImage={chiefImage}

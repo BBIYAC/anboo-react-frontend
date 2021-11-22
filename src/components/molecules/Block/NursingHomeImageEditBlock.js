@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import NHActImage from '../../atoms/Input/NHActImage';
 import {BsPlusLg} from 'react-icons/bs';
 
-const NursingHomeImageEditBlock = () => {
+const NursingHomeImageEditBlock = ({prevImages}) => {
   const fileInput = useRef();
   const [files, setFiles] = useState();
   const onChange = (e) => {
@@ -17,9 +17,10 @@ const NursingHomeImageEditBlock = () => {
     }))
   }
 
-  const renderImages = images.length ? images.map(image => {
+  const renderImages = images.length ? images.map((image, idx) => {
     return (
       <NHActImage 
+      key={idx}
       image={image}
       key={image.id} 
       removeImage={ removeImage }/>
@@ -45,6 +46,7 @@ const NursingHomeImageEditBlock = () => {
       <hr></hr>
       <form onSubmit={addImage}>
         <div className="grid-container">
+          {prevImages && prevImages}
           <button
           type="submit"
           className="addNhImage">

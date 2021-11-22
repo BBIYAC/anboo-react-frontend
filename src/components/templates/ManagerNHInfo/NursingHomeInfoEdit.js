@@ -4,22 +4,40 @@ import ManagerBelowBarBlock from "../../molecules/Block/ManagerBelowBarBlock";
 import MgNHInfoEdit from "../../organisms/Profile/MgNHInfoEdit";
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const NursingHomeInfoEdit = ({onClick, onSigninClick, nh_name, nh_tel, nh_address, nh_image}) => {
+const NursingHomeInfoEdit = ({
+  onClick, 
+  onSigninClick, 
+  nh_name, 
+  nh_tel, 
+  nh_address, 
+  nh_image, 
+  nh_images,
+  chiefName,
+  chiefTel,
+  chiefImage,
+  membersArray}) => {
+  let history = useHistory();
   return(
     <>
       <div className="header">
-        <Link className="linkComponent" to="/mg/profile">
-          <IoIosArrowBack size="20"/>
-        </Link>
+        <IoIosArrowBack size="20" onClick={()=>history.goBack(-1)}/>
         요양원 정보 수정
         <BiLogOut size="20" onClick={onSigninClick}/>
       </div>
-      <MgNHInfoEdit onClick={onClick} name={nh_name} tel={nh_tel} address={nh_address} image={nh_image} />
-      <Link className="linkComponent" to="/mg/home">
-        <Floating background="var(--color-green)"/>
-      </Link>
+      <MgNHInfoEdit 
+      onClick={onClick} 
+      name={nh_name} 
+      tel={nh_tel} 
+      address={nh_address} 
+      image={nh_image}
+      images={nh_images}
+      chiefName={chiefName} 
+      chiefTel={chiefTel}
+      chiefImage={chiefImage}
+      membersArray={membersArray} />
+      <Floating background="var(--color-green)" onClick={()=>history.push("/mg/home")}/>
       <ManagerBelowBarBlock isRequest/>
     </>
   );
