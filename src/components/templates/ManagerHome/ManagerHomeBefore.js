@@ -35,7 +35,6 @@ const ManagerHomeBefore = () => {
         <NoticeBlock />
         <div className="box-search">
           <input className="searchBox" type="text" placeholder="요양원 이름, 주소, 지역 검색" onChange={onChange}></input>
-          <button className="search-icon"><FaSearch size="20"/></button>
         </div>
         <hr/>
         <div className="div-NursingHomeInfoCheckBlockList">

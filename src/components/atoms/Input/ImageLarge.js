@@ -16,11 +16,8 @@ const ImageLarge = ({ url, border, borderColor }) => {
   }
   return(
     <>
-      <img 
-      className='imgLarge' 
-      src={url} 
-      onError={handleImgError} 
-      style={{border, borderColor}}></img>
+      <img className='imgLarge' src={url} onError={handleImgError} style={{border, borderColor}}></img>
+      <ImageZoomIn isClicked={isClicked} url={url} setIsClicked={setIsClicked} />
     </>
   );
 };

@@ -15,8 +15,6 @@ const NursingHomeInfoBlock = ({nursingHome}) => {
   const onClick = () => {
     history.push({pathname: '/rg/nh-info', state: {id: nursingHome.id, starRating: star}});
   }
-
-  // console.log(nursingHome.star_avg);
   
   return (
     <React.Fragment>
