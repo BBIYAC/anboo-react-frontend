@@ -1,13 +1,22 @@
 import React, {useEffect, useState} from 'react';
 
-const NursingHomeChiefInfoInput = ({chiefInfo}) => {
+const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
   const [name, setName] = useState('시설장 성함');
   const [tel, setTel] = useState('시설장 전화번호');
 
   useEffect(()=>{
     setName(chiefInfo.chiefName);
     setTel(chiefInfo.chiefTel);
+    
   },[chiefInfo])
+
+  useEffect(()=>{
+    setNhChief({
+      nh_employee_name: name,
+      nh_employee_tel : tel,
+      nh_employee_position: chiefInfo.position
+    })
+  },[name, tel])
 
   const onNameChange = (e) =>{
     setName(e.target.value);

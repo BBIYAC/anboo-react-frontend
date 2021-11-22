@@ -43,6 +43,7 @@ const ManagerNhInfo= () => {
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
+      console.log(time);
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
@@ -104,7 +105,8 @@ const ManagerNhInfo= () => {
         chiefTel={chiefTel}
         chiefImage={chiefImage}
         membersArray={membersArray}
-        tiem={time}/>
+        time={time}
+        position={position}/>
       : <NursingHomeInfo 
         onClick={()=>setIsEdit(true)} 
         onSigninClick={onSigninClick} 
