@@ -1,16 +1,23 @@
-import React, {useState, useRef } from 'react';
+import React, {useState, useRef, useEffect } from 'react';
 
 
-const ManagerImage = ({border, borderColor,image, setImage}) => {
+const ManagerImage = ({url, border, borderColor,image, setImage, setCaregiverImage}) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
+  var inputFile = '';
   const onChange = (e) => {
     if(e.target.files[0] !== 0){
-      setFileURL(URL.createObjectURL(e.target.files[0]));
-      setImage && setImage([...image, e.target.files[0]])
+      inputFile = e.target.files[0]
+      setFileURL(URL.createObjectURL(inputFile));
+      setImage && setImage(inputFile);
+      setCaregiverImage && setCaregiverImage(inputFile);
     }
   };
   
+  useEffect(()=>{
+    setFileURL(url);
+  },[url])
+
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;

@@ -8,13 +8,12 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
     setName(chiefInfo.chiefName);
     setTel(chiefInfo.chiefTel);
     
-  },[chiefInfo])
+  },[])
 
   useEffect(()=>{
     setNhChief({
       nh_employee_name: name,
       nh_employee_tel : tel,
-      nh_employee_position: chiefInfo.position
     })
   },[name, tel])
 

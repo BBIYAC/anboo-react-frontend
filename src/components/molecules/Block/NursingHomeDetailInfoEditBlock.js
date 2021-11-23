@@ -5,10 +5,10 @@ import AddImage from '../../atoms/Input/AddImage';
 const NursingHomeDetailInfoEditBlock = ({name, tel, address, time, image, setNhInfo}) => {
   const [pictures, setPictures] = useState([]);
   const [nhInfoInput, setNhInfoInput] = useState({
-    nh_name : "Null",
-    nh_operating_hour :"Null",
-    nh_tel : "Null",
-    nh_address : "Null",
+    nh_name : "",
+    nh_operating_hour :"",
+    nh_tel : "",
+    nh_address : "",
   })
 
   useEffect(()=>{
