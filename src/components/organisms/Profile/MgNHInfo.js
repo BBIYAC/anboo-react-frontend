@@ -57,7 +57,9 @@ const MgNHInfo = ({
       isNotMember={isNotMember}
       time={time}
       starRating={starRating}/>
+
       <hr/>
+
       {chiefName==''
         ? <NotRegisteredEmptyChief color="var(--color-green)"/>
         : <NursingHomeChiefInfoBlock 
@@ -66,18 +68,23 @@ const MgNHInfo = ({
           chiefTel={chiefTel} 
           chiefImage={chiefImage} />
       }
+
       <hr/>
+
       {membersArray.length==0
         ? <NotRegisteredEmptyManagers color="var(--color-green)"/>
         : renderManagers
       }
         
       <hr/>
+
       {images.length==0
         ? <NotRegisteredEmptyActImages color="var(--color-green)"/>
-        : <div className="grid-container">{renderImages}</div>
+        : <div className="grid-container">{/*여기에 정렬된 줌인 이미지 추가*/}</div>
       }
+      
       <hr/>
+
       <OvalLarge btnText="수정하기" onClick={onClick}/>
     </React.Fragment>
   );

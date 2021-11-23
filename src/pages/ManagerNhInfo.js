@@ -34,7 +34,6 @@ const ManagerNhInfo= () => {
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
     .then(response => {
-      console.log(response);
       setId(response.data.nh_info.id);
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
@@ -43,7 +42,6 @@ const ManagerNhInfo= () => {
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
-      console.log(time);
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})

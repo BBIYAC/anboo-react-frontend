@@ -1,37 +1,39 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 
-const NHActImage = ({ image, removeImage, file }) => {
+const NHActImage = ({ id, file, removeImage }) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
+
   const onChange = (e) => {
     (e.target.files[0] !== 0)
     && setFileURL(URL.createObjectURL(e.target.files[0]));
   };
+
+  useEffect(()=>{
+    setFileURL(file);
+  },[file])
   
+  console.log(file);
+
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
   }
 
   return(
-    <>
-    <div style={{position:"relative"}}>
-      <button 
-      className="btn-actImageDelete"
-      onClick={() => removeImage(image.id)}>
-        삭제
-      </button>
+    <React.Fragment>
+    <div style={{position:"relative"}} >
+      <button className="btn-actImageDelete" onClick={() => removeImage(id)}>X</button>
       <img
-      className="img-nhAct" 
-      url=""
-      src={fileURL}
-      onClick={() => fileInput.current.click()}
-      onError={handleImgError}>
+        className="img-nhAct" 
+        src={fileURL}
+        onClick={() => fileInput.current.click()}
+        onError={handleImgError}>
       </img>
-      <input type="file" ref={fileInput} accept="image/*" onChange={onChange} style={{display:'none'}}></input>
     </div>
-    </>
+    <input type="file" ref={fileInput} accept="image/*" onChange={onChange} hidden></input>
+    </React.Fragment>
   );
 };
 

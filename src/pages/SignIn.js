@@ -38,7 +38,6 @@ const SignIn = () => {
 
         }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
           history.push('/mg/home');
-        console.log('sdfsdf')
 
         }else{ // 비회원의 경우
           history.push('/rg/nh-location');

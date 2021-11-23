@@ -2,60 +2,50 @@ import React, { useState, useRef } from 'react';
 import NHActImage from '../../atoms/Input/NHActImage';
 import {BsPlusLg} from 'react-icons/bs';
 
-const NursingHomeImageEditBlock = ({prevImages}) => {
+const NursingHomeImageEditBlock = ({setNhImageList}) => {
   const fileInput = useRef();
-  const [files, setFiles] = useState();
-  const onChange = (e) => {
-      setFiles(e.target.files[0]);
-  }
-
+  const [file, setFile] = useState("");
   const [images, setImages] = useState([]);
+  
+  const onChange = (e) => {
+    const imageFiles = e.target.files[0];
+    setFile(imageFiles);
+  }
 
   const removeImage = (id) => {
     setImages(images.filter(image => {
       return image.id !== id;
-    }))
+    }));
   }
-
-  const renderImages = images.length ? images.map((image, idx) => {
-    return (
-      <NHActImage 
-      key={idx}
-      image={image}
-      key={image.id} 
-      removeImage={ removeImage }/>
-    );
-  }):"";
-
-  const addImage = (event) => {
-    event.preventDefault();
-    fileInput.current.click()
-    
-    setImages([
+  
+  const addImage = () => {
+    fileInput.current.click();              // input 클릭 파일탐색기에서 사진 업로드하기.
+    setImages([                 // 이미지 state 지정
       {
         id: Date.now(),         // DB id 대신 시간으로 사용함
-        image: <NHActImage/>
+        file: file,
       },
       ...images,
     ])
   };
 
+  const renderEditImages = images.map(image => {
+    return (
+      <NHActImage
+      id={image.id}
+      file={image.file}
+      removeImage={ removeImage }/>
+    );
+  });
 
   return(
     <React.Fragment>
-      <hr></hr>
-      <form onSubmit={addImage}>
-        <div className="grid-container">
-          <button
-          type="submit"
-          className="addNhImage">
-            <BsPlusLg /> 
-          </button>
-          {prevImages && prevImages}
-          <input type="file" ref={fileInput} accept="image/*" onChange={onChange} style={{display:'none'}}></input>
-          {renderImages}
-        </div>
-      </form>
+      <hr/>
+      <div className="grid-container">
+        <input type="file" ref={fileInput} accept="image/*" onChange={onChange} hidden></input>
+        <button type="button" onClick={addImage} className="addNhImage"><BsPlusLg /></button>
+        {renderEditImages}
+      </div>
     </React.Fragment>
   );
 };
