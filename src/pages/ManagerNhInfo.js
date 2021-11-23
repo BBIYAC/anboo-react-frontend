@@ -25,16 +25,27 @@ const ManagerNhInfo= () => {
   const [membersArray, setMembersArray] = useState([]);
   
   const [isNotMember, setIsNotMember] = useState(false);
+  
   const [images, setImages] = useState([]);
   const [position, setPosition] = useState('');
+  // const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken'), 'Access-Control-Allow-Origin' : '*'})
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   let history = useHistory();
+
+  // Convert image URL to object
+  const convertURLtoFile = async (url) => {
+    const response = await fetch(url);
+    const data = await response.blob();
+    const ext = url.split(".").pop(); // url 구조에 맞게 수정할 것
+    const filename = url.split("/").pop(); // url 구조에 맞게 수정할 것
+    const metadata = { type: `image/${ext}` };
+    return new File([data], filename || '', metadata);
+  };
   
   const detailGet = () => {
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
     .then(response => {
-      console.log(response);
       setId(response.data.nh_info.id);
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
@@ -43,13 +54,13 @@ const ManagerNhInfo= () => {
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
-      console.log(time);
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
       .then(response => {
         setChiefName(response.data.employee_info[0].nh_employee_name);
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
+        // console.log(convertURLtoFile(response.data.employee_info[0].image))
         setChiefImage(response.data.employee_info[0].image);
         setPosition(response.data.employee_info[0].position);
         setMembersArray(response.data.employee_info);
@@ -77,7 +88,6 @@ const ManagerNhInfo= () => {
       }else if(key === 4){ // 승인 관리자
         detailGet();
         setIsNotMember(true);
-        return;
       }else{ // 비회원
         history.push('/');
       }

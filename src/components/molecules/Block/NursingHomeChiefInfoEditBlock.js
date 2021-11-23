@@ -2,25 +2,27 @@ import React, {useState, useEffect} from 'react';
 import ManagerImage from '../../atoms/Input/ManagerImage';
 import NursingHomeChiefInfoInput from '../../atoms/Input/NursingHomeChiefInfoInput';
 
-const NursingHomeChiefInfoEditBlock = ({chiefInfo, setNhInfoListObject, setNhEmployeeImages, position }) => {
-  const [nhChief, setNhChief] = useState([{
+const NursingHomeChiefInfoEditBlock = ({
+  chiefInfo,
+  nhInfoList, 
+  setNhInfoList, 
+  nhEmployeeImages, 
+  setNhEmployeeImages, }) => {
+  const [nhChief, setNhChief] = useState({
     nh_employee_name: chiefInfo.chiefName,
     nh_employee_tel : chiefInfo.chiefTel,
-    nh_employee_position: position
-  }]);
-  const [image, setImage] = useState([]);
+  });
+  const [image, setImage] = useState(chiefInfo.chiefImage);
 
   useEffect(()=>{
-    setNhInfoListObject({
+    setNhInfoList([{
       nh_employee_name: nhChief.nh_employee_name,
       nh_employee_tel : nhChief.nh_employee_tel,
-      nh_employee_position: nhChief.nh_employee_position
-    })
-  },[nhChief])
-
-  useEffect(()=>{
-    setNhEmployeeImages([...image])
-  },[image])
+      nh_employee_position: chiefInfo.chiefPosition
+    }, ...nhInfoList.slice(1, nhInfoList.length)])
+    if(image === '') return
+    setNhEmployeeImages([image, ...nhEmployeeImages.slice(1,nhEmployeeImages.length)])
+  },[nhChief, image])
 
   return(
     <React.Fragment>

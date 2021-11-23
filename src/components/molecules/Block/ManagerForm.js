@@ -1,27 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { BsSlashCircle } from "react-icons/bs";
 import {IoPersonAdd} from 'react-icons/io5';
 import ManagerImage from '../../atoms/Input/ManagerImage';
 
-const ManagerForm = ({ addManager }) => {
+const ManagerForm = ({ addManager, setImage, image }) => {
   const [caregiverName, setCaregiverName] = useState('');
   const [caregiverPhone, setCaregiverPhone] = useState('');
+  const [caregiverImage, setCaregiverImage] = useState('');
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
 
   const resetForm = () => {
     setCaregiverName('');
     setCaregiverPhone('');
+    setCaregiverImage('');
   }
 
   const validateForm = () => {
     resetErrors();
     let validated = true;
     if(!caregiverName) {
-      setNameError("성함을 옳바르게 입력해주세요.")
+      setNameError("성함을 올바르게 입력해주세요.")
       validated = false;
     }
     if(!caregiverPhone) {
-      setPhoneError("전화번호를 옳바르게 입력해주세요.")
+      setPhoneError("전화번호를 올바르게 입력해주세요.")
       validated = false;
     }
     return validated
@@ -36,7 +39,7 @@ const ManagerForm = ({ addManager }) => {
     event.preventDefault();     // submit 시 새로고침이 되지 않는다.
     if(validateForm()) {
       addManager({
-        image: <ManagerImage/>,
+        image: caregiverImage,
         name: caregiverName,
         phone: caregiverPhone,
       });
@@ -49,7 +52,12 @@ const ManagerForm = ({ addManager }) => {
     <form onSubmit={onSubmit}>
       <div className="block-NHAddManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ManagerImage url=''/>
+          <ManagerImage 
+            url={caregiverImage && URL.createObjectURL(caregiverImage)} 
+            setCaregiverImage={setCaregiverImage} 
+            image={image} 
+            setImage={setImage} 
+          />
           <div className="div-nursinghomeinfo">
             <input 
             type = "text"
