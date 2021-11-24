@@ -22,7 +22,7 @@ const SignIn = () => {
 
   const signinSubmit = (event) => {
     event.preventDefault();
-    console.log({ isUser, isId, isPassword });
+    // console.log({ isUser, isId, isPassword });
 
     const userAuthorization = ()=>{
       const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}

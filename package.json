@@ -2,6 +2,7 @@
   "name": "anboo",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://anboo-bucket.s3.ap-northeast-2.amazonaws.com",
   "dependencies": {
     "@react-google-maps/api": "^2.5.0",
     "@testing-library/jest-dom": "^5.14.1",
@@ -17,7 +18,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=443 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

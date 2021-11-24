@@ -28,19 +28,21 @@ const ManagerNhInfo= () => {
   
   const [images, setImages] = useState([]);
   const [position, setPosition] = useState('');
-  // const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken'), 'Access-Control-Allow-Origin' : '*'})
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   let history = useHistory();
 
   // Convert image URL to object
-  const convertURLtoFile = async (url) => {
-    const response = await fetch(url);
-    const data = await response.blob();
-    const ext = url.split(".").pop(); // url 구조에 맞게 수정할 것
-    const filename = url.split("/").pop(); // url 구조에 맞게 수정할 것
-    const metadata = { type: `image/${ext}` };
-    return new File([data], filename || '', metadata);
-  };
+  // const convertURLtoFile = async (url) => {
+  //   console.log(url)
+  //   const response = await axios.get(url,{headers:{
+  //     "Access-Control-Allow-Origin" : "*"
+  //   }});
+  //   const data = await response.blob();
+  //   const ext = url.split(".").pop(); // url 구조에 맞게 수정할 것
+  //   const filename = url.split("/").pop(); // url 구조에 맞게 수정할 것
+  //   const metadata = { type: `image/${ext}` };
+  //   return new File([data], filename || '', metadata);
+  // };
   
   const detailGet = () => {
     // 요양원 상세정보 GET

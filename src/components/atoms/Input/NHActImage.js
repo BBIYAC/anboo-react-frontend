@@ -1,20 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 
-const NHActImage = ({ id, file, removeImage }) => {
+const NHActImage = ({ id, removeImage }) => {
   const fileInput = useRef();
-  const [fileURL, setFileURL] = useState(""); 
+  const [fileURL, setFileURL] = useState([]); 
 
   const onChange = (e) => {
     (e.target.files[0] !== 0)
     && setFileURL(URL.createObjectURL(e.target.files[0]));
   };
 
-  useEffect(()=>{
-    setFileURL(file);
-  },[file])
-  
-  console.log(file);
+  console.log(fileURL);
 
   // Default Image
   const handleImgError = (e) => {

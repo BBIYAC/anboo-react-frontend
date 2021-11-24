@@ -3,7 +3,6 @@ import NursingHomeInfoCheckBlock from '../../molecules/Block/NursingHomeInfoChec
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import AddCertificationFile from '../../atoms/Input/AddCertificationFile';
 import NoticeBlock from '../../molecules/Block/NoticeBlock';
-import { FaSearch } from 'react-icons/fa';
 import './ManagerHome.css';
 import axios from 'axios';
 import { apiUrl } from "../../../pages/ApiURL";

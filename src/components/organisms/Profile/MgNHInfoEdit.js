@@ -63,12 +63,13 @@ const MgNHInfoEdit = ({
     formData.append("nh_image_list", nhImageList);
     formData.append("nh_info", nhInfo);
     formData.append("nh_info_list", nhInfoList);
+    
 
     // FormData의 key, value 확인
-    // for (let pair of formData.entries()) {
-    //   console.log(pair[0], ':', pair[1]);
-    // }
-    console.log(nhInfo, nhInfoList, nhEmployeeImages ,nhImageList);
+    for (let pair of formData.entries()) {
+      console.log(pair[0], ':', pair[1]);
+    }
+    // console.log(nhInfo, nhInfoList, nhEmployeeImages ,nhImageList);
 
     // axios detail edit POST
     // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})
