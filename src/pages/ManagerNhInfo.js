@@ -94,6 +94,7 @@ const ManagerNhInfo= () => {
       ? <NursingHomeInfoEdit 
         onClick={()=>setIsEdit(false)} 
         onSigninClick={onSigninClick} 
+        nh_id={id}
         nh_name={name}
         nh_tel={tel}
         nh_address={address.substring(0,12)+"..."}

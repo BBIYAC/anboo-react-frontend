@@ -17,7 +17,8 @@ const NursingHomeChiefInfoEditBlock = ({
       nh_employee_name: nhChief.nh_employee_name,
       nh_employee_tel : nhChief.nh_employee_tel,
       nh_employee_position: chiefInfo.chiefPosition,
-      nh_employee_image: chiefInfo.chiefImage
+      nh_employee_image: chiefInfo.chiefImage,
+      nh_employee_id: chiefInfo.chiefId
     }, ...nhInfoList])
     // if(image === '') return
     // setNhEmployeeImages([image, ...nhEmployeeImages.slice(1,nhEmployeeImages.length)])

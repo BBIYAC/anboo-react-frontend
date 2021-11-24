@@ -21,11 +21,11 @@ const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
 
   
   const onNameChange = (e) =>{
-    setName(e.target.value)
+    e.target.value && setName(e.target.value)
   }
 
   const onTelChange = (e) =>{
-    setPhone(e.target.value)
+    e.target.value && setPhone(e.target.value)
   }
 
   return (

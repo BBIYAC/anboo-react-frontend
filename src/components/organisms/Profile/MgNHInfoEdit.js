@@ -10,6 +10,7 @@ import { apiUrl } from "../../../pages/ApiURL";
 
 const MgNHInfoEdit = ({
   onClick, 
+  id,
   name, 
   tel, 
   address, 
@@ -20,12 +21,13 @@ const MgNHInfoEdit = ({
   chiefTel,
   chiefImage,
   time,
-  position,}) => {
+  position}) => {
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const [changeValue, setChangeValue] = useState([]);
 
   // 요양원 정보 수정
   const [nhInfo, setNhInfo] = useState({
+    nh_id : "",
     nh_name : "",
     nh_operating_hour :"",
     nh_tel : "",
@@ -35,6 +37,7 @@ const MgNHInfoEdit = ({
 
   // 요양원 직원 정보 수정
   const [nhInfoList, setNhInfoList] = useState([{
+    nh_employee_id: "",
     nh_employee_name: "",
     nh_employee_tel : "",
     nh_employee_position: '',
@@ -51,20 +54,22 @@ const MgNHInfoEdit = ({
     formData.append("nh_representative_picture", nhInfo.nh_representative_picture);
     // formData.append("nh_employee_images", nhEmployeeImages);
     formData.append("nh_image_list", nhImageList);
-    formData.append("nh_info", nhInfo);
-    formData.append("nh_info_list", nhInfoList);
+    formData.append("nh_info", JSON.stringify(formData));
+    formData.append("nh_employee_list", nhInfoList);
     
 
-    // console.log(nhInfo.nh_representative_picture, nhEmployeeImages, nhImageList, nhInfo, nhInfoList)
-    for (let key of formData.keys()) {
-      console.log(key);
-    }
+    console.log(nhInfo.nh_representative_picture, nhImageList, nhInfo, nhInfoList)
+    // for(let pair of formData.entries()) {
+    //   console.log(pair[0], ':', pair[1]);
+    // }
+    // for (let key of formData.keys()) {
+    //   console.log(key);
+    // }
     
-    // FormData의 value 확인
-    for (let value of formData.values()) {
-      console.log(value);
-    }
-
+    // // FormData의 value 확인
+    // for (let value of formData.values()) {
+    //   console.log(value);
+    // }
     // axios detail edit POST
     // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})
     // .then(response =>{
@@ -87,12 +92,14 @@ const MgNHInfoEdit = ({
                   +'-'+ chiefTel.substring(9,13),
     'chiefImage': chiefImage,
     'chiefPosition': position,
-    'chiefImage': chiefImage
+    'chiefImage': chiefImage,
+    'chiefId' : membersArray[0].id
   }
 
   return(
     <React.Fragment>
       <NursingHomeDetailInfoEditBlock 
+        id={id}
         name={name} 
         tel={tel} 
         address={address} 
@@ -117,7 +124,6 @@ const MgNHInfoEdit = ({
         setChangeValue={setChangeValue} />
 
       <NursingHomeImageEditBlock 
-        prevImages={renderImages}
         nhImageList={nhImageList}
         setNhImageList={setNhImageList} />
       <hr/>

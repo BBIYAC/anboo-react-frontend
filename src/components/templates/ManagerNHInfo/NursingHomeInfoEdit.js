@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 const NursingHomeInfoEdit = ({
   onClick, 
   onSigninClick, 
+  nh_id,
   nh_name, 
   nh_tel, 
   nh_address, 
@@ -30,6 +31,7 @@ const NursingHomeInfoEdit = ({
       </div>
       <MgNHInfoEdit 
       onClick={onClick} 
+      id={nh_id}
       name={nh_name} 
       tel={nh_tel} 
       address={nh_address} 

@@ -18,11 +18,11 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
   },[name, tel])
 
   const onNameChange = (e) =>{
-    setName(e.target.value);
+    e.target.value && setName(e.target.value);
   }
 
   const onTelChange = (e) =>{
-    setTel(e.target.value);
+    e.target.value && setTel(e.target.value);
   }
     
   return(
@@ -33,13 +33,13 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
         className="input-mgNhInfoEditInput" 
         type="text" 
         placeholder={name}
-        onChange={onNameChange}></input>
+        onBlur={onNameChange}></input>
         <input 
         name='chiefTel' 
         className="input-mgNhInfoEditInput" 
         type="text"
         placeholder={tel}
-        onChange={onTelChange}></input>
+        onBlur={onTelChange}></input>
       </div>
     </React.Fragment>
   );
