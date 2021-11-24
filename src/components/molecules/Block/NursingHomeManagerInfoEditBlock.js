@@ -15,11 +15,13 @@ const NursingHomeManagerInfoEditBlock = ({
 
   useEffect(()=>{
     if (changeValue.length === 0) return
+    const reImage = changeValue[0].image
     const reName = changeValue[0].name
     const rePhone = changeValue[0].phone
     const managerIdx = changeValue[1]
     let updateValue = [...caregivers]
     
+    updateValue[managerIdx].image = reImage
     updateValue[managerIdx].name = reName
     updateValue[managerIdx].phone = rePhone
     setCaregivers(updateValue)

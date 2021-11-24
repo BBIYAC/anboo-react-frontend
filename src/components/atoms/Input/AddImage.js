@@ -9,7 +9,7 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
       const imageUrl = URL.createObjectURL(imageFile);  
       setFileURL(imageUrl);
       setIsImage && setIsImage(imageFile);
-      setPictures && setPictures([...pictures, imageFile]);
+      setPictures && setPictures(imageFile);
   };
   
   // Default Image

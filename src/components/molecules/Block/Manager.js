@@ -3,6 +3,7 @@ import ManagerImage from '../../atoms/Input/ManagerImage';
 import {IoPersonRemove} from 'react-icons/io5';
 
 const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
+  const [image, setImage] = useState(caregiver.image)
   const [name, setName] = useState(caregiver.name);
   const [phone, setPhone] = useState(caregiver.phone);
   const [profile, setProfile] = useState();
@@ -14,9 +15,9 @@ const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
   }, [caregiver])
 
   useEffect(()=>{
-    const data = {name, phone}
+    const data = {image, name, phone}
     setChangeValue([data, index])
-  },[name, phone])
+  },[name, phone, image])
 
   
   const onNameChange = (e) =>{
@@ -31,7 +32,7 @@ const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ManagerImage url={profile}/>
+          <ManagerImage url={profile} setImage={setImage}/>
           <div className="div-nursinghomeinfo">
             <input 
             type = "text"

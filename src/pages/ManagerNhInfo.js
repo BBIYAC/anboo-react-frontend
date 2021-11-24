@@ -30,6 +30,7 @@ const ManagerNhInfo= () => {
   const [position, setPosition] = useState('');
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   let history = useHistory();
+<<<<<<< HEAD
 
   // Convert image URL to object
   // const convertURLtoFile = async (url) => {
@@ -43,6 +44,8 @@ const ManagerNhInfo= () => {
   //   const metadata = { type: `image/${ext}` };
   //   return new File([data], filename || '', metadata);
   // };
+=======
+>>>>>>> 588b7edff1da84ba76236659495bc6f747aea0d1
   
   const detailGet = () => {
     // 요양원 상세정보 GET
@@ -62,7 +65,6 @@ const ManagerNhInfo= () => {
       .then(response => {
         setChiefName(response.data.employee_info[0].nh_employee_name);
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
-        // console.log(convertURLtoFile(response.data.employee_info[0].image))
         setChiefImage(response.data.employee_info[0].image);
         setPosition(response.data.employee_info[0].position);
         setMembersArray(response.data.employee_info);
