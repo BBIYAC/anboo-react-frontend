@@ -6,8 +6,6 @@ const NursingHomeManagerInfoEditBlock = ({
   membersArray,
   nhInfoList, 
   setNhInfoList, 
-  nhEmployeeImages, 
-  setNhEmployeeImages,
   changeValue,
   setChangeValue}) => {
   const [caregivers, setCaregivers] = useState([]);
@@ -46,12 +44,13 @@ const NursingHomeManagerInfoEditBlock = ({
         return {
           nh_employee_name: caregiver.name,
           nh_employee_tel : caregiver.phone,
-          nh_employee_position: '요양사'
+          nh_employee_position: '요양사',
+          nh_employee_image: caregiver.image
         }
       })])
-      setNhEmployeeImages([nhEmployeeImages[0], ...caregivers.map(caregiver=>{
-        return caregiver.image
-      })]);
+      // setNhEmployeeImages([nhEmployeeImages[0], ...caregivers.map(caregiver=>{
+      //   return caregiver.image
+      // })]);
     }
   },[caregivers])
 

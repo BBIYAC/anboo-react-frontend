@@ -5,30 +5,29 @@ import NursingHomeChiefInfoInput from '../../atoms/Input/NursingHomeChiefInfoInp
 const NursingHomeChiefInfoEditBlock = ({
   chiefInfo,
   nhInfoList, 
-  setNhInfoList, 
-  nhEmployeeImages, 
-  setNhEmployeeImages, }) => {
+  setNhInfoList,}) => {
   const [nhChief, setNhChief] = useState({
     nh_employee_name: chiefInfo.chiefName,
     nh_employee_tel : chiefInfo.chiefTel,
   });
-  const [image, setImage] = useState(chiefInfo.chiefImage);
+  // const [image, setImage] = useState(chiefInfo.chiefImage);
 
   useEffect(()=>{
     setNhInfoList([{
       nh_employee_name: nhChief.nh_employee_name,
       nh_employee_tel : nhChief.nh_employee_tel,
-      nh_employee_position: chiefInfo.chiefPosition
-    }, ...nhInfoList.slice(1, nhInfoList.length)])
-    if(image === '') return
-    setNhEmployeeImages([image, ...nhEmployeeImages.slice(1,nhEmployeeImages.length)])
-  },[nhChief, image])
+      nh_employee_position: chiefInfo.chiefPosition,
+      nh_employee_image: chiefInfo.chiefImage
+    }, ...nhInfoList])
+    // if(image === '') return
+    // setNhEmployeeImages([image, ...nhEmployeeImages.slice(1,nhEmployeeImages.length)])
+  },[nhChief])
 
   return(
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ManagerImage url={chiefInfo.chiefImage} image={image} setImage={setImage}/>
+          <ManagerImage url={chiefInfo.chiefImage}/>
           <NursingHomeChiefInfoInput chiefInfo={chiefInfo} nhChief={nhChief} setNhChief={setNhChief} />
         </div>
       </div>

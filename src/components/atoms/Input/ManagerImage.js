@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect } from 'react';
 
 
-const ManagerImage = ({url, border, borderColor,image, setImage, setCaregiverImage}) => {
+const ManagerImage = ({url, border, borderColor, setImage, setCaregiverImage}) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
   var inputFile = '';

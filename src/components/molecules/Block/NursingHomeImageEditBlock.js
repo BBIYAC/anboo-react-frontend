@@ -4,7 +4,7 @@ import {BsPlusLg} from 'react-icons/bs';
 
 const NursingHomeImageEditBlock = ({setNhImageList}) => {
   const fileInput = useRef();
-  const [file, setFile] = useState("./picture.png");
+  const [file, setFile] = useState("");
   const [images, setImages] = useState([]);
 
   useEffect(()=>{

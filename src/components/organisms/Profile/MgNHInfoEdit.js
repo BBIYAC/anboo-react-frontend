@@ -37,10 +37,11 @@ const MgNHInfoEdit = ({
   const [nhInfoList, setNhInfoList] = useState([{
     nh_employee_name: "",
     nh_employee_tel : "",
-    nh_employee_position: ''
+    nh_employee_position: '',
+    nh_employee_images: ''
   }]);
 
-  const [nhEmployeeImages, setNhEmployeeImages] = useState([]); // 직원 이미지 배열
+  // const [nhEmployeeImages, setNhEmployeeImages] = useState([]); // 직원 이미지 배열
   const [nhImageList, setNhImageList] = useState([]); // 활동 이미지 배열
 
   const onSubmit = () => {
@@ -48,21 +49,21 @@ const MgNHInfoEdit = ({
     var formData = new FormData()
 
     formData.append("nh_representative_picture", nhInfo.nh_representative_picture);
-    formData.append("nh_employee_images", nhEmployeeImages);
+    // formData.append("nh_employee_images", nhEmployeeImages);
     formData.append("nh_image_list", nhImageList);
     formData.append("nh_info", nhInfo);
     formData.append("nh_info_list", nhInfoList);
     
 
-<<<<<<< HEAD
-    // FormData의 key, value 확인
-    for (let pair of formData.entries()) {
-      console.log(pair[0], ':', pair[1]);
+    // console.log(nhInfo.nh_representative_picture, nhEmployeeImages, nhImageList, nhInfo, nhInfoList)
+    for (let key of formData.keys()) {
+      console.log(key);
     }
-    // console.log(nhInfo, nhInfoList, nhEmployeeImages ,nhImageList);
-=======
-    console.log(nhInfo.nh_representative_picture, nhEmployeeImages, nhImageList, nhInfo, nhInfoList)
->>>>>>> 588b7edff1da84ba76236659495bc6f747aea0d1
+    
+    // FormData의 value 확인
+    for (let value of formData.values()) {
+      console.log(value);
+    }
 
     // axios detail edit POST
     // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})
@@ -85,7 +86,8 @@ const MgNHInfoEdit = ({
                   +'-'+ chiefTel.substring(5,9)
                   +'-'+ chiefTel.substring(9,13),
     'chiefImage': chiefImage,
-    'chiefPosition': position
+    'chiefPosition': position,
+    'chiefImage': chiefImage
   }
 
   return(
@@ -103,9 +105,7 @@ const MgNHInfoEdit = ({
       <NursingHomeChiefInfoEditBlock 
         chiefInfo={chiefInfo}
         nhInfoList={nhInfoList}
-        setNhInfoList={setNhInfoList}
-        nhEmployeeImages={nhEmployeeImages}
-        setNhEmployeeImages={setNhEmployeeImages} />
+        setNhInfoList={setNhInfoList} />
 
       <hr/>
 
@@ -113,8 +113,6 @@ const MgNHInfoEdit = ({
         membersArray={membersArray}
         nhInfoList={nhInfoList}
         setNhInfoList={setNhInfoList}
-        nhEmployeeImages={nhEmployeeImages}
-        setNhEmployeeImages={setNhEmployeeImages}
         changeValue={changeValue}
         setChangeValue={setChangeValue} />
 
