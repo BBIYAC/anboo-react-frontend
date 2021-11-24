@@ -43,17 +43,6 @@ const MgNHInfoEdit = ({
   const [nhEmployeeImages, setNhEmployeeImages] = useState([]); // 직원 이미지 배열
   const [nhImageList, setNhImageList] = useState([]); // 활동 이미지 배열
 
-
-  // var nh_info_list = []
-  // for(var member of members){ // the number of the employees
-  //   var nh_info_list_object = {
-  //     nh_employee_name: member.nh_employee_name,
-  //     nh_employee_tel : member.nh_employee_tel,
-  //     nh_employee_position: member.nh_employee_position
-  //   }
-  //   nh_info_list.push(nh_info_list_object)
-  // }
-
   const onSubmit = () => {
     // onClick();
     var formData = new FormData()
@@ -64,11 +53,7 @@ const MgNHInfoEdit = ({
     formData.append("nh_info", nhInfo);
     formData.append("nh_info_list", nhInfoList);
 
-    // FormData의 key, value 확인
-    // for (let pair of formData.entries()) {
-    //   console.log(pair[0], ':', pair[1]);
-    // }
-    console.log(nhInfo, nhInfoList, nhEmployeeImages ,nhImageList);
+    console.log(nhInfo.nh_representative_picture, nhEmployeeImages, nhImageList, nhInfo, nhInfoList)
 
     // axios detail edit POST
     // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})

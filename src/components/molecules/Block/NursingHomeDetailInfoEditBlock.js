@@ -3,7 +3,7 @@ import NursingHomeInfoInput from '../../atoms/Input/NursingHomeInfoInput';
 import AddImage from '../../atoms/Input/AddImage';
 
 const NursingHomeDetailInfoEditBlock = ({name, tel, address, time, image, setNhInfo}) => {
-  const [pictures, setPictures] = useState([]);
+  const [pictures, setPictures] = useState(image);
   const [nhInfoInput, setNhInfoInput] = useState({
     nh_name : "",
     nh_operating_hour :"",
