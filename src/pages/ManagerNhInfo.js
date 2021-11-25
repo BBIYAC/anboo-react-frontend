@@ -35,7 +35,6 @@ const ManagerNhInfo= () => {
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/supervisor/nh-info/`, method: 'get',headers:headers})
     .then(response => {
-      console.log(response.data.nh_info.id);
       setId(response.data.nh_info.id);
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
@@ -48,7 +47,8 @@ const ManagerNhInfo= () => {
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
       .then(response => {
-        console.log(response);
+        // console.log(response)
+        // console.log(response.data.employee_info + " 이게?");
         setChiefName(response.data.employee_info[0].nh_employee_name);
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
         setChiefImage(response.data.employee_info[0].image);
@@ -56,12 +56,11 @@ const ManagerNhInfo= () => {
         setMembersArray(response.data.employee_info);
       })
       .catch(error => {
-        console.log('입력된 요양사가 없음')
-        setChiefName(response.data.employee_info[0].nh_employee_name);
-        setChiefTel(response.data.employee_info[0].nh_employee_tel);
-        setChiefImage(response.data.employee_info[0].image);
-        setPosition(response.data.employee_info[0].position);
-        setMembersArray(response.data.employee_info);
+        setChiefName('');
+        setChiefTel('');
+        setChiefImage('');
+        setPosition('');
+        setMembersArray([]);
       })
     })
     .catch(error => {

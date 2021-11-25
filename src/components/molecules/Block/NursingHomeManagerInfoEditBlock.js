@@ -11,6 +11,19 @@ const NursingHomeManagerInfoEditBlock = ({
   const [caregivers, setCaregivers] = useState([]);
   const [image, setImage] = useState([])
 
+
+
+
+
+
+  console.log(membersArray);
+
+
+
+
+
+
+
   useEffect(()=>{
     if (changeValue.length === 0) return
     const reImage = changeValue[0].image
@@ -18,7 +31,7 @@ const NursingHomeManagerInfoEditBlock = ({
     const rePhone = changeValue[0].phone
     const managerIdx = changeValue[1]
     let updateValue = [...caregivers]
-    
+
     updateValue[managerIdx].image = reImage
     updateValue[managerIdx].name = reName
     updateValue[managerIdx].phone = rePhone
@@ -27,8 +40,9 @@ const NursingHomeManagerInfoEditBlock = ({
 
   useEffect(()=>{
     setCaregivers([...membersArray.filter(caregiver =>
-      caregiver.position === '요양사').map(member=>{
+      caregiver.position === '요양사').map((member, index)=>{
         return {
+          key: index,
           id: member.id,
           image: member.image,
           name: member.nh_employee_name,
@@ -42,8 +56,9 @@ const NursingHomeManagerInfoEditBlock = ({
 
   useEffect(()=>{
     if(caregivers) {
-      setNHEmployeeList([nhEmployeeList[0], ...caregivers.map(caregiver=>{
+      setNHEmployeeList([nhEmployeeList[0], ...caregivers.map((caregiver, index)=>{
         return {
+          key: index,
           nh_employee_name: caregiver.name,
           nh_employee_tel : caregiver.phone,
           nh_employee_position: '요양사',
@@ -51,9 +66,6 @@ const NursingHomeManagerInfoEditBlock = ({
           nh_employee_id: caregiver.id
         }
       })])
-      // setNhEmployeeImages([nhEmployeeImages[0], ...caregivers.map(caregiver=>{
-      //   return caregiver.image
-      // })]);
     }
   },[caregivers])
 
@@ -64,16 +76,44 @@ const NursingHomeManagerInfoEditBlock = ({
     }));
   };
 
+  
   const renderCaregivers = caregivers ? caregivers.map((caregiver, index) => {
     return (
       <Manager 
-      caregiver={caregiver} 
       key={caregiver.phone}
+      caregiver={caregiver} 
       removeCaregiver={removeCaregiver}
       setChangeValue={setChangeValue}
       index={index}/>
     );
   }) : <span style={{fontSize:"var(--font-size-small)"}}>추가된 요양사가 없습니다.</span>;
+
+  
+
+
+
+
+
+
+
+  // 요양원 정보 페이지에서 가져오려고 쓴 코드
+  // const renderManagers = membersArray.map((member, index) => {
+  //   console.log(membersArray)
+  //   if(index > 0){
+  //     return (
+  //       <Manager 
+  //       key={index}
+  //       memberName={member.nh_employee_name} 
+  //       memberPhone={member.nh_employee_tel}/>
+  //     )
+  //   }
+  // })
+
+
+
+
+
+
 
   const addManager = (caregiver) => {
     setCaregivers([
@@ -87,6 +127,7 @@ const NursingHomeManagerInfoEditBlock = ({
       <ManagerForm addManager={addManager} image={image} setImage={setImage} />
       <div className="div-NursingHomeManagerInfo">
         {renderCaregivers}
+        {/* {renderManagers} */}
       </div>
     </React.Fragment>
   );

@@ -23,7 +23,8 @@ const MgNHInfo = ({
   membersArray,
   time,
   starRating,}) => {
-    
+  
+  // console.log(membersArray);
   const renderManagers = membersArray.map((member, index) => {
     if(index > 0){
       return(
@@ -81,7 +82,7 @@ const MgNHInfo = ({
 
       {images.length==0
         ? <NotRegisteredEmptyActImages color="var(--color-green)"/>
-        : <div className="grid-container">{/*여기에 정렬된 줌인 이미지 추가*/}</div>
+        : <div className="grid-container">{renderImages}</div>
       }
       
       <hr/>

@@ -40,7 +40,7 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
         name='chiefTel' 
         className="input-mgNhInfoEditInput" 
         type="tel"
-        maxLength = "11"
+        maxLength = "13"
         placeholder={tel}
         onBlur={onTelChange}></input>
       </div>

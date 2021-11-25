@@ -2,10 +2,10 @@ import React,{useState, useEffect} from 'react';
 import ManagerImage from '../../atoms/Input/ManagerImage';
 import {IoPersonRemove} from 'react-icons/io5';
 
-const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
-  const [image, setImage] = useState(caregiver.image)
-  const [name, setName] = useState(caregiver.name);
-  const [phone, setPhone] = useState(caregiver.phone);
+const Manager = ({caregiver, removeCaregiver, setChangeValue, index, memberName, memberPhone}) => {
+  const [image, setImage] = useState("")
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [profile, setProfile] = useState();
 
   useEffect(()=>{
@@ -43,7 +43,7 @@ const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
             onBlur={onNameChange}></input>
             <input 
             type = "tel"
-            maxLength = "11"
+            maxLength = "13"
             className="input-mgNhInfoEditInput"
             placeholder={caregiver.phone}
             onBlur={onTelChange}></input>

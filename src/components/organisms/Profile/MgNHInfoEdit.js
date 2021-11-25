@@ -53,39 +53,110 @@ const MgNHInfoEdit = ({
   let history = useHistory();
   const onSubmit = () => {
     // onClick();
-    var formData = new FormData()
+    // var formData = new FormData()
 
-    formData.append("nh_representative_picture", nhInfo.nh_representative_picture);
-    // formData.append("nh_employee_images", nhEmployeeImages);
-    formData.append("nh_image_list", nhImageList);
-    formData.append("nh_info", JSON.stringify(formData));
-    formData.append("nh_employee_list", nhEmployeeList);
-    console.log(nhEmployeeList);
+    // formData.append("nh_representative_picture", nhInfo.nh_representative_picture);
+    // // formData.append("nh_employee_images", nhEmployeeImages);
+    // formData.append("nh_image_list", nhImageList);
+    // formData.append("nh_info", JSON.stringify(formData));
+    // formData.append("nh_employee_list", nhEmployeeList);
+    // // console.log(nhImageList);
     
 
     // console.log(nhInfo.nh_representative_picture, nhImageList, nhInfo, nhEmployeeList)
-    console.log("-------------------------------------------");
-    for(let pair of formData.entries()) {
-      console.log(pair[0], ':', pair[1]);
-    }
+    // // console.log("-------------------------------------------");
+    // // for(let pair of formData.entries()) {
+    // //   console.log(pair[0], ':', pair[1]);
+    // // }
     
-    // // FormData의 key, value 확인
-    // for (let value of formData.values()) {
-    //     console.log(value);
-    //   }
-    // for (let key of formData.keys()) {
-    //   console.log(key);
-    // }
+    // // // FormData의 key, value 확인
+    // // for (let value of formData.values()) {
+    // //     console.log(value);
+    // //   }
+    // // for (let key of formData.keys()) {
+    // //   console.log(key);
+    // // }
 
-    // axios detail edit POST
-    // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})
-    // .then(response =>{
-    //   console.log(response)
-    // }).catch(error => { 
-    //     console.error(error);
+    // // axios detail edit POST
+    // // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})
+    // // .then(response =>{
+    // //   console.log(response)
+    // // }).catch(error => { 
+    // //     console.error(error);
     // })
 
-    history.goBack(-1);
+
+
+
+
+
+    let activity_image_list_formdata = new FormData();
+    let representative_form_data = new FormData();
+    for (let i of nhImageList) {
+      // console.log(i)
+      activity_image_list_formdata.append("nh_image_list", i.file);
+
+    }
+    for (let key in nhInfo) {
+      if (key == 'nh_id') {
+        representative_form_data.append('id', nhInfo[key]);
+      }
+      representative_form_data.append(key, nhInfo[key]);
+    }
+
+
+
+    axios({ url: `${apiUrl}/supervisor/save-nh-info/`, method: 'put', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: representative_form_data })
+      .then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.error(error);
+      })
+    axios({ url: `${apiUrl}/supervisor/save-activity-images/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: activity_image_list_formdata })
+      .then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.error(error);
+      })
+
+
+
+    axios({ url: `${apiUrl}/supervisor/save-employee-info/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken') }, data: nhEmployeeList })
+      .then(response => {
+        console.log(response.data)
+        for (let val2 of response.data) {
+          for (let val1 of nhEmployeeList) {
+            let phonenumber = '+82' + val1.nh_employee_tel.replace(/-/gi, '').slice(1, val1.nh_employee_tel.replace(/-/gi, '').length)
+            if (phonenumber == val2.nh_employee_tel) {
+              console.log(val2)
+              console.log(val1)
+              console.log("-----------");
+              let nh_employee_image_form_data = new FormData();
+              nh_employee_image_form_data.append("nh_employee_id", val2.id);
+              nh_employee_image_form_data.append("nh_employee_image", val1.nh_employee_image);
+
+              axios({ url: `${apiUrl}/supervisor/save-employee-image/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: nh_employee_image_form_data })
+                .then(response => {
+                  console.log(response.data)
+
+                }).catch(error => {
+                  console.error(error);
+                })
+            }
+
+
+          }
+
+
+
+
+
+
+        }
+      }).catch(error => {
+        console.error(error);
+      })
+
   }
 
   const renderImages = images.map((image, idx) => {
@@ -102,7 +173,13 @@ const MgNHInfoEdit = ({
     'chiefImage': chiefImage,
     'chiefPosition': position,
     'chiefImage': chiefImage,
-    'chiefId' : membersArray[0].id
+    'chiefId' : ()=>{
+      try{
+        return membersArray[0].id
+      }catch{
+        return ""
+      }
+    }
   }
 
   return(
