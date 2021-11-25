@@ -59,18 +59,22 @@ const ManagerForm = ({ addManager, setImage, image }) => {
             setImage={setImage} 
           />
           <div className="div-nursinghomeinfo">
+            <p className="txt_position">요양사</p>
             <input 
             type = "text"
+            maxLength = "30"
             value = {caregiverName}
             className="input-mgNhInfoEditInput"
-            placeholder="요양사 성함"
+            placeholder="성함"
             onChange={e => setCaregiverName(e.target.value)}></input>
             <span style={{color:"red", fontSize:"var(--font-size-micro)"}}>{nameError}</span>
             <input 
             type = "tel"
+            maxLength = "13"
             value = {caregiverPhone}
             className="input-mgNhInfoEditInput"
-            placeholder="요양사 전화번호"
+            pattern="^[0-9-+\s(-)]*$"
+            placeholder="전화번호( '-' 제외 )"
             onChange={e => setCaregiverPhone(e.target.value)}></input>
             <span style={{color:"red", fontSize:"var(--font-size-micro)"}}>{phoneError}</span>
           </div>

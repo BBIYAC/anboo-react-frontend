@@ -7,6 +7,7 @@ import OvalLarge from "../../atoms/Button/OvalLarge";
 import NhImageGrid from "../../molecules/Block/NhImageGrid";
 import axios from "axios";
 import { apiUrl } from "../../../pages/ApiURL";
+import { useHistory } from "react-router";
 
 const MgNHInfoEdit = ({
   onClick, 
@@ -36,7 +37,7 @@ const MgNHInfoEdit = ({
   });
 
   // 요양원 직원 정보 수정
-  const [nhInfoList, setNhInfoList] = useState([{
+  const [nhEmployeeList, setNHEmployeeList] = useState([{
     nh_employee_id: "",
     nh_employee_name: "",
     nh_employee_tel : "",
@@ -47,6 +48,9 @@ const MgNHInfoEdit = ({
   // const [nhEmployeeImages, setNhEmployeeImages] = useState([]); // 직원 이미지 배열
   const [nhImageList, setNhImageList] = useState([]); // 활동 이미지 배열
 
+
+
+  let history = useHistory();
   const onSubmit = () => {
     // onClick();
     var formData = new FormData()
@@ -55,21 +59,24 @@ const MgNHInfoEdit = ({
     // formData.append("nh_employee_images", nhEmployeeImages);
     formData.append("nh_image_list", nhImageList);
     formData.append("nh_info", JSON.stringify(formData));
-    formData.append("nh_employee_list", nhInfoList);
+    formData.append("nh_employee_list", nhEmployeeList);
+    console.log(nhEmployeeList);
     
 
-    console.log(nhInfo.nh_representative_picture, nhImageList, nhInfo, nhInfoList)
-    // for(let pair of formData.entries()) {
-    //   console.log(pair[0], ':', pair[1]);
-    // }
+    // console.log(nhInfo.nh_representative_picture, nhImageList, nhInfo, nhEmployeeList)
+    console.log("-------------------------------------------");
+    for(let pair of formData.entries()) {
+      console.log(pair[0], ':', pair[1]);
+    }
+    
+    // // FormData의 key, value 확인
+    // for (let value of formData.values()) {
+    //     console.log(value);
+    //   }
     // for (let key of formData.keys()) {
     //   console.log(key);
     // }
-    
-    // // FormData의 value 확인
-    // for (let value of formData.values()) {
-    //   console.log(value);
-    // }
+
     // axios detail edit POST
     // axios({url:`${apiUrl}/supervisor/nh-info/`,method : 'post' ,headers:headers, data: formData})
     // .then(response =>{
@@ -77,6 +84,8 @@ const MgNHInfoEdit = ({
     // }).catch(error => { 
     //     console.error(error);
     // })
+
+    history.goBack(-1);
   }
 
   const renderImages = images.map((image, idx) => {
@@ -111,15 +120,15 @@ const MgNHInfoEdit = ({
 
       <NursingHomeChiefInfoEditBlock 
         chiefInfo={chiefInfo}
-        nhInfoList={nhInfoList}
-        setNhInfoList={setNhInfoList} />
+        nhEmployeeList={nhEmployeeList}
+        setNHEmployeeList={setNHEmployeeList} />
 
       <hr/>
 
       <NursingHomeManagerInfoEditBlock 
         membersArray={membersArray}
-        nhInfoList={nhInfoList}
-        setNhInfoList={setNhInfoList}
+        nhEmployeeList={nhEmployeeList}
+        setNHEmployeeList={setNHEmployeeList}
         changeValue={changeValue}
         setChangeValue={setChangeValue} />
 

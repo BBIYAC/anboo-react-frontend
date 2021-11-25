@@ -4,8 +4,8 @@ import ManagerForm from './ManagerForm';
 
 const NursingHomeManagerInfoEditBlock = ({
   membersArray,
-  nhInfoList, 
-  setNhInfoList, 
+  nhEmployeeList, 
+  setNHEmployeeList, 
   changeValue,
   setChangeValue}) => {
   const [caregivers, setCaregivers] = useState([]);
@@ -42,7 +42,7 @@ const NursingHomeManagerInfoEditBlock = ({
 
   useEffect(()=>{
     if(caregivers) {
-      setNhInfoList([nhInfoList[0], ...caregivers.map(caregiver=>{
+      setNHEmployeeList([nhEmployeeList[0], ...caregivers.map(caregiver=>{
         return {
           nh_employee_name: caregiver.name,
           nh_employee_tel : caregiver.phone,

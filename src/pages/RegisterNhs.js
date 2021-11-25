@@ -18,7 +18,7 @@ const RegisterNhs= () => {
   const [nursingHomes, setNursingHomes] = useState([]);
   const [isMember, setIsMember] = useState(true);
   const [btnState, setBtnState] = useState('');
-  const [ratingState, setRatingState] = useState('');
+  const [ratingState, setRatingState] = useState();
   const [bookmarkedList, setBookmarkedList] = useState([]);
   const [search, setSearch] = useState(history.location.state.cityName);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
@@ -40,101 +40,174 @@ const RegisterNhs= () => {
           }).catch(error=> {
             console.error(error);
           })
-          
-        }else{              // 검색어가 없을 때
-          if(btnState){     // 즐겨찾기 버튼 활성 이벤트
-            // 요양원 북마크 리스트 GET
-            axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get', headers:headers})
-            .then(response=> {
-              setBookmarkedList(response.data.objects.bookmarked_nh_id);
-            })
-            // 북마크된 요양원만 출력
-            let bookmarkedArray=[];
-            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-            .then(response=>{
-              for(let i = 0; i < bookmarkedList.length; i++){
-                let idx = bookmarkedList[i];
-                for(let j = 0; j < response.data.length; j++){
-                  if(idx == response.data[j].id){
-                    bookmarkedArray[i] = response.data[j];
+
+        }
+      
+        // -----------------------------------즐겨찾기-----------------------------------
+        if(btnState){
+          // 요양원 북마크 리스트 GET
+          setRatingState(null);
+          axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get', headers:headers})
+          .then(response=> {
+            setBookmarkedList(response.data.objects.bookmarked_nh_id);
+          })
+          // 북마크된 요양원만 출력
+          let bookmarkedArray=[];
+          axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+          .then(response=>{
+            for(let i = 0; i < bookmarkedList.length; i++){
+              let idx = bookmarkedList[i];
+              for(let j = 0; j < response.data.length; j++){
+                if(idx == response.data[j].id){
+                  bookmarkedArray[i] = response.data[j];
+                }
+              }
+            }
+            setNursingHomes(bookmarkedArray);
+          })
+          .then((result) => {
+            // -----------------------------------평점 리스트 필터링-----------------------------------
+            let ratingArray = [];
+            console.log(ratingState)
+            switch(parseInt(ratingState)){
+              case 4:
+                console.log("4");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 4 && response.data[i].star_avg < 5){
+                      ratingArray[i] = bookmarkedArray[i];
+                    }
                   }
-                }
-              }
-              setNursingHomes(bookmarkedArray);
-            })
-
-            // 평점 리스트 필터링
-        let ratingArray = [];
-        switch(parseInt(ratingState)){
-          case 4:
-            console.log("4");
-            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-            .then(response=>{
-              for(let i = 0; i < response.data.length; i++){
-                if(response.data[i].star_avg >= 4 && response.data[i].star_avg < 5){
-                  ratingArray[i] = response.data[i];
-                }
-              }
-              setNursingHomes(ratingArray);
-            }).catch(error=> {
-              console.error(error);
-            })
-            break;
-          case 3:
-            console.log("3");
-            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-            .then(response=>{
-              for(let i = 0; i < response.data.length; i++){
-                if(response.data[i].star_avg >= 3 && response.data[i].star_avg < 4){
-                  ratingArray[i] = response.data[i];
-                }
-              }
-              setNursingHomes(ratingArray);
-            }).catch(error=> {
-              console.error(error);
-            })
-            break;
-          case 2:
-            console.log("2");
-            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-            .then(response=>{
-              for(let i = 0; i < response.data.length; i++){
-                if(response.data[i].star_avg >= 2 && response.data[i].star_avg < 3){
-                  ratingArray[i] = response.data[i];
-                }
-              }
-              setNursingHomes(ratingArray);
-            }).catch(error=> {
-              console.error(error);
-            })
-            break;
-          case 1:
-            console.log("1");
-            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-            .then(response=>{
-              for(let i = 0; i < response.data.length; i++){
-                if(response.data[i].star_avg >= 1 && response.data[i].star_avg < 2){
-                  ratingArray[i] = response.data[i];
-                }
-              }
-              setNursingHomes(ratingArray);
-            }).catch(error=> {
-              console.error(error);
-            })
-            break;
-          default:
-            return;
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              case 3:
+                console.log("3");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 3 && response.data[i].star_avg < 4){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              case 2:
+                console.log("2");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 2 && response.data[i].star_avg < 3){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              case 1:
+                console.log("1");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 1 && response.data[i].star_avg < 2){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              default:
+                return;
+            }
+            // -----------------------------------평점 리스트 필터링-----------------------------------
+          }).catch((err) => {
+            
+          });
+        }else {           // 즐겨찾기 버튼 비활성 이벤트
+          axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+          .then(response=>{
+            setNursingHomes(response.data);
+          }).catch(error=> {
+            console.error(error);
+          })
         }
-          }else {           // 즐겨찾기 버튼 비활성 이벤트
-            axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-            .then(response=>{
-              setNursingHomes(response.data);
-            }).catch(error=> {
-              console.error(error);
-            })
-          }
-        }
+        // -----------------------------------즐겨찾기-----------------------------------
 
+        
+            // -----------------------------------평점 리스트 필터링-----------------------------------
+            let ratingArray = [];
+            console.log(ratingState)
+            switch(parseInt(ratingState)){
+              case 4:
+                console.log("4");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 4 && response.data[i].star_avg < 5){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              case 3:
+                console.log("3");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 3 && response.data[i].star_avg < 4){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              case 2:
+                console.log("2");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 2 && response.data[i].star_avg < 3){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              case 1:
+                console.log("1");
+                axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+                .then(response=>{
+                  for(let i = 0; i < response.data.length; i++){
+                    if(response.data[i].star_avg >= 1 && response.data[i].star_avg < 2){
+                      ratingArray[i] = response.data[i];
+                    }
+                  }
+                  setNursingHomes(ratingArray);
+                }).catch(error=> {
+                  console.error(error);
+                })
+                break;
+              default:
+                return;
+            }
+            // -----------------------------------평점 리스트 필터링-----------------------------------
         
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
@@ -178,16 +251,16 @@ const RegisterNhs= () => {
   }
 
   // 북마크된 요양원 렌더링
-  const renderBookmarkedNH = nursingHomes.map(nursingHome => {
+  const renderBookmarkedNH = nursingHomes.map((nursingHome, index) => {
     return (
-      <NursingHomeInfoBlock nursingHome={nursingHome}/>
+      <NursingHomeInfoBlock nursingHome={nursingHome} key={index}/>
       );
   });
   
   // 요양원 렌더링
-  const renderNursingHomes = nursingHomes.map(nursingHome => {
+  const renderNursingHomes = nursingHomes.map((nursingHome, index) => {
     return (
-      <NursingHomeInfoBlock nursingHome={nursingHome}/>
+      <NursingHomeInfoBlock nursingHome={nursingHome} key={index}/>
       );
   });
     

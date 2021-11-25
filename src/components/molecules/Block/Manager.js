@@ -34,13 +34,16 @@ const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
         <div className="NursingHomeManagerInfo">
           <ManagerImage url={profile} setImage={setImage}/>
           <div className="div-nursinghomeinfo">
+            <p className="txt_position">요양사</p>
             <input 
             type = "text"
+            maxLength = "30"
             className="input-mgNhInfoEditInput"
             placeholder={caregiver.name}
             onBlur={onNameChange}></input>
             <input 
             type = "tel"
+            maxLength = "11"
             className="input-mgNhInfoEditInput"
             placeholder={caregiver.phone}
             onBlur={onTelChange}></input>

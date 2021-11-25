@@ -172,6 +172,12 @@
   font-size: var(--font-size-small);
   outline: none;
 }
+.txt_position {
+  height: 1rem;
+  border: none;
+  font-size: var(--font-size-small);
+}
+
 
 /* TextArea */
 .handleResponseStyle {

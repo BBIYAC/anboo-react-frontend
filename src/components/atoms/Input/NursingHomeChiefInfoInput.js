@@ -28,16 +28,19 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
+        <p className="txt_position">요양원장</p>
         <input 
         name='chiefName' 
         className="input-mgNhInfoEditInput" 
         type="text" 
+        maxLength = "10"
         placeholder={name}
         onBlur={onNameChange}></input>
         <input 
         name='chiefTel' 
         className="input-mgNhInfoEditInput" 
-        type="text"
+        type="tel"
+        maxLength = "11"
         placeholder={tel}
         onBlur={onTelChange}></input>
       </div>

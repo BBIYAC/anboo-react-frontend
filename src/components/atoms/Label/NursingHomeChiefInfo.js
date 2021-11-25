@@ -6,7 +6,7 @@ const NursingHomeChiefInfo = ({chiefName, chiefTel, position}) => {
       <div className="div-nursinghomeinfo">
         <p className="nursinghome-position">{position}</p>
         <p className="nursinghome-info">{chiefName}</p>
-        <p className="nursinghome-address">{chiefTel}</p>
+        <p className="nursinghome-tel">{chiefTel}</p>
       </div>
     </React.Fragment>
   );

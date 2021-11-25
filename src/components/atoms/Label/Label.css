@@ -15,6 +15,7 @@
 
 .nursinghome-info,
 .nursinghome-address,
+.nursinghome-tel,
 .nursinghome-position,
 .nursinghome-operatingtime {
   font-size: var(--font-size-small);
@@ -77,8 +78,8 @@
 .div-starLabel {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 2.5rem;
+  justify-content: space-between;
+  width: 2rem;
   font-size: var(--font-size-small);
 }
 

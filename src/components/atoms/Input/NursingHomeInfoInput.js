@@ -22,10 +22,38 @@ const NursingHomeInfoInput = ({name, tel, address, time,  setNhInfoInput}) => {
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">
-        <input name='nh_name' className="input-mgNhInfoEditInput" type="text" placeholder={name} onChange={onChange}></input>
-        <input name='nh_address' className="input-mgNhInfoEditInput" type="text" placeholder={address} onChange={onChange}></input>
-        <input name='nh_tel' className="input-mgNhInfoEditInput" type="text" placeholder={tel} onChange={onChange}></input>
-        <input name='nh_operating_hour' className="input-mgNhInfoEditInput" type="text" placeholder={time} onChange={onChange}></input>
+        <input 
+          name='nh_name' 
+          className="input-mgNhInfoEditInput" 
+          type="text" 
+          maxLength = "20"
+          placeholder={name} 
+          onChange={onChange}
+        ></input>
+        <input 
+          name='nh_address' 
+          className="input-mgNhInfoEditInput" 
+          type="text" 
+          maxLength = "50"
+          placeholder={address} 
+          onChange={onChange}
+        ></input>
+        <input 
+          name='nh_tel' 
+          className="input-mgNhInfoEditInput" 
+          type="tel" 
+          maxLength = "11"
+          placeholder={tel} 
+          onChange={onChange}
+        ></input>
+        <input 
+          name='nh_operating_hour' 
+          className="input-mgNhInfoEditInput" 
+          type="text" 
+          maxLength = "30"
+          placeholder={time} 
+          onChange={onChange}
+        ></input>
       </div>
     </React.Fragment>
   );

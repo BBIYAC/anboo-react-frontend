@@ -50,7 +50,7 @@ const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating
       <div className="block-NursingHomeDetailInfo">
         <div className="NursingHomeInfo">
           <ImageNhInfo url={image==null ? defalutImage : image}/>
-          <NursingHomeInfo name={name} address={address} tel={tel} time={time} starRating={starRating} starRating={starRating}/>
+          <NursingHomeInfo name={name} address={address} tel={tel} time={time} starRating={starRating}/>
         </div>
         {isNotMember
         ? ""

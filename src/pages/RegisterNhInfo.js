@@ -118,6 +118,7 @@ const  RegisterNhInfo= () => {
     if(index > 0){
       return(
         <NursingHomeManagerInfoBlock 
+        key={index}
         memberName={member.nh_employee_name}
         membersTel={
           0 + member.nh_employee_tel.substring(3,5)
@@ -129,9 +130,9 @@ const  RegisterNhInfo= () => {
     };
   });
 
-  const renderImages = images.map(image => {
+  const renderImages = images.map((image, index) => {
     return(
-      <NhImageGrid url={image.nh_image}/>
+      <NhImageGrid url={image.nh_image} key={index}/>
     );
   });
 

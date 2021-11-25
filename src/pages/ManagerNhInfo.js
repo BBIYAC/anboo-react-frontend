@@ -12,7 +12,7 @@ const ManagerNhInfo= () => {
   // 요양원 정보
   const [id, setId] = useState('');
   const [name, setName] = useState('요양원 이름');
-  const [tel, setTel] = useState('000-0000-0000');
+  const [tel, setTel] = useState('01012345678');
   const [address, setAddress] = useState('요양원 주소');
   const [image, setImage] = useState('');
   const [time, setTime] = useState('');
@@ -33,8 +33,9 @@ const ManagerNhInfo= () => {
   
   const detailGet = () => {
     // 요양원 상세정보 GET
-    axios({url:`${apiUrl}/not-nok/nh-info/9999999999/`, method: 'get',headers:headers})
+    axios({url:`${apiUrl}/supervisor/nh-info/`, method: 'get',headers:headers})
     .then(response => {
+      console.log(response.data.nh_info.id);
       setId(response.data.nh_info.id);
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
@@ -47,6 +48,7 @@ const ManagerNhInfo= () => {
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
       .then(response => {
+        console.log(response);
         setChiefName(response.data.employee_info[0].nh_employee_name);
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
         setChiefImage(response.data.employee_info[0].image);
@@ -54,11 +56,16 @@ const ManagerNhInfo= () => {
         setMembersArray(response.data.employee_info);
       })
       .catch(error => {
-        console.error(error);
+        console.log('입력된 요양사가 없음')
+        setChiefName(response.data.employee_info[0].nh_employee_name);
+        setChiefTel(response.data.employee_info[0].nh_employee_tel);
+        setChiefImage(response.data.employee_info[0].image);
+        setPosition(response.data.employee_info[0].position);
+        setMembersArray(response.data.employee_info);
       })
     })
     .catch(error => {
-      console.error(error);
+      
     })
   }
 
@@ -97,7 +104,7 @@ const ManagerNhInfo= () => {
         nh_id={id}
         nh_name={name}
         nh_tel={tel}
-        nh_address={address.substring(0,12)+"..."}
+        nh_address={address}
         nh_image={image} 
         nh_images={images}
         chiefName={chiefName}

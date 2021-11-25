@@ -9,7 +9,7 @@ const NursingHomeManagerInfo = ({
       <div className="div-nursinghomeinfo">
         <p className="nursinghome-position">{position}</p>
         <p className="nursinghome-info">{memberName}</p>
-        <p className="nursinghome-address">{membersTel}</p>
+        <p className="nursinghome-tel">{membersTel}</p>
       </div>
     </React.Fragment>
   );

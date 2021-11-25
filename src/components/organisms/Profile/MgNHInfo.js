@@ -23,6 +23,7 @@ const MgNHInfo = ({
   membersArray,
   time,
   starRating,}) => {
+    
   const renderManagers = membersArray.map((member, index) => {
     if(index > 0){
       return(

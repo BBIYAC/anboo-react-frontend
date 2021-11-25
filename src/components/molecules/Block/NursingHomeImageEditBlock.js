@@ -4,7 +4,6 @@ import {BsPlusLg} from 'react-icons/bs';
 
 const NursingHomeImageEditBlock = ({setNhImageList}) => {
   const fileInput = useRef();
-  // const [file, setFile] = useState("초깃값");
   const [images, setImages] = useState([]);
 
   useEffect(()=>{
@@ -18,20 +17,15 @@ const NursingHomeImageEditBlock = ({setNhImageList}) => {
     }));
   }
   
-  const renderEditImages = images.map(image => {
+  const renderEditImages = images.map((image, index) => {
     return (
       <NHActImage
+      key={index}
       id={image.id}
       file={image.file}
       removeImage={ removeImage }/>
       );
     });
-    
-    /* 5 */ 
-    // const onChange = (e) => {
-    //   const imageFile = e.target.files[0];
-    //   setFile(imageFile);
-    // }
 
     const handleFileOnChange = (event) => {
       let reader = new FileReader();
@@ -49,9 +43,7 @@ const NursingHomeImageEditBlock = ({setNhImageList}) => {
       reader.readAsDataURL(file);
     }
     
-    /* 2 */
     const addImage = () => {
-      /* 3 */ 
       fileInput.current.click();
     };
 
@@ -66,7 +58,6 @@ const NursingHomeImageEditBlock = ({setNhImageList}) => {
       <div className="grid-container">
         <button type="button" onClick={addImage} className="addNhImage"><BsPlusLg /></button>
         {renderEditImages}
-        {profile_preview}
         <input type="file" ref={fileInput} accept="image/*" onChange={handleFileOnChange} hidden></input>
       </div>
     </React.Fragment>
