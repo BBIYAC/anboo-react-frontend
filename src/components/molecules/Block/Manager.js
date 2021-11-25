@@ -2,10 +2,10 @@ import React,{useState, useEffect} from 'react';
 import ManagerImage from '../../atoms/Input/ManagerImage';
 import {IoPersonRemove} from 'react-icons/io5';
 
-const Manager = ({caregiver, removeCaregiver, setChangeValue, index, memberName, memberPhone}) => {
-  const [image, setImage] = useState("")
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
+  const [image, setImage] = useState(caregiver.image)
+  const [name, setName] = useState(caregiver.name);
+  const [phone, setPhone] = useState(caregiver.phone);
   const [profile, setProfile] = useState();
 
   useEffect(()=>{
