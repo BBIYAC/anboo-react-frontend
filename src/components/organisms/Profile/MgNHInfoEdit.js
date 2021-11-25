@@ -157,7 +157,8 @@ const MgNHInfoEdit = ({
         console.error(error);
       })
 
-  }
+    }
+
 
   const renderImages = images.map((image, idx) => {
     return(
@@ -182,6 +183,7 @@ const MgNHInfoEdit = ({
     }
   }
 
+  console.log(images);
   return(
     <React.Fragment>
       <NursingHomeDetailInfoEditBlock 
@@ -210,7 +212,7 @@ const MgNHInfoEdit = ({
         setChangeValue={setChangeValue} />
 
       <NursingHomeImageEditBlock 
-        nhImageList={nhImageList}
+        editImgs={images}
         setNhImageList={setNhImageList} />
       <hr/>
       <OvalLarge btnText="저장하기" onClick={()=>onSubmit()}/>

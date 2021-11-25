@@ -47,8 +47,6 @@ const ManagerNhInfo= () => {
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
       .then(response => {
-        // console.log(response)
-        // console.log(response.data.employee_info + " 이게?");
         setChiefName(response.data.employee_info[0].nh_employee_name);
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
         setChiefImage(response.data.employee_info[0].image);

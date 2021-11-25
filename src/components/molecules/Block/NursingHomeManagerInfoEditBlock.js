@@ -10,8 +10,6 @@ const NursingHomeManagerInfoEditBlock = ({
   setChangeValue}) => {
   const [caregivers, setCaregivers] = useState([]);
   const [image, setImage] = useState([])
-
-  console.log(membersArray);
   
   useEffect(()=>{
     if (changeValue.length === 0) return
