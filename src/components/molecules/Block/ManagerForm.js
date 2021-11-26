@@ -73,7 +73,7 @@ const ManagerForm = ({ addManager, setImage, image }) => {
             maxLength = "13"
             value = {caregiverPhone}
             className="input-mgNhInfoEditInput"
-            placeholder="전화번호( '-' 제외 )"
+            placeholder="전화번호( '-' 포함 )"
             onChange={e => setCaregiverPhone(e.target.value)}></input>
             <span style={{color:"red", fontSize:"var(--font-size-micro)"}}>{phoneError}</span>
           </div>

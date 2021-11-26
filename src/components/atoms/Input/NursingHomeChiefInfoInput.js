@@ -2,12 +2,11 @@ import React, {useEffect, useState} from 'react';
 
 const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
   const [name, setName] = useState('시설장 성함');
-  const [tel, setTel] = useState('시설장 전화번호');
+  const [tel, setTel] = useState("시설장 전화번호('-' 포함)");
 
   useEffect(()=>{
-    setName(chiefInfo.chiefName);
-    setTel(chiefInfo.chiefTel);
-    
+    chiefInfo.chiefName && setName(chiefInfo.chiefName);
+    chiefInfo.chiefTel && setTel(chiefInfo.chiefTel);
   },[])
 
   useEffect(()=>{

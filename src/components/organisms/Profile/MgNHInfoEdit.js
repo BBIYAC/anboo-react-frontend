@@ -168,9 +168,8 @@ const MgNHInfoEdit = ({
 
   const chiefInfo = {
     'chiefName': chiefName,
-    'chiefTel': 0 + chiefTel.substring(3,5)
-                  +'-'+ chiefTel.substring(5,9)
-                  +'-'+ chiefTel.substring(9,13),
+    'chiefTel': chiefTel ? 0 + chiefTel.substring(3,5) +'-'+ chiefTel.substring(5,9) +'-'+ chiefTel.substring(9,13)
+                         : chiefTel,
     'chiefImage': chiefImage,
     'chiefPosition': position,
     'chiefImage': chiefImage,

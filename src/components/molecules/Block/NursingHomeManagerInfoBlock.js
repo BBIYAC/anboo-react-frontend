@@ -11,7 +11,7 @@ const NursingHomeManagerInfoBlock = ({
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ImageSmall url={membersImage}/>
+          <ImageSmall url={membersImage? membersImage : ''}/>
           <NursingHomeManagerInfo 
           memberName={memberName}
           membersTel={membersTel}
