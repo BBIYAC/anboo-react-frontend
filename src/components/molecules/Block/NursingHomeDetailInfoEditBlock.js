@@ -9,6 +9,7 @@ const NursingHomeDetailInfoEditBlock = ({id, name, tel, address, time, image, se
     nh_operating_hour :"",
     nh_tel : "",
     nh_address : "",
+    nh_representative_image : ""
   })
 
   useEffect(()=>{
@@ -18,7 +19,7 @@ const NursingHomeDetailInfoEditBlock = ({id, name, tel, address, time, image, se
       nh_operating_hour : nhInfoInput.nh_operating_hour,
       nh_tel : nhInfoInput.nh_tel,
       nh_address : nhInfoInput.nh_address,
-      nh_representative_picture : pictures
+      nh_representative_image : pictures
     })
   }, [pictures, nhInfoInput])
 

@@ -55,7 +55,6 @@ const ManagerNhInfo= () => {
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
         setChiefImage(response.data.employee_info[0].image);
         setMembersArray(response.data.employee_info);
-        console.log(response.data.employee_info)
       })
       .catch(error => {
         setChiefName('');
@@ -90,6 +89,7 @@ const ManagerNhInfo= () => {
         console.error(error)
     })
   },[headers])
+
 
   const onSigninClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
