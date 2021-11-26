@@ -36,10 +36,10 @@ const MgNHInfoEdit = ({
 
   // 요양원 직원 정보 수정
   const [nhEmployeeList, setNHEmployeeList] = useState([{
-    nh_employee_id: "",
     nh_employee_name: "",
     nh_employee_tel : "",
-    nh_employee_images: ''
+    nh_employee_images: '',
+    nh_employee_position : '',
   }]);
 
   // const [nhEmployeeImages, setNhEmployeeImages] = useState([]); // 직원 이미지 배열
@@ -106,60 +106,53 @@ const MgNHInfoEdit = ({
       representative_form_data.append(key, nhInfo[key]);
     }
 
-    // axios({ url: `${apiUrl}/supervisor/save-nh-info/`, method: 'put', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: representative_form_data })
-    //   .then(response => {
-    //     console.log(response)
-    //   }).catch(error => {
-    //     console.error(error);
-    //   })
-    // axios({ url: `${apiUrl}/supervisor/save-activity-images/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: activity_image_list_formdata })
-    //   .then(response => {
-    //     console.log(response)
-    //   }).catch(error => {
-    //     console.error(error);
-    //   })
+    axios({ url: `${apiUrl}/supervisor/save-nh-info/`, method: 'put', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: representative_form_data })
+      .then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.error(error);
+      })
+    axios({ url: `${apiUrl}/supervisor/save-activity-images/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: activity_image_list_formdata })
+      .then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.error(error);
+      })
 
-    // console.log(nhEmployeeList)
-    // axios({ url: `${apiUrl}/supervisor/save-employee-info/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken') }, data: nhEmployeeList })
-    //   .then(response => {
-    //     console.log(response.data)
-    //     for (let val2 of response.data) {
-    //       for (let val1 of nhEmployeeList) {
-    //         let phonenumber = '+82' + val1.nh_employee_tel.replace(/-/gi, '').slice(1, val1.nh_employee_tel.replace(/-/gi, '').length)
-    //         if (phonenumber == val2.nh_employee_tel) {
-    //           console.log(val2)
-    //           console.log(val1)
-    //           console.log("-----------");
-    //           let nh_employee_image_form_data = new FormData();
-    //           nh_employee_image_form_data.append("nh_employee_id", val2.id);
-    //           nh_employee_image_form_data.append("nh_employee_image", val1.nh_employee_image);
+    console.log(nhEmployeeList)
+    axios({ url: `${apiUrl}/supervisor/save-employee-info/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken') }, data: nhEmployeeList })
+      .then(response => {
+        console.log(response.data)
+        for (let val2 of response.data) {
+          for (let val1 of nhEmployeeList) {
+            let phonenumber = '+82' + val1.nh_employee_tel.replace(/-/gi, '').slice(1, val1.nh_employee_tel.replace(/-/gi, '').length)
+            if (phonenumber == val2.nh_employee_tel) {
+              console.log(val2)
+              console.log(val1)
+              console.log("-----------");
+              let nh_employee_image_form_data = new FormData();
+              nh_employee_image_form_data.append("nh_employee_id", val2.id);
+              nh_employee_image_form_data.append("nh_employee_image", val1.nh_employee_image);
 
-    //           axios({ url: `${apiUrl}/supervisor/save-employee-image/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: nh_employee_image_form_data })
-    //             .then(response => {
-    //               console.log(response.data)
+              axios({ url: `${apiUrl}/supervisor/save-employee-image/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: nh_employee_image_form_data })
+                .then(response => {
+                  console.log(response.data)
 
-    //             }).catch(error => {
-    //               console.error(error);
-    //             })
-    //         }
-    //       }
-    //     }
-    //   }).catch(error => {
-    //     console.error(error);
-    //   })
+                }).catch(error => {
+                  console.error(error);
+                })
+            }
+          }
+        }
+      }).catch(error => {
+        console.error(error);
+      })
     }
 
   const chiefInfo = {
     'chiefName': chiefName,
     'chiefTel': chiefTel,
     'chiefImage': chiefImage,
-    'chiefId' : ()=>{
-      try{
-        return membersArray[0].id
-      }catch{
-        return ""
-      }
-    }
   }
 
   return(

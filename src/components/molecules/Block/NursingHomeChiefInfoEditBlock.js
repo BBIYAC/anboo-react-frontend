@@ -19,7 +19,7 @@ const NursingHomeChiefInfoEditBlock = ({
                         ? nhChief.nh_employee_tel
                         : '+82' + nhChief.nh_employee_tel.replace(/-/g, '').substring(1, nhChief.nh_employee_tel.length -2),
       nh_employee_image: nhChief.nh_employee_image,
-      nh_employee_id: chiefInfo.chiefId
+      nh_employee_position : '요양원장',
     }, ...nhEmployeeList.slice(1, nhEmployeeList.length)])
   },[nhChief])
 
@@ -28,7 +28,7 @@ const NursingHomeChiefInfoEditBlock = ({
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
           <ManagerImage url={chiefInfo.chiefImage} setNhChief={setNhChief} nhChief={nhChief}/>
-          <NursingHomeChiefInfoInput chiefInfo={chiefInfo} setNhChief={setNhChief} />
+          <NursingHomeChiefInfoInput chiefInfo={chiefInfo} setNhChief={setNhChief} nhChief={nhChief} />
         </div>
       </div>
     </React.Fragment>

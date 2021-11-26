@@ -48,7 +48,7 @@ const NursingHomeManagerInfoEditBlock = ({
                             ? caregiver.phone
                             : '+82' + caregiver.phone.replace(/-/g, '').substring(1, caregiver.phone.length -2),
           nh_employee_image: caregiver.image,
-          nh_employee_id: caregiver.id
+          nh_employee_position : '요양사',
         }
       })])
     }

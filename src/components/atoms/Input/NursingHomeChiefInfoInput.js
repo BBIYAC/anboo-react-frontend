@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
+const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief, nhChief}) => {
   const [name, setName] = useState('시설장 성함');
   const [tel, setTel] = useState("시설장 전화번호('-' 포함)");
 
@@ -13,7 +13,7 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
     setNhChief({
       nh_employee_name: name,
       nh_employee_tel : tel,
-      nh_employee_image : chiefInfo.image,
+      nh_employee_image : nhChief.nh_employee_image,
     })
   },[name, tel])
 
