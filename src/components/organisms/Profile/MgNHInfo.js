@@ -38,7 +38,7 @@ const MgNHInfo = ({
     };
   });
 
-  const renderImages = images.map((image, idx) => {
+  const renderImages = images.reverse().map((image, idx) => {
     return(
       <NhImageGrid url={image.nh_image} key={idx}/>
     );
