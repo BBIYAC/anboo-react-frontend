@@ -21,8 +21,7 @@ const MgNHInfoEdit = ({
   chiefName,
   chiefTel,
   chiefImage,
-  time,
-  position}) => {
+  time,}) => {
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const [changeValue, setChangeValue] = useState([]);
 
@@ -41,7 +40,6 @@ const MgNHInfoEdit = ({
     nh_employee_id: "",
     nh_employee_name: "",
     nh_employee_tel : "",
-    nh_employee_position: '',
     nh_employee_images: ''
   }]);
 
@@ -104,8 +102,6 @@ const MgNHInfoEdit = ({
       representative_form_data.append(key, nhInfo[key]);
     }
 
-
-
     axios({ url: `${apiUrl}/supervisor/save-nh-info/`, method: 'put', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: representative_form_data })
       .then(response => {
         console.log(response)
@@ -119,8 +115,7 @@ const MgNHInfoEdit = ({
         console.error(error);
       })
 
-
-
+    console.log(nhEmployeeList)
     axios({ url: `${apiUrl}/supervisor/save-employee-info/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken') }, data: nhEmployeeList })
       .then(response => {
         console.log(response.data)
@@ -143,20 +138,11 @@ const MgNHInfoEdit = ({
                   console.error(error);
                 })
             }
-
-
           }
-
-
-
-
-
-
         }
       }).catch(error => {
         console.error(error);
       })
-
     }
 
 
@@ -168,11 +154,7 @@ const MgNHInfoEdit = ({
 
   const chiefInfo = {
     'chiefName': chiefName,
-    'chiefTel': 0 + chiefTel.substring(3,5)
-                  +'-'+ chiefTel.substring(5,9)
-                  +'-'+ chiefTel.substring(9,13),
-    'chiefImage': chiefImage,
-    'chiefPosition': position,
+    'chiefTel': chiefTel ? 0 + chiefTel.substring(3,5) + '-' + chiefTel.substring(5,9) + '-' + chiefTel.substring(9,13) : chiefTel,
     'chiefImage': chiefImage,
     'chiefId' : ()=>{
       try{
@@ -183,7 +165,6 @@ const MgNHInfoEdit = ({
     }
   }
 
-  console.log(images);
   return(
     <React.Fragment>
       <NursingHomeDetailInfoEditBlock 

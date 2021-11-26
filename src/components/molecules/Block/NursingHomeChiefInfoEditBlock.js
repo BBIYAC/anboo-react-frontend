@@ -11,11 +11,11 @@ const NursingHomeChiefInfoEditBlock = ({
     nh_employee_tel : chiefInfo.chiefTel,
   });
 
+  // console.log(chiefInfo)
   useEffect(()=>{
     setNHEmployeeList([{
       nh_employee_name: nhChief.nh_employee_name,
       nh_employee_tel : nhChief.nh_employee_tel,
-      nh_employee_position: chiefInfo.chiefPosition,
       nh_employee_image: chiefInfo.chiefImage,
       nh_employee_id: chiefInfo.chiefId
     }, ...nhEmployeeList])
@@ -26,7 +26,7 @@ const NursingHomeChiefInfoEditBlock = ({
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
           <ManagerImage url={chiefInfo.chiefImage}/>
-          <NursingHomeChiefInfoInput chiefInfo={chiefInfo} nhChief={nhChief} setNhChief={setNhChief} />
+          <NursingHomeChiefInfoInput chiefInfo={chiefInfo} setNhChief={setNhChief} />
         </div>
       </div>
     </React.Fragment>

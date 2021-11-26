@@ -7,7 +7,6 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
   useEffect(()=>{
     setName(chiefInfo.chiefName);
     setTel(chiefInfo.chiefTel);
-    
   },[])
 
   useEffect(()=>{
@@ -25,6 +24,7 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
     e.target.value && setTel(e.target.value);
   }
     
+
   return(
     <React.Fragment>
       <div className="div-nursinghomeinfo">

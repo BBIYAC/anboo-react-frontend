@@ -22,14 +22,18 @@ const ManagerNhInfo= () => {
   const [chiefName, setChiefName] = useState('');
   const [chiefTel, setChiefTel] = useState('');
   const [chiefImage, setChiefImage] = useState('');
+
+  // 요양원 관리자 정보 리스트
   const [membersArray, setMembersArray] = useState([]);
-  
+
+
+  // 회원 비회원
   const [isNotMember, setIsNotMember] = useState(false);
-  
+
   const [images, setImages] = useState([]);
-  const [position, setPosition] = useState('');
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   let history = useHistory();
+  
   
   const detailGet = () => {
     // 요양원 상세정보 GET
@@ -43,6 +47,7 @@ const ManagerNhInfo= () => {
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
+      console.log(response.data);
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
@@ -50,14 +55,13 @@ const ManagerNhInfo= () => {
         setChiefName(response.data.employee_info[0].nh_employee_name);
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
         setChiefImage(response.data.employee_info[0].image);
-        setPosition(response.data.employee_info[0].position);
         setMembersArray(response.data.employee_info);
+        console.log(response.data.employee_info);
       })
       .catch(error => {
         setChiefName('');
         setChiefTel('');
         setChiefImage('');
-        setPosition('');
         setMembersArray([]);
       })
     })
@@ -92,6 +96,7 @@ const ManagerNhInfo= () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
   }
 
+
   return (
     <React.Fragment>
       {isEdit
@@ -108,8 +113,7 @@ const ManagerNhInfo= () => {
         chiefTel={chiefTel}
         chiefImage={chiefImage}
         membersArray={membersArray}
-        time={time}
-        position={position}/>
+        time={time}/>
       : <NursingHomeInfo 
         onClick={()=>setIsEdit(true)} 
         onSigninClick={onSigninClick} 
@@ -119,7 +123,6 @@ const ManagerNhInfo= () => {
         nh_address={address} 
         nh_image={image} 
         nh_images={images}
-        position={position}
         chiefName={chiefName}
         chiefTel={
           0 + chiefTel.substring(3,5)

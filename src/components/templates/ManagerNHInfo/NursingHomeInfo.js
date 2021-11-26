@@ -15,7 +15,6 @@ const NursingHomeInfo = ({
   nh_address, 
   nh_image,
   nh_images,
-  position, 
   chiefName, 
   chiefTel, 
   chiefImage, 
@@ -39,7 +38,6 @@ const NursingHomeInfo = ({
         address={nh_address} 
         image={nh_image}
         images={nh_images}
-        position={position}
         chiefName={chiefName}
         chiefTel={chiefTel}
         chiefImage={chiefImage}

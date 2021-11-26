@@ -26,8 +26,8 @@ const NursingHomeManagerInfoEditBlock = ({
   },[changeValue])
 
   useEffect(()=>{
-    setCaregivers([...membersArray.filter(caregiver =>
-      caregiver.position === '요양사').map((member, index)=>{
+    setCaregivers([...membersArray.filter(idx =>
+    idx > 0).map((member, index)=>{
         return {
           key: index,
           id: member.id,
@@ -48,7 +48,6 @@ const NursingHomeManagerInfoEditBlock = ({
           key: index,
           nh_employee_name: caregiver.name,
           nh_employee_tel : caregiver.phone,
-          nh_employee_position: '요양사',
           nh_employee_image: caregiver.image,
           nh_employee_id: caregiver.id
         }

@@ -42,7 +42,7 @@ const NursingHomeInfoInput = ({name, tel, address, time,  setNhInfoInput}) => {
           name='nh_tel' 
           className="input-mgNhInfoEditInput" 
           type="tel" 
-          maxLength = "11"
+          maxLength = "13"
           placeholder={tel} 
           onChange={onChange}
         ></input>

@@ -16,7 +16,6 @@ const MgNHInfo = ({
   address, 
   image, 
   images, 
-  position, 
   chiefName, 
   chiefTel, 
   chiefImage, 
@@ -24,7 +23,7 @@ const MgNHInfo = ({
   time,
   starRating,}) => {
   
-  // console.log(membersArray);
+  console.log(membersArray);
   const renderManagers = membersArray.map((member, index) => {
     if(index > 0){
       return(
@@ -35,8 +34,7 @@ const MgNHInfo = ({
           0 + member.nh_employee_tel.substring(3,5)
         +'-'+ member.nh_employee_tel.substring(5,9)
         +'-'+ member.nh_employee_tel.substring(9,13)}
-        membersImage={member.image}
-        position={member.position} />
+        membersImage={member.image} />
       );
     };
   });
@@ -65,7 +63,6 @@ const MgNHInfo = ({
       {chiefName==''
         ? <NotRegisteredEmptyChief color="var(--color-green)"/>
         : <NursingHomeChiefInfoBlock 
-          position={position} 
           chiefName={chiefName} 
           chiefTel={chiefTel} 
           chiefImage={chiefImage} />

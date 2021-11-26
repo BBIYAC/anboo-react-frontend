@@ -33,7 +33,6 @@ const  RegisterNhInfo= () => {
   const [chiefName, setChiefName] = useState('');
   const [chiefTel, setChiefTel] = useState('');
   const [chiefImage, setChiefImage] = useState('');
-  const [position, setPosition] = useState('');
   const [membersArray, setMembersArray] = useState([]);
 
   useEffect(()=>{
@@ -65,7 +64,6 @@ const  RegisterNhInfo= () => {
             setChiefName(response.data.employee_info[0].nh_employee_name);
             setChiefTel(response.data.employee_info[0].nh_employee_tel);
             setChiefImage(response.data.employee_info[0].image);
-            setPosition(response.data.employee_info[0].position);
             setMembersArray(response.data.employee_info);
           }else {                 // 요양원이 등록되었지만 요양사, 활동 정보가 없을 경우
             setIsRegisteredEmpty(true);
@@ -124,8 +122,7 @@ const  RegisterNhInfo= () => {
           0 + member.nh_employee_tel.substring(3,5)
         +'-'+ member.nh_employee_tel.substring(5,9)
         +'-'+ member.nh_employee_tel.substring(9,13)}
-        membersImage={member.image}
-        position={member.position} />
+        membersImage={member.image} />
       );
     };
   });
@@ -170,8 +167,7 @@ const  RegisterNhInfo= () => {
         0 + chiefTel.substring(3,5)
         +'-'+chiefTel.substring(5,9)
         +'-'+chiefTel.substring(9,13)} 
-      chiefImage={chiefImage} 
-      position={position} />
+      chiefImage={chiefImage} />
       <hr/>
       <div className="div_memberBox">
         { renderManagers }

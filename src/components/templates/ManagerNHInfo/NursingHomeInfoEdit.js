@@ -19,8 +19,7 @@ const NursingHomeInfoEdit = ({
   chiefTel,
   chiefImage,
   membersArray,
-  time,
-  position}) => {
+  time,}) => {
   let history = useHistory();
   return(
     <>
@@ -41,8 +40,7 @@ const NursingHomeInfoEdit = ({
       chiefTel={chiefTel}
       chiefImage={chiefImage}
       membersArray={membersArray}
-      time={time}
-      position={position} />
+      time={time} />
       <Floating background="var(--color-green)" onClick={()=>history.push("/mg/home")}/>
       <ManagerBelowBarBlock isRequest/>
     </>

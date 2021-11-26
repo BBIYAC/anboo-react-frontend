@@ -5,9 +5,6 @@ import {BsPlusLg} from 'react-icons/bs';
 const NursingHomeImageEditBlock = ({setNhImageList, editImgs}) => {
   const fileInput = useRef();
   const [images, setImages] = useState([]);
-
-  console.log("여기")
-  console.log(editImgs)
   
   const removeImage = (id) => {
     setImages(images.filter(image => {
