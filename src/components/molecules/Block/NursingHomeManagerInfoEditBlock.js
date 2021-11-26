@@ -33,9 +33,7 @@ const NursingHomeManagerInfoEditBlock = ({
           id: member.id,
           image: member.image ? member.image : '',
           name: member.nh_employee_name,
-          phone: 0 + member.nh_employee_tel.substring(3,5)
-                  +'-'+ member.nh_employee_tel.substring(5,9)
-                  +'-'+ member.nh_employee_tel.substring(9,13),
+          phone: member.nh_employee_tel,
         }
     }), ...caregivers])
   },[membersArray]);
@@ -46,7 +44,9 @@ const NursingHomeManagerInfoEditBlock = ({
         return {
           key: index,
           nh_employee_name: caregiver.name,
-          nh_employee_tel : caregiver.phone,
+          nh_employee_tel : caregiver.phone.includes('+82')
+                            ? caregiver.phone
+                            : '+82' + caregiver.phone.replace(/-/g, '').substring(1, caregiver.phone.length -2),
           nh_employee_image: caregiver.image,
           nh_employee_id: caregiver.id
         }

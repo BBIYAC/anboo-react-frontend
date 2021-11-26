@@ -9,23 +9,25 @@ const NursingHomeChiefInfoEditBlock = ({
   const [nhChief, setNhChief] = useState({
     nh_employee_name: chiefInfo.chiefName,
     nh_employee_tel : chiefInfo.chiefTel,
+    nh_employee_image : chiefInfo.image,
   });
 
-  // console.log(chiefInfo)
   useEffect(()=>{
     setNHEmployeeList([{
       nh_employee_name: nhChief.nh_employee_name,
-      nh_employee_tel : nhChief.nh_employee_tel,
-      nh_employee_image: chiefInfo.chiefImage,
+      nh_employee_tel : nhChief.nh_employee_tel.includes('+82')
+                        ? nhChief.nh_employee_tel
+                        : '+82' + nhChief.nh_employee_tel.replace(/-/g, '').substring(1, nhChief.nh_employee_tel.length -2),
+      nh_employee_image: nhChief.nh_employee_image,
       nh_employee_id: chiefInfo.chiefId
-    }, ...nhEmployeeList])
+    }, ...nhEmployeeList.slice(1, nhEmployeeList.length)])
   },[nhChief])
 
   return(
     <React.Fragment>
       <div className="block-NursingHomeManagerInfo">
         <div className="NursingHomeManagerInfo">
-          <ManagerImage url={chiefInfo.chiefImage}/>
+          <ManagerImage url={chiefInfo.chiefImage} setNhChief={setNhChief} nhChief={nhChief}/>
           <NursingHomeChiefInfoInput chiefInfo={chiefInfo} setNhChief={setNhChief} />
         </div>
       </div>

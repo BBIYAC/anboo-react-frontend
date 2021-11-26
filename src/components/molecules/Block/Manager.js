@@ -45,7 +45,9 @@ const Manager = ({caregiver, removeCaregiver, setChangeValue, index}) => {
             type = "tel"
             maxLength = "13"
             className="input-mgNhInfoEditInput"
-            placeholder={caregiver.phone}
+            placeholder={caregiver.phone.includes('+82')? 0 + caregiver.phone.substring(3,5)
+                          +'-'+ caregiver.phone.substring(5,9)
+                          +'-'+ caregiver.phone.substring(9,13): caregiver.phone}
             onBlur={onTelChange}></input>
           </div>
         </div>

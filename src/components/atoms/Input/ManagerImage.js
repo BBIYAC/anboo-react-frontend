@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect } from 'react';
 
 
-const ManagerImage = ({url, border, borderColor, setImage, setCaregiverImage}) => {
+const ManagerImage = ({url, border, borderColor, setImage, setCaregiverImage, nhChief, setNhChief}) => {
   const fileInput = useRef();
   const [fileURL, setFileURL] = useState(""); 
   var inputFile = '';
@@ -11,6 +11,11 @@ const ManagerImage = ({url, border, borderColor, setImage, setCaregiverImage}) =
       setFileURL(URL.createObjectURL(inputFile));
       setImage && setImage(inputFile);
       setCaregiverImage && setCaregiverImage(inputFile);
+      setNhChief && setNhChief({
+        nh_employee_name: nhChief.nh_employee_name,
+        nh_employee_tel : nhChief.nh_employee_tel,
+        nh_employee_image : inputFile,
+      })
     }
   };
   

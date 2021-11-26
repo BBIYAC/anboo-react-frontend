@@ -13,6 +13,7 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
     setNhChief({
       nh_employee_name: name,
       nh_employee_tel : tel,
+      nh_employee_image : chiefInfo.image,
     })
   },[name, tel])
 
@@ -41,7 +42,7 @@ const NursingHomeChiefInfoInput = ({chiefInfo, setNhChief}) => {
         className="input-mgNhInfoEditInput" 
         type="tel"
         maxLength = "13"
-        placeholder={tel}
+        placeholder={tel.includes('+82')? 0 + tel.substring(3,5) + '-' + tel.substring(5,9) + '-' + tel.substring(9,13) : tel}
         onBlur={onTelChange}></input>
       </div>
     </React.Fragment>

@@ -47,7 +47,6 @@ const ManagerNhInfo= () => {
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
-      console.log(response.data);
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
@@ -56,7 +55,6 @@ const ManagerNhInfo= () => {
         setChiefTel(response.data.employee_info[0].nh_employee_tel);
         setChiefImage(response.data.employee_info[0].image);
         setMembersArray(response.data.employee_info);
-        console.log(response.data.employee_info);
       })
       .catch(error => {
         setChiefName('');
