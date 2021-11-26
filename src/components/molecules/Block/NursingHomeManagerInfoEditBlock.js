@@ -26,19 +26,18 @@ const NursingHomeManagerInfoEditBlock = ({
   },[changeValue])
 
   useEffect(()=>{
-    setCaregivers([...membersArray.filter(idx =>
-    idx > 0).map((member, index)=>{
+    setCaregivers([...membersArray.filter((caregiver, idx) =>
+      idx > 0).map((member, index)=>{
         return {
           key: index,
           id: member.id,
-          image: member.image,
+          image: member.image ? member.image : '',
           name: member.nh_employee_name,
           phone: 0 + member.nh_employee_tel.substring(3,5)
                   +'-'+ member.nh_employee_tel.substring(5,9)
                   +'-'+ member.nh_employee_tel.substring(9,13),
         }
     }), ...caregivers])
-    
   },[membersArray]);
 
   useEffect(()=>{

@@ -10,7 +10,6 @@ import { apiUrl } from "../../../pages/ApiURL";
 import { useHistory } from "react-router";
 
 const MgNHInfoEdit = ({
-  onClick, 
   id,
   name, 
   tel, 
@@ -144,13 +143,6 @@ const MgNHInfoEdit = ({
         console.error(error);
       })
     }
-
-
-  const renderImages = images.map((image, idx) => {
-    return(
-      <NhImageGrid url={image.nh_image} key={idx}/>
-    );
-  });
 
   const chiefInfo = {
     'chiefName': chiefName,
