@@ -26,7 +26,7 @@ const NursingHomeImageEditBlock = ({setNhImageList, editImgs}) => {
   },[])
   
 
-  const renderEditImages = images.map((image, index) => {
+  const renderEditImages = images.reverse().map((image, index) => {
   return (
     <NHActImage
     key={index}
