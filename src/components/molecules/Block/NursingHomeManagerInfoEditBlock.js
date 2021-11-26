@@ -54,7 +54,6 @@ const NursingHomeManagerInfoEditBlock = ({
     }
   },[caregivers])
 
-
   const removeCaregiver = (phone) => {
     setCaregivers(caregivers.filter(caregiver => {
       return caregiver.phone !== phone;

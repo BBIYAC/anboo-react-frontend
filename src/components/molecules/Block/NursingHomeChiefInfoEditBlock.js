@@ -9,7 +9,7 @@ const NursingHomeChiefInfoEditBlock = ({
   const [nhChief, setNhChief] = useState({
     nh_employee_name: chiefInfo.chiefName,
     nh_employee_tel : chiefInfo.chiefTel,
-    nh_employee_image : chiefInfo.image,
+    nh_employee_image : chiefInfo.chiefImage,
   });
 
   useEffect(()=>{

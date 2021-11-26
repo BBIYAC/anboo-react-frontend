@@ -59,7 +59,7 @@ const MgNHInfo = ({
 
       <hr/>
 
-      {chiefName==''
+      {chiefName === ''
         ? <NotRegisteredEmptyChief color="var(--color-green)"/>
         : <NursingHomeChiefInfoBlock 
           chiefName={chiefName} 
@@ -69,14 +69,14 @@ const MgNHInfo = ({
 
       <hr/>
 
-      {membersArray.length==0
+      {membersArray.length < 2
         ? <NotRegisteredEmptyManagers color="var(--color-green)"/>
         : renderManagers
       }
         
       <hr/>
 
-      {images.length==0
+      {images.length === 0
         ? <NotRegisteredEmptyActImages color="var(--color-green)"/>
         : <div className="grid-container">{renderImages}</div>
       }
