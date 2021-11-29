@@ -30,7 +30,7 @@ const Gender = ({isGender, setIsGender, fillMessage}) => {
     return(
         <div className='sel-size' style={handleStyle}>
             <div className="tit-userchoice">성별</div>
-            <select name='gender' className="sel-userchoice" value={selected} onChange={changeSelect} style={color}>
+            <select name='gender' className="sel-userchoice" value={selected || ''} onChange={changeSelect} style={color}>
                 <option value='' disabled hidden>선택</option>
                 <option value='남' style={{color: 'black'}}>남</option>
                 <option value='여' style={{color: 'black'}}>여</option>
