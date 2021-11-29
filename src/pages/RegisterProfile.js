@@ -16,8 +16,7 @@ const  RegisterProfile= () => {
   const [nhId, setNhId] = useState();
 
   useEffect(()=>{
-    console.log('history.location.state.isId', history.location.state.isId)
-    history.location.state.isId && setNhId(history.location.state.isId)
+    history.location.state !== undefined && setNhId(history.location.state.isId)
   },[])
 
   let history = useHistory();
@@ -25,14 +24,13 @@ const  RegisterProfile= () => {
     if(headers.Authorization.split(" ")[1] === "null"){
       headers.Authorization = '';
     };
-    console.log(history.location.state.isId)
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         // axios 미등록 보호자인지 등록 대기중인지 GET
-        if(history.location.state.isId){ 
-          axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
+        if(nhId){ 
+          axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${nhId}/`, method: 'get', headers:headers})
           .then(response=>{
             key = 0;
           })

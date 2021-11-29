@@ -18,6 +18,7 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   }
 
   useEffect(()=>{
+    console.log(url)
     setFileURL(url);
   }, [url])
   
@@ -26,10 +27,9 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
       <img
       className="img-rgProfile" 
       url=""
-      // src={typeof fileURL === 'object'
-      // ? URL.createObjectURL(fileURL)
-      // : fileURL}
-      src={fileURL}
+      src={typeof fileURL === 'object'
+      ? URL.createObjectURL(fileURL)
+      : fileURL}
       onClick={() => fileInput.current.click()}
       onError={handleImgError} 
       style={{border, borderColor}}
