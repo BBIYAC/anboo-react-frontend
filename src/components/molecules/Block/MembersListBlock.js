@@ -16,6 +16,7 @@ const MembersListBlock = () => {
     axios({url:`${apiUrl}/supervisor/nh-nok-list/`,method : 'get' ,headers:headers})
     .then(response =>{
       setMembers(response.data.np_info);
+      console.log(response);
     }).catch(error => { 
         console.error(error);
     })
@@ -58,10 +59,11 @@ const MembersListBlock = () => {
   const onDelete = (e) => {
     const {id} = e.target
     axios({url:`${apiUrl}/supervisor/nh-nok-list/`,method : 'delete' ,headers:headers, data:{
-      user_id: id,
+      user_id: [id],
     }})
     .then(response =>{
-      window.location.reload();
+      console.log([response]);
+      // window.location.reload();
     }).catch(error => { 
         console.error(error);
     })

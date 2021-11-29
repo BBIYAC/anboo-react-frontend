@@ -23,7 +23,7 @@ const ManagerActsPost = ({onSigninClick, members}) => {
   const onClick = () => {
     setClicked(true);
     if(url && content){
-      if(ids.length !== members['members']){ // 일부 선택 or 한 명 선택
+      if(ids.length !== members['members'] || members.length === 1){ // 일부 선택 or 한 명 선택
         for(let i=0; i<users.length; i++){
           // axios acts post POST
           const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
