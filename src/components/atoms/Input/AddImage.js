@@ -6,9 +6,8 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   const [fileURL, setFileURL] = useState(""); 
   const onChange = (e) => {
       const imageFile = e.target.files[0];
-      // const imageUrl = URL.createObjectURL(imageFile);  
-      // setFileURL(imageUrl);
-      setFileURL(imageFile);
+      const imageUrl = URL.createObjectURL(imageFile);  
+      setFileURL(imageUrl);
       setIsImage && setIsImage(imageFile);
       setPictures && setPictures(imageFile);
   };

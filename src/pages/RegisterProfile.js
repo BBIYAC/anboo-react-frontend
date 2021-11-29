@@ -13,10 +13,12 @@ import '../components/atoms/Button/Button.css';
 const  RegisterProfile= () => {
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   const [userState, setUserState] = useState();
+  const [nhId, setNhId] = useState();
 
   
   let history = useHistory();
   useEffect(()=>{
+    setNhId(history.location.state.isId)
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
@@ -47,7 +49,7 @@ const  RegisterProfile= () => {
         return <RegisterProfileAfter onLogoutClick={onLogoutClick}/>
       }
       case 1:{ // 미등록 보호자
-        return <RegisterProfileBefore onLogoutClick={onLogoutClick} />
+        return <RegisterProfileBefore onLogoutClick={onLogoutClick} nhId={nhId} />
       }
       default:{ // 등록 대기 보호자
         return <RegisterProfileWaiting onLogoutClick={onLogoutClick} />

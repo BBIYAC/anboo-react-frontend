@@ -13,7 +13,7 @@ import SaveModal from '../../organisms/Modal/SaveModal'
 import axios from 'axios';
 import { apiUrl } from '../../../pages/ApiURL';
 
-const  RegisterProfileBefore= () => {
+const  RegisterProfileBefore= ({nhId}) => {
   const [fillMessage, setFillMessage] = useState(false);
   const [isImage, setIsImage] = useState("");
   const [isRegister, setIsRegister] = useState('');
@@ -26,7 +26,7 @@ const  RegisterProfileBefore= () => {
   const [modalText, setModalText] = useState('');
   const [userState, setUserState] = useState(false);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
-
+  const [params, setParams] = useState()
   const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
     if(isRegister && isGender && isBirth){
@@ -39,16 +39,19 @@ const  RegisterProfileBefore= () => {
         "memo": isCaution
       }
 
+      console.log(params)
+
       // axios register profile POST
       axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: params, headers: headers })
       .then(response => {
-        console.log("여기");
-        console.log(response);
+        console.log('register profile POST success', response);
         setModalText('저장되었습니다.');
         setIsClicked(true);
       })
     }
   };
+
+
 
   let history = useHistory();
   // ################################사용자 구분 코드################################
@@ -58,20 +61,15 @@ const  RegisterProfileBefore= () => {
     };
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
+      console.log(nhId)
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
-        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
+        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${nhId}/`, method: 'get', headers:headers})
         .then(response=>{
-<<<<<<< HEAD
-          console.log(response);
-          setWaiting(response.data.is_waiting)
-=======
-          console.log('is_waiting', response.data.is_waiting);
+          console.log('success')
           response.data.is_waiting && setWaiting(response.data.is_waiting)
->>>>>>> 471c1be1dcde9325d5e4f5e01d22f1c7f883dac8
-          
         })
-        setIsId(history.location.state.isId);
+        setIsId(nhId);
         history.push('/rg/profile');
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
