@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NoticeWaitingBlock from '../../molecules/Block/NoticeWaitingBlock';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 
 const RegisterProfileWaiting = ({onLogoutClick}) => {
 
-  
   return(
     <>
       <div className="header">
