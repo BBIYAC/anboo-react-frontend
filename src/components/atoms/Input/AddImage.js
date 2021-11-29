@@ -18,7 +18,6 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   }
 
   useEffect(()=>{
-    console.log(url)
     setFileURL(url);
   }, [url])
   
