@@ -107,7 +107,13 @@ const RegisterNhLocation = () => {
       console.log(key);
       console.log(response.data);
       if(key === 1){ // 미등록 보호자
-        setLogState(false);
+        // axios 미등록 보호자인지 등록 대기중인지 GET
+        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
+        .then(response=>{
+          response.data.is_waiting
+          ? history.push('/rg/profile') // 등록 대기 중
+          : setLogState(false);; // 미등록 보호자
+        })
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자

@@ -47,37 +47,45 @@ const  RegisterNhInfo= () => {
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
-        
-        // 요양원 상세정보 GET
-        axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
-        .then(response => {
-          console.log(response);
-          setName(response.data.nh_info.nh_name);
-          setAddress(response.data.nh_info.nh_address);
-          setTel(response.data.nh_info.nh_tel);
-          setTime(response.data.nh_info.nh_operating_hour)
-          setRepresentativeImage(response.data.nh_info.nh_representative_image)
-          setImages(response.data.nh_images)
-        })
-        // 관리자 상세정보 GET
-        axios({url:`${apiUrl}/not-nok/employee-info/${history.location.state.id}/`, method: 'get', headers:headers})
-        .then(response => {
-          if(response.data.is_registered == false ){     // 요양원이 등록되지 않은 경우
-            setIsRegistered(false);
-          }else if(response.data.is_registered == true && response.data.employee_info.length != 0 ){        // 요양원이 등록되었고 요양사, 활동 정보가 있을 경우
-            setChiefName(response.data.employee_info[0].nh_employee_name);
-            setChiefTel(response.data.employee_info[0].nh_employee_tel);
-            setChiefImage(response.data.employee_info[0].image);
-            setMembersArray(response.data.employee_info);
-          }else {                 // 요양원이 등록되었지만 요양사, 활동 정보가 없을 경우
-            setIsRegisteredEmpty(true);
+        // axios 미등록 보호자인지 등록 대기중인지 GET
+        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
+        .then(response=>{
+          if(response.data.is_waiting){
+            history.push('/rg/profile') // 등록 대기 중
+          }else{
+            // 요양원 상세정보 GET
+            axios({url:`${apiUrl}/not-nok/nh-info/${history.location.state.id}/`, method: 'get',headers:headers})
+            .then(response => {
+              console.log(response);
+              setName(response.data.nh_info.nh_name);
+              setAddress(response.data.nh_info.nh_address);
+              setTel(response.data.nh_info.nh_tel);
+              setTime(response.data.nh_info.nh_operating_hour)
+              setRepresentativeImage(response.data.nh_info.nh_representative_image)
+              setImages(response.data.nh_images)
+            })
+            // 관리자 상세정보 GET
+            axios({url:`${apiUrl}/not-nok/employee-info/${history.location.state.id}/`, method: 'get', headers:headers})
+            .then(response => {
+              if(response.data.is_registered == false ){     // 요양원이 등록되지 않은 경우
+                setIsRegistered(false);
+              }else if(response.data.is_registered == true && response.data.employee_info.length != 0 ){        // 요양원이 등록되었고 요양사, 활동 정보가 있을 경우
+                setChiefName(response.data.employee_info[0].nh_employee_name);
+                setChiefTel(response.data.employee_info[0].nh_employee_tel);
+                setChiefImage(response.data.employee_info[0].image);
+                setMembersArray(response.data.employee_info);
+              }else {                 // 요양원이 등록되었지만 요양사, 활동 정보가 없을 경우
+                setIsRegisteredEmpty(true);
+              }
+            })
+            // 요양원 북마크 GET
+            axios({url:`${apiUrl}/not-nok/bookmark-list/${history.location.state.id}/`, method: 'get', headers:headers})
+            .then(response=> {
+              setBookMark(response.data.result);
+            })
           }
         })
-        // 요양원 북마크 GET
-        axios({url:`${apiUrl}/not-nok/bookmark-list/${history.location.state.id}/`, method: 'get', headers:headers})
-        .then(response=> {
-          setBookMark(response.data.result);
-        })
+        
 
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');

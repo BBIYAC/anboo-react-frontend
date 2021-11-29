@@ -238,31 +238,39 @@ const RegisterNhs= () => {
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
-        setIsMember(true);
+        // axios 미등록 보호자인지 등록 대기중인지 GET
+        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
+        .then(response=>{
+          if(response.data.is_waiting){
+            history.push('/rg/profile') // 등록 대기 중
+          }else{
+            setIsMember(true);
 
-        if(search){         // 검색어가 있을 때
-          axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
-          .then(response=>{
-            setNursingHomes(response.data);
-          }).catch(error=> {
-            console.error(error);
-          })
-
-          bookMarkAfterSearch();
-          ratingAfterSearch();
-
-        }else{              // 검색어가 없을 때
-          axios({url:`${apiUrl}/nh-info/`, method: 'get'})
-          .then(response=>{
-            setNursingHomes(response.data);
-          }).catch(error=> {
-            console.error(error);
-          })
-          
-          bookMarkBeforeSearch();
-          ratingBeforeSearch();
-
-        }
+            if(search){         // 검색어가 있을 때
+              axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
+              .then(response=>{
+                setNursingHomes(response.data);
+              }).catch(error=> {
+                console.error(error);
+              })
+    
+              bookMarkAfterSearch();
+              ratingAfterSearch();
+    
+            }else{              // 검색어가 없을 때
+              axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+              .then(response=>{
+                setNursingHomes(response.data);
+              }).catch(error=> {
+                console.error(error);
+              })
+              
+              bookMarkBeforeSearch();
+              ratingBeforeSearch();
+            }
+          }
+        })
+        
         
       }else if(key === 2){                    // 등록 보호자
         history.push('/rg/acts');

@@ -76,7 +76,13 @@ const ManagerNhInfo= () => {
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
-        history.push('/rg/nh-location');
+        // axios 미등록 보호자인지 등록 대기중인지 GET
+        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
+        .then(response=>{
+          response.data.is_waiting
+          ? history.push('/rg/profile') // 등록 대기 중
+          : history.push('/rg/nh-location'); // 미등록 보호자
+        })
       }else if(key === 2){ // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){ // 미승인 관리자
