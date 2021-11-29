@@ -44,18 +44,8 @@ const  RegisterProfileBefore= () => {
       .then(response => {
         console.log("여기");
         console.log(response);
-      })
-
-      // axios star rating POST
-      axios({url:`${apiUrl}/nok/star/detail/`,method : 'post' ,headers:headers, data: {
-        star_rating: 0
-        }})
-      .then(response =>{
-        console.log(response)
         setModalText('저장되었습니다.');
         setIsClicked(true);
-      }).catch(error => {
-          console.error(error);
       })
     }
   };
@@ -73,7 +63,7 @@ const  RegisterProfileBefore= () => {
         axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
         .then(response=>{
           console.log('is_waiting', response.data.is_waiting);
-          setWaiting(response.data.is_waiting)
+          response.data.is_waiting && setWaiting(response.data.is_waiting)
           
         })
         setIsId(history.location.state.isId);
