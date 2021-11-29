@@ -29,13 +29,12 @@ const  RegisterProfile= () => {
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         // axios 미등록 보호자인지 등록 대기중인지 GET
-        if(nhId){ 
-          axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${nhId}/`, method: 'get', headers:headers})
-          .then(response=>{
-            key = 0;
-          })
-        }
-        setUserState(key);
+        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
+        .then(response=>{
+          response.data.is_waiting
+          ? setUserState(0) // 등록 대기 중
+          : setUserState(key) // 미등록 보호자
+        })
       }else if(key === 2){ // 등록 보호자
         setUserState(key);
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
@@ -59,7 +58,7 @@ const  RegisterProfile= () => {
         return <RegisterProfileAfter onLogoutClick={onLogoutClick}/>
       }
       case 1:{ // 미등록 보호자
-        return <RegisterProfileBefore onLogoutClick={onLogoutClick} nhId={nhId} />
+        return <RegisterProfileBefore onLogoutClick={onLogoutClick} nhId={nhId} setUserState={setUserState} />
       }
       case 0:{ // 등록 대기 보호자
         return <RegisterProfileWaiting onLogoutClick={onLogoutClick} />

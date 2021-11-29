@@ -31,15 +31,18 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
   const [putCheck, setPutCheck] = useState([]);
 
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
+  const header = {Authorization : 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' };
+
   useEffect(()=>{
     // axios 요양인 정보 GET
     axios({url:`${apiUrl}/nok/np-profile/`,method : 'get' ,headers:headers})
     .then(response =>{
-      console.log(response.data.profile);
+      console.log(response.data);
       response.data.profile && setDefaults(response.data.profile);
     }).catch(error => {
         console.error(error);
     })
+
 
     // 별점 GET
     axios({url:`${apiUrl}/nok/star/detail/`,method : 'get' ,headers:headers})
@@ -50,38 +53,42 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     })
   },[])
 
+  useEffect(()=>{
+    console.log(defaults.np_profile_image);
+    setIsImage(defaults.np_profile_image || '');
+  },[defaults])
+
+
   const onClickEdit = () => {
     setFillMessage(true); // 비어있는 input 경고
     if(isRegister && isGender && isBirth){
-      // console.log({type:'PUT', isRegister, isGender, isBirth, isCaution, isImage, star});
+      console.log({type:'PUT', isRegister, isGender, isBirth, isCaution, isImage, star});
       // axios register profile PUT
-      const formData = new FormData();
+      let formData = new FormData();
       formData.append('np_name', isRegister);
       formData.append('np_date', isBirth);
       formData.append('memo', isCaution);
       formData.append('gender', isGender);
-      // isImage && formData.append('np_profile_image', isImage);
       formData.append('np_profile_image', isImage);
 
-      console.log(isImage);
-
-      axios({url:`${apiUrl}/nok/np-profile/`,method : 'put' ,headers:headers, data: formData})
+      axios({url:`${apiUrl}/nok/np-profile/`,method : 'put' ,headers:header, data: formData})
       .then(response =>{
         console.log(response)
         setPutCheck(putCheck =>[...putCheck, true]);
+        // axios star rating PUT
+        axios({url:`${apiUrl}/nok/star/post/`,method : 'put' ,headers:headers, data: {
+          star_rating: star
+        }})
+        .then(response =>{
+          setPutCheck(putCheck => [...putCheck, true]);
+        }).catch(error => {
+            console.error(error);
+        })
       }).catch(error => {
           console.error(error);
       })
 
-      // axios star rating PUT
-      axios({url:`${apiUrl}/nok/star/post/`,method : 'put' ,headers:headers, data: {
-        star_rating: star
-      }})
-      .then(response =>{
-        setPutCheck(putCheck => [...putCheck, true]);
-      }).catch(error => {
-          console.error(error);
-      })
+      
 
     }
   }
@@ -90,6 +97,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     putCheck.length === 2 && setIsClicked(true);
   },[putCheck]);
 
+
   return (
     <React.Fragment>
     <div className="header">
@@ -97,7 +105,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
         요양인 프로필
         <BiLogOut size="20" onClick={onLogoutClick}/>
     </div>
-      <AddImage url={defaults.np_profile_image || ''} setIsImage={setIsImage} />
+      <AddImage url={isImage} setIsImage={setIsImage} />
       <InputSelectBlock isRegister={defaults.np_name} isGender={defaults.gender} setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
       <Birth isBirth={defaults.np_date} setIsBirth={setIsBirth} fillMessage={fillMessage} />
       <Caution isCaution={defaults.memo} setIsCaution={setIsCaution} />

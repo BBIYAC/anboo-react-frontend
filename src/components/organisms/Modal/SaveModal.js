@@ -52,7 +52,7 @@ const SaveModal = ({isClicked, setIsClicked, text}) =>{
   let history = useHistory();
   const onClick = () => {
       setIsClicked(false);
-      history.go(0);
+      // history.go(0);
   }
 
   return(

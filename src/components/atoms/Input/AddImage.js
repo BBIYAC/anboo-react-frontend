@@ -15,10 +15,14 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
+    // setIsImage && setIsImage(); // File 객체로 디폴트 이미지 추가
   }
 
   useEffect(()=>{
-    setFileURL(url);
+    setFileURL(
+      typeof url === 'object'
+      ? URL.createObjectURL(url)
+      : url);
   }, [url])
   
   return(
@@ -26,9 +30,7 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
       <img
       className="img-rgProfile" 
       url=""
-      src={typeof fileURL === 'object'
-      ? URL.createObjectURL(fileURL)
-      : fileURL}
+      src={fileURL}
       onClick={() => fileInput.current.click()}
       onError={handleImgError} 
       style={{border, borderColor}}
