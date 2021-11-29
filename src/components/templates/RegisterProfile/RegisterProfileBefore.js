@@ -28,14 +28,8 @@ const  RegisterProfileBefore= () => {
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
 
   const onClickSave = () => {
-      setFillMessage(true); // 비어있는 input 경고
-      if(isRegister && isGender && isBirth){
-      setIsClicked(true);
-      setModalText('저장되었습니다.');
-      /*
-      axios register profile POST
-      */
-
+    setFillMessage(true); // 비어있는 input 경고
+    if(isRegister && isGender && isBirth){
       const params = {
         "nh_id": isId,
         "np_profile_image": isImage,
@@ -44,10 +38,14 @@ const  RegisterProfileBefore= () => {
         "np_date": isBirth,
         "memo": isCaution
       }
+
+      // axios register profile POST
       axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: params, headers: headers })
       .then(response => {
         console.log("여기");
         console.log(response);
+        setModalText('저장되었습니다.');
+        setIsClicked(true);
       })
     }
   };
@@ -64,8 +62,13 @@ const  RegisterProfileBefore= () => {
       if(key === 1){ // 미등록 보호자
         axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
         .then(response=>{
+<<<<<<< HEAD
           console.log(response);
           setWaiting(response.data.is_waiting)
+=======
+          console.log('is_waiting', response.data.is_waiting);
+          response.data.is_waiting && setWaiting(response.data.is_waiting)
+>>>>>>> 471c1be1dcde9325d5e4f5e01d22f1c7f883dac8
           
         })
         setIsId(history.location.state.isId);
@@ -81,7 +84,7 @@ const  RegisterProfileBefore= () => {
       }else{ // 관리자 승인 대기
         history.push('/mg/home')
       }
-    }).catch(error => { // 로그인 token 없는 경우(비회원)
+    }).catch(error => {
     })
   },[])
   // ################################사용자 구분 코드################################

@@ -49,11 +49,8 @@ const  RegisterProfile= () => {
       case 1:{ // 미등록 보호자
         return <RegisterProfileBefore onLogoutClick={onLogoutClick} />
       }
-      case 0: { // 등록 대기 보호자
-        <RegisterProfileWaiting onLogoutClick={onLogoutClick} />
-      }
-      default:{
-        return;
+      default:{ // 등록 대기 보호자
+        return <RegisterProfileWaiting onLogoutClick={onLogoutClick} />
       }
     }
   }
