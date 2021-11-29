@@ -41,8 +41,8 @@ const ManagerHomeAfter = () => {
     <>
       <LeftLargeText text='안녕하세요!' />
       <LeftLargeText text='오늘도 기분좋게 일해봐요. 모두 화이팅!' />
-      <CountRequestBlock request='요청사항 미응답' count={datas.non_response} />
-      <CountRequestBlock request='요양인 등록 미승인' count={datas.non_approval} />
+      <CountRequestBlock request='요청사항 미응답' count={datas.non_response} onClick={()=>history.push('/mg/requests/')} />
+      <CountRequestBlock request='요양인 등록 미승인' count={datas.non_approval} onClick={()=>history.push('/mg/rgs/')} />
       <Floating background='var(--color-green)' onClick={()=>history.push('/mg/requests')}/>
     </>
   );
