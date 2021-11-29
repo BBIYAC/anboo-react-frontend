@@ -27,7 +27,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     memo: '',
     np_profile_image: '',
   });
-  const [star, setStar] = useState('');
+  const [star, setStar] = useState(0);
   const [putCheck, setPutCheck] = useState([]);
 
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
@@ -44,8 +44,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     // 별점 GET
     axios({url:`${apiUrl}/nok/star/detail/`,method : 'get' ,headers:headers})
     .then(response =>{
-      const star_rating = response.data.star_rating;
-      setStar(star_rating);
+      response.data.star_rating && setStar(0)
     }).catch(error => {
         console.error(error);
     })
