@@ -8,6 +8,7 @@ const CallModal = ({tel, isClicked, setIsClicked}) =>{
         width: '100vw',
         height: '100vh', 
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        zIndex: '999',
     }:{
         display: 'none',
     };

@@ -89,7 +89,7 @@ const MgNHInfoEdit = ({
               axios({ url: `${apiUrl}/supervisor/save-employee-image/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: nh_employee_image_form_data })
                 .then(response => {
                   console.log(response.data)
-                  // history.go(0); // 새로고침
+                  history.go(0); // 새로고침
 
                 }).catch(error => {
                   console.error(error);

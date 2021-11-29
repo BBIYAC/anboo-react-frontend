@@ -58,7 +58,7 @@ const MembersListBlock = () => {
   const onDelete = (e) => {
     const {id} = e.target
     axios({url:`${apiUrl}/supervisor/nh-nok-list/`,method : 'delete' ,headers:headers, data:{
-      user_id: id,
+      user_id: [id],
     }})
     .then(response =>{
       window.location.reload();
