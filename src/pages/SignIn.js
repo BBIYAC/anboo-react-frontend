@@ -18,11 +18,16 @@ const SignIn = () => {
   const [isId, setIsId] = useState('');
   const [isPassword, setIsPassword] = useState('');
   const [fillMessage, setFillMessage] = useState(false);
+  const [loginSuccess, setLoginSuccess] = useState(false);
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
+  const params = {
+    "username" : isId,
+    "password" : isPassword,
+  }
   let history = useHistory();
 
+   // 사용자 체크 GET
   const userAuthorization = ()=>{
-    // 사용자 체크 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
@@ -44,20 +49,20 @@ const SignIn = () => {
     })
   }
 
+  // 로그인 성공 시 페이지 이동
+  useEffect(()=>{ 
+    loginSuccess && userAuthorization();
+  },[loginSuccess])
+
   const signinSubmit = (event) => {
     event.preventDefault();
-
-    const params = {
-      "username" : isId,
-      "password" : isPassword,
-    }
+    
     if (isUser === '보호자') {
       // 보호자 계정 POST
       axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
       .then(response => {
         localStorage.setItem('accessToken',response.data.access);
-        userAuthorization();
-
+        setLoginSuccess(true);
       }).catch(error => {
         console.log(error)
       })
@@ -67,7 +72,7 @@ const SignIn = () => {
       axios({ url: `${apiUrl}/signin/nh-supervisor/`, method: 'post', data: params })
         .then(response => {
           localStorage.setItem('accessToken',response.data.access);
-          userAuthorization();
+          setLoginSuccess(true);
         }).catch(error => {
           console.log(error)
         })
