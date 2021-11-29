@@ -25,7 +25,9 @@ const  RegisterNhInfo= () => {
   const [isRegisteredEmpty, setIsRegisteredEmpty] = useState(false);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  const [tel, setTel] = useState('')
+  const [tel, setTel] = useState('');
+  const [time, setTime] = useState('');
+  const [image, setImage] = useState('');
   const [images, setImages] = useState([]);
   const [bookMark, setBookMark] = useState(false);
   const [logState, setLogState] = useState(false);
@@ -53,6 +55,7 @@ const  RegisterNhInfo= () => {
           setName(response.data.nh_info.nh_name);
           setAddress(response.data.nh_info.nh_address);
           setTel(response.data.nh_info.nh_tel);
+          setTime(response.data.nh_info.nh_operating_hour)
           setImages(response.data.nh_images)
         })
         // 관리자 상세정보 GET
@@ -87,9 +90,13 @@ const  RegisterNhInfo= () => {
         // 비회원 정보 GET
         axios({url:`${apiUrl}/nh-info/${history.location.state.id}/`, method: 'get'})
         .then(response => {
+          console.log(response)
           setIsNotMember(true);
           setName(response.data.nh_name);
           setAddress(response.data.nh_address);
+          setTime(response.data.nh_operating_hour);
+          setTel(response.data.nh_tel);
+          // setImages(response.data.nh_representative_image);
           setLogState(true);
         })
       }else{ // 관리자 승인 대기
@@ -144,6 +151,8 @@ const  RegisterNhInfo= () => {
       isNotMember={isNotMember}
       name={name} 
       address={address} 
+      tel={tel}
+      time={time}
       starRating={history.location.state.starRating}
       bookMark={bookMark}
       id = {history.location.state.id}/>

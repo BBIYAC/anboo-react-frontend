@@ -38,6 +38,7 @@ const  RegisterProfile= () => {
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+    history.push('/');
   }
 
   const pageState = (state) => {

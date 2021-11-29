@@ -13,8 +13,9 @@ import SaveModal from '../../organisms/Modal/SaveModal'
 import axios from 'axios';
 import { apiUrl } from '../../../pages/ApiURL';
 
-const  RegisterProfileBefore= ({id}) => {
+const  RegisterProfileBefore= () => {
   const [fillMessage, setFillMessage] = useState(false);
+  const [isImage, setIsImage] = useState("");
   const [isRegister, setIsRegister] = useState('');
   const [isGender, setIsGender] = useState('');
   const [isBirth, setIsBirth] = useState('');
@@ -27,20 +28,22 @@ const  RegisterProfileBefore= ({id}) => {
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
 
   const onClickSave = () => {
-    setFillMessage(true); // 비어있는 input 경고
-    if(isRegister && isGender && isBirth){
+      setFillMessage(true); // 비어있는 input 경고
+      if(isRegister && isGender && isBirth){
       setIsClicked(true);
       setModalText('저장되었습니다.');
       /*
       axios register profile POST
       */
-     const params = {
-       "nh_id": isId,
-       "np_name": isRegister,
-       "gender": isGender,
-       "np_date": isBirth,
-       "memo": "메모"
-     }
+
+      const params = {
+        "nh_id": isId,
+        "np_profile_image": isImage,
+        "np_name": isRegister,
+        "gender": isGender,
+        "np_date": isBirth,
+        "memo": isCaution
+      }
       axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: params, headers: headers })
       .then(response => {
         console.log("여기");
@@ -101,7 +104,8 @@ const  RegisterProfileBefore= ({id}) => {
           요양인 프로필
           <BiLogOut size="20" onClick={onLogoutClick}/>
         </div>
-          <AddImage url=""/>
+          <AddImage url="" setIsImage={setIsImage}/>
+          {/* <AddImage url="" /> */}
           <InputSelectBlock setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
           <Birth setIsBirth={setIsBirth} fillMessage={fillMessage} />
           <Caution setIsCaution={setIsCaution} />

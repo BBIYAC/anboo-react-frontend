@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NursingHomeDetailInfoEditBlock from "../../molecules/Block/NursingHomeDetailInfoEditBlock";
 import NursingHomeChiefInfoEditBlock from "../../molecules/Block/NursingHomeChiefInfoEditBlock";
 import NursingHomeManagerInfoEditBlock from "../../molecules/Block/NursingHomeManagerInfoEditBlock";
 import NursingHomeImageEditBlock from "../../molecules/Block/NursingHomeImageEditBlock";
 import OvalLarge from "../../atoms/Button/OvalLarge";
-import NhImageGrid from "../../molecules/Block/NhImageGrid";
 import axios from "axios";
 import { apiUrl } from "../../../pages/ApiURL";
 import { useHistory } from "react-router";
@@ -20,7 +19,7 @@ const MgNHInfoEdit = ({
   chiefName,
   chiefTel,
   chiefImage,
-  time,}) => {
+  time}) => {
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const [changeValue, setChangeValue] = useState([]);
   const [postCheck, setPostCheck] = useState([false, false, false, false]);
@@ -29,7 +28,7 @@ const MgNHInfoEdit = ({
   const [nhInfo, setNhInfo] = useState({
     nh_id : "",
     nh_name : "",
-    nh_operating_hour :"",
+    nh_operating_hour : "",
     nh_tel : "",
     nh_address : "",
     nh_representative_image : ""
@@ -90,7 +89,7 @@ const MgNHInfoEdit = ({
               axios({ url: `${apiUrl}/supervisor/save-employee-image/`, method: 'post', headers: { Authorization: 'Bearer ' + localStorage.getItem('accessToken'), 'Content-Type': 'multipart/form-data' }, data: nh_employee_image_form_data })
                 .then(response => {
                   console.log(response.data)
-                  history.go(0); // 새로고침
+                  // history.go(0); // 새로고침
 
                 }).catch(error => {
                   console.error(error);

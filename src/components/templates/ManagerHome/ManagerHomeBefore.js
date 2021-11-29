@@ -26,7 +26,7 @@ const ManagerHomeBefore = () => {
     .then(response =>{
       window.location.reload();
     }).catch(error => {
-        console.error(error);
+      console.error(error);
     });
   }
     return(

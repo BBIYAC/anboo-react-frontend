@@ -15,7 +15,7 @@ const ManagerNhInfo= () => {
   const [tel, setTel] = useState('01012345678');
   const [address, setAddress] = useState('요양원 주소');
   const [image, setImage] = useState('');
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState('요양원 운영시간');
   const [starRating, setStarRating] = useState('');
 
   // 요양원장 정보
@@ -39,6 +39,7 @@ const ManagerNhInfo= () => {
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/supervisor/nh-info/`, method: 'get',headers:headers})
     .then(response => {
+      console.log(response)
       setId(response.data.nh_info.id);
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
@@ -47,6 +48,7 @@ const ManagerNhInfo= () => {
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
+      console.log(response.data.nh_info)
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import UserChoice from '../components/atoms/Select/UserChoice';
 import Password from '../components/atoms/Input/Password';
@@ -18,14 +18,38 @@ const SignIn = () => {
   const [isId, setIsId] = useState('');
   const [isPassword, setIsPassword] = useState('');
   const [fillMessage, setFillMessage] = useState(false);
+  const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   let history = useHistory();
+  
+  // useEffect(()=>{
+  //   if(localStorage.getItem('accessToken') !== ""){
+  //     // 사용자 체크 GET
+  //     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
+  //     .then(response =>{
+  //       let key = response.data.key;
+  //       if(key === 1){ // 미등록 보호자
+  //         history.push('/rg/nh-location');
+  
+  //       }else if(key === 2){ // 등록 보호자
+  //         history.push('/rg/acts');
+  
+  //       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
+  //         history.push('/mg/home');
+  
+  //       }else{ // 비회원의 경우
+  //         history.push('/rg/nh-location');
+  //       }
+  //     }).catch(error => {
+  //         console.error(error);
+  //     })
+
+  //   }
+  // },[headers])
 
   const signinSubmit = (event) => {
     event.preventDefault();
-    // console.log({ isUser, isId, isPassword });
 
     const userAuthorization = ()=>{
-      const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
       // 사용자 체크 GET
       axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
       .then(response =>{

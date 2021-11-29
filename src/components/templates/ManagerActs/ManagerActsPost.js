@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import AddActImage from '../../atoms/Input/AddActImage';
@@ -9,6 +9,7 @@ import UsersBlock from '../../molecules/Block/UsersBlock';
 import { Link } from "react-router-dom";
 import { apiUrl } from '../../../pages/ApiURL';
 import axios from 'axios';
+import { useHistory } from 'react-router';
 
 const ManagerActsPost = ({onSigninClick, members}) => {
   // 회원관리(/mg/rgs/) 페이지에서 선택한 사람들
@@ -18,6 +19,7 @@ const ManagerActsPost = ({onSigninClick, members}) => {
   const [url, setUrl] = useState('');
   const [content, setContent] = useState('');
   const [clicked, setClicked] = useState(false);
+  let history = useHistory();
   const onClick = () => {
     setClicked(true);
     if(url && content){
@@ -64,6 +66,7 @@ const ManagerActsPost = ({onSigninClick, members}) => {
         });
       }
     }
+    history.goBack(-1);
   }
 
   return (

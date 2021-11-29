@@ -12,7 +12,6 @@ const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating
   
   useEffect(()=> {
     if(bookMark==true){
-      console.log(bookMark + "이거");
       setIsCheck(true);
     }else {
       setIsCheck(false);

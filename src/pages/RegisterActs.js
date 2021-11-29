@@ -25,6 +25,7 @@ const  RegisterActs= () => {
         // axios acts GET - 요양원 활동 목록
         axios({url:`${apiUrl}/nok/nh-activity/`,method : 'get' ,headers:headers})
         .then(response =>{
+          console.log(response);
           const posts = [...response.data.posts_for_all, ...response.data.posts_for_me]
           setActs(posts);
         }).catch(error => {
@@ -38,9 +39,6 @@ const  RegisterActs= () => {
     }).catch(error => {
         history.push('/');
     })
-    
-    
-
   },[headers])
 
 

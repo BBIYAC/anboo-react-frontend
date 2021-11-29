@@ -249,7 +249,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
-  padding: 0 0.5rem 0 0.5rem;
   height: 90px;
 }
 .membersListTitle {
@@ -265,7 +264,7 @@
   text-align: left;
   font-size: var(--font-size-small);
   margin: 0 1rem;
-  width: 60%;
+  width: 40%;
 }
 .div-checkBoxAndDelete {
   display: flex;

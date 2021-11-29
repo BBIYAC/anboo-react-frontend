@@ -19,7 +19,7 @@ const NursingHomeInfoEdit = ({
   chiefTel,
   chiefImage,
   membersArray,
-  time,}) => {
+  time}) => {
   let history = useHistory();
   return(
     <>

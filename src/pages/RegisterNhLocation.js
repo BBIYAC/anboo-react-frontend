@@ -93,14 +93,6 @@ const RegisterNhLocation = () => {
       }, () => {});
     } else {}
   }
-
-  // 각 지역 마다의 요양원 개수를 label로 출력하는 코드입니다.
-  // const markerLabel = {
-  //   text: "00시",
-  //   fontSize: "8px",
-  //   fontWeight: "bold",
-  //   color: "black",
-  // };
   
   let history = useHistory();
   

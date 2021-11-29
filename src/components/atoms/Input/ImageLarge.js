@@ -10,10 +10,6 @@ const ImageLarge = ({ url, border, borderColor }) => {
       e.target.src = require("./picture.png").default;
   }
 
-  // Image Zoom in
-  const onClick = (e) => {
-    setIsClicked(true);
-  }
   return(
     <>
       <img className='imgLarge' src={url} onError={handleImgError} style={{border, borderColor}}></img>
