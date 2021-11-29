@@ -62,8 +62,13 @@ const  RegisterProfileBefore= () => {
       if(key === 1){ // 미등록 보호자
         axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
         .then(response=>{
+<<<<<<< HEAD
+          console.log(response);
+          setWaiting(response.data.is_waiting)
+=======
           console.log('is_waiting', response.data.is_waiting);
           response.data.is_waiting && setWaiting(response.data.is_waiting)
+>>>>>>> 471c1be1dcde9325d5e4f5e01d22f1c7f883dac8
           
         })
         setIsId(history.location.state.isId);
@@ -92,6 +97,7 @@ const  RegisterProfileBefore= () => {
   const onBackClick = () => {
     history.goBack(-1);
   }
+  
   return (
     <React.Fragment>
       {waiting

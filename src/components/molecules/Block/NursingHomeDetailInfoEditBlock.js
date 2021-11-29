@@ -2,8 +2,15 @@ import React, {useState, useEffect} from 'react';
 import NursingHomeInfoInput from '../../atoms/Input/NursingHomeInfoInput';
 import AddImage from '../../atoms/Input/AddImage';
 
-const NursingHomeDetailInfoEditBlock = ({id, name, tel, address, time, image, setNhInfo}) => {
-  const [pictures, setPictures] = useState(image);
+const NursingHomeDetailInfoEditBlock = ({
+  id, 
+  name, 
+  tel, 
+  address, 
+  time, 
+  representativeImage, 
+  setNhInfo}) => {
+  const [pictures, setPictures] = useState(representativeImage);
   const [nhInfoInput, setNhInfoInput] = useState({
     nh_name : "",
     nh_operating_hour :"",
@@ -29,7 +36,7 @@ const NursingHomeDetailInfoEditBlock = ({id, name, tel, address, time, image, se
       <hr/>
       <div className="block-NursingHomeDetailInfo">
         <div className="NursingHomeInfo">
-          <AddImage url={image} pictures={pictures} setPictures={setPictures}/>
+          <AddImage url={representativeImage} pictures={pictures} setPictures={setPictures}/>
           <NursingHomeInfoInput  
             name={name} 
             tel={tel} 

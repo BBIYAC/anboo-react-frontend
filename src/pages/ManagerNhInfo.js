@@ -14,7 +14,7 @@ const ManagerNhInfo= () => {
   const [name, setName] = useState('요양원 이름');
   const [tel, setTel] = useState('01012345678');
   const [address, setAddress] = useState('요양원 주소');
-  const [image, setImage] = useState('');
+  const [representativeImage, setRepresentativeImage] = useState('');
   const [time, setTime] = useState('요양원 운영시간');
   const [starRating, setStarRating] = useState('');
 
@@ -44,7 +44,7 @@ const ManagerNhInfo= () => {
       setName(response.data.nh_info.nh_name);
       setTel(response.data.nh_info.nh_tel);
       setAddress(response.data.nh_info.nh_address);
-      setImage(response.data.nh_info.nh_representative_image);
+      setRepresentativeImage(response.data.nh_info.nh_representative_image);
       setImages(response.data.nh_images);
       setTime(response.data.nh_info.nh_operating_hour);
       setStarRating(response.data.nh_star_avg);
@@ -108,7 +108,7 @@ const ManagerNhInfo= () => {
         nh_name={name}
         nh_tel={tel}
         nh_address={address}
-        nh_image={image} 
+        representativeImage={representativeImage} 
         nh_images={images}
         chiefName={chiefName}
         chiefTel={chiefTel}
@@ -122,7 +122,7 @@ const ManagerNhInfo= () => {
         nh_name={name}
         nh_tel={tel}
         nh_address={address} 
-        nh_image={image} 
+        representativeImage={representativeImage} 
         nh_images={images}
         chiefName={chiefName}
         chiefTel={

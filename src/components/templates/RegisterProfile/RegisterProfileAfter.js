@@ -35,6 +35,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     // axios 요양인 정보 GET
     axios({url:`${apiUrl}/nok/np-profile/`,method : 'get' ,headers:headers})
     .then(response =>{
+      console.log(response.data.profile);
       const datas = response.data.profile;
       setDefaults(datas);
     }).catch(error => {
@@ -60,10 +61,14 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
       formData.append('np_date', isBirth);
       formData.append('memo', isCaution);
       formData.append('gender', isGender);
-      isImage && formData.append('np_profile_image', isImage);
+      // isImage && formData.append('np_profile_image', isImage);
+      formData.append('np_profile_image', isImage);
+
+      console.log(isImage);
 
       axios({url:`${apiUrl}/nok/np-profile/`,method : 'put' ,headers:headers, data: formData})
       .then(response =>{
+        console.log(response)
         setPutCheck(putCheck =>[...putCheck, true]);
       }).catch(error => {
           console.error(error);

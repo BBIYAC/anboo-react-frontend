@@ -14,7 +14,7 @@ const MgNHInfo = ({
   name, 
   tel, 
   address, 
-  image, 
+  representativeImage, 
   images, 
   chiefName, 
   chiefTel, 
@@ -52,7 +52,7 @@ const MgNHInfo = ({
       name={name} 
       tel={tel} 
       address={address} 
-      image={image} 
+      representativeImage={representativeImage} 
       isNotMember={isNotMember}
       time={time}
       starRating={starRating}/>

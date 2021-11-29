@@ -21,7 +21,7 @@ const BelowRectangleBlock = ({tel, id}) => {
   return(
     <React.Fragment>
       <div className="block-rectanglebelowbar">
-        <RectangleLarge btnText="요양자 등록하기" onClick={onRegistClick}/>
+        <RectangleLarge btnText="요양인 등록하기" onClick={onRegistClick}/>
         <RectangleLarge borderLeftWidth="0.01rem" borderLeftStyle="solid" btnText="문의하기" onClick={onClick}/>
         <CallModal  tel={tel} isClicked={isClicked} setIsClicked={setIsClicked} />
       </div>

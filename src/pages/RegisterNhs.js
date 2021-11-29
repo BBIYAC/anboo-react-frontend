@@ -17,14 +17,14 @@ const RegisterNhs= () => {
   const [userState, setUserState] = useState('');
   const [nursingHomes, setNursingHomes] = useState([]);
   const [isMember, setIsMember] = useState(true);
-  const [btnState, setBtnState] = useState('');
-  const [ratingState, setRatingState] = useState();
+  const [btnState, setBtnState] = useState(false);
+  const [ratingState, setRatingState] = useState('');
   const [bookmarkedList, setBookmarkedList] = useState([]);
   const [search, setSearch] = useState(history.location.state.cityName);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
 
 
-  const bookMark = () => {
+  const bookMarkAfterSearch = () => {
     // -----------------------------------즐겨찾기-----------------------------------
     if(btnState){
       // 요양원 북마크 리스트 GET
@@ -32,6 +32,35 @@ const RegisterNhs= () => {
       .then(response=> {
         setBookmarkedList(response.data.objects.bookmarked_nh_id);
       })
+      // 북마크된 요양원만 출력
+      let bookmarkedArray=[];
+      axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+      .then(response=>{
+        for(let i = 0; i < bookmarkedList.length; i++){
+          let idx = bookmarkedList[i];
+          for(let j = 0; j < response.data.length; j++){
+            if(idx == response.data[j].id){
+              bookmarkedArray[i] = response.data[j];
+            }
+          }
+        }
+        setNursingHomes(bookmarkedArray);
+      })
+      
+    }else {           // 즐겨찾기 버튼 비활성 이벤트
+      axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
+      .then(response=>{
+        setNursingHomes(response.data);
+      }).catch(error=> {
+        console.error(error);
+      })
+    }
+    // -----------------------------------즐겨찾기-----------------------------------
+  }
+
+  const bookMarkBeforeSearch = () => {
+    // -----------------------------------즐겨찾기-----------------------------------
+    if(btnState){
       // 북마크된 요양원만 출력
       let bookmarkedArray=[];
       axios({url:`${apiUrl}/nh-info/`, method: 'get'})
@@ -198,14 +227,18 @@ const RegisterNhs= () => {
       headers.Authorization = '';
     };
 
+    // 요양원 북마크 리스트 GET
+    axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get', headers:headers})
+    .then(response=> {
+      setBookmarkedList(response.data.objects.bookmarked_nh_id);
+    })
+
     // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         setIsMember(true);
-
-        bookMark();
 
         if(search){         // 검색어가 있을 때
           axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
@@ -215,6 +248,7 @@ const RegisterNhs= () => {
             console.error(error);
           })
 
+          bookMarkAfterSearch();
           ratingAfterSearch();
 
         }else{              // 검색어가 없을 때
@@ -225,6 +259,7 @@ const RegisterNhs= () => {
             console.error(error);
           })
           
+          bookMarkBeforeSearch();
           ratingBeforeSearch();
 
         }
