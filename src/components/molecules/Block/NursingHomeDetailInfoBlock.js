@@ -6,7 +6,16 @@ import axios from 'axios';
 import { apiUrl } from '../../../pages/ApiURL';
 import ImageNhInfo from '../../atoms/Input/ImageNhInfo';
 
-const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating, id, image, bookMark, time }) => {
+const NursingHomeDetailInfoBlock = ({
+  isNotMember,
+  name, 
+  address, 
+  tel, 
+  starRating, 
+  id,
+  bookMark, 
+  time,
+  representativeImage}) => {
   const [isCheck, setIsCheck]= useState(bookMark);
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   
@@ -48,8 +57,13 @@ const NursingHomeDetailInfoBlock = ({isNotMember, name, address, tel, starRating
       <hr/>
       <div className="block-NursingHomeDetailInfo">
         <div className="NursingHomeInfo">
-          <ImageNhInfo url={image==null ? defalutImage : image}/>
-          <NursingHomeInfo name={name} address={address} tel={tel} time={time} starRating={starRating}/>
+          <ImageNhInfo url={representativeImage === undefined ? defalutImage : representativeImage}/>
+          <NursingHomeInfo 
+            name={name} 
+            address={address} 
+            tel={tel} 
+            time={time} 
+            starRating={starRating}/>
         </div>
         {isNotMember
         ? ""

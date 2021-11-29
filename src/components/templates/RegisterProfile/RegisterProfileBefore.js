@@ -64,7 +64,7 @@ const  RegisterProfileBefore= () => {
       if(key === 1){ // 미등록 보호자
         axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
         .then(response=>{
-          console.log(response.data.is_waiting);
+          console.log(response);
           setWaiting(response.data.is_waiting)
           
         })
@@ -94,6 +94,7 @@ const  RegisterProfileBefore= () => {
   const onBackClick = () => {
     history.goBack(-1);
   }
+  
   return (
     <React.Fragment>
       {waiting

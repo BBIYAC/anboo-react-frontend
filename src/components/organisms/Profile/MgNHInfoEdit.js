@@ -13,7 +13,7 @@ const MgNHInfoEdit = ({
   name, 
   tel, 
   address, 
-  image, 
+  representativeImage, 
   images, 
   membersArray,
   chiefName,
@@ -117,7 +117,7 @@ const MgNHInfoEdit = ({
         tel={tel} 
         address={address} 
         time={time} 
-        image={image} 
+        representativeImage={representativeImage} 
         setNhInfo={setNhInfo}/>
 
       <hr/>

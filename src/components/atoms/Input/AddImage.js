@@ -6,8 +6,9 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   const [fileURL, setFileURL] = useState(""); 
   const onChange = (e) => {
       const imageFile = e.target.files[0];
-      const imageUrl = URL.createObjectURL(imageFile);  
-      setFileURL(imageUrl);
+      // const imageUrl = URL.createObjectURL(imageFile);  
+      // setFileURL(imageUrl);
+      setFileURL(imageFile);
       setIsImage && setIsImage(imageFile);
       setPictures && setPictures(imageFile);
   };
@@ -26,6 +27,9 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
       <img
       className="img-rgProfile" 
       url=""
+      // src={typeof fileURL === 'object'
+      // ? URL.createObjectURL(fileURL)
+      // : fileURL}
       src={fileURL}
       onClick={() => fileInput.current.click()}
       onError={handleImgError} 

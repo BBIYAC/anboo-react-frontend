@@ -27,7 +27,7 @@ const  RegisterNhInfo= () => {
   const [address, setAddress] = useState('');
   const [tel, setTel] = useState('');
   const [time, setTime] = useState('');
-  const [image, setImage] = useState('');
+  const [representativeImage, setRepresentativeImage] = useState('');
   const [images, setImages] = useState([]);
   const [bookMark, setBookMark] = useState(false);
   const [logState, setLogState] = useState(false);
@@ -56,6 +56,7 @@ const  RegisterNhInfo= () => {
           setAddress(response.data.nh_info.nh_address);
           setTel(response.data.nh_info.nh_tel);
           setTime(response.data.nh_info.nh_operating_hour)
+          setRepresentativeImage(response.data.nh_info.nh_representative_image)
           setImages(response.data.nh_images)
         })
         // 관리자 상세정보 GET
@@ -96,7 +97,7 @@ const  RegisterNhInfo= () => {
           setAddress(response.data.nh_address);
           setTime(response.data.nh_operating_hour);
           setTel(response.data.nh_tel);
-          // setImages(response.data.nh_representative_image);
+          setRepresentativeImage(response.data.nh_representative_image);
           setLogState(true);
         })
       }else{ // 관리자 승인 대기
@@ -154,6 +155,7 @@ const  RegisterNhInfo= () => {
       tel={tel}
       time={time}
       starRating={history.location.state.starRating}
+      representativeImage = {representativeImage}
       bookMark={bookMark}
       id = {history.location.state.id}/>
       <hr/>
