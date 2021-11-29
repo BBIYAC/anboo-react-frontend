@@ -15,7 +15,24 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   // Default Image
   const handleImgError = (e) => {
     e.target.src = require("./picture.png").default;
-    // setIsImage && setIsImage(); // File 객체로 디폴트 이미지 추가
+    const dataURLtoFile = (dataurl, fileName) => {
+ 
+      var arr = dataurl.split(','),
+          mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]), 
+          n = bstr.length, 
+          u8arr = new Uint8Array(n);
+          
+      while(n--){
+          u8arr[n] = bstr.charCodeAt(n);
+      }
+      
+      return new File([u8arr], fileName, {type:mime});
+    }
+    
+    //Usage example:
+    var file = dataURLtoFile(e.target.src,'picture.png');
+    setIsImage && setIsImage(file);
   }
 
   useEffect(()=>{

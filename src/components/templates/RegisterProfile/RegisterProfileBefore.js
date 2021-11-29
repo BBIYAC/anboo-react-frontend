@@ -24,6 +24,7 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
   const [isId, setIsId] = useState('');
   const [modalText, setModalText] = useState('');
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken'),  'Content-Type': 'multipart/form-data'})
+  const header = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
     if(isRegister && isGender && isBirth){
@@ -48,21 +49,21 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
       console.log(params)
 
       // axios register profile POST
-      // axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
-      // .then(response => {
-      //   // axios star rating POST
-      //   axios({url:`${apiUrl}/nok/star/post/`,method : 'post' ,headers:headers, data: {
-      //     star_rating: 0
-      //   }})
-      //   .then(response =>{
-      //     console.log('register profile POST success', response);
-      //     setModalText('저장되었습니다.');
-      //     setIsClicked(true);
-      //     setUserState(0);
-      //   }).catch(error => {
-      //       console.error(error);
-      //   })
-      // })
+      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
+      .then(response => {
+        // axios star rating POST
+        axios({url:`${apiUrl}/nok/star/post/`,method : 'post' ,headers:header, data: {
+          star_rating: 0
+        }})
+        .then(response =>{
+          console.log('register profile POST success', response);
+          setModalText('저장되었습니다.');
+          setIsClicked(true);
+          setUserState(0);
+        }).catch(error => {
+            console.error(error);
+        })
+      })
     }
   };
 
