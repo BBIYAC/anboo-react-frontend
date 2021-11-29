@@ -49,12 +49,20 @@ const  RegisterProfileBefore= ({nhId}) => {
       console.log(params)
 
       // axios register profile POST
-      // axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
-      // .then(response => {
-      //   console.log('register profile POST success', response);
-      //   setModalText('저장되었습니다.');
-      //   setIsClicked(true);
-      // })
+      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
+      .then(response => {
+        // axios star rating POST
+        axios({url:`${apiUrl}/nok/star/post/`,method : 'post' ,headers:headers, data: {
+          star_rating: 0
+        }})
+        .then(response =>{
+          console.log('register profile POST success', response);
+          setModalText('저장되었습니다.');
+          setIsClicked(true);
+        }).catch(error => {
+            console.error(error);
+        })
+      })
     }
   };
 

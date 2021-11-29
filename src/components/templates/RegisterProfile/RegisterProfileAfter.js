@@ -42,7 +42,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
     })
 
     // 별점 GET
-    axios({url:`${apiUrl}/nok/star/`,method : 'get' ,headers:headers})
+    axios({url:`${apiUrl}/nok/star/detail/`,method : 'get' ,headers:headers})
     .then(response =>{
       response.data.star_rating && setStar(response.data.star_rating)
     }).catch(error => {
