@@ -17,8 +17,13 @@ const ImageNhInfo = ({url}) => {
 
   return(
     <React.Fragment>
-      <img className="img-nhInfo" src={url} onError={handleImgError} onClick={onClick}></img>
-      <ImageZoomIn isClicked={isClicked} url={url} setIsClicked={setIsClicked} />
+      <img 
+      className="img-nhInfo" 
+      src={url===null?require("../Input/picture.png").default:url} 
+      onError={handleImgError} onClick={onClick}></img>
+      <ImageZoomIn isClicked={isClicked} 
+      url={url} 
+      setIsClicked={setIsClicked} />
     </React.Fragment>
   );
 };

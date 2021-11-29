@@ -227,18 +227,17 @@ const RegisterNhs= () => {
       headers.Authorization = '';
     };
 
-    // 요양원 북마크 리스트 GET
-    axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get', headers:headers})
-    .then(response=> {
-      setBookmarkedList(response.data.objects.bookmarked_nh_id);
-    })
-
     // 사용자 구분 GET
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         setIsMember(true);
+        // 요양원 북마크 리스트 GET
+        axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get', headers:headers})
+        .then(response=> {
+          setBookmarkedList(response.data.objects.bookmarked_nh_id);
+        })
 
         if(search){         // 검색어가 있을 때
           axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
@@ -272,6 +271,10 @@ const RegisterNhs= () => {
         history.push('/mg/home');
       }else if(key === 6){                    // 비회원
         setIsMember(false);
+        axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get'})
+        .then(response=> {
+          setBookmarkedList(response.data.objects.bookmarked_nh_id);
+        })
 
         if(search){                           // 검색어가 있을 때
           axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})

@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import NoticeWaitingBlock from '../../molecules/Block/NoticeWaitingBlock';
 import RoundRectangle from "../../atoms/Button/RoundRectangle";
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
-import axios from "axios";
-import { apiUrl } from "../../../pages/ApiURL";
 
 const RegisterProfileWaiting = ({onLogoutClick}) => {
   let history = useHistory();
@@ -13,7 +11,6 @@ const RegisterProfileWaiting = ({onLogoutClick}) => {
     history.push("/rg/nh-location");
   }
 
-  
   return(
     <>
       <div className="header">
