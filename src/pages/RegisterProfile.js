@@ -15,17 +15,29 @@ const  RegisterProfile= () => {
   const [userState, setUserState] = useState();
   const [nhId, setNhId] = useState();
 
-  
+  useEffect(()=>{
+    console.log('history.location.state.isId', history.location.state.isId)
+    history.location.state.isId && setNhId(history.location.state.isId)
+  },[])
+
   let history = useHistory();
   useEffect(()=>{
-    setNhId(history.location.state.isId)
+    if(headers.Authorization.split(" ")[1] === "null"){
+      headers.Authorization = '';
+    };
+    console.log(history.location.state.isId)
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
     .then(response =>{
       let key = response.data.key;
       if(key === 1){ // 미등록 보호자
         // axios 미등록 보호자인지 등록 대기중인지 GET
+        if(history.location.state.isId){ 
+          axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${history.location.state.isId}/`, method: 'get', headers:headers})
+          .then(response=>{
+            key = 0;
+          })
+        }
         setUserState(key);
-        // setUserState(0);
       }else if(key === 2){ // 등록 보호자
         setUserState(key);
       }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
@@ -51,8 +63,11 @@ const  RegisterProfile= () => {
       case 1:{ // 미등록 보호자
         return <RegisterProfileBefore onLogoutClick={onLogoutClick} nhId={nhId} />
       }
-      default:{ // 등록 대기 보호자
+      case 0:{ // 등록 대기 보호자
         return <RegisterProfileWaiting onLogoutClick={onLogoutClick} />
+      }
+      default:{ 
+        return 
       }
     }
   }

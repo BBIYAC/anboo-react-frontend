@@ -4,12 +4,11 @@ const Caution = ({isCaution, setIsCaution}) => {
   const [titName, setTitName] = useState('');
   const onChange = (e) => {
       setTitName(e.target.value);
-      setIsCaution(titName);
+      setIsCaution(e.target.value);
   };
 
   useEffect(()=>{
       setTitName(isCaution);
-      setIsCaution(isCaution);
   },[isCaution])
   
   return(

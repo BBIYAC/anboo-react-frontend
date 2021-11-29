@@ -22,11 +22,9 @@ const  RegisterProfileBefore= ({nhId}) => {
   const [isCaution, setIsCaution] = useState('');
   const [isClicked, setIsClicked] = useState(false);
   const [isId, setIsId] = useState('');
-  const [waiting, setWaiting] = useState(false);
   const [modalText, setModalText] = useState('');
   const [userState, setUserState] = useState(false);
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken'),  'Content-Type': 'multipart/form-data'})
-  const [params, setParams] = useState()
   const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
     if(isRegister && isGender && isBirth){
@@ -51,50 +49,20 @@ const  RegisterProfileBefore= ({nhId}) => {
       console.log(params)
 
       // axios register profile POST
-      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
-      .then(response => {
-        console.log('register profile POST success', response);
-        setModalText('저장되었습니다.');
-        setIsClicked(true);
-      })
+      // axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
+      // .then(response => {
+      //   console.log('register profile POST success', response);
+      //   setModalText('저장되었습니다.');
+      //   setIsClicked(true);
+      // })
     }
   };
 
-
-
   let history = useHistory();
-  // ################################사용자 구분 코드################################
+
   useEffect(()=>{
-    if(headers.Authorization.split(" ")[1] === "null"){
-      headers.Authorization = '';
-    };
-    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
-    .then(response =>{
-      console.log(nhId)
-      let key = response.data.key;
-      if(key === 1){ // 미등록 보호자
-        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/${nhId}/`, method: 'get', headers:headers})
-        .then(response=>{
-          console.log('success')
-          response.data.is_waiting && setWaiting(response.data.is_waiting)
-        })
-        setIsId(nhId);
-        history.push('/rg/profile');
-      }else if(key === 2){ // 등록 보호자
-        history.push('/rg/acts');
-      }else if(key === 3){ // 미승인 관리자
-        history.push('/mg/home')
-      }else if(key === 4){ // 승인 관리자
-        history.push('/mg/home')
-      }else if(key === 6){ // 비회원
-        setUserState(false);
-      }else{ // 관리자 승인 대기
-        history.push('/mg/home')
-      }
-    }).catch(error => {
-    })
+    setIsId(nhId);
   },[])
-  // ################################사용자 구분 코드################################
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
@@ -107,34 +75,29 @@ const  RegisterProfileBefore= ({nhId}) => {
   
   return (
     <React.Fragment>
-      {waiting
-      ?<RegisterProfileWaiting />
-      :<>
-        <div className="header">
-          <IoIosArrowBack size="20" onClick={onBackClick}/>
-          요양인 프로필
-          <BiLogOut size="20" onClick={onLogoutClick}/>
-        </div>
-          <AddImage url="" setIsImage={setIsImage}/>
-          {/* <AddImage url="" /> */}
-          <InputSelectBlock setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
-          <Birth setIsBirth={setIsBirth} fillMessage={fillMessage} />
-          <Caution setIsCaution={setIsCaution} />
-          {
-            (isRegister && isGender && isBirth)
-            ?<>
-            <Link className="linkComponent" to="/rg/profile">
-              <RoundRectangle type='button' btnText='요양자 등록 요청하기' onClick={onClickSave}/>
-            </Link>
-            <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} />
-            </>
-            :<RoundRectangle type='button' btnText="요양자 등록 요청하기" onClick={onClickSave} />
-          }
-          <Link className="linkComponent" to="/rg/nh-location">
-            <Floating background='var(--color-blue)' />
+      <div className="header">
+        <IoIosArrowBack size="20" onClick={onBackClick}/>
+        요양인 프로필
+        <BiLogOut size="20" onClick={onLogoutClick}/>
+      </div>
+        <AddImage url="" setIsImage={setIsImage}/>
+        {/* <AddImage url="" /> */}
+        <InputSelectBlock setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
+        <Birth setIsBirth={setIsBirth} fillMessage={fillMessage} />
+        <Caution setIsCaution={setIsCaution} />
+        {
+          (isRegister && isGender && isBirth)
+          ?<>
+          <Link className="linkComponent" to="/rg/profile">
+            <RoundRectangle type='button' btnText='요양자 등록 요청하기' onClick={onClickSave}/>
           </Link>
-        </>
-      }
+          <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} />
+          </>
+          :<RoundRectangle type='button' btnText="요양자 등록 요청하기" onClick={onClickSave} />
+        }
+        <Link className="linkComponent" to="/rg/nh-location">
+          <Floating background='var(--color-blue)' />
+        </Link>
     </React.Fragment>
   );
 };
