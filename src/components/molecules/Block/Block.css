@@ -71,7 +71,7 @@
 .block-NursingHomeDetailInfo {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  width: 100%;
 }
 .div-nursingHomeScroll {
   width: 100%;
