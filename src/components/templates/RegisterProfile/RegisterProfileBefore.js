@@ -25,7 +25,7 @@ const  RegisterProfileBefore= ({nhId}) => {
   const [waiting, setWaiting] = useState(false);
   const [modalText, setModalText] = useState('');
   const [userState, setUserState] = useState(false);
-  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken'),  'Content-Type': 'multipart/form-data'})
   const [params, setParams] = useState()
   const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
@@ -39,10 +39,19 @@ const  RegisterProfileBefore= ({nhId}) => {
         "memo": isCaution
       }
 
+    
+      let np_profile_formdata = new FormData();
+      np_profile_formdata.append("nh_id", isId);
+      np_profile_formdata.append("np_profile_image", isImage);
+      np_profile_formdata.append("np_name", isRegister);
+      np_profile_formdata.append("gender", isGender);
+      np_profile_formdata.append("np_date", isBirth);
+      np_profile_formdata.append("memo", isCaution);
+
       console.log(params)
 
       // axios register profile POST
-      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: params, headers: headers })
+      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
       .then(response => {
         console.log('register profile POST success', response);
         setModalText('저장되었습니다.');
