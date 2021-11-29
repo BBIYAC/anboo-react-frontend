@@ -17,8 +17,8 @@ const ImageSmall = ({url}) => {
  
   return(
     <React.Fragment>
-      <img className="imgSmall" src={url} onError={handleImgError} onClick={onClick}></img>
-      <ImageZoomIn isClicked={isClicked} url={url} setIsClicked={setIsClicked} />
+      <img className="imgSmall" src={url || ''} onError={handleImgError} onClick={onClick}></img>
+      <ImageZoomIn isClicked={isClicked} url={url || ''} setIsClicked={setIsClicked} />
     </React.Fragment>
   );
 };
