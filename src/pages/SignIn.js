@@ -57,34 +57,9 @@ const SignIn = () => {
 
   // 로그인 성공 시 페이지 이동
   useEffect(()=>{ 
-    if(loginSuccess){
+    if(loginSuccess || localStorage.getItem('accessToken')){
       userAuthorization()
-      axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
-      .then(response =>{
-        let key = response.data.key;
-        if(key === 1){ // 미등록 보호자
-          // axios 미등록 보호자인지 등록 대기중인지 GET
-          axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
-          .then(response=>{
-            response.data.is_waiting
-            ? history.push('/rg/profile') // 등록 대기 중
-            : history.push('/rg/nh-location'); // 미등록 보호자
-          })
-
-        }else if(key === 2){ // 등록 보호자
-          history.push('/rg/acts');
-
-        }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
-          history.push('/mg/home');
-
-        }else{ // 비회원의 경우
-          history.push('/rg/nh-location');
-
-        }
-      }).catch(error => {
-          console.error(error);
-      })
-    } 
+    }
   },[loginSuccess])
 
   const signinSubmit = (event) => {

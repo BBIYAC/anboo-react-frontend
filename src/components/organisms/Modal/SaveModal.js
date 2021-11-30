@@ -1,6 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router';
-import { useState } from 'react/cjs/react.development';
 
 const SaveModal = ({isClicked, setIsClicked, text, onSaveClick}) =>{
   const handleModalStyle = isClicked?{
@@ -50,9 +48,8 @@ const SaveModal = ({isClicked, setIsClicked, text, onSaveClick}) =>{
       borderRadius: '0 0 10px 0',
   };
 
-  let history = useHistory();
   const onClick = () => {
-    onSaveClick();
+    onSaveClick && onSaveClick();
     setIsClicked(false);
   }
 
