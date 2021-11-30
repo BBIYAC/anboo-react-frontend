@@ -49,7 +49,7 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
       console.log(params)
 
       // axios register profile POST
-      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
+      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'put', data: np_profile_formdata})
       .then(response => {
         // axios star rating POST
         axios({url:`${apiUrl}/nok/star/post/`,method : 'post' ,headers:header, data: {

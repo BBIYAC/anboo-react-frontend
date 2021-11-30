@@ -4,6 +4,7 @@ import UserChoice from '../components/atoms/Select/UserChoice';
 import Password from '../components/atoms/Input/Password';
 import Id from '../components/atoms/Input/Id';
 import axios from 'axios';
+import SignInCorrect from '../components/organisms/Modal/SignInCorrect';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link, useHistory } from 'react-router-dom';
@@ -19,6 +20,7 @@ const SignIn = () => {
   const [isPassword, setIsPassword] = useState('');
   const [fillMessage, setFillMessage] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')}
   const params = {
     "username" : isId,
@@ -59,56 +61,35 @@ const SignIn = () => {
 
   // 로그인 성공 시 페이지 이동
   useEffect(()=>{ 
-    loginSuccess && userAuthorization();
-    axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
-    .then(response =>{
-      let key = response.data.key;
-      if(key === 1){ // 미등록 보호자
-        // axios 미등록 보호자인지 등록 대기중인지 GET
-        axios({url:`${apiUrl}/not-nok/waiting-for-nh-approval/`, method: 'get', headers:headers})
-        .then(response=>{
-          response.data.is_waiting
-          ? history.push('/rg/profile') // 등록 대기 중
-          : history.push('/rg/nh-location'); // 미등록 보호자
-        })
-
-      }else if(key === 2){ // 등록 보호자
-        history.push('/rg/acts');
-
-      }else if(key === 3 || key === 4){ // 미승인 관리자 & 승인 관리자 & 승인 대기
-        history.push('/mg/home');
-
-      }else{ // 비회원의 경우
-        history.push('/rg/nh-location');
-
-      }
-    }).catch(error => {
-        console.error(error);
-    })
+    if(loginSuccess || localStorage.getItem('accessToken')){
+      userAuthorization()
+    }
   },[loginSuccess])
 
   const signinSubmit = (event) => {
     event.preventDefault();
     
-    if (isUser === '보호자') {
-      // 보호자 계정 POST
-      axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
+  if (isUser === '보호자') {
+    // 보호자 계정 POST
+    axios({ url: `${apiUrl}/signin/nok/`, method: 'post', data: params })
+    .then(response => {
+      localStorage.setItem('accessToken',response.data.access);
+      setLoginSuccess(true);
+    }).catch(error => {
+      setIsCorrect(true);
+      console.log(error)
+    })
+  }
+  else if (isUser === '관리자') {
+    // 관리자 계정 POST
+    axios({ url: `${apiUrl}/signin/nh-supervisor/`, method: 'post', data: params })
       .then(response => {
         localStorage.setItem('accessToken',response.data.access);
         setLoginSuccess(true);
       }).catch(error => {
+        setIsCorrect(true);
         console.log(error)
       })
-    }
-    else if (isUser === '관리자') {
-      // 관리자 계정 POST
-      axios({ url: `${apiUrl}/signin/nh-supervisor/`, method: 'post', data: params })
-        .then(response => {
-          localStorage.setItem('accessToken',response.data.access);
-          setLoginSuccess(true);
-        }).catch(error => {
-          console.log(error)
-        })
     }
   };
 
@@ -129,7 +110,8 @@ const SignIn = () => {
         <Password setIsPassword={setIsPassword} fillMessage={fillMessage} />
         {
           (isUser && isId && isPassword)
-            ? <RoundRectangle type='submit' btnText="로그인" />
+            ? <><RoundRectangle type='submit' btnText="로그인" />
+                <SignInCorrect isCorrect={isCorrect} setIsCorrect={setIsCorrect}/></>
             : <RoundRectangle type='button' btnText="로그인" onClick={onClick} />
         }
       </form>

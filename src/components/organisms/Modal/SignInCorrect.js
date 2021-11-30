@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-const SaveModal = ({isClicked, setIsClicked, text}) =>{
-  const handleModalStyle = isClicked?{
+const SignInCorrect = ({isCorrect, setIsCorrect}) =>{
+  const handleModalStyle = isCorrect?{
       position: 'fixed',
       top: '0',
       left: '0', 
@@ -31,7 +31,7 @@ const SaveModal = ({isClicked, setIsClicked, text}) =>{
   const handleModalTextStyle = {
       fontSize: '1rem',
       margin: '40px 20px',
-  };
+};
 
   const handleModalButtonStyle = {
       borderTop: 'var(--border-bottom)',
@@ -44,22 +44,21 @@ const SaveModal = ({isClicked, setIsClicked, text}) =>{
       color: 'var(--color-blue)',
       border: '0',
       width: '150px',
-      height: '50px',
+      height: '30px',
       fontWeight: 'bold',
-      borderRadius: '0 0 10px 0',
   };
 
   let history = useHistory();
   const onClick = () => {
-      setIsClicked(false);
-      // history.go(0);
+    setIsCorrect(true);
+    history.go(0);
   }
 
   return(
     <React.Fragment>
       <div style={handleModalStyle}>
         <div style={handleModalBodyStyle}>
-          <div style={handleModalTextStyle}>{text}</div>
+          <div style={handleModalTextStyle}>사용자 또는 아이디, 비밀번호를 잘못 입력하셨습니다.</div>
           <div style={handleModalButtonStyle}>
               <button type='button' style={handleMainButtonStyle} onClick= {onClick}>확인</button>
           </div>
@@ -69,4 +68,4 @@ const SaveModal = ({isClicked, setIsClicked, text}) =>{
   );
 };
 
-export default SaveModal;
+export default SignInCorrect;
