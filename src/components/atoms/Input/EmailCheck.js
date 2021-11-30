@@ -71,7 +71,7 @@ const EmailCheck = ({checkNum, onCFClick, fillMessage, setIsEmail, email}) =>{
                 ref={cfNumCheck} 
                 className="input-emailcheck" 
                 onChange={onChange} 
-                value={txtEmailCheck} 
+                value={txtEmailCheck||""} 
                 placeholder='인증번호를 입력해주세요.'>
                 </input>
                 <div className='emailcheck_timer'>{min}:{sec < 10 ? `0${sec}` : sec}</div>

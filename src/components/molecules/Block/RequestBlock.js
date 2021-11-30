@@ -78,7 +78,7 @@ const RequestBlock = ({setFeedback, requestId, requestTitle, requestName, reques
             :isManager &&
                 <div style={handleResponseStyle}>
                     <p className='response-title'>답글:</p> 
-                    <input className='input-response' type='text' value={content} onChange={onChange}></input>
+                    <input className='input-response' type='text' value={content||""} onChange={onChange}></input>
                     <IoIosSend className='icon-send' onClick={onSubmit}/>
                 </div> 
             }

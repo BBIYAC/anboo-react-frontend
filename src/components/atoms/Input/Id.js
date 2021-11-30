@@ -26,7 +26,7 @@ const Id = ({setIsId, fillMessage}) =>{
     return(
         <React.Fragment>
             <div className="tit-id">아이디</div>
-            <input name='userid' className="input-id" onChange={onChange} value={titId} placeholder='아이디를 입력해주세요.'></input>
+            <input name='userid' className="input-id" onChange={onChange} value={titId||""} placeholder='아이디를 입력해주세요.'></input>
             {isLong && <div className='notice-massage'>※ 15자 이내로 입력해주세요.</div>}
             {isExept && <div className='notice-massage'>※ 특수문자는 입력하실 수 없습니다.</div>}
             {isHangul && <div className='notice-massage'>※ 영어만 사용할 수 있습니다.</div>}

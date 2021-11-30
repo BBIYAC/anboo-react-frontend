@@ -12,7 +12,7 @@ const Rating = ({setRatingState}) => {
 
   return (
     <React.Fragment>
-      <select className="sel-ratingchoice" onChange={changeSelect} value={rating}>
+      <select className="sel-ratingchoice" onChange={changeSelect} value={rating||""}>
         <option value="" >모두보기</option>
         {ratingList.map((item,index) =>(
           <option value={4-index} key={item}>

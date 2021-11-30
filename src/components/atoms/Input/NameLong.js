@@ -24,7 +24,7 @@ const NameLong = ({setIsName, fillMessage}) =>{
     return(
         <React.Fragment>
             <div className="tit-name">이름</div>
-            <input name='username' className="input-name" onChange={onChange} value={titName} placeholder='이름을 입력해주세요.'></input>
+            <input name='username' className="input-name" onChange={onChange} value={titName||""} placeholder='이름을 입력해주세요.'></input>
             {isExept && <div className='notice-massage'>※ 특수문자는 입력하실 수 없습니다.</div>}
             {isNumExept && <div className='notice-massage'>※ 숫자는 입력하실 수 없습니다.</div>}
             {isNull && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}

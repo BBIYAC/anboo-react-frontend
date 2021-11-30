@@ -64,7 +64,7 @@ const ManagerForm = ({ addManager, setImage, image }) => {
             <input 
             type = "text"
             maxLength = "30"
-            value = {caregiverName}
+            value = {caregiverName||""}
             className="input-mgNhInfoEditInput"
             placeholder="성함"
             onChange={e => setCaregiverName(e.target.value)}></input>
@@ -72,7 +72,7 @@ const ManagerForm = ({ addManager, setImage, image }) => {
             <input 
             type = "tel"
             maxLength = "13"
-            value = {caregiverPhone}
+            value = {caregiverPhone|""}
             className="input-mgNhInfoEditInput"
             placeholder="전화번호( '-' 포함 )"
             onChange={e => setCaregiverPhone(e.target.value)}></input>

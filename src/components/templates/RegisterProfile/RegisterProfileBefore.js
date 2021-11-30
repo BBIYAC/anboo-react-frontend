@@ -97,11 +97,11 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
           (isRegister && isGender && isBirth)
           ?<>
           <Link className="linkComponent" to="/rg/profile">
-            <RoundRectangle type='button' btnText='요양자 등록 요청하기' onClick={onClickSave}/>
+            <RoundRectangle type='button' btnText='요양인 등록 요청하기' onClick={onClickSave}/>
           </Link>
           <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} />
           </>
-          :<RoundRectangle type='button' btnText="요양자 등록 요청하기" onClick={onClickSave} />
+          :<RoundRectangle type='button' btnText="요양인 등록 요청하기" onClick={onClickSave} />
         }
         <Link className="linkComponent" to="/rg/nh-location">
           <Floating background='var(--color-blue)' />

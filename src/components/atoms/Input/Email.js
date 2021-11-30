@@ -73,7 +73,7 @@ const Email = ({setIsEmail, fillMessage}) =>{
                 type='email' 
                 className="input-email" 
                 onChange={onChange} 
-                value={txtEmail} 
+                value={txtEmail||""} 
                 placeholder='예시) abc@anboo.com'>
                 </input>
                 <Certification type='button' text='인증' onClick={onCFClick} color={color} disabled={isDisabled}/>

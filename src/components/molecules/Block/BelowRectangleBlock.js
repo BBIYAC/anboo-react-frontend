@@ -12,9 +12,9 @@ const BelowRectangleBlock = ({tel, id}) => {
 
   let history = useHistory();
 
-  // 요양자 등록하기 이벤트
+  // 요양인 등록하기 이벤트
   const onRegistClick = () => {
-    console.log(id+"요양자등록버튼");
+    console.log(id+"요양인등록버튼");
     history.push({pathname:'/rg/profile', state: {isId: id}});
   }
 

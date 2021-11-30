@@ -50,6 +50,7 @@ const  RegisterActs= () => {
 
   const onLogoutClick = () => {
     setHeaders({Authorization : localStorage.removeItem('accessToken')});
+    history.push('/');
   }
 
   return (

@@ -23,7 +23,7 @@ const Birth = ({isBirth, setIsBirth, fillMessage}) => {
     return(
         <>
             <div className="tit-name">생년월일</div>
-            <input className="input-name" type='date' onChange={onChange} value={titBirth} placeholder='생년월일을 선택해주세요.'></input>
+            <input className="input-name" type='date' onChange={onChange} value={titBirth||""} placeholder='생년월일을 선택해주세요.'></input>
             {isNull && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}
         </>
     );

@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
 import PostRequestTextArea from '../components/atoms/Input/PostRequestTextArea';
-import RequestDate from '../components/atoms/Label/RequestDate';
 import axios from 'axios';
 import { BiLogOut } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';

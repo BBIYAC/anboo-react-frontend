@@ -9,7 +9,7 @@ const PostActTextArea = ({content, setContent}) =>{
       <textarea 
         placeholder='활동 내용을 작성해주세요.' 
         className="textarea-acts" 
-        value={content} 
+        value={content||""} 
         onChange={onChange}></textarea>
     </React.Fragment>
   );
