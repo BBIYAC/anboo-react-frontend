@@ -18,6 +18,7 @@ const NursingHomeInfoInput = ({name, tel, address, time,  setNhInfoInput}) => {
     setNhInfoInput(inputs);
   },[inputs])
 
+  console.log(time);
 
   return(
     <React.Fragment>

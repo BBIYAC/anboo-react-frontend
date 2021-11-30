@@ -60,7 +60,11 @@ const  RegisterNhInfo= () => {
               setName(response.data.nh_info.nh_name);
               setAddress(response.data.nh_info.nh_address);
               setTel(response.data.nh_info.nh_tel);
-              setTime(response.data.nh_info.nh_operating_hour)
+              if(response.data.nh_info.nh_operating_hour===null){
+                setTime("운영시간이 등록되지 않았습니다.");
+              }else{
+                setTime(response.data.nh_info.nh_operating_hour);
+              }
               setRepresentativeImage(response.data.nh_info.nh_representative_image)
               setImages(response.data.nh_images)
             })
@@ -103,7 +107,11 @@ const  RegisterNhInfo= () => {
           setIsNotMember(true);
           setName(response.data.nh_name);
           setAddress(response.data.nh_address);
-          setTime(response.data.nh_operating_hour);
+          if(response.data.nh_operating_hour===null){
+            setTime("운영시간이 등록되지 않았습니다.");
+          }else{
+            setTime(response.data.nh_operating_hour);
+          }
           setTel(response.data.nh_tel);
           setRepresentativeImage(response.data.nh_representative_image);
           setLogState(true);
@@ -149,6 +157,7 @@ const  RegisterNhInfo= () => {
     );
   });
 
+  // console.log(time)
   return (
     <React.Fragment>
       <div className="header">

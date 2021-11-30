@@ -269,8 +269,7 @@ const RegisterNhs= () => {
             }
           }
         })
-        
-        
+      
       }else if(key === 2){                    // 등록 보호자
         history.push('/rg/acts');
       }else if(key === 3){                    // 미승인 관리자
@@ -279,10 +278,6 @@ const RegisterNhs= () => {
         history.push('/mg/home');
       }else if(key === 6){                    // 비회원
         setIsMember(false);
-        axios({url:`${apiUrl}/not-nok/bookmark-list/`, method: 'get'})
-        .then(response=> {
-          setBookmarkedList(response.data.objects.bookmarked_nh_id);
-        })
 
         if(search){                           // 검색어가 있을 때
           axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})

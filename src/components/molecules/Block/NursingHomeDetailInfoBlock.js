@@ -52,6 +52,8 @@ const NursingHomeDetailInfoBlock = ({
     })
     setIsCheck(false);
   }
+
+  // console.log(time)
   return(
     <React.Fragment>
       <hr/>
