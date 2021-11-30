@@ -48,7 +48,7 @@ const Email = ({setIsEmail, fillMessage}) =>{
         if(!isExept){
             console.log(random);
             setEmailCheck(random);
-            sendFeedback(serviceID, templateID, {message: random, to_email: txtEmail});
+            // sendFeedback(serviceID, templateID, {message: random, to_email: txtEmail});      // 이메일 보내는 코드
             setShowCheck(true);
             setIsDisabled(true);
             setColor({color: 'var(--color-dark-gray)', borderColor: 'var(--color-dark-gray)'});

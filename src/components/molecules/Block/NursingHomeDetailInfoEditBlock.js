@@ -30,7 +30,7 @@ const NursingHomeDetailInfoEditBlock = ({
     })
   }, [pictures, nhInfoInput])
 
-
+  console.log(time)
   return(
     <React.Fragment>
       <hr/>

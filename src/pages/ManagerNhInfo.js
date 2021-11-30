@@ -34,7 +34,7 @@ const ManagerNhInfo= () => {
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
   let history = useHistory();
   
-  
+
   const detailGet = () => {
     // 요양원 상세정보 GET
     axios({url:`${apiUrl}/supervisor/nh-info/`, method: 'get',headers:headers})
@@ -46,9 +46,12 @@ const ManagerNhInfo= () => {
       setAddress(response.data.nh_info.nh_address);
       setRepresentativeImage(response.data.nh_info.nh_representative_image);
       setImages(response.data.nh_images);
-      setTime(response.data.nh_info.nh_operating_hour);
+      if(response.data.nh_info.nh_operating_hour===null){
+        setTime("운영시간이 등록되지 않았습니다.");
+      }else{
+        setTime(response.data.nh_info.nh_operating_hour);
+      }
       setStarRating(response.data.nh_star_avg);
-      console.log(response.data.nh_info)
 
       // 관리자 상세정보 GET
       axios({url:`${apiUrl}/not-nok/employee-info/${response.data.nh_info.id}/`, method: 'get', headers:headers})
@@ -104,6 +107,7 @@ const ManagerNhInfo= () => {
   }
 
 
+  console.log(time)
   return (
     <React.Fragment>
       {isEdit
