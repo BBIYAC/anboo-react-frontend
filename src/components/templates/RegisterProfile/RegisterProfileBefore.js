@@ -50,13 +50,14 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
 
       // axios register profile POST
       axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
-      .then(response => {
+      .then(resProfile => {
+        console.log('register profile POST success', resProfile);
         // axios star rating POST
         axios({url:`${apiUrl}/nok/star/post/`,method : 'post' ,headers:header, data: {
           star_rating: 0
         }})
-        .then(response =>{
-          console.log('register profile POST success', response);
+        .then(resStar =>{
+          console.log('star Rating POST success', resStar);
           setModalText('저장되었습니다.');
           setIsClicked(true);
           setUserState(0);
