@@ -13,6 +13,8 @@ const ManagerHomeBefore = () => {
   const [nursingHome, setNursingHome] = useState();
   const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken'),
                   'Content-Type': 'multipart/form-data'}
+
+
   const onChange = (e) => {
     setSearch(e.target.value);
   }

@@ -12,7 +12,7 @@ import SaveModal from '../../organisms/Modal/SaveModal'
 import { apiUrl } from '../../../pages/ApiURL';
 import axios from 'axios';
 
-const  RegisterProfileAfter= ({onLogoutClick}) => {
+const  RegisterProfileAfter= ({onLogoutClick, onBackClick}) => {
   const [fillMessage, setFillMessage] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isRegister, setIsRegister] = useState('');
@@ -87,9 +87,6 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
       }).catch(error => {
           console.error(error);
       })
-
-      
-
     }
   }
 
@@ -101,7 +98,7 @@ const  RegisterProfileAfter= ({onLogoutClick}) => {
   return (
     <React.Fragment>
     <div className="header">
-        <IoIosArrowBack opacity='0' size="20"/>
+        <IoIosArrowBack size="20" onClick={onBackClick}/>
         요양인 프로필
         <BiLogOut size="20" onClick={onLogoutClick}/>
     </div>

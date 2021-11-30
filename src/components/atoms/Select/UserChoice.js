@@ -22,7 +22,7 @@ const UserChoice = ({setIsUser, fillMessage}) =>{
       <select name='user' className="sel-userchoice" onChange={changeSelect} defaultValue='default' style={color}>
         <option value='default' disabled hidden>사용자를 선택해주세요.</option>
         {selectList.map((item) =>(
-          <option value={item} key={item} style={{color: 'black'}}>
+          <option value={item||""} key={item} style={{color: 'black'}}>
             {item}
           </option>
         ))}
