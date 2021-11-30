@@ -16,25 +16,22 @@ const ManagerHomeAfter = () => {
   useEffect(()=>{
     // axios number of not response GET - 답변하지 않은 요청사항 개수
     axios({url: `${apiUrl}/supervisor/no-response-to-request/` ,method : 'get' ,headers:headers})
-    .then(response =>{
-      setDatas({
-        non_response: response.data.number_of_not_responded_requests,
-        non_approval: datas.non_approval,
-      })
+    .then(resRequests =>{
+      // axios number of not approval GET - 승인하지 않은 보호자 & 환자 리스트
+      axios({url: `${apiUrl}/supervisor/not-approved-nok-list/` ,method : 'get' ,headers:headers})
+      .then(resMembers =>{
+        setDatas({
+          non_response: resRequests.data.number_of_not_responded_requests,
+          non_approval: resMembers.data.np_info.length,
+        })
+      }).catch(error => {
+          console.error(error);
+      });
     }).catch(error => {
         console.error(error);
     });
 
-    // axios number of not approval GET - 승인하지 않은 보호자 & 환자 리스트
-    axios({url: `${apiUrl}/supervisor/not-approved-nok-list/` ,method : 'get' ,headers:headers})
-    .then(response =>{
-      setDatas({
-        non_response: datas.non_response,
-        non_approval: response.data.np_info.length,
-      })
-    }).catch(error => {
-        console.error(error);
-    });
+    
   }, [])
 
   return(

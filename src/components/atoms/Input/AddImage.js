@@ -37,7 +37,7 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
 
   useEffect(()=>{
     setFileURL(
-      typeof url === 'object'
+      url !== null && typeof url === 'object'
       ? URL.createObjectURL(url)
       : url);
   }, [url])

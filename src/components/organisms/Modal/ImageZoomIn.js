@@ -8,6 +8,7 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
         width: '100%',
         height: '100%', 
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        zIndex: '999',
     }:{
         display: 'none',
     };
@@ -52,7 +53,7 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
         <div style={handleModalStyle}>
           <div style={handleModalBodyStyle}>
             <button style={btnModalCancel} type='button' onClick={onClick}>X</button>
-            <img style={imageModalZoomin} src={url} onError={handleImgError}></img>
+            <img style={imageModalZoomin} src={url || ''} onError={handleImgError}></img>
           </div>
         </div>
       </React.Fragment>
