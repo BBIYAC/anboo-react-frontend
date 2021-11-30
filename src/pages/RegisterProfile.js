@@ -52,10 +52,14 @@ const  RegisterProfile= () => {
     history.push('/');
   }
 
+  const onBackClick = () => {
+    history.push('/rg/acts');
+  }
+
   const pageState = (state) => {
     switch(state){
       case 2:{ // 등록 보호자
-        return <RegisterProfileAfter onLogoutClick={onLogoutClick}/>
+        return <RegisterProfileAfter onLogoutClick={onLogoutClick} onBackClick={onBackClick}/>
       }
       case 1:{ // 미등록 보호자
         return <RegisterProfileBefore onLogoutClick={onLogoutClick} nhId={nhId} setUserState={setUserState} />

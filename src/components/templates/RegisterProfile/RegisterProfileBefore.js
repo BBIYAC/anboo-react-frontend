@@ -65,6 +65,7 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
         })
       })
     }
+    history.go(0);
   };
 
   let history = useHistory();

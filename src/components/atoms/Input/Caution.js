@@ -3,8 +3,8 @@ import React, {useState, useEffect} from 'react';
 const Caution = ({isCaution, setIsCaution}) => {
   const [titName, setTitName] = useState('');
   const onChange = (e) => {
-      setTitName(e.target.value);
-      setIsCaution(e.target.value);
+      setTitName && setTitName(e.target.value);
+      setIsCaution && setIsCaution(e.target.value);
   };
 
   useEffect(()=>{

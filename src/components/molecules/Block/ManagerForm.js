@@ -72,7 +72,7 @@ const ManagerForm = ({ addManager, setImage, image }) => {
             <input 
             type = "tel"
             maxLength = "13"
-            value = {caregiverPhone|""}
+            value = {caregiverPhone}
             className="input-mgNhInfoEditInput"
             placeholder="전화번호( '-' 포함 )"
             onChange={e => setCaregiverPhone(e.target.value)}></input>
