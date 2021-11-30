@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import { useState } from 'react/cjs/react.development';
 
-const SaveModal = ({isClicked, setIsClicked, text}) =>{
+const SaveModal = ({isClicked, setIsClicked, text, onSaveClick}) =>{
   const handleModalStyle = isClicked?{
       position: 'fixed',
       top: '0',
@@ -52,8 +52,8 @@ const SaveModal = ({isClicked, setIsClicked, text}) =>{
 
   let history = useHistory();
   const onClick = () => {
-      setIsClicked(false);
-      // history.go(0);
+    onSaveClick();
+    setIsClicked(false);
   }
 
   return(

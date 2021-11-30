@@ -60,7 +60,6 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
           console.log('star Rating POST success', resStar);
           setModalText('저장되었습니다.');
           setIsClicked(true);
-          setUserState(0);
         }).catch(error => {
             console.error(error);
         })
@@ -83,6 +82,10 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
   const onBackClick = () => {
     history.goBack(-1);
   }
+
+  const onSaveClick = () => {
+    setUserState(0);
+  }
   
   return (
     <React.Fragment>
@@ -101,7 +104,7 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
           <Link className="linkComponent" to="/rg/profile">
             <RoundRectangle type='button' btnText='요양인 등록 요청하기' onClick={onClickSave}/>
           </Link>
-          <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} />
+          <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} onSaveClick={onSaveClick} />
           </>
           :<RoundRectangle type='button' btnText="요양인 등록 요청하기" onClick={onClickSave} />
         }
