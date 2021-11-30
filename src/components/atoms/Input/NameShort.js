@@ -30,7 +30,7 @@ const NameShort = ({isRegister, setIsRegister, fillMessage}) => {
     return(
         <div style={handleStyle}>
             <div className="tit-name">요양인 이름</div>
-            <input className="input-name" onChange={onChange} value={txtName} placeholder='이름을 입력해주세요.'></input>
+            <input className="input-name" onChange={onChange} value={txtName||""} placeholder='이름을 입력해주세요.'></input>
             {isNull && <div className='notice-massage'>※ 필수로 입력해주세요.</div>}
             {isNumExept && <div className='notice-massage'>※ 숫자는 입력하실 수 없습니다.</div>}
         </div>
