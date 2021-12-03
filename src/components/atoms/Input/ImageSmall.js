@@ -7,7 +7,7 @@ const ImageSmall = ({url}) => {
 
   // Default Image
   const handleImgError = (e) => {
-    e.target.src = require("./picture.png").default;
+    e.target.src = require("./logo.png").default;
   }
 
   // Image Zoom in

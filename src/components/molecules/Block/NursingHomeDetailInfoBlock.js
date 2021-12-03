@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NursingHomeInfo from '../../atoms/Label/NursingHomeInfo';
 import { BsBookmarkFill, BsBookmark } from 'react-icons/bs';
-import defalutImage from '../../atoms/Input/picture.png';
+import defalutImage from '../../atoms/Input/logo.png';
 import axios from 'axios';
 import { apiUrl } from '../../../pages/ApiURL';
 import ImageNhInfo from '../../atoms/Input/ImageNhInfo';

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 const CallModal = ({tel, isClicked, setIsClicked}) =>{
     const handleModalStyle = isClicked?{
@@ -24,7 +24,6 @@ const CallModal = ({tel, isClicked, setIsClicked}) =>{
         borderRadius: '10px',
         boxShadow: '0 2px 3px 0 rgba(34, 36, 38, 0.15)',
         transform: 'translateX(-50%) translateY(-50%)',
-
     };
 
     const handleModalTitleStyle = {

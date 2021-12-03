@@ -7,7 +7,7 @@ const ImageNhInfo = ({url}) => {
 
   // Default Image
   const handleImgError = (e) => {
-    e.target.src = require("../Input/picture.png").default;
+    e.target.src = require("../Input/logo.png").default;
   }
   
   // Image Zoom in
@@ -19,7 +19,7 @@ const ImageNhInfo = ({url}) => {
     <React.Fragment>
       <img 
       className="img-nhInfo" 
-      src={url===null?require("../Input/picture.png").default:url} 
+      src={url===null?require("../Input/logo.png").default:url} 
       onError={handleImgError} onClick={onClick}></img>
       <ImageZoomIn isClicked={isClicked} 
       url={url} 

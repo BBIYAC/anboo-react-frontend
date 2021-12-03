@@ -47,7 +47,7 @@ const ManagerNhInfo= () => {
       setRepresentativeImage(response.data.nh_info.nh_representative_image);
       setImages(response.data.nh_images);
       if(response.data.nh_info.nh_operating_hour===null){
-        setTime("운영시간이 등록되지 않았습니다.");
+        setTime("운영시간");
       }else{
         setTime(response.data.nh_info.nh_operating_hour);
       }

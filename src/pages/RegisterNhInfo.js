@@ -61,7 +61,7 @@ const  RegisterNhInfo= () => {
               setAddress(response.data.nh_info.nh_address);
               setTel(response.data.nh_info.nh_tel);
               if(response.data.nh_info.nh_operating_hour===null){
-                setTime("운영시간이 등록되지 않았습니다.");
+                setTime("운영시간");
               }else{
                 setTime(response.data.nh_info.nh_operating_hour);
               }
@@ -108,7 +108,7 @@ const  RegisterNhInfo= () => {
           setName(response.data.nh_name);
           setAddress(response.data.nh_address);
           if(response.data.nh_operating_hour===null){
-            setTime("운영시간이 등록되지 않았습니다.");
+            setTime("운영시간");
           }else{
             setTime(response.data.nh_operating_hour);
           }

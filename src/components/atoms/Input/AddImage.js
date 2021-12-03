@@ -14,8 +14,11 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
   
   // Default Image
   const handleImgError = (e) => {
-    e.target.src = require("./picture.png").default;
+    e.target.src = require("./logo.png").default;
     const dataURLtoFile = (dataurl, fileName) => {
+      //Usage example:
+      let file = dataURLtoFile(e.target.src,'logo.png');
+      setIsImage && setIsImage(file);
  
       var arr = dataurl.split(','),
           mime = arr[0].match(/:(.*?);/)[1],
@@ -30,9 +33,6 @@ const AddImage = ({url, border, borderColor, setIsImage, pictures, setPictures})
       return new File([u8arr], fileName, {type:mime});
     }
     
-    //Usage example:
-    var file = dataURLtoFile(e.target.src,'picture.png');
-    setIsImage && setIsImage(file);
   }
 
   useEffect(()=>{

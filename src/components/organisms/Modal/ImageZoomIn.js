@@ -40,7 +40,7 @@ const ImageZoomIn = ({isClicked, url, setIsClicked}) =>{
 
     // Default Image
     const handleImgError = (e) => {
-        e.target.src = require("../../atoms/Input/picture.png").default;
+        e.target.src = require("../../atoms/Input/logo.png").default;
     }
 
     const onClick = () => {

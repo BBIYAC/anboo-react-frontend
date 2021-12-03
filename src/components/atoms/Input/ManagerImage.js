@@ -25,7 +25,7 @@ const ManagerImage = ({url, border, borderColor, setImage, setCaregiverImage, nh
 
   // Default Image
   const handleImgError = (e) => {
-    e.target.src = require("./picture.png").default;
+    e.target.src = require("./logo.png").default;
   }
 
   return(

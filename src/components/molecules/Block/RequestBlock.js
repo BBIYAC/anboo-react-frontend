@@ -34,21 +34,22 @@ const RequestBlock = ({setFeedback, requestId, requestTitle, requestName, reques
     const [content, setContent] = useState('');
     const [clicked, setClicked] = useState(false);
     const onSubmit = () => {
-        setClicked(true);
-        if(content){
-            // axios request response POST - 요청사항 응답
-            const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
-            axios({url:`${apiUrl}/supervisor/requests/`,method : 'post' ,headers: headers, data:{
-                nok_request_id: requestId,
-                comment: content,
-            }})
-            .then(response =>{
-                console.log('post success!', response.data);
-                setFeedback(true);
-            }).catch(error => {
-                console.error(error);
-    })
-        }
+      setClicked(true);
+      console.log(content)
+      if(content){
+          // axios request response POST - 요청사항 응답
+          const headers = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
+          axios({url:`${apiUrl}/supervisor/requests/`,method : 'post' ,headers: headers, data:{
+              nok_request_id: requestId,
+              comment: content,
+          }})
+          .then(response =>{
+              console.log('post success!', response.data);
+              setFeedback(true);
+          }).catch(error => {
+              console.error(error);
+        })
+      }
     }
     const onChange = (e) => {
         setContent(e.target.value);
