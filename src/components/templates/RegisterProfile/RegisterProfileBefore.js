@@ -5,7 +5,6 @@ import Caution from '../../atoms/Input/Caution';
 import InputSelectBlock from '../../molecules/Block/InputSelectBlock';
 import RoundRectangle from '../../atoms/Button/RoundRectangle';
 import Floating from '../../atoms/Button/Floating';
-import RegisterProfileWaiting from '../RegisterProfile/RegisterProfileWaiting';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link, useHistory } from 'react-router-dom';
@@ -24,7 +23,9 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
   const [isId, setIsId] = useState('');
   const [modalText, setModalText] = useState('');
   const [headers, setHeaders] = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken'),  'Content-Type': 'multipart/form-data'})
-  const header = useState({Authorization : 'Bearer ' + localStorage.getItem('accessToken')})
+  const header = {Authorization : 'Bearer ' + localStorage.getItem('accessToken')};
+  const star = 0;
+
   const onClickSave = () => {
     setFillMessage(true); // 비어있는 input 경고
     if(isRegister && isGender && isBirth){
@@ -49,23 +50,24 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
       console.log(params)
 
       // axios register profile POST
-      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'put', data: np_profile_formdata})
-      .then(response => {
+      axios({url:`${apiUrl}/not-nok/np-profile/`, method: 'post', data: np_profile_formdata, headers: headers })
+      .then(resProfile => {
         // axios star rating POST
-        axios({url:`${apiUrl}/nok/star/post/`,method : 'post' ,headers:header, data: {
-          star_rating: 0
+        axios({url:`${apiUrl}/nok/star/post/`,method : 'put' ,headers:header, data: {
+          star_rating: star
         }})
-        .then(response =>{
-          console.log('register profile POST success', response);
+        .then(resStar =>{
           setModalText('저장되었습니다.');
           setIsClicked(true);
-          setUserState(0);
         }).catch(error => {
             console.error(error);
         })
       })
     }
+<<<<<<< HEAD
     // history.go(0);
+=======
+>>>>>>> 148efda1771dc0a9a6d32d741e143a88058c39b6
   };
 
   let history = useHistory();
@@ -81,6 +83,10 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
 
   const onBackClick = () => {
     history.goBack(-1);
+  }
+
+  const onSaveClick = () => {
+    setUserState(0);
   }
   
   return (
@@ -100,7 +106,7 @@ const  RegisterProfileBefore= ({nhId, setUserState}) => {
           <Link className="linkComponent" to="/rg/profile">
             <RoundRectangle type='button' btnText='요양인 등록 요청하기' onClick={onClickSave}/>
           </Link>
-          <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} />
+          <SaveModal isClicked={isClicked} setIsClicked={setIsClicked} text={modalText} onSaveClick={onSaveClick} />
           </>
           :<RoundRectangle type='button' btnText="요양인 등록 요청하기" onClick={onClickSave} />
         }

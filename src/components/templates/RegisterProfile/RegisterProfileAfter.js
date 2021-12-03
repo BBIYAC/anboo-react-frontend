@@ -40,7 +40,7 @@ const  RegisterProfileAfter= ({onLogoutClick, onBackClick}) => {
       console.log(response.data);
       response.data.profile && setDefaults(response.data.profile);
     }).catch(error => {
-        console.error(error);
+        console.log(error);
     })
 
 
@@ -102,7 +102,7 @@ const  RegisterProfileAfter= ({onLogoutClick, onBackClick}) => {
         요양인 프로필
         <BiLogOut size="20" onClick={onLogoutClick}/>
     </div>
-      <AddImage url={isImage} setIsImage={setIsImage} />
+      <AddImage url={defaults.np_profile_image} setIsImage={setIsImage} />
       <InputSelectBlock isRegister={defaults.np_name} isGender={defaults.gender} setIsRegister={setIsRegister} setIsGender={setIsGender} fillMessage={fillMessage} />
       <Birth isBirth={defaults.np_date} setIsBirth={setIsBirth} fillMessage={fillMessage} />
       <Caution isCaution={defaults.memo} setIsCaution={setIsCaution} />

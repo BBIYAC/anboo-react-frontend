@@ -1,7 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 
-const SaveModal = ({isClicked, setIsClicked, text}) =>{
+const SaveModal = ({isClicked, setIsClicked, text, onSaveClick}) =>{
   const handleModalStyle = isClicked?{
       position: 'fixed',
       top: '0',
@@ -49,10 +48,9 @@ const SaveModal = ({isClicked, setIsClicked, text}) =>{
       borderRadius: '0 0 10px 0',
   };
 
-  let history = useHistory();
   const onClick = () => {
-      setIsClicked(false);
-      // history.go(0);
+    onSaveClick && onSaveClick();
+    setIsClicked(false);
   }
 
   return(

@@ -28,8 +28,6 @@ const SignIn = () => {
   }
   let history = useHistory();
 
-
-
    // 사용자 체크 GET
   const userAuthorization = ()=>{
     axios({url:`${apiUrl}/authentication/check/`,method : 'get' ,headers:headers})
