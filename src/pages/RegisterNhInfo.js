@@ -132,6 +132,10 @@ const  RegisterNhInfo= () => {
     history.push('/');
   }
 
+  const onFloatingClick = () =>{
+    history.push('/rg/nh-location')
+  }
+
   const onClick = () => {
     history.goBack(-1);
   }
@@ -189,29 +193,38 @@ const  RegisterNhInfo= () => {
         <NotRegisteredEmptyActImages/>
       </>
       :<div>
-      <NursingHomeChiefInfoBlock 
-      chiefName={chiefName} 
-      chiefTel={
-        0 + chiefTel.substring(3,5)
-        +'-'+chiefTel.substring(5,9)
-        +'-'+chiefTel.substring(9,13)} 
-      chiefImage={chiefImage} />
-      <hr/>
-      <div className="div_memberBox">
-        { renderManagers }
-      </div>
-      <hr></hr>
-      <div className="grid-container">
-        {renderImages}
-      </div>
-      <BelowRectangleBlock tel={tel} id={history.location.state.id}/>
-      </div>
-      :<NotRegisteredNotice/>         // 등록되지 않은 요양원인 경우
-      }
+          <NursingHomeChiefInfoBlock 
+          chiefName={chiefName} 
+          chiefTel={
+            0 + chiefTel.substring(3,5)
+            +'-'+chiefTel.substring(5,9)
+            +'-'+chiefTel.substring(9,13)} 
+          chiefImage={chiefImage} />
 
-      <Link className="linkComponent" to="/rg/nh-location">
-        <Floating background="var(--color-blue)"/>
-      </Link>
+          <hr/>
+        
+          <div className="div_memberBox">
+            { renderManagers }
+          </div>
+
+          <hr></hr>
+
+          <div className="grid-container">
+            {renderImages}
+          </div>
+
+          <Floating background="var(--color-blue)" onClick={onFloatingClick} />
+          
+          <BelowRectangleBlock tel={tel} id={history.location.state.id} />
+      </div>
+      :<div>
+        {/* 등록되지 않은 요양원인 경우 */}
+          <NotRegisteredNotice/>
+          <Link className="linkComponent" to="/rg/nh-location">
+            <Floating background="var(--color-blue)"/>
+          </Link>
+      </div>
+      }
     </React.Fragment>
   );
 };

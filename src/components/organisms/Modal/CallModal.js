@@ -4,11 +4,11 @@ const CallModal = ({tel, isClicked, setIsClicked}) =>{
     const handleModalStyle = isClicked?{
         position: 'fixed',
         bottom: '0',
-        left: '0', 
+        left: '0',
         width: '100vw',
         height: '100vh', 
         backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        zIndex: '999',
+        zIndex: '2',
     }:{
         display: 'none',
     };
@@ -68,18 +68,18 @@ const CallModal = ({tel, isClicked, setIsClicked}) =>{
     };
     
     return(
-        <React.Fragment>
-            <div style={handleModalStyle}>
-                <div style={handleModalBodyStyle}>
-                    <div style={handleModalTitleStyle}>요양원 전화번호</div>
-                    <div style={handleModalTextStyle}>{tel}</div>
-                    <div style={handleModalButtonStyle}>
-                        <button style={handleButtonStyle} onClick={()=>setIsClicked(false)}>취소</button>
-                        <a href={tel} style={handleMainButtonStyle} onClick={()=>setIsClicked(false)}>전화걸기</a>
-                    </div>
-                </div>
+      <React.Fragment>
+        <div style={handleModalStyle}>
+          <div style={handleModalBodyStyle}>
+            <div style={handleModalTitleStyle}>요양원 전화번호</div>
+            <div style={handleModalTextStyle}>{tel}</div>
+            <div style={handleModalButtonStyle}>
+              <button style={handleButtonStyle} onClick={()=>setIsClicked(false)}>취소</button>
+              <a href={tel} style={handleMainButtonStyle} onClick={()=>setIsClicked(false)}>전화걸기</a>
             </div>
-        </React.Fragment>
+          </div>
+        </div>
+      </React.Fragment>
     );
 };
 

@@ -24,7 +24,6 @@ const CertificationModal = ({isClicked, setIsClicked, onCFClick, setMin, setSec}
         borderRadius: '10px',
         boxShadow: '0 2px 3px 0 rgba(34, 36, 38, 0.15)',
         transform: 'translateX(-50%) translateY(-50%)',
-
     };
 
     const handleModalTextStyle = {
