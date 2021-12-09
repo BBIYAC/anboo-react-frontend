@@ -1,3 +1,11 @@
+/* ios 기본 css 제거 */
+input{
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  background-color: white;
+  color: black;
+}
+
 .tit-name,
 .tit-id,
 .tit-password,
