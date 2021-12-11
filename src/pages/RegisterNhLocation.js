@@ -139,7 +139,7 @@ const RegisterNhLocation = () => {
   }
   
   return (
-    <LoadScript googleMapsApiKey="AIzaSyC526zoNUjyiZlFOXmIy7_KGgaxcj7ecIo">
+  <LoadScript googleMapsApiKey="AIzaSyC526zoNUjyiZlFOXmIy7_KGgaxcj7ecIo">
     <div className="header">
       <IoIosArrowBack opacity="0" size="20"/>
       요양원 위치

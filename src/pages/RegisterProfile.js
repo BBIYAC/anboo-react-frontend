@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import RegisterProfileAfter from '../components/templates/RegisterProfile/RegisterProfileAfter';
 import RegisterProfileWaiting from '../components/templates/RegisterProfile/RegisterProfileWaiting';
 import RegisterProfileBefore from '../components/templates/RegisterProfile/RegisterProfileBefore';
-import axios from 'axios';
+import RegisterProfileAfter from '../components/templates/RegisterProfile/RegisterProfileAfter';
 import { useHistory } from 'react-router';
 import { apiUrl } from './ApiURL';
+import axios from 'axios';
 import '../components/atoms/Select/Select.css';
 import '../components/atoms/Input/Input.css';
 import '../components/atoms/Button/Button.css';

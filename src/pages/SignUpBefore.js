@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import UserChoice from '../components/atoms/Select/UserChoice';
-import NameLong from '../components/atoms/Input/NameLong';
-import Id from '../components/atoms/Input/Id';
-import Password from '../components/atoms/Input/Password';
+import RoundRectangle from '../components/atoms/Button/RoundRectangle';
 import PasswordCheck from '../components/atoms/Input/PasswordCheck';
 import PhoneNumber from '../components/atoms/Input/PhoneNumber';
+import UserChoice from '../components/atoms/Select/UserChoice';
+import NameLong from '../components/atoms/Input/NameLong';
+import Password from '../components/atoms/Input/Password';
 import Email from '../components/atoms/Input/Email';
-import RoundRectangle from '../components/atoms/Button/RoundRectangle';
+import Id from '../components/atoms/Input/Id';
 import { IoIosArrowBack } from 'react-icons/io';
 import { BiLogOut } from 'react-icons/bi';
 import { Link, useHistory } from 'react-router-dom';

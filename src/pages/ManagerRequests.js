@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {IoIosArrowBack} from 'react-icons/io';
-import {BiLogOut} from 'react-icons/bi';
-import RequestBlock from '../components/molecules/Block/RequestBlock';
-import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
-import Floating from '../components/atoms/Button/Floating';
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
+import {BiLogOut} from 'react-icons/bi';
 import { apiUrl } from './ApiURL';
+import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
+import RequestBlock from '../components/molecules/Block/RequestBlock';
+import Floating from '../components/atoms/Button/Floating';
+import axios from 'axios';
 
 const  ManagerRequests= () => {
   const [requests, setRequests] = useState([]);

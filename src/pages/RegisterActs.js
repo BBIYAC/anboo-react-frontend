@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import NursingHomeActBlock from '../components/molecules/Block/NursingHomeActBlock';
 import BelowBarBlock from '../components/molecules/Block/BelowBarBlock';
-import { BiLogOut } from 'react-icons/bi';
 import { IoIosArrowBack } from 'react-icons/io';
-import '../components/atoms/Label/Label.css';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { BiLogOut } from 'react-icons/bi';
 import { apiUrl } from './ApiURL';
+import axios from 'axios';
+import '../components/atoms/Label/Label.css';
 
 
 const  RegisterActs= () => {

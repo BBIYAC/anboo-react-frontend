@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Rating from '../components/atoms/Select/Rating';
+import NursingHomeInfoBlock from '../components/molecules/Block/NursingHomeInfoBlock';
 import Favorites from '../components/atoms/Button/Favorites';
 import Floating from '../components/atoms/Button/Floating';
-import NursingHomeInfoBlock from '../components/molecules/Block/NursingHomeInfoBlock';
+import Rating from '../components/atoms/Select/Rating';
 import axios from "axios";
 import { Link, useHistory } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';

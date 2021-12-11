@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import NursingHomeInfo from '../components/templates/ManagerNHInfo/NursingHomeInfo';
-import NursingHomeInfoEdit from '../components/templates/ManagerNHInfo/NursingHomeInfoEdit';
-import axios from 'axios';
 import { useHistory } from 'react-router';
 import { apiUrl } from './ApiURL';
+import NursingHomeInfoEdit from '../components/templates/ManagerNHInfo/NursingHomeInfoEdit';
+import NursingHomeInfo from '../components/templates/ManagerNHInfo/NursingHomeInfo';
+import axios from 'axios';
 import '../components/atoms/Button/Button.css';
 
 const ManagerNhInfo= () => {

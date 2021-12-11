@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ManagerActsList from '../components/templates/ManagerActs/ManagerActsList';
-import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
-import Floating from '../components/atoms/Button/Floating'
-import ManagerActsPost from '../components/templates/ManagerActs/ManagerActsPost';
 import { Link, useHistory, useLocation } from "react-router-dom";
-import axios from 'axios';
 import { apiUrl } from './ApiURL';
+import ManagerBelowBarBlock from '../components/molecules/Block/ManagerBelowBarBlock';
+import ManagerActsList from '../components/templates/ManagerActs/ManagerActsList';
+import ManagerActsPost from '../components/templates/ManagerActs/ManagerActsPost';
+import Floating from '../components/atoms/Button/Floating'
+import axios from 'axios';
 
 const ManagerActs = () => {
   const [isPost, setIsPost] = useState(false);

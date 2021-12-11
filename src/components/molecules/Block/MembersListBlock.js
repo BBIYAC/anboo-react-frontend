@@ -100,12 +100,17 @@ const MembersListBlock = () => {
       <div className="div-managementScroll">
         {members.map((member, idx) => (
         <div className="div-list" key={idx}>
-          <ImageSmall url={member.image} />
-          <div className="div-info">
-            <div className="listInfo-name">{member.np_name} 님</div>
-            <div className="listInfo-year">생년월일: {member.np_date.split('-')[0]+'.'
-                                                    + member.np_date.split('-')[1]+'.'
-                                                    + member.np_date.split('-')[2]}</div>
+          <div className="div-infoBox">
+            <ImageSmall url={member.image} />
+            <div className="div-info">
+              <div className="listInfo-name">{member.np_name} 님</div>
+              <div className="listInfo-year">
+                생년월일: 
+                {member.np_date.split('-')[0]+'.'
+                + member.np_date.split('-')[1]+'.'
+                + member.np_date.split('-')[2]}
+              </div>
+            </div>
           </div>
           
           <div className="div-checkBoxAndDelete">

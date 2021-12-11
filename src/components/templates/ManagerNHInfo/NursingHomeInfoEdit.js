@@ -41,7 +41,7 @@ const NursingHomeInfoEdit = ({
       chiefImage={chiefImage}
       membersArray={membersArray}
       time={time} />
-      <Floating background="var(--color-green)" onClick={()=>history.push("/mg/home")}/>
+      <Floating background="var(--color-green)" onClick={()=>history.push("/mg/requests")}/>
       <ManagerBelowBarBlock isRequest/>
     </>
   );

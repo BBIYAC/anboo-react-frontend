@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import MgRgsManagement from '../components/templates/ManagerRgsManagement/MgRgsManagement';
 import { useHistory } from 'react-router';
-import axios from "axios";
 import { apiUrl } from './ApiURL';
+import MgRgsManagement from '../components/templates/ManagerRgsManagement/MgRgsManagement';
+import axios from "axios";
 
 const ManagerRgs= () => {
   let history = useHistory();
