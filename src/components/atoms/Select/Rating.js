@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Rating = ({setRatingState}) => {
 	const ratingList = 
-  ['4.0~5.0', '3.0~4.0', '2.0~3.0', '1.0~2.0'];
+  ['5.0~4.0', '3.9~3.0', '2.9~2.0', '1.9~1.0', '0.9~0.0'];
   const [rating, ratingSelected] = useState('');
 
   const changeSelect = (e) =>{

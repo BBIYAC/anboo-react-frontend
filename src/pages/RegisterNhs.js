@@ -98,7 +98,7 @@ const RegisterNhs= () => {
         axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
         .then(response=>{
           for(let i = 0; i < response.data.length; i++){
-            if(response.data[i].star_avg >= 4 && response.data[i].star_avg < 5){
+            if(response.data[i].star_avg >= 4 && response.data[i].star_avg <= 5){
               ratingArray[i] = response.data[i];
             }
           }
@@ -144,6 +144,21 @@ const RegisterNhs= () => {
         .then(response=>{
           for(let i = 0; i < response.data.length; i++){
             if(response.data[i].star_avg >= 1 && response.data[i].star_avg < 2){
+              ratingArray[i] = response.data[i];
+            }
+          }
+          setNursingHomes(ratingArray);
+        }).catch(error=> {
+          console.error(error);
+        })
+        break;
+      case 0:
+        ratingArray = [];
+        console.log("0");
+        axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+        .then(response=>{
+          for(let i = 0; i < response.data.length; i++){
+            if(!response.data[i].star_avg || response.data[i].star_avg < 1){
               ratingArray[i] = response.data[i];
             }
           }
@@ -164,6 +179,7 @@ const RegisterNhs= () => {
     let ratingArray = [];
     switch(parseInt(ratingState)){
       case 4:
+        ratingArray = [];
         console.log("4");
         axios({url:`${apiUrl}/nh-info/`, method: 'get'})
         .then(response=>{
@@ -178,6 +194,7 @@ const RegisterNhs= () => {
         })
         break;
       case 3:
+        ratingArray = [];
         console.log("3");
         axios({url:`${apiUrl}/nh-info/`, method: 'get'})
         .then(response=>{
@@ -192,6 +209,7 @@ const RegisterNhs= () => {
         })
         break;
       case 2:
+        ratingArray = [];
         console.log("2");
         axios({url:`${apiUrl}/nh-info/`, method: 'get'})
         .then(response=>{
@@ -206,11 +224,27 @@ const RegisterNhs= () => {
         })
         break;
       case 1:
-        console.log("1");
+        ratingArray = [];
+        console.log("1" + "여기");
         axios({url:`${apiUrl}/nh-info/`, method: 'get'})
         .then(response=>{
           for(let i = 0; i < response.data.length; i++){
             if(response.data[i].star_avg >= 1 && response.data[i].star_avg < 2){
+              ratingArray[i] = response.data[i];
+            }
+          }
+          setNursingHomes(ratingArray);
+        }).catch(error=> {
+          console.error(error);
+        })
+        break;
+      case 0:
+        ratingArray = [];
+        console.log("0");
+        axios({url:`${apiUrl}/nh-info/`, method: 'get'})
+        .then(response=>{
+          for(let i = 0; i < response.data.length; i++){
+            if(!response.data[i].star_avg || response.data[i].star_avg < 1){
               ratingArray[i] = response.data[i];
             }
           }
