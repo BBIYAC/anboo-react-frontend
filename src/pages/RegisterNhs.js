@@ -93,6 +93,7 @@ const RegisterNhs= () => {
     let ratingArray = [];
     switch(parseInt(ratingState)){
       case 4:
+        ratingArray = [];
         console.log("4");
         axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
         .then(response=>{
@@ -107,6 +108,7 @@ const RegisterNhs= () => {
         })
         break;
       case 3:
+        ratingArray = [];
         console.log("3");
         axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
         .then(response=>{
@@ -121,6 +123,7 @@ const RegisterNhs= () => {
         })
         break;
       case 2:
+        ratingArray = [];
         console.log("2");
         axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
         .then(response=>{
@@ -135,6 +138,7 @@ const RegisterNhs= () => {
         })
         break;
       case 1:
+        ratingArray = [];
         console.log("1");
         axios({url:`${apiUrl}/nh-info/search=${search}/`, method: 'get'})
         .then(response=>{
