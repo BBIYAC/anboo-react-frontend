@@ -225,7 +225,7 @@ const RegisterNhs= () => {
         break;
       case 1:
         ratingArray = [];
-        console.log("1" + "여기");
+        console.log("1");
         axios({url:`${apiUrl}/nh-info/`, method: 'get'})
         .then(response=>{
           for(let i = 0; i < response.data.length; i++){
