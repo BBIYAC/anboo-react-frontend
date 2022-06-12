@@ -1,4 +1,6 @@
 # 부모님을 위한 요양 플랫폼
+<img src="https://img.shields.io/badge/React JS-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/Django REST framework-092E20?style=flat-square&logo=Django&logoColor=white"/> <img src="https://img.shields.io/badge/Amazon AWS-232F3E?style=flat-square&logo=Amazon AWS&logoColor=FF9900"/> <img src="https://img.shields.io/badge/Amazon S3-69A31?style=flat-square&logo=Amazon S3&logoColor=white"/>
+
 
 ### * 주요 기능
 **🙍 요양 환자의 가족(보호자)**
