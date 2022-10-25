@@ -19,7 +19,7 @@
 ### * 실행 영상
 <img width="80%" src="https://user-images.githubusercontent.com/78192524/173223503-4c7da60a-4122-496f-8299-503ea4786709.gif"/>
 
-### 초기 세팅(버전 준수)
+### * 초기 세팅(버전 준수)
 - Node.js 설치
 - (react-scripts 오류시) npm install react-scripts@4.0.3
 - npm install --save react-router-dom@5.3.0
